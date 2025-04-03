@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jun{
+    [DefaultExecutionOrder(-1)]
     public class CombatManager : MonoBehaviour
     {
         public static CombatManager Instance;
@@ -19,7 +19,7 @@ namespace Jun{
 
         void Start()
         {
-            Monsters[0].StartTurn();
+            // Monsters[1].StartTurn();
         }
     }
 

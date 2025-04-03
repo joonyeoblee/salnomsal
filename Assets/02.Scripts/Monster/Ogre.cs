@@ -1,6 +1,6 @@
-﻿namespace Jun.Monster
+namespace Jun.Monster
 {
-    public class Goblin : MonsterBase
+    public class Ogre : MonsterBase
     {
         public bool IsMyTurn;
 

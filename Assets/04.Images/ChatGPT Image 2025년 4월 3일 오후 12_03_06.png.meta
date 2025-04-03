@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: f1cf61e753229d845a4898bbc0725161
+guid: 35ed35395a838f54cbc9dd76aeb0b8cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8779681549725420321
-    second: ogre_0
+      213: -2088499729322938921
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_0"
   - first:
-      213: -4168365034886982111
-    second: ogre_1
+      213: 5764874113248314886
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_1"
   - first:
-      213: -202875197712387220
-    second: ogre_2
+      213: -4842109266679486326
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_2"
   - first:
-      213: 5207758074290773884
-    second: ogre_3
+      213: 1791676604172074561
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_3"
+  - first:
+      213: -5841527232341161810
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_4"
+  - first:
+      213: -7374053008191626141
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_5"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,89 +128,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ogre_0
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_0"
       rect:
         serializedVersion: 2
-        x: 31
-        y: 500
-        width: 547
-        height: 499
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 63
+        y: 503
+        width: 394
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 45b782ba6e17ab24888b8550e28f176d
-      internalID: 937800484
+      spriteID: 7dde430cf882403e0800000000000000
+      internalID: -2088499729322938921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_1
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_1"
       rect:
         serializedVersion: 2
-        x: 578
-        y: 500
-        width: 547
-        height: 499
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 567
+        y: 509
+        width: 386
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0efb884fa2267674abab97d98440a1ca
-      internalID: 1941994064
+      spriteID: 606c20f5672f00050800000000000000
+      internalID: 5764874113248314886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_2
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_2"
       rect:
         serializedVersion: 2
-        x: 31
-        y: 13
-        width: 529
-        height: 481
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 871
+        y: 752
+        width: 106
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b70f28e7b027b2246a2fb21117888d23
-      internalID: 1957760747
+      spriteID: a8821fbc64f5dccb0800000000000000
+      internalID: -4842109266679486326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_3
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_3"
       rect:
         serializedVersion: 2
-        x: 560
-        y: 13
-        width: 565
-        height: 481
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 71
+        y: 15
+        width: 408
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 021c7c5214add93428f05ca9b2484c6d
-      internalID: -2096932088
+      spriteID: 14efd08f0605dd810800000000000000
+      internalID: 1791676604172074561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_4"
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 15
+        width: 378
+        height: 467
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea8c8829ee9beeea0800000000000000
+      internalID: -5841527232341161810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_03_06_5"
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 255
+        width: 104
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36466d3cbd91aa990800000000000000
+      internalID: -7374053008191626141
       vertices: []
       indices: 
       edges: []
@@ -213,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 618a4b44709ea7b45ae161f047066414
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +272,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ogre_0: 937800484
-      ogre_1: 1941994064
-      ogre_2: 1957760747
-      ogre_3: -2096932088
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

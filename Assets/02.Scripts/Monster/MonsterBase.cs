@@ -16,14 +16,19 @@ namespace Jun.Monster
         Animator _animator;
         List<Character> _playableCharacters => CombatManager.Instance.PlayableCharacter;
         Character _lastTarget;
+
+        void OnEnable()
+        {
+            Register();
+        }
         void Start()
         {
-            _animator = GetComponent<Animator>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
         protected override void Register()
         {
-            throw new NotImplementedException();
+            CombatManager.Instance.Monsters.Add(this);
         }
         public override void StartTurn()
         {
@@ -74,7 +79,7 @@ namespace Jun.Monster
             return candidates.OrderByDescending(c => c.priority).First().Character;
         }
 
-        public Character GetTarget( )
+        protected Character GetTarget()
         {
             return ChooseTarget(_playableCharacters);
         }

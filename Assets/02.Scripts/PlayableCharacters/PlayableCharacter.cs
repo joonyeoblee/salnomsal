@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-
 
 namespace PlayableCharacters
 {
@@ -9,13 +9,17 @@ namespace PlayableCharacters
     // 플레이어 캐릭터는 Damage를 받아 체력을 감소시키고, 체력이 0 이하가 되면 사망합니다.
     public class PlayableCharacter : Character
     {
+        void Start()
+        {
+            _health = MaxHealth;
+        }
         protected override void Register()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
         public override void StartTurn()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
         protected override void Attack()
         {
@@ -46,7 +50,7 @@ namespace PlayableCharacters
             }
             else
             {
-                Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+                Debug.Log($"{gameObject.name}Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
             }
         }
     }

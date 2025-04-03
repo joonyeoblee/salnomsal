@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: f1cf61e753229d845a4898bbc0725161
+guid: 707334317964e5c498c625d2e1737ecc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8779681549725420321
-    second: ogre_0
+      213: -6512201152361093283
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_0"
   - first:
-      213: -4168365034886982111
-    second: ogre_1
+      213: -1606737552117271833
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_1"
   - first:
-      213: -202875197712387220
-    second: ogre_2
+      213: -3974347237631616332
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_2"
   - first:
-      213: 5207758074290773884
-    second: ogre_3
+      213: 3442587797896988867
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_3"
+  - first:
+      213: -4062616477240312685
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_4"
+  - first:
+      213: -3891723896188406663
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_5"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,89 +128,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ogre_0
+      name: Knight_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 500
-        width: 547
-        height: 499
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 506
+        width: 512
+        height: 509
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45b782ba6e17ab24888b8550e28f176d
-      internalID: 937800484
+      spriteID: 83225a4c601b06243a8eade012fe150c
+      internalID: -1226439936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_1
+      name: Knight_1
       rect:
         serializedVersion: 2
-        x: 578
-        y: 500
-        width: 547
-        height: 499
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 512
+        y: 505
+        width: 512
+        height: 509
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0efb884fa2267674abab97d98440a1ca
-      internalID: 1941994064
+      spriteID: 85da3d971db923241b54426b4d47e7a7
+      internalID: 1075958656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_2
+      name: Knight_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 13
-        width: 529
-        height: 481
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 0
+        y: 15
+        width: 512
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b70f28e7b027b2246a2fb21117888d23
-      internalID: 1957760747
+      spriteID: 788364e2bca0d06498dea07c99166ae2
+      internalID: -824246756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_3
+      name: Knight_3
       rect:
         serializedVersion: 2
-        x: 560
-        y: 13
-        width: 565
-        height: 481
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 512
+        y: 15
+        width: 512
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 021c7c5214add93428f05ca9b2484c6d
-      internalID: -2096932088
+      spriteID: 1ce26379d4d17dc49b93253b4b566860
+      internalID: 879823441
       vertices: []
       indices: 
       edges: []
@@ -213,7 +219,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 618a4b44709ea7b45ae161f047066414
+    spriteID: b943400da98c06e48b78469a57b0d1c0
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +229,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ogre_0: 937800484
-      ogre_1: 1941994064
-      ogre_2: 1957760747
-      ogre_3: -2096932088
+      Knight_0: -1226439936
+      Knight_1: 1075958656
+      Knight_2: -824246756
+      Knight_3: 879823441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
