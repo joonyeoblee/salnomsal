@@ -1,6 +1,5 @@
-using Unity.Android.Gradle.Manifest;
+using System;
 using UnityEngine;
-
 public abstract class Character : MonoBehaviour
 {
 	public DamageType DamageType;
