@@ -2,7 +2,7 @@
 
 namespace Jun.Test
 {
-    public class TestPlayable : Character
+    public class TestPlayable : EnemyCharacter
     {
         protected override void Register()
         {

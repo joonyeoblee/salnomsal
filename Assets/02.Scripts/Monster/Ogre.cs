@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Jun.Skill;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace Jun.Monster
             _health = MaxHealth;
             _mana = MaxMana;
 
-            List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
+            List<Func<EnemyCharacter, int>> conditionalList = new List<Func<EnemyCharacter, int>>
             {
                 target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0, // Skill1
                 target => target.IsDefending ? 10 : 0 // Skill2

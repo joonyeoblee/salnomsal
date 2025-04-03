@@ -21,9 +21,9 @@ namespace PlayableCharacters
 
 		private SkillSlot _sellectedSkill;
 
-		private Character[] _targets;
+		private EnemyCharacter[] _targets;
 
-		protected override void Register()
+		public override void Register()
 		{
 
 		}
@@ -51,7 +51,7 @@ namespace PlayableCharacters
 			}
 		}
 
-		public void DoAction()
+		public override void DoAction()
 		{
 			if (_mana < Skills[(int)_sellectedSkill].SkillCost)
 			{
@@ -60,40 +60,13 @@ namespace PlayableCharacters
 			}
 
 			GetTarget();
-			foreach (Character target in _targets)
+			foreach (EnemyCharacter target in _targets)
 			{
 
 			}
 		}
 
-		protected override void Attack()
-		{
-			if (_targets == null)
-			{
-				Debug.Log("타겟이 없습니다.");
-				return;
-			}
-
-			foreach (Character target in _targets)
-			{
-				if (target == null)
-				{
-					Debug.Log("타겟이 없습니다.");
-				}
-			}
-		}
-
-		protected override void Skill1()
-		{
-			Debug.Log("Skill1");
-		}
-
-		protected override void Skill2()
-		{
-			Debug.Log("Skill2");
-		}
-
-		protected override void Death(DamageType type)
+		public override void Death(DamageType type)
 		{
 			Debug.Log("Death");
 		}

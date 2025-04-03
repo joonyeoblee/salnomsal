@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Jun.Monster;
@@ -16,7 +16,7 @@ namespace Jun.Skill
     {
         public SkillDataSO SkillData;
         public int basePriority;
-        public Func<Character, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
+        public Func<EnemyCharacter, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
     }
 
 
@@ -27,7 +27,7 @@ namespace Jun.Skill
         public List<SkillDataSO> skillDataList;
         public List<int> basePriorities;
 
-        public void SetConditionalPriorities(List<Func<Character, int>> conditionalFuncs)
+        public void SetConditionalPriorities(List<Func<EnemyCharacter, int>> conditionalFuncs)
         {
             for (int i = 0; i < conditionalFuncs.Count && i < skills.Count; i++)
             {
@@ -56,7 +56,7 @@ namespace Jun.Skill
             }
         }
 
-        public SkillDecision ChooseSkillWithIndex(Character target)
+        public SkillDecision ChooseSkillWithIndex(EnemyCharacter target)
         {
             List<Skill> availableSkills = GetAvailableSkills(GetComponent<MonsterBase>());
 

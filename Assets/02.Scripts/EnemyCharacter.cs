@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-public abstract class Character : MonoBehaviour
+public abstract class EnemyCharacter : MonoBehaviour
 {
 	public DamageType DamageType;
 	public float MaxHealth;
@@ -20,10 +20,12 @@ public abstract class Character : MonoBehaviour
 	
 	public Action OnTurnStart;
 	public Action OnTurnEnd;
-	public abstract void Register();
+	protected abstract void Register();
 	public abstract void StartTurn();
-	public abstract void DoAction();
-	public abstract void Death(DamageType type);
+	protected abstract void Attack();
+	protected abstract void Skill1();
+	protected abstract void Skill2();
+	protected abstract void Death(DamageType type);
 
 	public abstract void TakeDamage(Damage damage);
 }
