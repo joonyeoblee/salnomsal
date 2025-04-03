@@ -5,16 +5,16 @@ using UnityEngine;
 namespace Jun.Monster
 {
     class TargetCandidate {
-        public Character Character;
+        public EnemyCharacter Character;
         public int priority;
     }
     
-    public class MonsterBase : Character
+    public class MonsterBase : EnemyCharacter
     {
         public Animator _animator;
-        List<Character> _playableCharacters => CombatManager.Instance.PlayableCharacter;
-        Character _lastTarget;
-        protected Character _target;
+        List<EnemyCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
+        EnemyCharacter _lastTarget;
+        protected EnemyCharacter _target;
         void OnEnable()
         {
             Register();
@@ -65,7 +65,7 @@ namespace Jun.Monster
         }
         
         // 타켓을 설정하는 알고리즘
-        TargetCandidate EvaluateTarget(Character Character) {
+        TargetCandidate EvaluateTarget(EnemyCharacter Character) {
             int priority = 0;
 
             if (Character.CurrentHealth < Character.MaxHealth * 0.3f) priority += 10;
@@ -77,7 +77,7 @@ namespace Jun.Monster
             return new TargetCandidate { Character = Character, priority = priority };
         }
         
-        Character ChooseTarget(List<Character> playerCharacters) {
+        EnemyCharacter ChooseTarget(List<EnemyCharacter> playerCharacters) {
             List<TargetCandidate> candidates = new();
             foreach (var Character in playerCharacters) {
                 candidates.Add(EvaluateTarget(Character));
@@ -86,7 +86,7 @@ namespace Jun.Monster
             return candidates.OrderByDescending(c => c.priority).First().Character;
         }
 
-        protected Character GetTarget()
+        protected EnemyCharacter GetTarget()
         {
             return ChooseTarget(_playableCharacters);
         }

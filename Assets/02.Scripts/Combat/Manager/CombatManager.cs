@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jun{
@@ -6,8 +6,8 @@ namespace Jun{
     public class CombatManager : MonoBehaviour
     {
         public static CombatManager Instance;
-        public List<Character> Monsters;
-        public List<Character> PlayableCharacter;
+        public List<EnemyCharacter> Monsters;
+        public List<EnemyCharacter> PlayableCharacter;
         
         // 우선순위 큐
         
