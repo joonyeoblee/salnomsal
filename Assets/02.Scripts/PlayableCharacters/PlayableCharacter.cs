@@ -3,14 +3,20 @@ using UnityEngine;
 
 namespace PlayableCharacters
 {
-    // ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ¸¦ ³ªÅ¸³»´Â Å¬·¡½ºÀÔ´Ï´Ù.
-    // Character Å¬·¡½º¸¦ »ó¼Ó¹Ş¾Æ ±¸ÇöÇÕ´Ï´Ù.
-    // ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ´Â °ø°İ, ½ºÅ³ »ç¿ë, »ç¸Á µîÀÇ ±â´ÉÀ» °¡Áı´Ï´Ù.
-    // ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ´Â Damage¸¦ ¹Ş¾Æ Ã¼·ÂÀ» °¨¼Ò½ÃÅ°°í, Ã¼·ÂÀÌ 0 ÀÌÇÏ°¡ µÇ¸é »ç¸ÁÇÕ´Ï´Ù.
+    // í”Œë ˆì´ì–´ ìºë¦­í„°ë¥¼ ë‚˜íƒ€ë‚´ëŠ” í´ë˜ìŠ¤ì…ë‹ˆë‹¤.
+    // Character í´ë˜ìŠ¤ë¥¼ ìƒì†ë°›ì•„ êµ¬í˜„í•©ë‹ˆë‹¤.
+    // í”Œë ˆì´ì–´ ìºë¦­í„°ëŠ” ê³µê²©, ìŠ¤í‚¬ ì‚¬ìš©, ì‚¬ë§ ë“±ì˜ ê¸°ëŠ¥ì„ ê°€ì§‘ë‹ˆë‹¤.
+    // í”Œë ˆì´ì–´ ìºë¦­í„°ëŠ” Damageë¥¼ ë°›ì•„ ì²´ë ¥ì„ ê°ì†Œì‹œí‚¤ê³ , ì²´ë ¥ì´ 0 ì´í•˜ê°€ ë˜ë©´ ì‚¬ë§í•©ë‹ˆë‹¤.
     public class PlayableCharacter : Character
     {
-
-
+        protected override void Register()
+        {
+            throw new System.NotImplementedException();
+        }
+        public override void StartTurn()
+        {
+            throw new System.NotImplementedException();
+        }
         protected override void Attack()
         {
             Debug.Log("Attack");

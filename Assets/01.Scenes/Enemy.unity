@@ -422,7 +422,7 @@ MonoBehaviour:
   Monsters:
   - {fileID: 1099589192}
   PlayableCharacter:
-  - {fileID: 1558468326}
+  - {fileID: 1558468329}
   - {fileID: 1187562343}
   - {fileID: 1131669999}
 --- !u!1 &1099589192
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131669996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50951f1c00bfb041a2555a53e76d9cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 0
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1187562340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50951f1c00bfb041a2555a53e76d9cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 0
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558468326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50951f1c00bfb041a2555a53e76d9cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2

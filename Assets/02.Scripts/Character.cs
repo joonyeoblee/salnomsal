@@ -1,3 +1,4 @@
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
@@ -12,11 +13,15 @@ public abstract class Character : MonoBehaviour
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
-
+	
 	protected float _health;
 	public float CurrentHealth => _health;
 	protected float _mana;
 
+	Action OnTurnStart;
+	Action OnTurnEnd;
+	protected abstract void Register();
+	public abstract void StartTurn();
 	protected abstract void Attack();
 	protected abstract void Skill1();
 	protected abstract void Skill2();
