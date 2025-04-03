@@ -1,12 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace PlayableCharacters
 {
-    // �÷��̾� ĳ���͸� ��Ÿ���� Ŭ�����Դϴ�.
-    // Character Ŭ������ ��ӹ޾� �����մϴ�.
-    // �÷��̾� ĳ���ʹ� ����, ��ų ���, ��� ���� ����� �����ϴ�.
-    // �÷��̾� ĳ���ʹ� Damage�� �޾� ü���� ���ҽ�Ű��, ü���� 0 ���ϰ� �Ǹ� ����մϴ�.
+    // 플레이어 캐릭터를 나타내는 클래스입니다.
+    // Character 클래스를 상속받아 구현합니다.
+    // 플레이어 캐릭터는 공격, 스킬 사용, 사망 등의 기능을 가집니다.
+    // 플레이어 캐릭터는 Damage를 받아 체력을 감소시키고, 체력이 0 이하가 되면 사망합니다.
     public class PlayableCharacter : Character
     {
 
