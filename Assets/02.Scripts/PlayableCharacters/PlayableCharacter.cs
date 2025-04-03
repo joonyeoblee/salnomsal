@@ -19,8 +19,7 @@ namespace PlayableCharacters
 		public string CharacterName;
 		public SkillDataSO[] Skills;
 
-		private SkillSlot _sellectedSkill;
-
+		private SkillSlot _selectedSkill;
 		private EnemyCharacter[] _targets;
 
 		public override void Register()
@@ -35,17 +34,17 @@ namespace PlayableCharacters
 
 		public void SetSellectedSkill(SkillSlot slot)
 		{
-			_sellectedSkill = slot;
+			_selectedSkill = slot;
 		}
 
 		public void GetTarget()
 		{
 			// 스킬 타입에 맞게 _targets를 설정합니다.
-			if (Skills[(int)_sellectedSkill].SkillRange == SkillRange.Single)
+			if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Single)
 			{
 				Debug.Log("단일 타겟 스킬");
 			}
-			else if (Skills[(int)_sellectedSkill].SkillRange == SkillRange.Global)
+			else if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Global)
 			{
 				Debug.Log("전체 타겟 스킬");
 			}
@@ -53,7 +52,7 @@ namespace PlayableCharacters
 
 		public override void DoAction()
 		{
-			if (_mana < Skills[(int)_sellectedSkill].SkillCost)
+			if (_mana < Skills[(int)_selectedSkill].SkillCost)
 			{
 				Debug.Log("마나가 부족합니다.");
 				return;
@@ -62,9 +61,10 @@ namespace PlayableCharacters
 			GetTarget();
 			foreach (EnemyCharacter target in _targets)
 			{
-
-			}
-		}
+				Debug.Log("타겟에게 스킬을 시전합니다"); // 타겟 이름 생길 예정
+            }
+			OnTurnEnd?.Invoke();
+        }
 
 		public override void Death(DamageType type)
 		{
