@@ -4,6 +4,14 @@ namespace Jun.Test
 {
     public class TestPlayable : Character
     {
+        protected override void Register()
+        {
+            throw new System.NotImplementedException();
+        }
+        public override void StartTurn()
+        {
+            throw new System.NotImplementedException();
+        }
         protected override void Attack()
         {
             

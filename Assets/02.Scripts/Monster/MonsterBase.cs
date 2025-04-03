@@ -20,9 +20,18 @@ namespace Jun.Monster
         {
             _animator = GetComponent<Animator>();
         }
-        
+
+        protected override void Register()
+        {
+            throw new NotImplementedException();
+        }
+        public override void StartTurn()
+        {
+            throw new NotImplementedException();
+        }
         protected override void Attack()
         {
+            
             _animator.Play("Attack");
         }
         protected override void Skill1()
@@ -35,7 +44,7 @@ namespace Jun.Monster
         }
         protected override void Death(DamageType type)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void TakeDamage(Damage damage)

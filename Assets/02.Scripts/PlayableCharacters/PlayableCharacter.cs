@@ -9,8 +9,14 @@ namespace PlayableCharacters
     // 플레이어 캐릭터는 Damage를 받아 체력을 감소시키고, 체력이 0 이하가 되면 사망합니다.
     public class PlayableCharacter : Character
     {
-
-
+        protected override void Register()
+        {
+            throw new System.NotImplementedException();
+        }
+        public override void StartTurn()
+        {
+            throw new System.NotImplementedException();
+        }
         protected override void Attack()
         {
             Debug.Log("Attack");
