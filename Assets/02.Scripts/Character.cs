@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System;
-
+﻿using System;
+using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
 	public DamageType DamageType;
@@ -17,7 +16,8 @@ public abstract class Character : MonoBehaviour
 	protected float _health;
 	public float CurrentHealth => _health;
 	protected float _mana;
-
+	public float Mana => _mana;
+	
 	public Action OnTurnStart;
 	public Action OnTurnEnd;
 	protected abstract void Register();

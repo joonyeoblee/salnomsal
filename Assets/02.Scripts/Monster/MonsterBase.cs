@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -12,11 +11,10 @@ namespace Jun.Monster
     
     public class MonsterBase : Character
     {
-        // Action monsterDelegate;
-        Animator _animator;
+        public Animator _animator;
         List<Character> _playableCharacters => CombatManager.Instance.PlayableCharacter;
         Character _lastTarget;
-
+        protected Character _target;
         void OnEnable()
         {
             Register();
@@ -24,6 +22,8 @@ namespace Jun.Monster
         void Start()
         {
             _animator = GetComponentInChildren<Animator>();
+
+            
         }
 
         protected override void Register()
@@ -32,7 +32,7 @@ namespace Jun.Monster
         }
         public override void StartTurn()
         {
-            throw new NotImplementedException();
+            _lastTarget = _target; // 다음 타겟 우선도 계산용
         }
         protected override void Attack()
         {
@@ -49,12 +49,19 @@ namespace Jun.Monster
         }
         protected override void Death(DamageType type)
         {
-            
+            Debug.Log("Death");
         }
 
         public override void TakeDamage(Damage damage)
         {
-            
+            _health -= damage.Value;
+            if (_health <= 0)
+            {
+                Death(damage.Type);
+            } else
+            {
+                Debug.Log($"{gameObject.name}Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+            }
         }
         
         // 타켓을 설정하는 알고리즘
