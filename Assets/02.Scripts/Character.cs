@@ -1,5 +1,5 @@
-using Unity.Android.Gradle.Manifest;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public abstract class Character : MonoBehaviour
 {
@@ -18,8 +18,8 @@ public abstract class Character : MonoBehaviour
 	public float CurrentHealth => _health;
 	protected float _mana;
 
-	Action OnTurnStart;
-	Action OnTurnEnd;
+	public Action OnTurnStart;
+	public Action OnTurnEnd;
 	protected abstract void Register();
 	public abstract void StartTurn();
 	protected abstract void Attack();
