@@ -33,10 +33,11 @@ namespace Jun.Monster
         {
             _animator.Play("Skill2");
         }
-        protected override void Death()
+        protected override void Death(DamageType type)
         {
-            
+            throw new NotImplementedException();
         }
+
         public override void TakeDamage(Damage damage)
         {
             
