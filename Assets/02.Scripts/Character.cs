@@ -1,5 +1,6 @@
+﻿using UnityEngine;
 using System;
-using UnityEngine;
+
 public abstract class Character : MonoBehaviour
 {
 	public DamageType DamageType;
@@ -12,13 +13,13 @@ public abstract class Character : MonoBehaviour
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
-	
+
 	protected float _health;
 	public float CurrentHealth => _health;
 	protected float _mana;
 
-	Action OnTurnStart;
-	Action OnTurnEnd;
+	public Action OnTurnStart;
+	public Action OnTurnEnd;
 	protected abstract void Register();
 	public abstract void StartTurn();
 	protected abstract void Attack();
