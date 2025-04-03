@@ -1,4 +1,6 @@
-﻿using Jun.Skill;
+﻿using System;
+using System.Collections.Generic;
+using Jun.Skill;
 using UnityEngine;
 
 namespace Jun.Monster
@@ -14,10 +16,18 @@ namespace Jun.Monster
 
             _health = MaxHealth;
             _mana = MaxMana;
+
+            List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
+            {
+                target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0, // Skill1
+                target => target.IsDefending ? 10 : 0 // Skill2
+            };
+            _skillComponent.SetConditionalPriorities(conditionalList);
         }
 
         void Update()
         {
+            
             if (IsMyTurn)
             {
                 IsMyTurn = false;
@@ -25,6 +35,7 @@ namespace Jun.Monster
                 if (_skillComponent == null || _target == null)
                 {
                     Debug.LogWarning("스킬 또는 타겟이 없음, 기본 공격");
+                    Debug.LogWarning(_skillComponent == null);
                     Attack();
                     return;
                 }
@@ -64,7 +75,7 @@ namespace Jun.Monster
         {
             base.Skill1();
 
-            Damage damage = new Damage(DamageType.Magic, 20, gameObject); // 예시 값
+            Damage damage = new Damage(DamageType.Melee, AttackPower * _skillComponent.skillDataList[0].SkillMultiplier, gameObject); // 예시 값
             _target.TakeDamage(damage);
         }
 
@@ -72,7 +83,7 @@ namespace Jun.Monster
         {
             base.Skill2();
 
-            Damage damage = new Damage(DamageType.Magic, 35, gameObject); // 예시 값
+            Damage damage = new Damage(DamageType.Magic, _skillComponent.skillDataList[1].SkillMultiplier, gameObject); // 예시 값
             _target.TakeDamage(damage);
         }
 

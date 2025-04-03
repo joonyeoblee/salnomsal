@@ -24,34 +24,36 @@ namespace Jun.Skill
     {
         public List<Skill> skills;
 
-        public SkillDataSO Skill1;
+        public List<SkillDataSO> skillDataList;
+        public List<int> basePriorities;
 
-        public SkillDataSO Skill2;
-        void Start()
+        public void SetConditionalPriorities(List<Func<Character, int>> conditionalFuncs)
         {
-            skills = new List<Skill>
+            for (int i = 0; i < conditionalFuncs.Count && i < skills.Count; i++)
             {
-                new Skill
-                {
-                    SkillData = Skill1,
-                    basePriority = 8,
-                    conditionalBonusPriority = target =>
-                        target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0 // 체력이 30% 이하일 때 우선도 +5
-                },
-                new Skill
-                {
-                    SkillData = Skill2,
-                    basePriority = 6,
-                    conditionalBonusPriority = target =>
-                        target.IsDefending ? 10 : 0 // 방어 상태일 때 우선도 +10
-                }
-            };
+                skills[i].conditionalBonusPriority = conditionalFuncs[i];
+            }
         }
-        List<Skill> GetAvailableSkills(MonsterBase caster)
+
+        public List<Skill> GetAvailableSkills(MonsterBase caster)
         {
             return skills
                 .Where(skill => caster.Mana >= skill.SkillData.SkillCost)
                 .ToList();
+        }
+
+
+        void Awake()
+        {
+            skills = new List<Skill>();
+            for (int i = 0; i < skillDataList.Count; i++)
+            {
+                skills.Add(new Skill
+                {
+                    SkillData = skillDataList[i],
+                    basePriority = basePriorities[i]
+                });
+            }
         }
 
         public SkillDecision ChooseSkillWithIndex(Character target)
@@ -68,10 +70,7 @@ namespace Jun.Skill
                 int priority = skill.basePriority;
 
                 if (skill.conditionalBonusPriority != null)
-                {
                     priority += skill.conditionalBonusPriority.Invoke(target);
-
-                }
 
                 if (priority > bestPriority)
                 {

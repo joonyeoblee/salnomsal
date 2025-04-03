@@ -49,12 +49,19 @@ namespace Jun.Monster
         }
         protected override void Death(DamageType type)
         {
-            
+            Debug.Log("Death");
         }
 
         public override void TakeDamage(Damage damage)
         {
-            
+            _health -= damage.Value;
+            if (_health <= 0)
+            {
+                Death(damage.Type);
+            } else
+            {
+                Debug.Log($"{gameObject.name}Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+            }
         }
         
         // 타켓을 설정하는 알고리즘

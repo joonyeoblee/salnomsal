@@ -17,7 +17,7 @@ namespace Jun{
             Instance = this;
         }
 
-        void Start()
+        public void asdasd()
         {
             Monsters[0].StartTurn();
         }
