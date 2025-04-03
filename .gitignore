@@ -70,3 +70,25 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+# Rider specific settings
+*.DotSettings
+*.DotSettings.user
+
+# VS Code settings
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Unity Collaborate
+.collab/
+
+# Shader cache
+[Aa]ssets/**/.shadercache
+
+# Addressables logs
+[Aa]ssets/AddressableAssetsData/*.log
+
+# LocalPackages (if used)
+LocalPackages/
