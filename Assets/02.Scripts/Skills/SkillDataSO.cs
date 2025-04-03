@@ -11,7 +11,7 @@ public enum SkillType
 public enum SkillRange
 {
     Single,
-    Global,
+    Global
 }
 
 [CreateAssetMenu(fileName = "SkillDataSO", menuName = "Scriptable Objects/SkillDataSO")]
@@ -21,6 +21,7 @@ public class SkillDataSO : ScriptableObject
     public string SkillDescription;
     public int SkillCost;
     public float SkillMultiplier;
+    public float Duration;
     public SkillType SkillType;
     public SkillRange SkillRange;
 }
