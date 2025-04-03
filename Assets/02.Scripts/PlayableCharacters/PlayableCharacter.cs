@@ -11,18 +11,17 @@ namespace PlayableCharacters
     {
 
 
-        protected override void Attack(Character enemy)
+        protected override void Attack()
         {
-            // enemy.TakeDamage(new Damage(DamageType, , this.gameObject));
             Debug.Log("Attack");
         }
 
-        protected override void Skill1(Character enemy)
+        protected override void Skill1()
         {
             Debug.Log("Skill1");
         }
 
-        protected override void Skill2(Character enemy)
+        protected override void Skill2()
         {
             Debug.Log("Skill2");
         }

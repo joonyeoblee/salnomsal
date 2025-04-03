@@ -16,7 +16,7 @@ namespace Jun.Test
         {
             
         }
-        protected override void Death()
+        protected override void Death(DamageType type)
         {
             
         }
