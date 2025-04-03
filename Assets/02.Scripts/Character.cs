@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    public DamageType DamageType;
     public float MaxHealth;
     public float MaxMana;
     public float AttackPower;
@@ -9,8 +10,12 @@ public abstract class Character : MonoBehaviour
     public float CriticalDamage;
     public int Speed;
     public int Resistance;
-
+    public bool HasBuff;
+    public bool IsDefending;
+    
     protected float _health;
+    public float CurrentHealth => _health;
+    
     protected float _mana;
 
     protected abstract void Attack();

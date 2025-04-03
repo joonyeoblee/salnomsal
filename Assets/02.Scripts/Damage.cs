@@ -2,9 +2,9 @@ using UnityEngine;
 
 public enum DamageType
 {
-    Melee, // ±Ù°Å¸®
-    Ranged, // ¿ø°Å¸®
-    Magic // ¸¶¹ı
+    Melee, // ê·¼ê±°ë¦¬
+    Ranged, // ì›ê±°ë¦¬
+    Magic // ë§ˆë²•
 }
 
 public struct Damage
