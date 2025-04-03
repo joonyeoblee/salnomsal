@@ -16,8 +16,7 @@ namespace PlayableCharacters
     public class PlayableCharacter : Character
     {
         public string CharacterName;
-
-        public Skill[] SkillPrefabs;
+        
 
 
         protected override void Register()

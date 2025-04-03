@@ -20,7 +20,6 @@ public class SkillDataSO : ScriptableObject
     public string SkillName;
     public string SkillDescription;
     public int SkillCost;
-    public int SkillCooldown;
     public float SkillMultiplier;
     public SkillType SkillType;
     public SkillRange SkillRange;

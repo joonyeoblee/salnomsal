@@ -19,7 +19,7 @@ namespace Jun{
 
         void Start()
         {
-            // Monsters[1].StartTurn();
+            Monsters[0].StartTurn();
         }
     }
 
