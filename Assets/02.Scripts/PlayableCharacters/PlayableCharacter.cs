@@ -9,7 +9,7 @@ public enum SkillSlot
 	None
 }
 
-public class PlayableCharacter : Character, ITurnActor
+public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
 	public SkillDataSO[] Skills;
@@ -79,7 +79,7 @@ public class PlayableCharacter : Character, ITurnActor
 		Debug.Log("Death");
 	}
 
-	public override void TakeDamage(Damage damage)
+	public void TakeDamage(Damage damage)
 	{
 		_health -= damage.Value;
 		if (_health <= 0)
@@ -91,4 +91,12 @@ public class PlayableCharacter : Character, ITurnActor
 			Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
 		}
 	}
+
+    public void GetBuff(float amount)
+    {
+    }
+
+    public void GetHeal(float amount)
+    {
+    }
 }

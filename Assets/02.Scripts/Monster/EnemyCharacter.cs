@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-public abstract class EnemyCharacter : MonoBehaviour, ITurnActor
+public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 {
 	public DamageType DamageType;
 	public float MaxHealth;
@@ -38,5 +38,15 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor
 
     public void EndTurn()
     {
+    }
+
+    public void GetBuff(float amount)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void GetHeal(float amount)
+    {
+        throw new NotImplementedException();
     }
 }

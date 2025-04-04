@@ -9,7 +9,8 @@ namespace Jun{
         public List<EnemyCharacter> Monsters;
         public List<PlayableCharacter> PlayableCharacter;
         public PlayableCharacter CurrentActor;
-        public EnemyCharacter[] SelectedEnemy;
+        public SkillSlot SelectedSkill;
+        public List<EnemyCharacter> SelectedEnemys;
         public int SpeedIncrementPerTurn;
 
         public List<ITurnActor> TurnOrder = new List<ITurnActor>();
@@ -34,6 +35,26 @@ namespace Jun{
         public void SetOrder()
         {
             TurnOrder.Sort((a, b) => b.CurrentSpeed.CompareTo(a.CurrentSpeed));
+        }
+
+        public void SetSelectedSkill(SkillSlot slot)
+        {
+            SelectedEnemys.Clear();
+            SelectedSkill = slot;
+        }
+
+        public void GetTarget()
+        {
+            if (CurrentActor.Skills[(int)SelectedSkill].SkillRange == SkillRange.Single)
+            {
+                Debug.Log("단일 타겟 스킬");
+                // 단일 타겟 스킬 로직 추가
+            }
+            else if (CurrentActor.Skills[(int)SelectedSkill].SkillRange == SkillRange.Global)
+            {
+                Debug.Log("전체 타겟 스킬");
+                // 전체 타겟 스킬 로직 추가
+            }
         }
 
         public void StartTurn()

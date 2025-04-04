@@ -23,6 +23,4 @@ public abstract class Character : MonoBehaviour
 	public abstract void Register();
 	public abstract void DoAction();
 	public abstract void Death(DamageType type);
-
-	public abstract void TakeDamage(Damage damage);
 }
