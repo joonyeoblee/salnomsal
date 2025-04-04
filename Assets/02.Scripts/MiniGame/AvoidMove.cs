@@ -63,16 +63,6 @@ namespace SeongIl
         }
 
         // 움직임 제한하기
-
-        
-
-        // 로컬 포지션 정하기
-        private void SetCoords(int y)
-        {
-            
-        }
-
-        
         private IEnumerator Move(float y)
         {
             _isMoving = false;
