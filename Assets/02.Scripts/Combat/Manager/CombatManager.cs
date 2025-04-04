@@ -7,11 +7,13 @@ namespace Jun{
     {
         public static CombatManager Instance;
         public List<EnemyCharacter> Monsters;
-        public List<Character> PlayableCharacter;
+        public List<PlayableCharacter> PlayableCharacter;
+        public PlayableCharacter CurrentActor;
+        public EnemyCharacter[] SelectedEnemy;
+        public int SpeedIncrementPerTurn;
 
-        // 우선순위 큐
+        public List<ITurnActor> TurnOrder = new List<ITurnActor>();
         
-        // 너차례!
         void Awake()
         {
             if (Instance == null)
@@ -24,11 +26,37 @@ namespace Jun{
             }
         }
 
+        public void InitializeCombat()
+        {
+
+        }
+
+        public void SetOrder()
+        {
+            TurnOrder.Sort((a, b) => b.CurrentSpeed.CompareTo(a.CurrentSpeed));
+        }
+
+        public void StartTurn()
+        {
+            ITurnActor unit = TurnOrder[0];
+            unit.StartTurn();
+            // UI에 CurrentCharacter에 대한 정보 표시 추가
+        }
+
+        public void EndTurn(ITurnActor unit)
+        {
+            unit.CurrentSpeed = unit.BasicSpeed;
+            foreach (ITurnActor turnActor in TurnOrder)
+            {
+                turnActor.CurrentSpeed += SpeedIncrementPerTurn;
+            }
+            TurnOrder.Add(unit);
+        }
+
         public void asdasd()
         {
             Monsters[0].StartTurn();
         }
-        
     }
 
 }

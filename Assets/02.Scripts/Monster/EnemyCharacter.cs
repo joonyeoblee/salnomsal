@@ -1,24 +1,13 @@
-using System;
+﻿using System;
 using UnityEngine;
-public enum MapType
+public abstract class EnemyCharacter : MonoBehaviour, ITurnActor
 {
-	Easy,
-	Normal,
-	Hard
-}
-public abstract class EnemyCharacter : MonoBehaviour
-{
-	public float _plusNum;
-	public MapType MapType;
 	public DamageType DamageType;
-	[SerializeField] float _baseHealth;
-	public float MaxHealth => _baseHealth + _plusNum;
+	public float MaxHealth;
 	public float MaxMana;
-	[SerializeField] float _baseAttackPower;
-	public float AttackPower => _baseAttackPower + _plusNum;
+	public float AttackPower;
 	public float CriticalChance;
 	public float CriticalDamage;
-	public int Speed; // TODO: 스피드도 플러스 줄건지 알아야함
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
@@ -29,6 +18,12 @@ public abstract class EnemyCharacter : MonoBehaviour
 	public float Mana => _mana;
 
     public int BasicSpeed { get; set; }
+	private int _currentSpeed;
+	public int CurrentSpeed
+	{
+		get => _currentSpeed;
+		set => _currentSpeed = value;
+    }
 
     public Action OnTurnStart;
 	public Action OnTurnEnd;

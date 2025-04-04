@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Jun.Monster
 {
     class TargetCandidate {
-        public Character Character;
+        public PlayableCharacter Character;
         public int priority;
     }
     
@@ -14,9 +14,9 @@ namespace Jun.Monster
     {
         public Animator _animator;
         protected MonsterSkill _skillComponent;
-        List<Character> _playableCharacters => CombatManager.Instance.PlayableCharacter;
-        Character _lastTarget;
-        protected Character _target;
+        List<PlayableCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
+        PlayableCharacter _lastTarget;
+        protected PlayableCharacter _target;
         public bool IsMyTurn;
         void OnEnable()
         {
@@ -110,7 +110,7 @@ namespace Jun.Monster
         }
         
         // 타켓을 설정하는 알고리즘
-        TargetCandidate EvaluateTarget(Character Character)
+        TargetCandidate EvaluateTarget(PlayableCharacter Character)
         {
             int priority = 0;
 
@@ -123,7 +123,7 @@ namespace Jun.Monster
             return new TargetCandidate { Character = Character, priority = priority };
         }
 
-        Character ChooseTarget(List<Character> playerCharacters)
+        PlayableCharacter ChooseTarget(List<PlayableCharacter> playerCharacters)
         {
             List<TargetCandidate> candidates = new();
             foreach (var Character in playerCharacters) {
@@ -133,7 +133,7 @@ namespace Jun.Monster
             return candidates.OrderByDescending(c => c.priority).First().Character;
         }
 
-        protected Character GetTarget()
+        protected PlayableCharacter GetTarget()
         {
             return ChooseTarget(_playableCharacters);
         }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Jun;
+using UnityEngine;
+
 public enum SkillSlot
 {
 	DefaultAttack,
@@ -7,91 +9,86 @@ public enum SkillSlot
 	None
 }
 
-namespace PlayableCharacters
+public class PlayableCharacter : Character, ITurnActor
 {
-	// 플레이어 캐릭터를 나타내는 클래스입니다.
-	// Character 클래스를 상속받아 구현합니다.
-	// 플레이어 캐릭터는 공격, 스킬 사용, 사망 등의 기능을 가집니다.
-	// 플레이어 캐릭터는 Damage를 받아 체력을 감소시키고, 체력이 0 이하가 되면 사망합니다.
-	public class PlayableCharacter : Character, ITurnActor
+	public string CharacterName;
+	public SkillDataSO[] Skills;
+
+	private SkillSlot _selectedSkill;
+	private EnemyCharacter[] _targets;
+
+	public int BasicSpeed { get; set; }
+	private int _currentSpeed;
+	public int CurrentSpeed
 	{
-		public string CharacterName;
-		public SkillDataSO[] Skills;
+		get => _currentSpeed;
+		set => _currentSpeed = value;
+	}
 
-		private SkillSlot _selectedSkill;
-		private EnemyCharacter[] _targets;
+	public override void Register()
+	{
 
-		void Start()
+	}
+
+	public void StartTurn()
+	{
+		CombatManager.Instance.CurrentActor = this;
+		OnTurnStart?.Invoke();
+	}
+
+	public void EndTurn()
+	{
+	}
+
+	public void SetSellectedSkill(SkillSlot slot)
+	{
+		_selectedSkill = slot;
+	}
+
+	public void GetTarget()
+	{
+		// 스킬 타입에 맞게 _targets를 설정합니다.
+		if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Single)
 		{
-			_health = MaxHealth;
+			Debug.Log("단일 타겟 스킬");
 		}
-		public override void Register()
+		else if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Global)
 		{
-
+			Debug.Log("전체 타겟 스킬");
 		}
-        public int BasicSpeed { get; set; }
+	}
 
-		public override void StartTurn()
+	public override void DoAction()
+	{
+		if (_mana < Skills[(int)_selectedSkill].SkillCost)
 		{
-			OnTurnStart?.Invoke();
-		}
-
-        public void EndTurn()
-        {
-        }
-
-		public void SetSellectedSkill(SkillSlot slot)
-		{
-			_selectedSkill = slot;
-		}
-
-		public void GetTarget()
-		{
-			// 스킬 타입에 맞게 _targets를 설정합니다.
-			if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Single)
-			{
-				Debug.Log("단일 타겟 스킬");
-			}
-			else if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Global)
-			{
-				Debug.Log("전체 타겟 스킬");
-			}
-		}
-
-		public override void DoAction()
-		{
-			if (_mana < Skills[(int)_selectedSkill].SkillCost)
-			{
-				Debug.Log("마나가 부족합니다.");
-				return;
-			}
-
-			GetTarget();
-			foreach (EnemyCharacter target in _targets)
-			{
-				Debug.Log("타겟에게 스킬을 시전합니다"); // 타겟 이름 생길 예정
-            }
-			OnTurnEnd?.Invoke();
-        }
-
-		public override void Death(DamageType type)
-		{
-			Debug.Log("Death");
+			Debug.Log("마나가 부족합니다.");
+			return;
 		}
 
-		// ReSharper disable Unity.PerformanceAnalysis
-		public override void TakeDamage(Damage damage)
+		GetTarget();
+		foreach (EnemyCharacter target in _targets)
 		{
-			_health -= damage.Value;
-			if (_health <= 0)
-			{
-				Death(damage.Type);
-			}
-			else
-			{
-				Debug.Log($"{gameObject.name}Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
-			}
+			Debug.Log("타겟에게 스킬을 시전합니다"); // 타겟 이름 생길 예정
 		}
+		OnTurnEnd?.Invoke();
+	}
 
-    }
+	public override void Death(DamageType type)
+	{
+		Debug.Log("Death");
+	}
+
+	public override void TakeDamage(Damage damage)
+	{
+		_health -= damage.Value;
+		if (_health <= 0)
+		{
+			Death(damage.Type);
+		}
+		else
+		{
+			Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+		}
+	}
 }
