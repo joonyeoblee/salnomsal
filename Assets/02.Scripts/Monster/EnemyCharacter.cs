@@ -20,7 +20,12 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	private bool _isAlive;
     public bool IsAlive => _isAlive;
 
-    public int BasicSpeed { get; set; }
+	[SerializeField] private int _basicSpeed;
+    public int BasicSpeed
+	{
+		get => _basicSpeed; 
+		set => _basicSpeed = value; 
+	}
 	private int _currentSpeed;
 	public int CurrentSpeed
 	{

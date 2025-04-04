@@ -36,6 +36,26 @@ public class CombatManager : MonoBehaviour
         Monsters = GameObject.FindGameObjectsWithTag("Enemy")
             .Select(obj => obj.GetComponent<EnemyCharacter>())
             .ToList(); // test
+
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            character.CurrentSpeed = character.BasicSpeed;
+            TurnOrder.Add(character);
+        }
+
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            monster.CurrentSpeed = monster.BasicSpeed;
+            TurnOrder.Add(monster);
+        }
+
+        SetOrder();
+        Debug.Log(TurnOrder.Count);
+        foreach (ITurnActor turnActor in TurnOrder)
+        {
+            Debug.Log(turnActor.CurrentSpeed);
+        }
+        StartTurn();
     }
 
     public void SetOrder()
@@ -93,6 +113,7 @@ public class CombatManager : MonoBehaviour
     {
         ITurnActor unit = TurnOrder[0];
         unit.StartTurn();
+        TurnOrder.RemoveAt(0);
         // UI에 CurrentCharacter에 대한 정보 표시 추가
     }
 
@@ -104,6 +125,7 @@ public class CombatManager : MonoBehaviour
             turnActor.CurrentSpeed += SpeedIncrementPerTurn;
         }
         TurnOrder.Add(unit);
+        SetOrder();
     }
 
     public void asdasd()

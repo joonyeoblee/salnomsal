@@ -3,10 +3,10 @@ using UnityEngine;
 
 public enum SkillSlot
 {
+	None,
 	DefaultAttack,
 	Skill1,
-	Skill2,
-	None
+	Skill2
 }
 
 public class PlayableCharacter : Character, ITurnActor, ITargetable
@@ -20,7 +20,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	private bool _isAlive;
     public bool IsAlive => _isAlive;
 
-    public int BasicSpeed { get; set; }
+	[SerializeField] private int _basicSpeed;
+    public int BasicSpeed
+	{ 
+		get => _basicSpeed;
+		set => _basicSpeed = value; 
+	}
+
 	private int _currentSpeed;
 	public int CurrentSpeed
 	{
@@ -36,13 +42,17 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void StartTurn()
 	{
-		CombatManager.Instance.CurrentActor = this;
+		Debug.Log($"{CharacterName}: Playable Turn Start");
+        CombatManager.Instance.CurrentActor = this;
 		OnTurnStart?.Invoke();
 	}
 
 	public void EndTurn()
 	{
-	}
+        Debug.Log($"{CharacterName}: Playable Turn End");
+        OnTurnEnd?.Invoke();
+		CombatManager.Instance.EndTurn(this);
+    }
 
 	public void SetSellectedSkill(SkillSlot slot)
 	{
