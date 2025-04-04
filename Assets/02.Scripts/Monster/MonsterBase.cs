@@ -1,29 +1,69 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Jun.Skill;
 using UnityEngine;
 
 namespace Jun.Monster
 {
     class TargetCandidate {
-        public EnemyCharacter Character;
+        public Character Character;
         public int priority;
     }
     
     public class MonsterBase : EnemyCharacter
     {
         public Animator _animator;
-        List<EnemyCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
-        EnemyCharacter _lastTarget;
-        protected EnemyCharacter _target;
+        protected MonsterSkill _skillComponent;
+        List<Character> _playableCharacters => CombatManager.Instance.PlayableCharacter;
+        Character _lastTarget;
+        protected Character _target;
+        public bool IsMyTurn;
         void OnEnable()
         {
             Register();
         }
-        void Start()
+        protected virtual void Start()
         {
             _animator = GetComponentInChildren<Animator>();
+            _skillComponent = GetComponent<MonsterSkill>();
 
-            
+        }
+        protected virtual void Update()
+        {
+            if (!IsMyTurn) return;
+
+            IsMyTurn = false;
+
+            if (_skillComponent == null || _target == null)
+            {
+                Debug.LogWarning($"{name}: 스킬 또는 타겟이 없음 → 기본 공격");
+                Attack();
+                return;
+            }
+
+            SkillDecision decision = _skillComponent.ChooseSkillWithIndex(_target);
+
+            Debug.Log(decision == null);
+            Debug.Log(decision.Skill == null);
+            if (decision == null || decision.Skill == null)
+            {
+                Debug.Log($"{name}: 선택된 스킬이 없음 → 기본 공격");
+                Attack();
+                return;
+            }
+
+            switch (decision.Index)
+            {
+            case 0:
+                Skill1();
+                break;
+            case 1:
+                Skill2();
+                break;
+            default:
+                Attack();
+                break;
+            }
         }
 
         protected override void Register()
@@ -32,7 +72,10 @@ namespace Jun.Monster
         }
         public override void StartTurn()
         {
+            IsMyTurn = true;
+            _target = GetTarget();
             _lastTarget = _target; // 다음 타겟 우선도 계산용
+            
         }
         protected override void Attack()
         {
@@ -65,7 +108,8 @@ namespace Jun.Monster
         }
         
         // 타켓을 설정하는 알고리즘
-        TargetCandidate EvaluateTarget(EnemyCharacter Character) {
+        TargetCandidate EvaluateTarget(Character Character)
+        {
             int priority = 0;
 
             if (Character.CurrentHealth < Character.MaxHealth * 0.3f) priority += 10;
@@ -76,8 +120,9 @@ namespace Jun.Monster
 
             return new TargetCandidate { Character = Character, priority = priority };
         }
-        
-        EnemyCharacter ChooseTarget(List<EnemyCharacter> playerCharacters) {
+
+        Character ChooseTarget(List<Character> playerCharacters)
+        {
             List<TargetCandidate> candidates = new();
             foreach (var Character in playerCharacters) {
                 candidates.Add(EvaluateTarget(Character));
@@ -86,7 +131,7 @@ namespace Jun.Monster
             return candidates.OrderByDescending(c => c.priority).First().Character;
         }
 
-        protected EnemyCharacter GetTarget()
+        protected Character GetTarget()
         {
             return ChooseTarget(_playableCharacters);
         }

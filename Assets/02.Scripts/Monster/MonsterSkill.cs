@@ -16,9 +16,8 @@ namespace Jun.Skill
     {
         public SkillDataSO SkillData;
         public int basePriority;
-        public Func<EnemyCharacter, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
+        public Func<Character, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
     }
-
 
     public class MonsterSkill : MonoBehaviour
     {
@@ -27,25 +26,52 @@ namespace Jun.Skill
         public List<SkillDataSO> skillDataList;
         public List<int> basePriorities;
 
-        public void SetConditionalPriorities(List<Func<EnemyCharacter, int>> conditionalFuncs)
+        public void SetConditionalPriorities(List<Func<Character, int>> conditionalFuncs)
         {
+            if (skills == null || skills.Count == 0)
+            {
+                Debug.LogError($"[{name}] SetConditionalPriorities: skills 리스트가 비어있음!");
+                return;
+            }
+
             for (int i = 0; i < conditionalFuncs.Count && i < skills.Count; i++)
             {
                 skills[i].conditionalBonusPriority = conditionalFuncs[i];
+                Debug.Log($"[{name}] 조건 함수 등록: Skill[{i}] → {skills[i].SkillData?.name ?? "null"}");
             }
         }
 
         public List<Skill> GetAvailableSkills(MonsterBase caster)
         {
-            return skills
+            var available = skills
                 .Where(skill => caster.Mana >= skill.SkillData.SkillCost)
                 .ToList();
-        }
 
+            Debug.Log($"[{name}] 사용 가능한 스킬 개수: {available.Count}");
+            foreach (Skill skill in available)
+            {
+                Debug.Log($"[{name}] 사용 가능 스킬: {skill.SkillData.name}, 코스트: {skill.SkillData.SkillCost}, 현재 마나: {caster.Mana}");
+            }
+
+            return available;
+        }
 
         void Awake()
         {
             skills = new List<Skill>();
+
+            if (skillDataList == null || basePriorities == null)
+            {
+                Debug.LogError($"[{name}] skillDataList 또는 basePriorities가 null입니다.");
+                return;
+            }
+
+            if (skillDataList.Count != basePriorities.Count)
+            {
+                Debug.LogError($"[{name}] skillDataList.Count != basePriorities.Count! ({skillDataList.Count} != {basePriorities.Count})");
+                return;
+            }
+
             for (int i = 0; i < skillDataList.Count; i++)
             {
                 skills.Add(new Skill
@@ -53,12 +79,15 @@ namespace Jun.Skill
                     SkillData = skillDataList[i],
                     basePriority = basePriorities[i]
                 });
+
+                Debug.Log($"[{name}] 스킬 초기화됨: {skillDataList[i].name}, 우선도: {basePriorities[i]}");
             }
         }
 
-        public SkillDecision ChooseSkillWithIndex(EnemyCharacter target)
+        public SkillDecision ChooseSkillWithIndex(Character target)
         {
-            List<Skill> availableSkills = GetAvailableSkills(GetComponent<MonsterBase>());
+            MonsterBase caster = GetComponent<MonsterBase>();
+            List<Skill> availableSkills = GetAvailableSkills(caster);
 
             Skill bestSkill = null;
             int bestPriority = int.MinValue;
@@ -70,7 +99,14 @@ namespace Jun.Skill
                 int priority = skill.basePriority;
 
                 if (skill.conditionalBonusPriority != null)
-                    priority += skill.conditionalBonusPriority.Invoke(target);
+                {
+                    int bonus = skill.conditionalBonusPriority.Invoke(target);
+                    priority += bonus;
+                    Debug.Log($"[{name}] {skill.SkillData.name}: base {skill.basePriority}, bonus {bonus} → total {priority}");
+                } else
+                {
+                    Debug.Log($"[{name}] {skill.SkillData.name}: base {priority} (조건 함수 없음)");
+                }
 
                 if (priority > bestPriority)
                 {
@@ -78,6 +114,14 @@ namespace Jun.Skill
                     bestSkill = skill;
                     bestIndex = i;
                 }
+            }
+
+            if (bestSkill != null)
+            {
+                Debug.Log($"[{name}] 최종 선택 스킬: {bestSkill.SkillData.name}, 우선도: {bestPriority}");
+            } else
+            {
+                Debug.LogWarning($"[{name}] 선택된 스킬이 없음 (null)");
             }
 
             return new SkillDecision
