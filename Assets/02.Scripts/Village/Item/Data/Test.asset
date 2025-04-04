@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e557adb23903247a3af1b346625e3b, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  itemName: Sword
-  type: 0
-  attack: 12
-  defense: 12
+  ItemName: "\uCE7C"
+  Type: 0
+  Rarity: 0
+  BaseStatRanges: []
+  passiveEffects: []
