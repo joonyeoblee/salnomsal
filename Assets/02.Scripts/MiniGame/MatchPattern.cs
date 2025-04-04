@@ -1,79 +1,99 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
-namespace Jun.MiniGame
+namespace SeongIl
 {
     public class MatchPattern : MonoBehaviour
     {
         public TextMeshProUGUI Text;
         private string _currentkey;
         public GameObject[] Prefabs;
-        public Transform[] SpawnPoints;
         public Queue<GameObject> PrefabsQueue = new Queue<GameObject>();
+        [Header("시간 설정")]
+        public float TimeLimit = 0;
+        public float Timer;
+        [Header("게임 시작")] private bool _isGameActive = true;
+        
+        private Queue<string> _keyQueue = new Queue<string>();
 
-        [Header("갯수 설정")]
-        public float MaxCount;
-        [SerializeField] float _currentCount;
+        public int KeyCount = 5;
+        
 
-        [Header("게임 시작")]
-        [SerializeField] bool _isGameActive;
-
-        [Header("스폰 설정")]
-        public float spawnInterval = 1.5f; // 몇 초마다 스폰할지 설정
-
-        void Start()
+        private void Start()
         {
-            _isGameActive = true;
-            StartCoroutine(SpawnRoutine());
+            GenerateKeysQueue();
+            DisplayKeys();
         }
 
-        void Update()
+        private void Update()
         {
-            if (_currentCount > MaxCount)
+            if (!_isGameActive)
             {
-                Success();
+                return;
+            }
+            Timer -= Time.deltaTime;
+            if (Timer <= 0)
+            {
+                _isGameActive = false;
+            }
+
+            if (Input.anyKeyDown)
+            {
+                if (Input.GetKeyDown(_keyQueue.Peek().ToLower()))
+                {
+                    _keyQueue.Dequeue();
+                    PrefabsQueue.Dequeue().GetComponent<SpriteRenderer>().color = Color.black;
+                    if (_keyQueue.Count > 0)
+                    {
+                        DisplayKeys();
+                        
+                    }
+                    else
+                    {
+                        Success();            }
+                }
+                else
+                {
+                    Fail();
+                }
             }
         }
-
-        IEnumerator SpawnRoutine()
+        private void GenerateKeysQueue()
         {
-            while (_isGameActive)
+            string[] keys = { "Q", "W", "E", "R", "T" };
+            _keyQueue.Clear();
+
+            for (int i = 0; i < KeyCount; i++)
             {
-                SpawnRandomPrefab();
-                yield return new WaitForSeconds(spawnInterval);
+                int index = UnityEngine.Random.Range(0, keys.Length);
+                _keyQueue.Enqueue(keys[index]);
+                GameObject obj = Instantiate(Prefabs[index],new Vector3(transform.position.x + i, transform.position.y, 0), Quaternion.identity);
+                PrefabsQueue.Enqueue(obj);
             }
+            
         }
 
-        void SpawnRandomPrefab()
+        private void DisplayKeys()
         {
-            if (Prefabs.Length == 0 || SpawnPoints.Length == 0) return;
-
-            GameObject prefab = Prefabs[Random.Range(0, Prefabs.Length)];
-            Transform spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
-
-            GameObject spawned = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
-            PrefabsQueue.Enqueue(spawned);
-            _currentCount++;
+            Text.text = string.Join(" ", _keyQueue.ToArray());
+            if (Text == null)
+            {
+                Debug.Log("널이에유");
+            }
+            Debug.Log(string.Join(" ", _keyQueue.ToArray()));
         }
-
         public void Fail()
         {
             Debug.Log("Fail");
-
-            // _isGameActive = false;
-        }
-
-        public void AddCount()
-        {
-            _currentCount += 1;
+            //isGameActive = false;
+            
         }
 
         public void Success()
         {
             Debug.Log("성공");
-            _isGameActive = false;
         }
     }
 }
