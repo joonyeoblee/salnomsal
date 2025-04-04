@@ -14,7 +14,7 @@ namespace PlayableCharacters
 	// Character 클래스를 상속받아 구현합니다.
 	// 플레이어 캐릭터는 공격, 스킬 사용, 사망 등의 기능을 가집니다.
 	// 플레이어 캐릭터는 Damage를 받아 체력을 감소시키고, 체력이 0 이하가 되면 사망합니다.
-	public class PlayableCharacter : Character
+	public class PlayableCharacter : Character, ITurnActor
 	{
 		public string CharacterName;
 		public SkillDataSO[] Skills;
@@ -22,7 +22,9 @@ namespace PlayableCharacters
 		private SkillSlot _selectedSkill;
 		private EnemyCharacter[] _targets;
 
-		public override void Register()
+        public int BasicSpeed { get; set; }
+
+        public override void Register()
 		{
 
 		}
@@ -31,6 +33,10 @@ namespace PlayableCharacters
 		{
 			OnTurnStart?.Invoke();
 		}
+
+        public void EndTurn()
+        {
+        }
 
 		public void SetSellectedSkill(SkillSlot slot)
 		{
@@ -83,5 +89,6 @@ namespace PlayableCharacters
 				Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
 			}
 		}
-	}
+
+    }
 }

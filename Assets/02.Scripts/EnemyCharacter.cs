@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-public abstract class EnemyCharacter : MonoBehaviour
+public abstract class EnemyCharacter : MonoBehaviour, ITurnActor
 {
 	public DamageType DamageType;
 	public float MaxHealth;
@@ -17,8 +17,10 @@ public abstract class EnemyCharacter : MonoBehaviour
 	public float CurrentHealth => _health;
 	protected float _mana;
 	public float Mana => _mana;
-	
-	public Action OnTurnStart;
+
+    public int BasicSpeed { get; set; }
+
+    public Action OnTurnStart;
 	public Action OnTurnEnd;
 	protected abstract void Register();
 	public abstract void StartTurn();
@@ -28,4 +30,8 @@ public abstract class EnemyCharacter : MonoBehaviour
 	protected abstract void Death(DamageType type);
 
 	public abstract void TakeDamage(Damage damage);
+
+    public void EndTurn()
+    {
+    }
 }
