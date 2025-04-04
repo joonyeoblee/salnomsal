@@ -17,13 +17,19 @@ namespace Jun.Map
         public float nodeSpacingY = 180f;
         public long seed = 123456;
         public bool ascensionZero;
-
-        void Start()
+        public void ButtonEvent()
         {
+            // 기존 노드 및 선 제거
+            foreach (Transform child in mapRoot)
+            {
+                Destroy(child.gameObject);
+            }
+
             MapGenerator generator = new MapGenerator(seed);
-            Map map = generator.GenerateMap(mapHeight, mapWidth, 6, ascensionZero);
+            Map map = generator.GenerateMap(mapHeight, mapWidth, 3, ascensionZero);
             VisualizeMap(map);
         }
+
 
         void VisualizeMap(Map map)
         {
@@ -75,6 +81,7 @@ namespace Jun.Map
                 NodeType.Rest => Color.cyan,
                 NodeType.Mystery => Color.yellow,
                 NodeType.Boss => Color.magenta,
+                NodeType.Null => Color.white,
                 _ => Color.white
             };
         }
