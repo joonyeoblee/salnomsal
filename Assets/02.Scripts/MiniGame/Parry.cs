@@ -8,12 +8,14 @@ namespace SeongIl
     public class Parry : MonoBehaviour
     {
         // prototype 구현
+        public GameObject Player;
+        
         [Header("난이도 설정")]
         // 패링 타이밍 시간
         [SerializeField]
         private float _parrySpeed = 0;
         [SerializeField]
-        private float _parryDifficulty = 0;
+        private float _parryInstatiateTime = 0;
         [SerializeField]
         private int _count = 3;
         [SerializeField]
@@ -35,7 +37,8 @@ namespace SeongIl
         private int _timingCheckIndex = 0;
         private void Start()
         {
-            _successPosition = transform.position;
+            Player = GameObject.FindGameObjectWithTag("Player");
+            _successPosition = Player.transform.position;
             _timingChecks = new List<GameObject>(_count);
             _timingCheckIndex = 0;  
 
@@ -62,8 +65,11 @@ namespace SeongIl
         //  슬래시 움직임주기
         private void SlashMovement(GameObject slash)
         {
-            Vector2 oppositePosition = new Vector2(transform.position.x - slash.transform.position.x , transform.position.y - slash.transform.position.y);
+            Debug.Log(Player.transform.position);
             Vector2 currentPosition = slash.transform.position;
+            Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
+            Debug.Log(oppositePosition);
+            Debug.Log(currentPosition);
             slash.transform.DOMove(oppositePosition, _parrySpeed).SetEase(Ease.OutCubic).OnComplete(() =>
             {
                 slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic);
@@ -78,7 +84,7 @@ namespace SeongIl
             for (int i = 0; i < _count; i++) // 예시 값
             {
                 // 위치 정하기
-                float angle = UnityEngine.Random.Range(0f, 2f);
+                float angle = UnityEngine.Random.Range(0f, Mathf.PI *2);
                 Vector2 pos =  new Vector2( centerPosition.x + distance * Mathf.Cos(angle), centerPosition.y + distance * Mathf.Sin(angle));
                 GameObject slash = Instantiate(SlashEffect,pos, Quaternion.identity); 
                 // 판정 개수 정하기
@@ -86,7 +92,7 @@ namespace SeongIl
                 // 움직임 시작
                 SlashMovement(slash);
                 _isParrying = false;
-                yield return new WaitForSeconds(_parryDifficulty);
+                yield return new WaitForSeconds(_parryInstatiateTime);
             }
 
         }
