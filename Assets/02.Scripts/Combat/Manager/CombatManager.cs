@@ -7,7 +7,7 @@ namespace Jun{
     {
         public static CombatManager Instance;
         public List<EnemyCharacter> Monsters;
-        public List<EnemyCharacter> PlayableCharacter;
+        public List<Character> PlayableCharacter;
         
         // 우선순위 큐
         
