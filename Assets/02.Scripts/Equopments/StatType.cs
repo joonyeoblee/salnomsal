@@ -1,14 +1,5 @@
-using System;
-
-namespace Equipment
+﻿namespace Equipment
 {
-    [Serializable]
-    public class StatModifier
-    {
-        public StatType statType;
-        public float Value;
-    }
-
     public enum StatType
     {
         Attack,
