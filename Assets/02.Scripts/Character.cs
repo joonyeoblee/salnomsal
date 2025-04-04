@@ -8,7 +8,6 @@ public abstract class Character : MonoBehaviour
 	public float AttackPower;
 	public float CriticalChance;
 	public float CriticalDamage;
-	public int BaseSpeed;
 	public int Speed;
 	public int Resistance;
 	public bool HasBuff;
@@ -22,7 +21,6 @@ public abstract class Character : MonoBehaviour
 	public Action OnTurnStart;
 	public Action OnTurnEnd;
 	public abstract void Register();
-	public abstract void StartTurn();
 	public abstract void DoAction();
 	public abstract void Death(DamageType type);
 

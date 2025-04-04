@@ -8,7 +8,6 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor
 	public float AttackPower;
 	public float CriticalChance;
 	public float CriticalDamage;
-	public int Speed;
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
@@ -19,6 +18,12 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor
 	public float Mana => _mana;
 
     public int BasicSpeed { get; set; }
+	private int _currentSpeed;
+	public int CurrentSpeed
+	{
+		get => _currentSpeed;
+		set => _currentSpeed = value;
+    }
 
     public Action OnTurnStart;
 	public Action OnTurnEnd;
