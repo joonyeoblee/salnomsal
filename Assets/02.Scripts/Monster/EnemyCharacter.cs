@@ -17,6 +17,9 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	protected float _mana;
 	public float Mana => _mana;
 
+	private bool _isAlive;
+    public bool IsAlive => _isAlive;
+
     public int BasicSpeed { get; set; }
 	private int _currentSpeed;
 	public int CurrentSpeed
