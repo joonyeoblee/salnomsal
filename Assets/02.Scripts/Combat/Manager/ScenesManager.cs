@@ -1,25 +1,29 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ScenesManager : MonoBehaviour
+
+namespace Jun
 {
-    public static ScenesManager instance;
-
-    public GameObject player;
-    void Awake()
+    public class MiniGameScenesManager : MonoBehaviour
     {
-        // Singleton 패턴
-        if (instance == null)
+        public static MiniGameScenesManager instance;
+
+        public GameObject player;
+        void Awake()
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else
-        {
-            Destroy(gameObject);
+            // Singleton 패턴
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            } else
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    public void ChangeSceneToIndex0()
-    {
-        SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        public void ChangeSceneToIndex0()
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        }
     }
 }

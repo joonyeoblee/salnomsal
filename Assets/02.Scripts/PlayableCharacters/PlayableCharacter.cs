@@ -26,6 +26,9 @@ namespace PlayableCharacters
 			_health = MaxHealth;
 		}
 		public override void Register()
+		{
+
+		}
         public int BasicSpeed { get; set; }
 
 		public override void StartTurn()

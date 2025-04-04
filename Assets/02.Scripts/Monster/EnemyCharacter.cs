@@ -8,15 +8,17 @@ public enum MapType
 }
 public abstract class EnemyCharacter : MonoBehaviour
 {
-	protected float _plusNum;
+	public float _plusNum;
 	public MapType MapType;
 	public DamageType DamageType;
-	public float MaxHealth;
+	[SerializeField] float _baseHealth;
+	public float MaxHealth => _baseHealth + _plusNum;
 	public float MaxMana;
-	public float AttackPower;
+	[SerializeField] float _baseAttackPower;
+	public float AttackPower => _baseAttackPower + _plusNum;
 	public float CriticalChance;
 	public float CriticalDamage;
-	public int Speed;
+	public int Speed; // TODO: 스피드도 플러스 줄건지 알아야함
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;

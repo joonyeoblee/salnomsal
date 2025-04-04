@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5d43bdd644feaba1f8f14229b8536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plusNum: 0
   MapType: 0
   DamageType: 0
-  MaxHealth: 111
+  _baseHealth: 0
   MaxMana: 4
-  AttackPower: 4
+  _baseAttackPower: 4
   CriticalChance: 1
   CriticalDamage: 1
   Speed: 1
