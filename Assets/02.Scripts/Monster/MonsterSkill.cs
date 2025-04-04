@@ -80,7 +80,7 @@ namespace Jun.Skill
                     basePriority = basePriorities[i]
                 });
 
-                Debug.Log($"[{name}] 스킬 초기화됨: {skillDataList[i].name}, 우선도: {basePriorities[i]}");
+                //Debug.Log($"[{name}] 스킬 초기화됨: {skillDataList[i].name}, 우선도: {basePriorities[i]}");
             }
         }
 
