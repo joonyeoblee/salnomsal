@@ -115,11 +115,11 @@ namespace SeongIl
         {
             Debug.Log("Fail");
             
-            for (int i = _timingChecks.Count - 1; i >= 0; i--)
-            {
-                Destroy(_timingChecks[i]);
-                _timingChecks.RemoveAt(i);
-            }
+            //for (int i = _timingChecks.Count - 1; i >= 0; i--)
+            //{
+            //    Destroy(_timingChecks[i]);
+            //    _timingChecks.RemoveAt(i);
+            //}
 
         }
         
