@@ -17,7 +17,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	private SkillSlot _selectedSkill;
 	private EnemyCharacter[] _targets;
 
-	public int BasicSpeed { get; set; }
+	private bool _isAlive;
+    public bool IsAlive => _isAlive;
+
+    public int BasicSpeed { get; set; }
 	private int _currentSpeed;
 	public int CurrentSpeed
 	{
@@ -25,7 +28,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		set => _currentSpeed = value;
 	}
 
-	public override void Register()
+
+    public override void Register()
 	{
 
 	}
@@ -85,7 +89,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		if (_health <= 0)
 		{
 			Death(damage.Type);
-		}
+        }
 		else
 		{
 			Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
@@ -94,9 +98,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
     public void GetBuff(float amount)
     {
+		Debug.Log($"버프를 얻었습니다. {amount}");
     }
 
     public void GetHeal(float amount)
     {
+		Debug.Log($"체력회복. {amount}");
     }
 }
