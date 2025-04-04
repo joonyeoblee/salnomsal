@@ -14,7 +14,14 @@ namespace Jun{
         // 너차례!
         void Awake()
         {
-            Instance = this;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void asdasd()

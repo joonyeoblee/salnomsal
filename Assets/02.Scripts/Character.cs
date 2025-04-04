@@ -8,6 +8,7 @@ public abstract class Character : MonoBehaviour
 	public float AttackPower;
 	public float CriticalChance;
 	public float CriticalDamage;
+	public int BaseSpeed;
 	public int Speed;
 	public int Resistance;
 	public bool HasBuff;
