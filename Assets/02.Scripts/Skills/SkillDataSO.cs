@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public enum SkillType
 {
     Attack,
@@ -30,6 +29,7 @@ namespace Jun
         public int SkillCost;
         public float SkillMultiplier;
         public float Duration;
+        public int Priority;
         public SkillType SkillType;
         public SkillRange SkillRange;
         public SkillTarget SkillTarget;
