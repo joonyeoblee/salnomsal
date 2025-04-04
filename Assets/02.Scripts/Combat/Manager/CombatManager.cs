@@ -10,7 +10,7 @@ namespace Jun{
         public List<PlayableCharacter> PlayableCharacter;
         public PlayableCharacter CurrentActor;
         public SkillSlot SelectedSkill;
-        public List<EnemyCharacter> SelectedEnemys;
+        public List<ITargetable> Target;
         public int SpeedIncrementPerTurn;
 
         public List<ITurnActor> TurnOrder = new List<ITurnActor>();
@@ -39,21 +39,46 @@ namespace Jun{
 
         public void SetSelectedSkill(SkillSlot slot)
         {
-            SelectedEnemys.Clear();
+            Target.Clear();
             SelectedSkill = slot;
         }
 
-        public void GetTarget()
+        public void GetTarget(ITargetable target)
         {
-            if (CurrentActor.Skills[(int)SelectedSkill].SkillRange == SkillRange.Single)
+            if (SelectedSkill == SkillSlot.None)
             {
-                Debug.Log("단일 타겟 스킬");
-                // 단일 타겟 스킬 로직 추가
+                return;
             }
-            else if (CurrentActor.Skills[(int)SelectedSkill].SkillRange == SkillRange.Global)
+
+            SkillDataSO selectedSkillData = CurrentActor.Skills[(int)SelectedSkill];
+            if (selectedSkillData.SkillRange == SkillRange.Single)
+            {
+                Target.Add(target);
+                Debug.Log("단일 타겟 스킬");
+            }
+            else if (selectedSkillData.SkillRange == SkillRange.Global)
             {
                 Debug.Log("전체 타겟 스킬");
-                // 전체 타겟 스킬 로직 추가
+                if (selectedSkillData.SkillTarget == SkillTarget.Ally)
+                {
+                    foreach (ITargetable ally in PlayableCharacter)
+                    {
+                        if (ally.IsAlive)
+                        {
+                            Target.Add(ally);
+                        }
+                    }
+                }
+                else if (selectedSkillData.SkillTarget == SkillTarget.Enemy)
+                {
+                    foreach (ITargetable enemy in Monsters)
+                    {
+                        if (enemy.IsAlive)
+                        {
+                            Target.Add(enemy);
+                        }
+                    }
+                }
             }
         }
 

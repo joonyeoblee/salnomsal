@@ -14,6 +14,12 @@ public enum SkillRange
     Global
 }
 
+public enum SkillTarget
+{
+    Ally,
+    Enemy
+}
+
 [CreateAssetMenu(fileName = "SkillDataSO", menuName = "Scriptable Objects/SkillDataSO")]
 public class SkillDataSO : ScriptableObject
 {
@@ -24,5 +30,6 @@ public class SkillDataSO : ScriptableObject
     public float Duration;
     public SkillType SkillType;
     public SkillRange SkillRange;
+    public SkillTarget SkillTarget;
 }
 
