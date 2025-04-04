@@ -1,5 +1,8 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using UnityEngine;
+using System.Collections.Generic;
+
 public abstract class Character : MonoBehaviour
 {
 	public DamageType DamageType;
@@ -20,6 +23,6 @@ public abstract class Character : MonoBehaviour
 	public Action OnTurnStart;
 	public Action OnTurnEnd;
 	public abstract void Register();
-	public abstract void DoAction();
+	public abstract void DoAction(SkillSlot slot, List<ITargetable> targets);
 	public abstract void Death(DamageType type);
 }

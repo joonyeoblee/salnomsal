@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32a9d9ce66c70ad43aeb294c603cf94f, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: 80d7607b45173314ea33192b8a78ace4, type: 3}
+  m_Name: TestAttack
   m_EditorClassIdentifier: 
-  SkillName: Test
-  SkillDescription: Test Skill
-  SkillCost: 0
-  SkillCooldown: 2
-  SkillMultiplier: 1.5
+  SkillName: TestAttack
+  SkillDescription: TestAttack Description
+  SkillCost: 3
   SkillType: 0
   SkillRange: 0
+  SkillTarget: 1

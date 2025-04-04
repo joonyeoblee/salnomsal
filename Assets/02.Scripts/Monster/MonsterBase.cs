@@ -26,8 +26,8 @@ namespace Jun.Monster
         {
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
+            IsAlive = true;
 
-          
 
         }
         protected virtual void Update()
@@ -95,6 +95,7 @@ namespace Jun.Monster
         protected override void Death(DamageType type)
         {
             Debug.Log("Death");
+            IsAlive = false;
         }
 
         public override void TakeDamage(Damage damage)

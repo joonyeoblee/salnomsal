@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor;
 
 public class CombatManager : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class CombatManager : MonoBehaviour
     public List<PlayableCharacter> PlayableCharacter;
     public PlayableCharacter CurrentActor;
     public SkillSlot SelectedSkill;
-    public List<ITargetable> Target;
     public int SpeedIncrementPerTurn;
+
+
+    private List<ITargetable> _target = new List<ITargetable>();
 
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
@@ -25,6 +28,7 @@ public class CombatManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     public void InitializeCombat()
     {
@@ -55,21 +59,37 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log(turnActor.CurrentSpeed);
         }
+        SelectedSkill = SkillSlot.None;
         StartTurn();
     }
 
     public void SetOrder()
     {
-        TurnOrder.Sort((a, b) => b.CurrentSpeed.CompareTo(a.CurrentSpeed));
+        TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
     }
 
     public void SetSelectedSkill(SkillSlot slot)
     {
-        Target.Clear();
+        if (CurrentActor == null)
+        {
+            Debug.Log("현재 캐릭터가 없습니다");
+            return;
+        }
+
+        if (_target != null)
+        {
+            _target.Clear();
+        }
+        if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Mana)
+        {
+            Debug.Log("마나가 부족합니다");
+            SelectedSkill = SkillSlot.None;
+            return;
+        }
         SelectedSkill = slot;
     }
 
-    public void GetTarget(ITargetable target)
+    public void SetTarget(ITargetable target)
     {
         if (SelectedSkill == SkillSlot.None)
         {
@@ -77,10 +97,10 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        SkillDataSO selectedSkillData = CurrentActor.Skills[(int)SelectedSkill];
+        PlayableSkillSO selectedSkillData = CurrentActor.Skills[(int)SelectedSkill].SkillData;
         if (selectedSkillData.SkillRange == SkillRange.Single)
         {
-            Target.Add(target);
+            _target.Add(target);
             Debug.Log("단일 타겟 스킬");
         }
         else if (selectedSkillData.SkillRange == SkillRange.Global)
@@ -92,7 +112,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (ally.IsAlive)
                     {
-                        Target.Add(ally);
+                        _target.Add(ally);
                     }
                 }
             }
@@ -102,18 +122,30 @@ public class CombatManager : MonoBehaviour
                 {
                     if (enemy.IsAlive)
                     {
-                        Target.Add(enemy);
+                        _target.Add(enemy);
                     }
                 }
             }
         }
     }
 
+    public void UseSkill()
+    {
+        if (_target.Count == 0)
+        {
+            Debug.Log("타겟이 선택되지 않았습니다");
+            return;
+        }
+
+        CurrentActor.DoAction(SelectedSkill, _target);
+
+    }
+
     public void StartTurn()
     {
         ITurnActor unit = TurnOrder[0];
-        unit.StartTurn();
         TurnOrder.RemoveAt(0);
+        unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가
     }
 
@@ -126,10 +158,29 @@ public class CombatManager : MonoBehaviour
         }
         TurnOrder.Add(unit);
         SetOrder();
+        SetNewTurn();
+        IsBattleEnd();
+        // PlayableCharacter 전멸시 게임오버 확인하는 메서드 추가
+        StartTurn();
     }
 
-    public void asdasd()
+    public void SetNewTurn()
     {
-        Monsters[0].StartTurn();
+        CurrentActor = null;
+        SelectedSkill = SkillSlot.None;
+        _target.Clear();
+    }
+
+    public void IsBattleEnd()
+    {
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            if (monster.IsAlive)
+            {
+                return;
+            }
+        }
+        Debug.Log("전투 종료, 승리");
+        // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
     }
 }

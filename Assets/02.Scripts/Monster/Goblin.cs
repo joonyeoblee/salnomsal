@@ -29,6 +29,7 @@ namespace Jun.Monster
 
             Damage damage = new Damage(DamageType.Melee, AttackPower, gameObject);
             _target.TakeDamage(damage);
+            EndTurn();
         }
 
         protected override void Skill1()
@@ -40,6 +41,7 @@ namespace Jun.Monster
             float damageAmount = AttackPower * _skillComponent.skillDataList[0].SkillMultiplier;
             Damage damage = new Damage(DamageType.Melee, damageAmount, gameObject);
             _target.TakeDamage(damage);
+            EndTurn();
         }
 
         protected override void Skill2()
@@ -51,6 +53,7 @@ namespace Jun.Monster
             float damageAmount = _skillComponent.skillDataList[1].SkillMultiplier;
             Damage damage = new Damage(DamageType.Magic, damageAmount, gameObject);
             _target.TakeDamage(damage);
+            EndTurn();
         }
     }
 }

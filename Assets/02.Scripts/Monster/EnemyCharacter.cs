@@ -18,7 +18,11 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	public float Mana => _mana;
 
 	private bool _isAlive;
-    public bool IsAlive => _isAlive;
+    public bool IsAlive
+	{
+		get => _isAlive;
+		set => _isAlive = value;
+    }
 
 	[SerializeField] private int _basicSpeed;
     public int BasicSpeed
@@ -46,6 +50,7 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 
     public void EndTurn()
     {
+		CombatManager.Instance.EndTurn(this);
     }
 
     public void GetBuff(float amount)

@@ -1,21 +1,20 @@
-﻿using Jun;
+﻿using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public enum SkillSlot
 {
-	None,
 	DefaultAttack,
 	Skill1,
-	Skill2
+	Skill2,
+
+	None
 }
 
 public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
-	public SkillDataSO[] Skills;
-
-	private SkillSlot _selectedSkill;
-	private EnemyCharacter[] _targets;
+	public List<Skill> Skills;
 
 	private bool _isAlive;
     public bool IsAlive => _isAlive;
@@ -33,6 +32,14 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		get => _currentSpeed;
 		set => _currentSpeed = value;
 	}
+
+    private void Start()
+    {
+        _health = MaxHealth;
+        _mana = MaxMana;
+        _isAlive = true;
+        _currentSpeed = BasicSpeed;
+    }
 
 
     public override void Register()
@@ -54,43 +61,22 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		CombatManager.Instance.EndTurn(this);
     }
 
-	public void SetSellectedSkill(SkillSlot slot)
+	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
-		_selectedSkill = slot;
-	}
+		// 스킬 이펙트 시전
 
-	public void GetTarget()
-	{
-		// 스킬 타입에 맞게 _targets를 설정합니다.
-		if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Single)
+		foreach (ITargetable target in targets)
 		{
-			Debug.Log("단일 타겟 스킬");
-		}
-		else if (Skills[(int)_selectedSkill].SkillRange == SkillRange.Global)
-		{
-			Debug.Log("전체 타겟 스킬");
-		}
-	}
-
-	public override void DoAction()
-	{
-		if (_mana < Skills[(int)_selectedSkill].SkillCost)
-		{
-			Debug.Log("마나가 부족합니다.");
-			return;
-		}
-
-		GetTarget();
-		foreach (EnemyCharacter target in _targets)
-		{
-			Debug.Log("타겟에게 스킬을 시전합니다"); // 타겟 이름 생길 예정
-		}
+			Skills[(int)slot].UseSkill(this, target);
+        }
 		OnTurnEnd?.Invoke();
-	}
+        CombatManager.Instance.EndTurn(this);
+    }
 
 	public override void Death(DamageType type)
 	{
-		Debug.Log("Death");
+        _isAlive = false;
+        Debug.Log("Death");
 	}
 
 	public void TakeDamage(Damage damage)
@@ -114,5 +100,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
     public void GetHeal(float amount)
     {
 		Debug.Log($"체력회복. {amount}");
+        _health += amount;
+		_health = Mathf.Min(_health, MaxHealth);
     }
 }

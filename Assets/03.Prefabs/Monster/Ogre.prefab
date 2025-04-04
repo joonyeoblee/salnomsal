@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 554304730835306328}
   - component: {fileID: 4949277859577392035}
   - component: {fileID: 2856961390387793812}
+  - component: {fileID: 924079782641208618}
+  - component: {fileID: 3484057654308518269}
   m_Layer: 0
   m_Name: Ogre
   m_TagString: Enemy
@@ -165,6 +167,7 @@ MonoBehaviour:
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
+  _basicSpeed: 0
   _animator: {fileID: 1293577553677510682}
   IsMyTurn: 0
 --- !u!114 &2856961390387793812
@@ -183,3 +186,52 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   basePriorities: 0000000000000000
+--- !u!114 &924079782641208618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276764246567427956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1bee66c8f2e4954da7e74e8a90449a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &3484057654308518269
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276764246567427956}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.14733279, y: 2.2702644}
+  m_Size: {x: 3.4466555, y: 4.4690175}
+  m_Direction: 0
