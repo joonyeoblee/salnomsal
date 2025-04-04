@@ -20,7 +20,10 @@ namespace Jun
                 Destroy(gameObject);
             }
         }
-
+        public void ChangeScene(int index)
+        {
+            SceneManager.LoadScene(index);
+        }
         public void ChangeSceneToIndex0()
         {
             SceneManager.LoadScene(0, LoadSceneMode.Additive);

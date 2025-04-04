@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 707334317964e5c498c625d2e1737ecc
+guid: 85697b767d8179b4585cf0c655d3dd6b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6512201152361093283
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_0"
+      213: 158128056705396212
+    second: HolyKnight_0
   - first:
-      213: -1606737552117271833
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_1"
+      213: 1277252226963874588
+    second: HolyKnight_1
   - first:
-      213: -3974347237631616332
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_2"
+      213: -6133074410022274475
+    second: HolyKnight_2
   - first:
-      213: 3442587797896988867
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_3"
+      213: -5346983845043457247
+    second: HolyKnight_3
   - first:
-      213: -4062616477240312685
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_4"
+      213: -4265451773785413538
+    second: HolyKnight_4
   - first:
-      213: -3891723896188406663
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uC804 11_14_23_5"
+      213: -6515202275966557367
+    second: HolyKnight_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -111,106 +111,137 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight_0
+      name: HolyKnight_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 506
-        width: 512
-        height: 509
+        x: 3
+        y: 448
+        width: 483
+        height: 571
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 83225a4c601b06243a8eade012fe150c
-      internalID: -1226439936
+      spriteID: 4fda2f831a8c13200800000000000000
+      internalID: 158128056705396212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_1
+      name: HolyKnight_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 505
-        width: 512
-        height: 509
+        x: 3
+        y: 0
+        width: 491
+        height: 435
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 85da3d971db923241b54426b4d47e7a7
-      internalID: 1075958656
+      spriteID: c1322cc1226b9b110800000000000000
+      internalID: 1277252226963874588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_2
+      name: HolyKnight_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 15
-        width: 512
-        height: 480
+        x: 491
+        y: 464
+        width: 403
+        height: 523
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 788364e2bca0d06498dea07c99166ae2
-      internalID: -824246756
+      spriteID: 55a75998151f2eaa0800000000000000
+      internalID: -6133074410022274475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_3
+      name: HolyKnight_3
       rect:
         serializedVersion: 2
-        x: 512
-        y: 15
-        width: 512
-        height: 480
+        x: 507
+        y: 0
+        width: 507
+        height: 419
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1ce26379d4d17dc49b93253b4b566860
-      internalID: 879823441
+      spriteID: 123be60c582bbc5b0800000000000000
+      internalID: -5346983845043457247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HolyKnight_4
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 400
+        width: 387
+        height: 611
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e58e5f806321ec4c0800000000000000
+      internalID: -4265451773785413538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HolyKnight_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 287
+        width: 232
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 943623d8c0a5595a0800000000000000
+      internalID: -6515202275966557367
       vertices: []
       indices: 
       edges: []
@@ -219,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b943400da98c06e48b78469a57b0d1c0
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -228,11 +259,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Knight_0: -1226439936
-      Knight_1: 1075958656
-      Knight_2: -824246756
-      Knight_3: 879823441
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -5,9 +5,9 @@ namespace Equipment
 {
     public class Slot : MonoBehaviour, IDropHandler
     {
-        [SerializeField] private RectTransform _draggedSlot;
+        [SerializeField] RectTransform _draggedSlot;
         [SerializeField] public GameObject currentEquipment;
-        [SerializeField] private Canvas canvas;
+        [SerializeField] Canvas canvas;
 
         public void SetItem(DragItem equipment)
         {
@@ -29,6 +29,7 @@ namespace Equipment
             if (dragItem != null)
             {
                 SetItem(dragItem);
+
                 // Destroy(dragItem.gameObject);
             }
         }

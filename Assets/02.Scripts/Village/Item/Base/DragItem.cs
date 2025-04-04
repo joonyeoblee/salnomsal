@@ -1,11 +1,9 @@
-﻿using UnityEngine;
+﻿using Equipment;
+using UnityEngine;
 using UnityEngine.EventSystems;
-
-namespace Equipment
-{
-    public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public abstract class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public Equipment equipment;
+       
         private Canvas canvas;
         private CanvasGroup canvasGroup;
         private RectTransform rectTransform;
@@ -66,4 +64,3 @@ namespace Equipment
             transform.SetAsLastSibling(); // 맨 앞으로
         }
     }
-}

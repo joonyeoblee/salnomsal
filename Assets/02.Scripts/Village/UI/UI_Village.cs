@@ -1,6 +1,5 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Son
@@ -9,16 +8,19 @@ namespace Son
     {
         public Tween Tween;
 
-        [Header("»óÀÚ")]
+        [Header("ìºë¦­í„°")]
+        public GameObject PortraitPanel;
+        [Header("ìƒì")]
         public GameObject ChestInventoryPanel;
         public Image ChestImage;
         public Sprite OpenSprite;
         public Sprite ClosedSprite;
 
-        [Header("½ºÅ×ÀÌÁö")]
+        [Header("ìŠ¤í…Œì´ì§€")]
         public GameObject StageSelectButton;
         public GameObject StageSelectPanel;
         public GameObject ExitStageSelectPanelButton;
+
 
 
         public void Awake()
@@ -47,6 +49,13 @@ namespace Son
             ChestImage.sprite = ClosedSprite;
             ExitStageSelectPanelButton.SetActive(false);
             StageSelectButton.SetActive(true);
+        }
+
+        public void ClosePortrait()
+        {
+            Tween.Restart();
+            PortraitPanel.SetActive(false);
+            ExitStageSelectPanelButton.SetActive(false);
         }
 
         public void ActiveStageSelectPanel()

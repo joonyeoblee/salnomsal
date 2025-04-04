@@ -1,9 +1,8 @@
-using DG.Tweening;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using DG.Tweening;
+using Jun;
 using UnityEngine;
 using UnityEngine.UI;
-
 
 namespace Son
 {
@@ -11,7 +10,7 @@ namespace Son
     {
         public Tween Tween;
 
-        [Header("½ºÅ×ÀÌÁö ¼±ÅÃ")]
+        [Header("ìŠ¤í…Œì´ì§€ ì„ íƒ")]
         public List<RectTransform> DifficultPortal;
         public int CurrentIndex = 0;
         public float moveDistance = 300f;
@@ -51,7 +50,7 @@ namespace Son
                 float targetScale = (i == CurrentIndex) ? 1.0f : 0.6f;
                 DifficultPortal[i].DOScale(Vector3.one * targetScale, moveDuration).SetEase(Ease.OutBack);
 
-                // ¼±ÅÃµÈ Æ÷Å»¸¸ ¹öÆ° È°¼ºÈ­
+                // ì„ íƒëœ í¬íƒˆë§Œ ë²„íŠ¼ í™œì„±í™”
                 Button btn = DifficultPortal[i].GetComponent<Button>();
                 if (btn != null)
                 {
@@ -69,6 +68,7 @@ namespace Son
             {
                 if(i == index)
                 {
+                    MiniGameScenesManager.instance.ChangeScene(i);
                     continue;
                 }
                 else

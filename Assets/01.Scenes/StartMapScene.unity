@@ -481,7 +481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &743252697
 Transform:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &826175398
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -748,11 +748,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Monsters: []
-  PlayableCharacter:
-  - {fileID: 1558468329}
-  - {fileID: 1187562343}
-  - {fileID: 1131669999}
-  IsSomeOneDead: 0
+  PlayableCharacter: []
+  CurrentActor: {fileID: 0}
+  SelectedSkill: 0
+  SpeedIncrementPerTurn: 0
 --- !u!1 &1131669996
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1131669997
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -859,12 +858,12 @@ MonoBehaviour:
   AttackPower: 11
   CriticalChance: 11
   CriticalDamage: 11
-  Speed: 11
   Resistance: 11
   HasBuff: 1
   IsDefending: 0
   CharacterName: 
   Skills: []
+  _basicSpeed: 0
 --- !u!1 &1187562340
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1187562341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -971,12 +970,12 @@ MonoBehaviour:
   AttackPower: 11
   CriticalChance: 11
   CriticalDamage: 11
-  Speed: 11
   Resistance: 11
   HasBuff: 1
   IsDefending: 0
   CharacterName: 
   Skills: []
+  _basicSpeed: 0
 --- !u!1 &1215724746
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1215724747
 Transform:
   m_ObjectHideFlags: 0
@@ -1047,7 +1046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1558468327
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1136,12 +1135,12 @@ MonoBehaviour:
   AttackPower: 11
   CriticalChance: 11
   CriticalDamage: 11
-  Speed: 11
   Resistance: 11
   HasBuff: 0
   IsDefending: 0
   CharacterName: 
   Skills: []
+  _basicSpeed: 0
 --- !u!1 &1791241619
 GameObject:
   m_ObjectHideFlags: 0

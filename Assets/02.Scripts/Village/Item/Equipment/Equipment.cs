@@ -15,4 +15,7 @@ namespace Equipment
         public EquipmentSO EquipmentSO;
         public Sprite Icon;
     }
+
+   
+
 }
