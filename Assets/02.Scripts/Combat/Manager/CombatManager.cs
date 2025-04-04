@@ -1,0 +1,186 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+using UnityEditor;
+
+public class CombatManager : MonoBehaviour
+{
+    public static CombatManager Instance;
+    public List<EnemyCharacter> Monsters;
+    public List<PlayableCharacter> PlayableCharacter;
+    public PlayableCharacter CurrentActor;
+    public SkillSlot SelectedSkill;
+    public int SpeedIncrementPerTurn;
+
+
+    private List<ITargetable> _target = new List<ITargetable>();
+
+    public List<ITurnActor> TurnOrder = new List<ITurnActor>();
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+    public void InitializeCombat()
+    {
+        // 전투가 시작되면 호출될 함수
+        PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
+            .Select(obj => obj.GetComponent<PlayableCharacter>())
+            .ToList(); // test
+
+        Monsters = GameObject.FindGameObjectsWithTag("Enemy")
+            .Select(obj => obj.GetComponent<EnemyCharacter>())
+            .ToList(); // test
+
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            character.CurrentSpeed = character.BasicSpeed;
+            TurnOrder.Add(character);
+        }
+
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            monster.CurrentSpeed = monster.BasicSpeed;
+            TurnOrder.Add(monster);
+        }
+
+        SetOrder();
+        Debug.Log(TurnOrder.Count);
+        foreach (ITurnActor turnActor in TurnOrder)
+        {
+            Debug.Log(turnActor.CurrentSpeed);
+        }
+        SelectedSkill = SkillSlot.None;
+        StartTurn();
+    }
+
+    public void SetOrder()
+    {
+        TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
+    }
+
+    public void SetSelectedSkill(SkillSlot slot)
+    {
+        if (CurrentActor == null)
+        {
+            Debug.Log("현재 캐릭터가 없습니다");
+            return;
+        }
+
+        if (_target != null)
+        {
+            _target.Clear();
+        }
+        if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Mana)
+        {
+            Debug.Log("마나가 부족합니다");
+            SelectedSkill = SkillSlot.None;
+            return;
+        }
+        SelectedSkill = slot;
+    }
+
+    public void SetTarget(ITargetable target)
+    {
+        if (SelectedSkill == SkillSlot.None)
+        {
+            Debug.Log("스킬이 선택되지 않았습니다");
+            return;
+        }
+
+        PlayableSkillSO selectedSkillData = CurrentActor.Skills[(int)SelectedSkill].SkillData;
+        if (selectedSkillData.SkillRange == SkillRange.Single)
+        {
+            _target.Add(target);
+            Debug.Log("단일 타겟 스킬");
+        }
+        else if (selectedSkillData.SkillRange == SkillRange.Global)
+        {
+            Debug.Log("전체 타겟 스킬");
+            if (selectedSkillData.SkillTarget == SkillTarget.Ally)
+            {
+                foreach (ITargetable ally in PlayableCharacter)
+                {
+                    if (ally.IsAlive)
+                    {
+                        _target.Add(ally);
+                    }
+                }
+            }
+            else if (selectedSkillData.SkillTarget == SkillTarget.Enemy)
+            {
+                foreach (ITargetable enemy in Monsters)
+                {
+                    if (enemy.IsAlive)
+                    {
+                        _target.Add(enemy);
+                    }
+                }
+            }
+        }
+    }
+
+    public void UseSkill()
+    {
+        if (_target.Count == 0)
+        {
+            Debug.Log("타겟이 선택되지 않았습니다");
+            return;
+        }
+
+        CurrentActor.DoAction(SelectedSkill, _target);
+
+    }
+
+    public void StartTurn()
+    {
+        ITurnActor unit = TurnOrder[0];
+        TurnOrder.RemoveAt(0);
+        unit.StartTurn();
+        // UI에 CurrentCharacter에 대한 정보 표시 추가
+    }
+
+    public void EndTurn(ITurnActor unit)
+    {
+        unit.CurrentSpeed = unit.BasicSpeed;
+        foreach (ITurnActor turnActor in TurnOrder)
+        {
+            turnActor.CurrentSpeed += SpeedIncrementPerTurn;
+        }
+        TurnOrder.Add(unit);
+        SetOrder();
+        SetNewTurn();
+        IsBattleEnd();
+        // PlayableCharacter 전멸시 게임오버 확인하는 메서드 추가
+        StartTurn();
+    }
+
+    public void SetNewTurn()
+    {
+        CurrentActor = null;
+        SelectedSkill = SkillSlot.None;
+        _target.Clear();
+    }
+
+    public void IsBattleEnd()
+    {
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            if (monster.IsAlive)
+            {
+                return;
+            }
+        }
+        Debug.Log("전투 종료, 승리");
+        // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+    }
+}
