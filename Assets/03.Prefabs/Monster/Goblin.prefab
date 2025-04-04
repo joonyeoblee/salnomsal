@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5d43bdd644feaba1f8f14229b8536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MapType: 0
   DamageType: 0
   MaxHealth: 111
   MaxMana: 4
@@ -73,7 +74,7 @@ MonoBehaviour:
   skillDataList:
   - {fileID: 11400000, guid: 5b60a4fe9402b2447824adedfb63d84f, type: 2}
   - {fileID: 11400000, guid: d9c96eb4064d7dd4f94fa342a5dc85fb, type: 2}
-  basePriorities: 0600000008000000
+  basePriorities: 0600000001000000
 --- !u!1 &8583637697979894963
 GameObject:
   m_ObjectHideFlags: 0

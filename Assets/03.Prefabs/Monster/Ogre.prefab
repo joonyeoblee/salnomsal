@@ -180,5 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e8f8329067851418d2bede571d27fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skill1: {fileID: 0}
-  Skill2: {fileID: 0}
+  skillDataList:
+  - {fileID: 0}
+  - {fileID: 0}
+  basePriorities: 0000000000000000

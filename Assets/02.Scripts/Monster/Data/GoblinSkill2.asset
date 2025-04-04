@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: "\uB358\uC9C0\uAE30"
   SkillDescription: "\uC2AC\uB85C\uC6B0"
-  SkillCost: 1212
+  SkillCost: 2
   SkillMultiplier: 0
+  Duration: 0
   SkillType: 2
   SkillRange: 0

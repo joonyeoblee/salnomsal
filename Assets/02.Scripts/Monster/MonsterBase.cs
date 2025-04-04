@@ -27,6 +27,8 @@ namespace Jun.Monster
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
 
+          
+
         }
         protected virtual void Update()
         {

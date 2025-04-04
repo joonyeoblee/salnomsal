@@ -14,7 +14,7 @@ namespace Jun.Monster
             List<Func<Character, int>> conditionalList = new()
             {
                 target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0, // Skill1
-                target => target.IsDefending ? 10 : 0 // Skill2
+                target => target.HasBuff ? 10 : 0 // Skill2
             };
 
             _skillComponent.SetConditionalPriorities(conditionalList);

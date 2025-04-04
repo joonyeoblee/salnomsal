@@ -8,7 +8,7 @@ namespace Jun{
         public static CombatManager Instance;
         public List<EnemyCharacter> Monsters;
         public List<Character> PlayableCharacter;
-        
+
         // 우선순위 큐
         
         // 너차례!
@@ -21,6 +21,7 @@ namespace Jun{
         {
             Monsters[0].StartTurn();
         }
+        
     }
 
 }

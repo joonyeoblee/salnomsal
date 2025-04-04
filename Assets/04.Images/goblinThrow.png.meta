@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 79dfbac93d1184946a543d1f6708f885
+guid: 3f48c9de40389c14bafe99c311499d52
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8719188914951193743
-    second: goblinThrust_0
+      213: 8530889235992783434
+    second: Skill2_0
   - first:
-      213: -4909248900282257787
-    second: goblinThrust_1
+      213: 9215831037502530412
+    second: Skill2_1
   - first:
-      213: 8719460414665948342
-    second: goblinThrust_2
+      213: -5602723560647084515
+    second: Skill2_2
+  - first:
+      213: 3706365498042778983
+    second: Skill2_3
+  - first:
+      213: -8591495200889820579
+    second: Skill2_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 135
+  spritePixelsToUnits: 145
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,84 +108,115 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goblinThrust_0
+      name: Skill2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 446
-        width: 434
-        height: 442
-      alignment: 8
-      pivot: {x: 1, y: 0}
+        x: 63
+        y: 519
+        width: 386
+        height: 434
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17b7fcac0e73ff680800000000000000
-      internalID: -8719188914951193743
+      spriteID: a4aad81cf8ec36670800000000000000
+      internalID: 8530889235992783434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblinThrust_1
+      name: Skill2_1
       rect:
         serializedVersion: 2
-        x: 483
-        y: 447
-        width: 514
-        height: 401
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
+        x: 511
+        y: 511
+        width: 451
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58ee2b0b228dedbb0800000000000000
-      internalID: -4909248900282257787
+      spriteID: c63ab54408535ef70800000000000000
+      internalID: 9215831037502530412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goblinThrust_2
+      name: Skill2_2
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 533
-        height: 379
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
+        x: 39
+        y: 393
+        width: 95
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bc7e39ac0fb10970800000000000000
-      internalID: 8719460414665948342
+      spriteID: d163be82b902f32b0800000000000000
+      internalID: -5602723560647084515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill2_3
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 47
+        width: 354
+        height: 434
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7658a9688c7af6330800000000000000
+      internalID: 3706365498042778983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill2_4
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 47
+        width: 457
+        height: 426
+      alignment: 9
+      pivot: {x: 0.37, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5a2d7d62a0e4c880800000000000000
+      internalID: -8591495200889820579
       vertices: []
       indices: 
       edges: []
@@ -188,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 548d232585d5de648b309ed102a3513b
+    spriteID: 2b6112a25402df3448cedb2924f5532a
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      goblinThrust_0: -8719188914951193743
-      goblinThrust_1: -4909248900282257787
-      goblinThrust_2: 8719460414665948342
+      Skill2_0: 8530889235992783434
+      Skill2_1: 9215831037502530412
+      Skill2_2: -5602723560647084515
+      Skill2_3: 3706365498042778983
+      Skill2_4: -8591495200889820579
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

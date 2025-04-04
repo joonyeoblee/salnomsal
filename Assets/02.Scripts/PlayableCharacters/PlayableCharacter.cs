@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public enum SkillSlot
 {
 	DefaultAttack,
@@ -22,6 +21,10 @@ namespace PlayableCharacters
 		private SkillSlot _selectedSkill;
 		private EnemyCharacter[] _targets;
 
+		void Start()
+		{
+			_health = MaxHealth;
+		}
 		public override void Register()
 		{
 
@@ -71,6 +74,7 @@ namespace PlayableCharacters
 			Debug.Log("Death");
 		}
 
+		// ReSharper disable Unity.PerformanceAnalysis
 		public override void TakeDamage(Damage damage)
 		{
 			_health -= damage.Value;
@@ -80,7 +84,7 @@ namespace PlayableCharacters
 			}
 			else
 			{
-				Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+				Debug.Log($"{gameObject.name}Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
 			}
 		}
 	}

@@ -15,6 +15,7 @@ MonoBehaviour:
   SkillName: Thrust
   SkillDescription: "\uCC0C\uB974\uAE30"
   SkillCost: 1
-  SkillMultiplier: 2
+  SkillMultiplier: 20
+  Duration: 0
   SkillType: 0
   SkillRange: 0

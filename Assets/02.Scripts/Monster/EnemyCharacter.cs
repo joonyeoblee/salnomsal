@@ -1,7 +1,15 @@
 ﻿using System;
 using UnityEngine;
+public enum MapType
+{
+	Easy,
+	Normal,
+	Hard
+}
 public abstract class EnemyCharacter : MonoBehaviour
 {
+	protected float _plusNum;
+	public MapType MapType;
 	public DamageType DamageType;
 	public float MaxHealth;
 	public float MaxMana;

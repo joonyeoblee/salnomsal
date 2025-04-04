@@ -84,6 +84,7 @@ namespace Jun.Skill
             }
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public SkillDecision ChooseSkillWithIndex(Character target)
         {
             MonsterBase caster = GetComponent<MonsterBase>();
