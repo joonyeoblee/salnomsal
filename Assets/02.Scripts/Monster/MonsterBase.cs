@@ -20,7 +20,7 @@ namespace Jun.Monster
         public bool IsMyTurn;
         void OnEnable()
         {
-            Register();
+            // Register();
         }
         protected virtual void Start()
         {
