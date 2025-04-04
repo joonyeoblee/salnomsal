@@ -13,6 +13,8 @@ namespace Equipment
         private Transform originalParent;
         private Vector2 originalPosition;
 
+        public Slot MyParent;
+
         public bool IsInSlot { get; set; }
 
         private void Awake()
@@ -26,9 +28,8 @@ namespace Equipment
         {
             if (IsInSlot)
             {
-                return;
+                MyParent.currentEquipment = null;
             }
-
             originalParent = transform.parent;
             originalPosition = rectTransform.anchoredPosition;
 

@@ -6,7 +6,7 @@ namespace Equipment
     public class Slot : MonoBehaviour, IDropHandler
     {
         [SerializeField] private RectTransform _draggedSlot;
-        [SerializeField] private GameObject currentEquipment;
+        [SerializeField] public GameObject currentEquipment;
         [SerializeField] private Canvas canvas;
 
         public void SetItem(DragItem equipment)
@@ -25,6 +25,7 @@ namespace Equipment
 
             DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();
             dragItem.IsInSlot = true;
+            dragItem.MyParent = this;
             if (dragItem != null)
             {
                 SetItem(dragItem);
