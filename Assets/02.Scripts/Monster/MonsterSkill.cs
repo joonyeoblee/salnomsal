@@ -15,7 +15,7 @@ namespace Jun.Skill
     public class Skill
     {
         public SkillDataSO SkillData;
-        public int basePriority;
+
         public Func<Character, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
     }
 
@@ -24,7 +24,6 @@ namespace Jun.Skill
         public List<Skill> skills;
 
         public List<SkillDataSO> skillDataList;
-        public List<int> basePriorities;
 
         public void SetConditionalPriorities(List<Func<Character, int>> conditionalFuncs)
         {
@@ -60,24 +59,19 @@ namespace Jun.Skill
         {
             skills = new List<Skill>();
 
-            if (skillDataList == null || basePriorities == null)
+            if (skillDataList == null)
             {
-                Debug.LogError($"[{name}] skillDataList 또는 basePriorities가 null입니다.");
+                Debug.LogError($"[{name}] skillDataList null입니다.");
                 return;
             }
-
-            if (skillDataList.Count != basePriorities.Count)
-            {
-                Debug.LogError($"[{name}] skillDataList.Count != basePriorities.Count! ({skillDataList.Count} != {basePriorities.Count})");
-                return;
-            }
+            
 
             for (int i = 0; i < skillDataList.Count; i++)
             {
                 skills.Add(new Skill
                 {
                     SkillData = skillDataList[i],
-                    basePriority = basePriorities[i]
+                    
                 });
 
                 //Debug.Log($"[{name}] 스킬 초기화됨: {skillDataList[i].name}, 우선도: {basePriorities[i]}");
@@ -97,13 +91,13 @@ namespace Jun.Skill
             for (int i = 0; i < availableSkills.Count; i++)
             {
                 Skill skill = availableSkills[i];
-                int priority = skill.basePriority;
+                int priority = skill.SkillData.Priority;
 
                 if (skill.conditionalBonusPriority != null)
                 {
                     int bonus = skill.conditionalBonusPriority.Invoke(target);
                     priority += bonus;
-                    Debug.Log($"[{name}] {skill.SkillData.name}: base {skill.basePriority}, bonus {bonus} → total {priority}");
+                    Debug.Log($"[{name}] {skill.SkillData.name}: base {skill.SkillData.Priority}, bonus {bonus} → total {priority}");
                 } else
                 {
                     Debug.Log($"[{name}] {skill.SkillData.name}: base {priority} (조건 함수 없음)");
