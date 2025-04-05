@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Jun.MiniGame
 {
     public class MatchPattern : MonoBehaviour
     {
-        private string _currentkey;
-        public GameObject[] Prefabs;
-        public Transform[] SpawnPoints;
-        public Queue<GameObject> PrefabsQueue = new Queue<GameObject>();
+        // public static MatchPattern Instance;
 
-        readonly HashSet<Transform> occupiedSpawnPoints = new HashSet<Transform>();
+        public GameObject Canvas;
+        public GameObject[] Prefabs;
+
+        public float MaxX;
+        public float MaxY;
 
         [Header("갯수 설정")]
         public float MaxCount;
@@ -21,7 +24,14 @@ namespace Jun.MiniGame
         [SerializeField] bool _isGameActive;
 
         [Header("스폰 설정")]
-        public float spawnInterval = 1.5f; // 몇 초마다 스폰할지 설정
+        public float spawnInterval = 1.5f;
+
+        private List<Magic> activeMagics = new();
+
+        // void Awake()
+        // {
+        //     Instance = this;
+        // }
 
         void Start()
         {
@@ -34,6 +44,18 @@ namespace Jun.MiniGame
             if (_currentCount > MaxCount)
             {
                 Success();
+            }
+
+            if (Input.anyKeyDown)
+            {
+                foreach (var magic in activeMagics)
+                {
+                    if (Input.GetKeyDown(magic.assignedKey.ToString().ToLower()))
+                    {
+                        magic.TryResolve();
+                        break; // 하나만 처리
+                    }
+                }
             }
         }
 
@@ -48,54 +70,37 @@ namespace Jun.MiniGame
 
         void SpawnRandomPrefab()
         {
-            if (Prefabs.Length == 0 || SpawnPoints.Length == 0) return;
-
-            // 사용 가능한 스폰포인트만 필터링
-            List<Transform> availablePoints = new List<Transform>();
-            foreach (Transform point in SpawnPoints)
-            {
-                if (!occupiedSpawnPoints.Contains(point))
-                {
-                    availablePoints.Add(point);
-                }
-            }
-
-            if (availablePoints.Count == 0)
-            {
-                Debug.Log("사용 가능한 스폰포인트가 없습니다.");
-                return;
-            }
+            if (Prefabs.Length == 0) return;
 
             GameObject prefab = Prefabs[Random.Range(0, Prefabs.Length)];
-            Transform spawnPoint = availablePoints[Random.Range(0, availablePoints.Count)];
 
-            GameObject spawned = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
-            PrefabsQueue.Enqueue(spawned);
+            Vector3 randomPosition = new Vector3(
+                Random.Range(-MaxX, MaxX),
+                Random.Range(-MaxY, MaxY),
+                0f
+            );
+
+            GameObject spawned = Instantiate(prefab, transform);
+            spawned.transform.localPosition = randomPosition;
+
             _currentCount++;
-
-            occupiedSpawnPoints.Add(spawnPoint);
-
-            // Magic 스크립트에서 해제 시 호출하게 설정
-            Magic magic = spawned.GetComponent<Magic>();
-            if (magic != null)
-            {
-                magic.SetSpawnPoint(spawnPoint);
-                magic.OnDestroyed += ReleaseSpawnPoint;
-            }
         }
 
-        void ReleaseSpawnPoint(Transform spawnPoint)
+        public void RegisterMagic(Magic magic)
         {
-            if (occupiedSpawnPoints.Contains(spawnPoint))
-            {
-                occupiedSpawnPoints.Remove(spawnPoint);
-            }
+            if (!activeMagics.Contains(magic))
+                activeMagics.Add(magic);
+        }
+
+        public void UnregisterMagic(Magic magic)
+        {
+            if (activeMagics.Contains(magic))
+                activeMagics.Remove(magic);
         }
 
         public void Fail()
         {
             Debug.Log("Fail");
-            // _isGameActive = false;
         }
 
         public void AddCount()
