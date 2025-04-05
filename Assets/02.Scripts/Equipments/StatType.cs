@@ -3,14 +3,13 @@
     public enum StatType
     {
         Attack,
-        Defense,
+        MaxHealth,
+        MaxMana,
         Speed,
         CritChance,
         CritDamage,
         Accuracy,
         Evasion,
-        MaxHealth,
-        MaxMana,
         Resistance
     }
 }
