@@ -19,16 +19,21 @@ namespace SeongIl
         
         // 움직임 구현
         private float _endTime = 0.05f;
-        // 난이도 구현
-        
-        // 미니게임 시작 여부 (움직임 가능 여부)
+
+        // 움직임 가능 여부
         [SerializeField]
         private bool _isMoving = true;
 
+        // 패링시스템
+        public bool Parrying = false;
+        
         private void Start()
         {
+            //플레이어 찾기
             Player = GameObject.FindGameObjectWithTag("Player");
+            //플레이어 시작지점 찾기
             _currentPosition = Player.transform.position;
+            //범위 설정
             _maxLimit = _currentPosition.y + _movePositionAmount;
             _minLimit = _currentPosition.y - _movePositionAmount;
 
@@ -44,25 +49,31 @@ namespace SeongIl
 
             if (Input.GetKeyDown(KeyCode.W) && Player.transform.position.y < _maxLimit )
             {
-                StartCoroutine(Move(2f));
+                StartCoroutine(Move(_movePositionAmount));
             }
             else if (Input.GetKeyDown(KeyCode.S) && Player.transform.position.y > _minLimit)
             {
-                StartCoroutine(Move(-2f));
+                StartCoroutine(Move(-_movePositionAmount));
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && !Parrying)
+            {
+                StartCoroutine(ParryingTiming());
             }
 
         }
 
         // 충돌체크하기
-        private void OnColliderEnter2D(Collider2D other)
+
+        
+        //판정 구하기
+        private IEnumerator ParryingTiming()
         {
-            if (other.CompareTag("Avoid"))
-            {
-                Debug.Log("Fail");
-            }
+            Parrying = true;
+            yield return new WaitForSeconds(0.2f);
+            Parrying = false;
         }
 
-        // 움직임 제한하기
+        // 움직임 구현하기
         private IEnumerator Move(float y)
         {
             _isMoving = false;
@@ -83,6 +94,14 @@ namespace SeongIl
             _isMoving = true;
         }
 
-            
+        public void Fail()
+        {
+            Debug.Log("Fail");
+        }
+
+        public void Success()
+        {
+            Debug.Log("Success");
+        }
     }
 }

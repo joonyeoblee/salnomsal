@@ -11,14 +11,14 @@ namespace SeongIl
         private Vector2 direction;
         public float Speed;
 
-        public GameObject Player;
+        // public GameObject Player;
 
-        public bool Slow = true;
+        // public bool Slow = true;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
-            Slow = true;
+            // Player = GameObject.FindGameObjectWithTag("Player");
+            // Slow = true;
             direction = Vector2.left;
         }
 
@@ -27,7 +27,7 @@ namespace SeongIl
         {
             transform.Translate(direction * Speed * Time.deltaTime);
 
-            if (Mathf.Abs(transform.position.y - Player.transform.position.y) > 1.95f )
+            /*if (Mathf.Abs(transform.position.y - Player.transform.position.y) > 1.95f )
             {
                 return;
             }
@@ -36,14 +36,14 @@ namespace SeongIl
             {
                 Time.timeScale = 0.01f;
                 StartCoroutine(TimeScaleOff());
-            }
+            }*/
         }
 
         private IEnumerator TimeScaleOff()
         {
             yield return new WaitForSecondsRealtime(0.3f);
             Time.timeScale = 1f;
-            Slow = false;
+            // Slow = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)

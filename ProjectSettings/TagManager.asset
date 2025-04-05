@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DestroyZone
   - A
+  - Avoid
   layers:
   - Default
   - TransparentFX
