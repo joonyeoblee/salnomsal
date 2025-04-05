@@ -28,6 +28,7 @@ namespace Jun.MiniGame
             if (_isKeyPressed) return;
 
             _isKeyPressed = true;
+            _matchPattern.UnregisterMagic(this); 
             _matchPattern.AddCount();
             Debug.Log("성공 매직");
             Destroy(gameObject);
@@ -40,6 +41,7 @@ namespace Jun.MiniGame
             if (!_isKeyPressed)
             {
                 _matchPattern.Fail();
+                _matchPattern.UnregisterMagic(this);
                 Destroy(gameObject);
             }
         }
@@ -67,7 +69,7 @@ namespace Jun.MiniGame
             {
                 _matchPattern.Fail();
                 _matchPattern.UnregisterMagic(this);
-                // Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace Jun
     public class MiniGameScenesManager : MonoBehaviour
     {
         public static MiniGameScenesManager instance;
-
+        public Camera BattleSceneCamera;
         public GameObject player;
         void Awake()
         {
@@ -24,9 +24,11 @@ namespace Jun
         {
             SceneManager.LoadScene(index);
         }
-        public void ChangeSceneToIndex0()
+        public void ChangeSceneToMiniGameMagic()
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+            BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+            BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // LayerA만 보임
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
     }
 }

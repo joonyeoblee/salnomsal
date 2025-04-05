@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,8 +29,7 @@ namespace Jun.Monster
             if (_target == null) return;
 
             Damage damage = new Damage(DamageType.Melee, AttackPower, gameObject);
-            _target.TakeDamage(damage);
-            EndTurn();
+            EnterMiniGame(damage, "Attack");
         }
 
         protected override void Skill1()
@@ -40,8 +40,7 @@ namespace Jun.Monster
 
             float damageAmount = AttackPower * _skillComponent.skillDataList[0].SkillMultiplier;
             Damage damage = new Damage(DamageType.Melee, damageAmount, gameObject);
-            _target.TakeDamage(damage);
-            EndTurn();
+            EnterMiniGame(damage, "skill1");
         }
 
         protected override void Skill2()
@@ -52,8 +51,46 @@ namespace Jun.Monster
 
             float damageAmount = _skillComponent.skillDataList[1].SkillMultiplier;
             Damage damage = new Damage(DamageType.Magic, damageAmount, gameObject);
-            _target.TakeDamage(damage);
-            EndTurn();
+            EnterMiniGame(damage, "skill2");
         }
+
+        void EnterMiniGame(Damage damage, string skillName)
+        {
+            if (_target.WouldDieFromAttack(damage))
+            {
+                Time.timeScale = 0.2f;
+                StartCoroutine(WaitForAnimationEndAndEndTurn(skillName));
+                MiniGameScenesManager.instance.player = _target.gameObject;
+                MiniGameScenesManager.instance.ChangeSceneToMiniGameMagic();
+            }
+            else
+            {
+                _target.TakeDamage(damage);
+                StartCoroutine(WaitForAnimationEndAndEndTurn(skillName));
+            }
+        }
+
+        IEnumerator WaitForAnimationEndAndEndTurn(string animName)
+        {
+            yield return null;
+
+            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
+
+            while (!info.IsName(animName))
+            {
+                yield return null;
+                info = _animator.GetCurrentAnimatorStateInfo(0);
+            }
+
+            while (info.normalizedTime < 1f)
+            {
+                yield return null;
+                info = _animator.GetCurrentAnimatorStateInfo(0);
+            }
+
+            EndTurn(); // ✅ 애니메이션이 끝난 후에 실행됨
+        }
+
+        
     }
 }

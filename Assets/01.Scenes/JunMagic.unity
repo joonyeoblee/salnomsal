@@ -131,7 +131,8 @@ GameObject:
   - component: {fileID: 209237519}
   - component: {fileID: 209237518}
   - component: {fileID: 209237517}
-  m_Layer: 5
+  - component: {fileID: 209237520}
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,10 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -228,6 +229,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &209237520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209237515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c25cc0efeda4f02a5a2e2002f72331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &228331034
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +252,7 @@ GameObject:
   - component: {fileID: 228331035}
   - component: {fileID: 228331037}
   - component: {fileID: 228331036}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 647080182}
   - component: {fileID: 647080183}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: MagicPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,8 +373,9 @@ MonoBehaviour:
   - {fileID: 5450135762601904179, guid: 6b6f7df55cdb14a6191a8e3b454e625f, type: 3}
   MaxX: 600
   MaxY: 300
-  MaxCount: 40
+  MaxCount: 5
   _currentCount: 0
+  _spawnedCount: 0
   _isGameActive: 1
   spawnInterval: 0.7
 --- !u!1 &717870556
@@ -375,7 +389,7 @@ GameObject:
   - component: {fileID: 717870557}
   - component: {fileID: 717870559}
   - component: {fileID: 717870558}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +464,7 @@ GameObject:
   - component: {fileID: 1113995438}
   - component: {fileID: 1113995437}
   - component: {fileID: 1113995436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1777757760
 AudioListener:
   m_ObjectHideFlags: 0
@@ -584,7 +598,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -758,13 +772,13 @@ GameObject:
   - component: {fileID: 2252687007605069288}
   - component: {fileID: 2213620082032697907}
   - component: {fileID: 2140638256524833801}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &2448359971633157052
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -901,13 +915,13 @@ GameObject:
   - component: {fileID: 6780604849329083362}
   - component: {fileID: 2448359971633157052}
   - component: {fileID: 3259373133140252079}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5487739623672840380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -938,13 +952,13 @@ GameObject:
   - component: {fileID: 5487739623672840380}
   - component: {fileID: 3401566682983544447}
   - component: {fileID: 3116030261480594684}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6107205856891582967
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,13 +970,13 @@ GameObject:
   - component: {fileID: 332235685006521905}
   - component: {fileID: 13995209609396898}
   - component: {fileID: 4706430400148606762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6780604849329083362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1023,13 +1037,13 @@ GameObject:
   - component: {fileID: 5076776094875337300}
   - component: {fileID: 1010844208221712234}
   - component: {fileID: 8523916750506917926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
