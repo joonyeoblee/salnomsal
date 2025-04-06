@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SeongIl
 {
@@ -9,8 +10,9 @@ namespace SeongIl
     {
         public TextMeshProUGUI Text;
         private string _currentkey;
-        public GameObject[] Prefabs;
-        public Queue<GameObject> PrefabsQueue = new Queue<GameObject>();
+
+        public Image MagicCircle;
+        
         [Header("시간 설정")]
         public float TimeLimit = 0;
         public float Timer;
@@ -25,16 +27,22 @@ namespace SeongIl
         {
             GenerateKeysQueue();
             DisplayKeys();
+            MagicCircle.fillAmount = 0;
         }
 
         private void Update()
         {
+
+            if (_keyQueue.Count < 2)
+            {
+              GenerateKeysQueue();
+            }
             if (!_isGameActive)
             {
                 return;
             }
-            Timer -= Time.deltaTime;
-            if (Timer <= 0)
+            MagicCircle.fillAmount += 0.5f * Time.deltaTime;
+            if (MagicCircle.fillAmount > 1)
             {
                 _isGameActive = false;
             }
@@ -44,15 +52,17 @@ namespace SeongIl
                 if (Input.GetKeyDown(_keyQueue.Peek().ToLower()))
                 {
                     _keyQueue.Dequeue();
-                    PrefabsQueue.Dequeue().GetComponent<SpriteRenderer>().color = Color.black;
                     if (_keyQueue.Count > 0)
                     {
                         DisplayKeys();
                         
+                        MagicCircle.fillAmount -= 0.1f;
+
                     }
                     else
                     {
-                        Success();            }
+                        
+                        Success();                    }
                 }
                 else
                 {
@@ -69,8 +79,6 @@ namespace SeongIl
             {
                 int index = UnityEngine.Random.Range(0, keys.Length);
                 _keyQueue.Enqueue(keys[index]);
-                GameObject obj = Instantiate(Prefabs[index],new Vector3(transform.position.x + i, transform.position.y, 0), Quaternion.identity);
-                PrefabsQueue.Enqueue(obj);
             }
             
         }
@@ -84,6 +92,8 @@ namespace SeongIl
             }
             Debug.Log(string.Join(" ", _keyQueue.ToArray()));
         }
+        
+        
         public void Fail()
         {
             Debug.Log("Fail");
