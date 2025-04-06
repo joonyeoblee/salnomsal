@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: "\uAC11\uC637"
   Icon: {fileID: -855298285791758126, guid: ee4ef8283f3d09b40ab2ef004aec7c26, type: 3}
+  BorderSprite: {fileID: 6350808193281230553, guid: 94065fb4d55e94b4b8879a3dfbf06a67, type: 3}
   Type: 1
   Rarity: 0
   BaseStatRanges:

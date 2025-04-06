@@ -15,6 +15,7 @@ namespace Equipment
     {
         public string ItemName;
         public Sprite Icon;
+        public Sprite BorderSprite;
         public EquipmentType Type; // ✅ 외부 enum 사용
         public Rarity Rarity;
 

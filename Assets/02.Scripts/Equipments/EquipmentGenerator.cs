@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Equipment
@@ -6,7 +7,8 @@ namespace Equipment
     public class EquipmentGenerator : MonoBehaviour
     {
         [SerializeField] private EquipmentSO _data;
-        [SerializeField] private Image _targetImage;
+        [SerializeField] private Image _iconImage;
+        [SerializeField] private Image _borderImage;
         public EquipmentInstance EquipmentInstance { get; private set; }
 
         void Awake()
@@ -32,15 +34,28 @@ namespace Equipment
                     Debug.Log($"→ 패시브: {passive.PassiveType} +{displayValue}");
                 }
                 
-                if (_targetImage != null && EquipmentInstance != null && EquipmentInstance.Template != null)
-                {
-                    _targetImage.sprite = EquipmentInstance.Template.Icon;
-                }
+                _iconImage.sprite = EquipmentInstance.Template.Icon;
+                _borderImage.sprite = EquipmentInstance.Template.BorderSprite;
+
+                SetBorderColor(EquipmentInstance.Template.Rarity);
             }
             else
             {
                 Debug.LogWarning("장비 생성 실패!");
             }
+        }
+        
+        private void SetBorderColor(Rarity rarity)
+        {
+            Color color = rarity switch
+            {
+                Rarity.Common    => Color.gray,
+                Rarity.Rare      => new Color(0.2f, 0.6f, 1f),    // 파란빛
+                Rarity.Epic      => new Color(0.6f, 0f, 1f),      // 보라빛
+                Rarity.Legendary => new Color(1f, 0.8f, 0f),      // 금색
+            };
+
+            _borderImage.color = color;
         }
     }
 }
