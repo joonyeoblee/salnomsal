@@ -10,7 +10,8 @@ namespace SeongIl
     {
         // Player포지션 받아오기
         public GameObject Player;
-
+        //  parrying 사운드
+        public AudioSource ParrySound;
         // player 이동 범위 정하기
         private Vector2 _currentPosition;
         private int _movePositionAmount = 2;
@@ -69,7 +70,7 @@ namespace SeongIl
         private IEnumerator ParryingTiming()
         {
             Parrying = true;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
             Parrying = false;
         }
 
@@ -101,6 +102,8 @@ namespace SeongIl
 
         public void Success()
         {
+            ParrySound.PlayOneShot(ParrySound.clip);
+            
             Debug.Log("Success");
         }
     }

@@ -35,7 +35,7 @@ namespace SeongIl
         public Vector2[] GetWayPoint;
         // 
         public Queue<WarningData> Warnings = new Queue<WarningData>();
-        private bool _timerStart = false;
+        // private bool _timerStart = false;
 
         private Action ShotOn;
 
@@ -86,6 +86,12 @@ namespace SeongIl
                 Debug.Log("shotON");
                 Warnings.Dequeue();
 
+        }
+        
+        // 버튼용
+        public void Restart()
+        {
+            StartCoroutine(SpawnWarning());
         }
         
     }

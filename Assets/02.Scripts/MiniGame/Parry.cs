@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace SeongIl
 {
@@ -9,6 +10,10 @@ namespace SeongIl
     {
         // prototype 구현
         public GameObject Player;
+        
+        
+        // flash효과
+        public Image Flash;
         
         [Header("난이도 설정")]
         // 패링 타이밍 시간
@@ -56,27 +61,38 @@ namespace SeongIl
                 return;
             }
             
-            StartCoroutine(ParryCount(_successPosition, 2));
+            StartCoroutine(ParryCount(_successPosition, 5f));
 
 
         }
         
         
-        //  슬래시 움직임주기
+        // //  슬래시 움직임주기
+        // private void SlashMovement(GameObject slash)
+        // {
+        //     Debug.Log(Player.transform.position);
+        //     Vector2 currentPosition = slash.transform.position;
+        //     Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
+        //     slash.transform.DOMove(oppositePosition, _parrySpeed).SetEase(Ease.OutCubic).OnComplete(() =>
+        //     {
+        //         slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic);
+        //     });
+        //
+        // }
+
+        // 슬래시 움직임 버전 2
         private void SlashMovement(GameObject slash)
         {
-            Debug.Log(Player.transform.position);
-            Vector2 currentPosition = slash.transform.position;
+            Vector2 currentPosition = slash.transform.position; 
             Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
-            Debug.Log(oppositePosition);
-            Debug.Log(currentPosition);
-            slash.transform.DOMove(oppositePosition, _parrySpeed).SetEase(Ease.OutCubic).OnComplete(() =>
-            {
-                slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic);
-            });
-   
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(slash.transform.DOMove(oppositePosition, _parrySpeed).SetEase(Ease.OutCubic));
+            StartCoroutine(FlashBackGround());
+            sequence.AppendInterval(_parryInstatiateTime * _count + 1);
+            
+            sequence.Append(slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic));           
+            
         }
-
         
         // 슬래시 소환 위치 정하기 && 갯수 정하기 
         private IEnumerator ParryCount(Vector2 centerPosition, float distance)
@@ -135,5 +151,15 @@ namespace SeongIl
             Debug.Log("Success");
             
         }
+
+        private IEnumerator FlashBackGround()
+        {
+            yield return new WaitForSeconds(0.25f);
+            Flash.DOColor(new Color(1, 1, 1, 0.2f), 0.2f).OnComplete(() =>
+            {
+                Flash.DOColor(new Color(1, 1, 1, 0f), 0.2f);
+            });
+        }
+        
     }
 }
