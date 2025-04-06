@@ -15,6 +15,15 @@ namespace Equipment
         {
             EquipmentInstance = EquipmentFactory.Create(_data, _data.Rarity);
 
+            // 1. 생성된 아이템에 EquipmentDragItem 컴포넌트를 가져옴
+            EquipmentDragItem dragItem = GetComponent<EquipmentDragItem>();
+
+            // 2. 초기화 호출
+            if (dragItem != null && EquipmentInstance != null)
+            {
+                dragItem.Initialize(EquipmentInstance);
+            }
+            
             if (EquipmentInstance != null)
             {
                 Debug.Log($"템플릿에 등록된 패시브 수: {_data.PassiveEffects.Count}");
