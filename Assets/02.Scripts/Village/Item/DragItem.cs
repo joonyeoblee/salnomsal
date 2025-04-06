@@ -1,17 +1,17 @@
-﻿using UnityEngine;
+﻿using Equipment;
+using UnityEngine;
 using UnityEngine.EventSystems;
-
-namespace Equipment
-{
-    public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public abstract class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public Equipment equipment;
+       
         private Canvas canvas;
         private CanvasGroup canvasGroup;
         private RectTransform rectTransform;
 
         private Transform originalParent;
         private Vector2 originalPosition;
+
+        public Slot MyParent;
 
         public bool IsInSlot { get; set; }
 
@@ -26,9 +26,8 @@ namespace Equipment
         {
             if (IsInSlot)
             {
-                return;
+                MyParent.currentEquipment = null;
             }
-
             originalParent = transform.parent;
             originalPosition = rectTransform.anchoredPosition;
 
@@ -65,4 +64,3 @@ namespace Equipment
             transform.SetAsLastSibling(); // 맨 앞으로
         }
     }
-}

@@ -5,9 +5,9 @@ namespace Equipment
 {
     public class Slot : MonoBehaviour, IDropHandler
     {
-        [SerializeField] private RectTransform _draggedSlot;
-        [SerializeField] private GameObject currentEquipment;
-        [SerializeField] private Canvas canvas;
+        [SerializeField] RectTransform _draggedSlot;
+        [SerializeField] public GameObject currentEquipment;
+        [SerializeField] Canvas canvas;
 
         public void SetItem(DragItem equipment)
         {
@@ -25,9 +25,11 @@ namespace Equipment
 
             DragItem dragItem = eventData.pointerDrag.GetComponent<DragItem>();
             dragItem.IsInSlot = true;
+            dragItem.MyParent = this;
             if (dragItem != null)
             {
                 SetItem(dragItem);
+
                 // Destroy(dragItem.gameObject);
             }
         }

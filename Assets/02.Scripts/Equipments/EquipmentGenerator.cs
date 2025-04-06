@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Equipment
 {
     public class EquipmentGenerator : MonoBehaviour
     {
         [SerializeField] private EquipmentSO _data;
+        [SerializeField] private Image _targetImage;
         public EquipmentInstance EquipmentInstance { get; private set; }
 
         void Awake()
@@ -28,6 +30,11 @@ namespace Equipment
                     float decimalPart = passive.Value - Mathf.Floor(passive.Value);
                     int displayValue = (decimalPart >= 0.5f) ? Mathf.CeilToInt(passive.Value) : Mathf.FloorToInt(passive.Value);
                     Debug.Log($"→ 패시브: {passive.PassiveType} +{displayValue}");
+                }
+                
+                if (_targetImage != null && EquipmentInstance != null && EquipmentInstance.Template != null)
+                {
+                    _targetImage.sprite = EquipmentInstance.Template.Icon;
                 }
             }
             else
