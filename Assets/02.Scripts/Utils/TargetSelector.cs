@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using EPOOutline;
+using UnityEngine;
 using UnityEngine.EventSystems;
 [RequireComponent(typeof(Transform))]
 public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    
+    Outlinable _outlinable;
+
+    void Start()
+    {
+        _outlinable = GetComponent<Outlinable>();
+        _outlinable.enabled = false;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("clicked");
@@ -11,22 +18,19 @@ public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse Enter");
-
-        // 예: 하이라이트 처리
+        _outlinable.enabled = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse Exit");
-
-        // 예: 하이라이트 제거
+        _outlinable.enabled = false;
     }
     void Reset()
     {
         if (GetComponent<Collider>() == null)
         {
             gameObject.AddComponent<CapsuleCollider2D>();
+            gameObject.AddComponent<Outlinable>();
         }
     }
 }
