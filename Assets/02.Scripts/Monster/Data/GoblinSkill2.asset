@@ -9,6 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e29c2242d13d64480d58af86fcb50f, type: 3}
-  m_Name: FeelSpringsDemoAnimatorSpeedChannel
+  m_Script: {fileID: 11500000, guid: 32a9d9ce66c70ad43aeb294c603cf94f, type: 3}
+  m_Name: GoblinSkill2
   m_EditorClassIdentifier: 
+  SkillName: "\uB358\uC9C0\uAE30"
+  SkillDescription: "\uC2AC\uB85C\uC6B0"
+  SkillCost: 2
+  SkillMultiplier: 200
+  Duration: 0
+  Priority: 12
+  SkillType: 2
+  SkillRange: 0
+  SkillTarget: 0

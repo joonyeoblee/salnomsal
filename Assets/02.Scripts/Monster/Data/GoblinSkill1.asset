@@ -9,6 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e29c2242d13d64480d58af86fcb50f, type: 3}
-  m_Name: FeelSpringsDemoAnimatorSpeedChannel
+  m_Script: {fileID: 11500000, guid: 32a9d9ce66c70ad43aeb294c603cf94f, type: 3}
+  m_Name: GoblinSkill1
   m_EditorClassIdentifier: 
+  SkillName: Thrust
+  SkillDescription: "\uCC0C\uB974\uAE30"
+  SkillCost: 1
+  SkillMultiplier: 20
+  Duration: 0
+  Priority: 6
+  SkillType: 0
+  SkillRange: 0
+  SkillTarget: 0

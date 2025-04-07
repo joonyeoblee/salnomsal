@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/04.Images/Playable.meta
-guid: 6cf16d4c226aa96489a179cab43a0ece
-========
 guid: ae24963256bffa84f89a3802e3947414
->>>>>>>> origin/MinigameJun:Assets/02.Scripts/Manager.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
