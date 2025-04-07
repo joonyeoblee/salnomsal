@@ -11,8 +11,13 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
+	public TargetType _targetType;
+	public TargetType TargetType {
+		get => _targetType;
+		set => _targetType = value; 
+	}
 
-	protected float _health;
+    protected float _health;
 	public float CurrentHealth => _health;
 	protected float _mana;
 	public float Mana => _mana;

@@ -8,5 +8,5 @@ public class PlayableSkillSO : ScriptableObject
     public int SkillCost;
     public SkillType SkillType;
     public SkillRange SkillRange;
-    public SkillTarget SkillTarget;
+    public TargetType SkillTarget;
 }

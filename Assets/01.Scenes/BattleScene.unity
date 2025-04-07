@@ -3061,7 +3061,7 @@ MonoBehaviour:
   CharacterName: c3
   Skills:
   - {fileID: 731159558023248803, guid: 4242f43ad0e2ea941bd6fe4562e5a406, type: 3}
-  - {fileID: 4000991059851655396, guid: 2723ae0c897ba2943b1494ee2956cdb2, type: 3}
+  - {fileID: 4578208780028177536, guid: 65f756e789a3def48bb1183a3341db48, type: 3}
   - {fileID: 4649674558581916710, guid: 671af462eac9b38428283371cd39c504, type: 3}
   _basicSpeed: 4
 --- !u!1660057539 &9223372036854775807
