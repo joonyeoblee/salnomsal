@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayableCharacter
   - Enemy
+  - DestroyZone
+  - Avoid
   layers:
   - Default
   - TransparentFX
