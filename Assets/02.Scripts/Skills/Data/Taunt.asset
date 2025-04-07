@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d7607b45173314ea33192b8a78ace4, type: 3}
-  m_Name: TestAttack
+  m_Name: Taunt
   m_EditorClassIdentifier: 
-  SkillName: TestAttack
-  SkillDescription: TestAttack Description
-  SkillCost: 3
-  SkillType: 0
+  SkillName: Taunt
+  SkillDescription: "\uC120\uD0DD\uD55C \uC544\uAD70\uC5D0 \uB3C4\uBC1C\uC744 3\uD134\uAC04
+    \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+  SkillCost: 2
+  SkillType: 1
   SkillRange: 0
-  SkillTarget: 1
+  SkillTarget: 0

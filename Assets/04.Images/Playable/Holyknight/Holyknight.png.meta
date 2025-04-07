@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: c5f138fb7a7032d4789429b4f1dc06d9
+guid: dacf66cfa86d06d4b879db07c10c2d97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8180171696930044909
-    second: Warrior_0
+      213: -7644607792868427877
+    second: Holyknight_0
   - first:
-      213: -7273303758747598945
-    second: Warrior_1
+      213: 1057817503019997127
+    second: Holyknight_1
   - first:
-      213: 8465169010433418629
-    second: Warrior_2
+      213: 8575648469772779771
+    second: Holyknight_2
   - first:
-      213: -5144280915335171144
-    second: Warrior_3
+      213: -7646991014175589087
+    second: Holyknight_3
   - first:
-      213: 604789536130081544
-    second: Warrior_4
+      213: 4062014861173016142
+    second: Holyknight_4
   - first:
-      213: -8514873485471245128
-    second: Warrior_5
+      213: 1236216851601723014
+    second: Holyknight_5
   - first:
-      213: -2394588917509567745
-    second: Warrior_6
+      213: -139679454653878686
+    second: Holyknight_6
   - first:
-      213: -2380465759765719836
-    second: Warrior_7
+      213: -4186656040841011892
+    second: Holyknight_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 36
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior_0
+      name: Holyknight_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 254
-        width: 104
-        height: 121
+        x: 15
+        y: 252
+        width: 89
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,130 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 314c7ca9e213a7e80800000000000000
-      internalID: -8180171696930044909
+      spriteID: b97f4ea17b5e8e590800000000000000
+      internalID: -7644607792868427877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_1
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 254
-        width: 104
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9ff55c54c8001b90800000000000000
-      internalID: -7273303758747598945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_2
-      rect:
-        serializedVersion: 2
-        x: 258
-        y: 254
-        width: 104
-        height: 119
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 58567865d525a7570800000000000000
-      internalID: 8465169010433418629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 254
-        width: 104
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b330a853c7db98b0800000000000000
-      internalID: -5144280915335171144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_4
-      rect:
-        serializedVersion: 2
-        x: 510
-        y: 254
-        width: 104
-        height: 121
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 80328e8f0e4a46800800000000000000
-      internalID: 604789536130081544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_5
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 128
-        width: 94
-        height: 123
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8bc181fbda715d980800000000000000
-      internalID: -8514873485471245128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_6
+      name: Holyknight_1
       rect:
         serializedVersion: 2
         x: 140
-        y: 128
-        width: 101
-        height: 117
+        y: 253
+        width: 90
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ffa41cc0116b4ced0800000000000000
-      internalID: -2394588917509567745
+      spriteID: 7c792b81a6f1eae00800000000000000
+      internalID: 1057817503019997127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_7
+      name: Holyknight_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 110
-        height: 120
+        x: 266
+        y: 253
+        width: 90
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,8 +180,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e41f25f003e6fed0800000000000000
-      internalID: -2380465759765719836
+      spriteID: bf0cd67f8d2d20770800000000000000
+      internalID: 8575648469772779771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_3
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 253
+        width: 90
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12db577203e60e590800000000000000
+      internalID: -7646991014175589087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_4
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 252
+        width: 89
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e464398aefc2f5830800000000000000
+      internalID: 4062014861173016142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_5
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 128
+        width: 115
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68e82114dace72110800000000000000
+      internalID: 1236216851601723014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_6
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 128
+        width: 114
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e6feaa642cf0ef0800000000000000
+      internalID: -139679454653878686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 91
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d9de0438206e5c0800000000000000
+      internalID: -4186656040841011892
       vertices: []
       indices: 
       edges: []
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Warrior_0: -8180171696930044909
-      Warrior_1: -7273303758747598945
-      Warrior_2: 8465169010433418629
-      Warrior_3: -5144280915335171144
-      Warrior_4: 604789536130081544
-      Warrior_5: -8514873485471245128
-      Warrior_6: -2394588917509567745
-      Warrior_7: -2380465759765719836
+      Holyknight_0: -7644607792868427877
+      Holyknight_1: 1057817503019997127
+      Holyknight_2: 8575648469772779771
+      Holyknight_3: -7646991014175589087
+      Holyknight_4: 4062014861173016142
+      Holyknight_5: 1236216851601723014
+      Holyknight_6: -139679454653878686
+      Holyknight_7: -4186656040841011892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

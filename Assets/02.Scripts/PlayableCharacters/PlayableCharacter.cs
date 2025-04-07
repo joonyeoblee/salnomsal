@@ -78,8 +78,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
 		// 스킬 이펙트 시전
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack"); // 트리거 배열 만들어서 슬롯따라서 실행
+        }
 
-		foreach (ITargetable target in targets)
+        foreach (ITargetable target in targets)
 		{
 			Skills[(int)slot].UseSkill(this, target);
         }
@@ -122,7 +127,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         switch (buff.BuffStatType)
         {
             case BuffStatType.AttackPower:
-                AttackPower *= 1f + buff.BuffMultiplier;
+                AttackPower *= buff.BuffMultiplier;
                 break;
             case BuffStatType.CriticalChance:
                 CriticalChance += buff.BuffMultiplier;
@@ -130,9 +135,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
             case BuffStatType.CriticalDamage:
                 CriticalDamage += buff.BuffMultiplier;
                 break;
+            case BuffStatType.Taunt:
+                Taunt = true;
+                break;
         }
 
-		OnTurnEnd += buff.RemoveBuff;
+        OnTurnStart += buff.TickBuff;
+        OnTurnEnd += buff.RemoveBuff;
     }
 
 	public void RemoveBuff(Buff buff)
@@ -149,8 +158,12 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
             case BuffStatType.CriticalDamage:
                 CriticalDamage -= buff.BuffMultiplier;
                 break;
+            case BuffStatType.Taunt:
+                Taunt = false;
+                break;
         }
 
+        OnTurnStart -= buff.TickBuff;
         OnTurnEnd -= buff.RemoveBuff;
     }
 

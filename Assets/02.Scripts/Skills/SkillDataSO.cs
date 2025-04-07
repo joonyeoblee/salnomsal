@@ -4,7 +4,8 @@ public enum SkillType
     Attack,
     Buff,
     Debuff,
-    Heal
+    Heal,
+    Taunt
 }
 
 public enum SkillRange
@@ -16,7 +17,8 @@ public enum SkillRange
 public enum TargetType
 {
     Ally,
-    Enemy
+    Enemy,
+    None
 }
 
 namespace Jun

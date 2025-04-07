@@ -1,12 +1,12 @@
-﻿using Jun;
-using System;
+﻿using System;
 using UnityEngine;
 
 public enum BuffStatType
 {
     AttackPower,
     CriticalChance,
-    CriticalDamage
+    CriticalDamage,
+    Taunt
 }
 
 public class Buff : Skill
@@ -26,14 +26,16 @@ public class Buff : Skill
         clone._target.GetBuff(clone);
     }
 
-    public void RemoveBuff()
+    public void TickBuff()
     {
         if (RemainingTurns > 0)
         {
             --RemainingTurns;
-            Debug.Log($"남은 턴 수 : {RemainingTurns}");
         }
+    }
 
+    public void RemoveBuff()
+    {
         if (RemainingTurns == 0)
         {
             _target.RemoveBuff(this);
