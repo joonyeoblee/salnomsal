@@ -9,10 +9,6 @@ namespace SeongIl
 {
     public class Parry : MonoBehaviour
     {
-        // prototype 구현
-        public GameObject Player;
-        
-        
         // flash효과
         public Image Flash;
         

@@ -17,8 +17,9 @@ namespace SeongIl
         public float BonusDecline;
         public float IncreaseTime;
         public float DeclineTime;
+        
         [Header("게임 시작")]
-        private bool _isGameActive = true;
+        public bool _isGameActive = true;
         
         private Queue<string> _keyQueue = new Queue<string>();
 
@@ -29,7 +30,7 @@ namespace SeongIl
         {
             GenerateKeysQueue();
             DisplayKeys();
-            MagicCircle.fillAmount = 0.2f;
+            MagicCircle.fillAmount = 0.01f;
         }
 
         private void Update()

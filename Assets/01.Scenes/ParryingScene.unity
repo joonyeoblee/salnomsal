@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &525918184
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -653,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afced775e0a10d40b260c82cffa8426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   Flash: {fileID: 676192853}
   _parrySpeed: 0.8
   _parryInstatiateTime: 0.3

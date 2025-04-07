@@ -503,6 +503,7 @@ MonoBehaviour:
   BonusDecline: 0.3
   IncreaseTime: 0.1
   DeclineTime: 0.2
+  _isGameActive: 0
   KeyCount: 28
 --- !u!224 &1524202322
 RectTransform:
