@@ -91,7 +91,16 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
 		}
 	}
-
+	public bool WouldDieFromAttack(Damage damage)
+	{
+		float _copyCurrentHealth = _health;
+		_copyCurrentHealth -= damage.Value;
+		if (_copyCurrentHealth <= 0)
+		{
+			return true;
+		}
+		return false;
+	}
     public void GetBuff(float amount)
     {
 		Debug.Log($"버프를 얻었습니다. {amount}");

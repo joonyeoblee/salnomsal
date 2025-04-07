@@ -1,59 +1,57 @@
-using System;
-using System.Collections;
+using Jun.MiniGame;
+using MoreMountains.Tools;
 using UnityEngine;
 
 namespace Jun.MiniGame
 {
+
     public class Magic : MonoBehaviour
     {
+        public MMProgressBar ProgressBar;
         public char assignedKey;
         private bool _isKeyPressed = false;
         private MatchPattern _matchPattern;
-        private Transform _mySpawnPoint;
 
-        public event Action<Transform> OnDestroyed;
+        public float MaxTime;
+        float _currentTime = 0f;
 
         void Start()
         {
-            _matchPattern = FindObjectOfType<MatchPattern>();
-            StartCoroutine(CheckKeyTimeout());
+            _matchPattern = GetComponentInParent<MatchPattern>();
+            _matchPattern.RegisterMagic(this);
+            ProgressBar = GetComponent<MMProgressBar>();
+            ProgressBar.FillMode = MMProgressBar.FillModes.FillAmount;
+            ProgressBar.InitialFillValue = 0f;
         }
 
-        void Update()
+        private void Update()
         {
-            if (!_isKeyPressed && Input.anyKeyDown)
+            _currentTime += Time.deltaTime;
+
+            // MMProgressBar 업데이트
+            if (ProgressBar != null)
             {
-                if (Input.GetKeyDown(assignedKey.ToString().ToLower()))
-                {
-                    _isKeyPressed = true;
-                    _matchPattern.AddCount();
-                    Destroy(gameObject);
-                }
+                ProgressBar.UpdateBar(_currentTime,0,MaxTime);
             }
-        }
 
-        IEnumerator CheckKeyTimeout()
-        {
-            yield return new WaitForSeconds(1f);
-
-            if (!_isKeyPressed)
+            if (_currentTime >= MaxTime)
             {
+                _isKeyPressed = false;
+                _matchPattern.UnregisterMagic(this);
                 _matchPattern.Fail();
-                Destroy(gameObject);
             }
         }
 
-        public void SetSpawnPoint(Transform point)
+        public void TryResolve()
         {
-            _mySpawnPoint = point;
-        }
+            float duration = 1f;
+            if (_isKeyPressed) return;
 
-        void OnDestroy()
-        {
-            if (_mySpawnPoint != null)
-            {
-                OnDestroyed?.Invoke(_mySpawnPoint);
-            }
+            _isKeyPressed = true;
+            _matchPattern.UnregisterMagic(this);
+            _matchPattern.AddCount();
+            Debug.Log("성공 매직");
+            Destroy(gameObject);
         }
     }
 }

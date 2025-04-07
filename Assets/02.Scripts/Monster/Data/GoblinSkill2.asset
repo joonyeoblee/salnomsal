@@ -15,7 +15,7 @@ MonoBehaviour:
   SkillName: "\uB358\uC9C0\uAE30"
   SkillDescription: "\uC2AC\uB85C\uC6B0"
   SkillCost: 2
-  SkillMultiplier: 0
+  SkillMultiplier: 200
   Duration: 0
   Priority: 12
   SkillType: 2
