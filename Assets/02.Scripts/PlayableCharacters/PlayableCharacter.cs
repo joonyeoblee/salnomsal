@@ -64,6 +64,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		Debug.Log($"{CharacterName}: Playable Turn Start");
         CombatManager.Instance.CurrentActor = this;
+        // UI로 캐릭터 정보 전송
 		OnTurnStart?.Invoke();
 	}
 

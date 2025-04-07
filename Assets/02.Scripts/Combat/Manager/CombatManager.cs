@@ -146,6 +146,7 @@ public class CombatManager : MonoBehaviour
     public void StartTurn()
     {
         ITurnActor unit = TurnOrder[0];
+        GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
         TurnOrder.RemoveAt(0);
         unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가
