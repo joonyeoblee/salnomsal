@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using UnityEditor;
-
+using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -12,6 +10,7 @@ public class CombatManager : MonoBehaviour
     public SkillSlot SelectedSkill;
     public int SpeedIncrementPerTurn;
 
+    public Transform[] SpawnPoint;
 
     private List<ITargetable> _target = new List<ITargetable>();
 
@@ -29,6 +28,19 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        SpawnPlayer();
+    }
+    public void SpawnPlayer()
+    {
+        List<GameObject> players = GameManager.Instance.Characters;
+        for (int i = 0; i < players.Count; i++)
+        {
+            GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
+            PlayableCharacter.Add(ch.GetComponent<PlayableCharacter>());
+        }
+    }
 
     public void InitializeCombat()
     {

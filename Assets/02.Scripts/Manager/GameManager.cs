@@ -39,5 +39,5 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"총 출정 캐릭터 수: {Characters.Count}");
     }
-
+    
 }
