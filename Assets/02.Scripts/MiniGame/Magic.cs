@@ -10,15 +10,15 @@ namespace Jun.MiniGame
         public MMProgressBar ProgressBar;
         public char assignedKey;
         private bool _isKeyPressed = false;
-        private MatchPattern _matchPattern;
+        private MatchPatternJun _matchPatternJun;
 
         public float MaxTime;
         float _currentTime = 0f;
 
         void Start()
         {
-            _matchPattern = GetComponentInParent<MatchPattern>();
-            _matchPattern.RegisterMagic(this);
+            _matchPatternJun = GetComponentInParent<MatchPatternJun>();
+            _matchPatternJun.RegisterMagic(this);
             ProgressBar = GetComponent<MMProgressBar>();
             ProgressBar.FillMode = MMProgressBar.FillModes.FillAmount;
             ProgressBar.InitialFillValue = 0f;
@@ -37,8 +37,8 @@ namespace Jun.MiniGame
             if (_currentTime >= MaxTime)
             {
                 _isKeyPressed = false;
-                _matchPattern.UnregisterMagic(this);
-                _matchPattern.Fail();
+                _matchPatternJun.UnregisterMagic(this);
+                _matchPatternJun.Fail();
             }
         }
 
@@ -47,8 +47,8 @@ namespace Jun.MiniGame
             if (_isKeyPressed) return;
 
             _isKeyPressed = true;
-            _matchPattern.UnregisterMagic(this);
-            _matchPattern.AddCount();
+            _matchPatternJun.UnregisterMagic(this);
+            _matchPatternJun.AddCount();
             Debug.Log("성공 매직");
             Destroy(gameObject);
         }
