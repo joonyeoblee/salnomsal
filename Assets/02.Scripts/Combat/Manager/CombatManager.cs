@@ -162,7 +162,7 @@ public class CombatManager : MonoBehaviour
         SetOrder();
         SetNewTurn();
         IsBattleEnd();
-        // PlayableCharacter 전멸시 게임오버 확인하는 메서드 추가
+        IsGameOver();
         StartTurn();
     }
 
@@ -183,6 +183,19 @@ public class CombatManager : MonoBehaviour
             }
         }
         Debug.Log("전투 종료, 승리");
+        // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+    }
+
+    public void IsGameOver()
+    {
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            if (character.IsAlive)
+            {
+                return;
+            }
+        }
+        Debug.Log("게임 오버");
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
     }
 }

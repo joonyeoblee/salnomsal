@@ -58,7 +58,12 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 		CombatManager.Instance.EndTurn(this);
     }
 
-    public void GetBuff(float amount)
+    public void GetBuff(Buff buff)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void RemoveBuff(Buff buff)
     {
         throw new NotImplementedException();
     }
@@ -67,4 +72,5 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
     {
         throw new NotImplementedException();
     }
+
 }
