@@ -17,7 +17,6 @@ namespace Equipment
         public Sprite Icon;
         public Sprite BorderSprite;
         public EquipmentType Type; // ✅ 외부 enum 사용
-        public Rarity Rarity;
 
         [Header("기본 능력치 범위")] public List<StatRange> BaseStatRanges;
 

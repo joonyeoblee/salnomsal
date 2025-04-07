@@ -17,7 +17,15 @@ namespace Equipment
                 _ => 0
             };
         }
+        static Rarity GetRandomRarity()
+        {
+            float rand = Random.value;
 
+            if (rand < 0.5f) return Rarity.Common; // 50%
+            if (rand < 0.8f) return Rarity.Rare; // 30%
+            if (rand < 0.95f) return Rarity.Epic; // 15%
+            return Rarity.Legendary; // 5%
+        }
         private static void Shuffle<T>(List<T> list)
         {
             for (int i = 0; i < list.Count; i++)
@@ -26,46 +34,34 @@ namespace Equipment
                 (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
             }
         }
-        
-        public static EquipmentInstance Create(EquipmentSO template, Rarity overrideRarity = Rarity.Common)
+
+        public static EquipmentInstance Create(EquipmentSO template)
         {
+            Rarity rarity = GetRandomRarity();
+
             List<StatModifier> baseStats = new();
             foreach (StatRange statRange in template.BaseStatRanges)
             {
                 float value = Random.Range(statRange.MinValue, statRange.MaxValue);
-                baseStats.Add(new StatModifier
-                {
-                    StatType = statRange.StatType,
-                    Value = value
-                });
+                baseStats.Add(new StatModifier(statRange.StatType, value));
             }
 
             List<AppliedPassiveEffect> appliedPassives = new();
 
             List<PassiveEffect> pool = new(template.PassiveEffects);
             Shuffle(pool);
-            int passiveCount = GetPassiveCountByRarity(overrideRarity);
+            int passiveCount = GetPassiveCountByRarity(rarity);
             List<PassiveEffect> selected = pool.Take(passiveCount).ToList();
 
             foreach (PassiveEffect passive in selected)
             {
-                float value = passive.GetRandomValueByRarity(overrideRarity);
-                appliedPassives.Add(new AppliedPassiveEffect
-                {
-                    PassiveType = passive.PassiveType,
-                    Value = value
-                });
+                float value = passive.GetRandomValueByRarity(rarity);
+                appliedPassives.Add(new AppliedPassiveEffect(passive.PassiveType, value));
             }
 
-            return new EquipmentInstance(template, baseStats, appliedPassives);
+            return new EquipmentInstance(template, rarity, baseStats, appliedPassives);
         }
 
-        public static EquipmentInstance Restore(EquipmentSaveData data, EquipmentSO so)
-        {
-            return new EquipmentInstance(so, data.BaseStats, data.AppliedPassives)
-            {
-                Id = data.Id // 저장된 ID 유지
-            };
-        }
+        
     }
 }

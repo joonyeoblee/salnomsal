@@ -26,7 +26,8 @@ public abstract class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
         {
             if (IsInSlot)
             {
-                MyParent.currentEquipment = null;
+                MyParent.DeleteItem();
+                
             }
             originalParent = transform.parent;
             originalPosition = rectTransform.anchoredPosition;

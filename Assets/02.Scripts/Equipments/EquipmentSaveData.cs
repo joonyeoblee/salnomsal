@@ -7,18 +7,22 @@ namespace Equipment
     public class EquipmentSaveData
     {
         public string Id;
-        public string EquipmentSOName;
         public Rarity Rarity;
         public List<StatModifier> BaseStats;
         public List<AppliedPassiveEffect> AppliedPassives;
 
-        public EquipmentSaveData(EquipmentInstance equipmentInstance)
+        public EquipmentSaveData(string itemId, EquipmentInstance instance)
         {
-            Id = equipmentInstance.Id;
-            EquipmentSOName = equipmentInstance.Template.name;
-            Rarity = equipmentInstance.Template.Rarity;
-            BaseStats = equipmentInstance.BaseStats;
-            AppliedPassives = equipmentInstance.AppliedPassives;
+            Id = itemId;
+            Rarity = instance.Rarity;
+            BaseStats = instance.BaseStats;
+            AppliedPassives = instance.AppliedPassives;
+        }
+
+        public EquipmentInstance ToInstance(EquipmentSO so)
+        {
+            return new EquipmentInstance(so, Rarity, BaseStats, AppliedPassives);
         }
     }
+
 }

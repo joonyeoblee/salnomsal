@@ -5,17 +5,35 @@ namespace Equipment
 {
     public class EquipmentGenerator : MonoBehaviour
     {
-        [SerializeField] private EquipmentSO _data;
+        public string ItemId;
+        readonly string SAVE_KEY = "Item_";
+        string key => SAVE_KEY + ItemId;
+        EquipmentSaveData _saveData;
+        [SerializeField] EquipmentSO _equipmentSo;
         [SerializeField] private Image _iconImage;
         [SerializeField] private Image _borderImage;
         public EquipmentInstance EquipmentInstance { get; private set; }
 
-        void Awake()
+        void Start()
         {
-            EquipmentInstance = EquipmentFactory.Create(_data, _data.Rarity);
+            Init(ItemId);
+        }
+        public void Init(string id)
+        {
+            ItemId = id;
+            _saveData = Load();
 
-            
-            
+            if (_saveData == null)
+            {
+                EquipmentInstance = EquipmentFactory.Create(_equipmentSo);
+                _saveData = new EquipmentSaveData(ItemId, EquipmentInstance);
+                Save();
+            } else
+            {
+                Debug.Log("불러옴");
+                EquipmentInstance = _saveData.ToInstance(_equipmentSo);
+            }
+
             // 1. 생성된 아이템에 EquipmentDragItem 컴포넌트를 가져옴
             EquipmentDragItem dragItem = GetComponent<EquipmentDragItem>();
 
@@ -27,7 +45,7 @@ namespace Equipment
             
             if (EquipmentInstance != null)
             {
-                Debug.Log($"[생성된 장비] {_data.ItemName} ({_data.Rarity})");
+                Debug.Log($"[생성된 장비] {_equipmentSo.ItemName})");
 
                 foreach (StatModifier stat in EquipmentInstance.BaseStats)
                 {
@@ -45,7 +63,7 @@ namespace Equipment
                 _iconImage.sprite = EquipmentInstance.Template.Icon;
                 _borderImage.sprite = EquipmentInstance.Template.BorderSprite;
 
-                SetBorderColor(EquipmentInstance.Template.Rarity);
+                SetBorderColor(EquipmentInstance.Rarity);
             }
             else
             {
@@ -64,6 +82,22 @@ namespace Equipment
             };
 
             _borderImage.color = color;
+        }
+
+        void Save()
+        {
+            string jsonData = JsonUtility.ToJson(_saveData);
+            PlayerPrefs.SetString(key, jsonData);
+        }
+
+        EquipmentSaveData Load()
+        {
+            if (PlayerPrefs.HasKey(key))
+            {
+                string data = PlayerPrefs.GetString(key);
+                return JsonUtility.FromJson<EquipmentSaveData>(data);
+            }
+            return null;
         }
     }
 }

@@ -7,5 +7,11 @@ namespace Equipment
     {
         public PassiveType PassiveType;
         public float Value;
+        
+        public AppliedPassiveEffect(PassiveType passiveType, float value)
+        {
+            PassiveType = passiveType;
+            Value = value;
+        }
     }
 }
