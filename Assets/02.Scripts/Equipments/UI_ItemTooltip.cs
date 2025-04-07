@@ -1,7 +1,5 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Serialization;
+using UnityEngine;
 
 namespace Equipment
 {
@@ -27,14 +25,22 @@ namespace Equipment
 
         private void Update()
         {
-            Vector2 anchoredPos;
+            Vector2 mousePos = Input.mousePosition;
+
+            // 화면 중심 기준 좌/우 판단
+            var isLeft = mousePos.x < Screen.width / 2f;
+            Vector2 offset = isLeft ? new Vector2(20f, -20f) : new Vector2(-_panel.rect.width - 20f, -20f);
+
+            // 마우스 → 로컬 좌표 (카메라 모드니까 worldCamera 넣어줌)
+            Vector2 localPoint;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 _canvas.transform as RectTransform,
-                Input.mousePosition,
+                mousePos,
                 _canvas.worldCamera,
-                out anchoredPos);
+                out localPoint
+            );
 
-            _rectTransform.anchoredPosition = anchoredPos + new Vector2(0f, -200f);
+            _rectTransform.anchoredPosition = localPoint + offset;
         }
 
         

@@ -59,5 +59,13 @@ namespace Equipment
 
             return new EquipmentInstance(template, baseStats, appliedPassives);
         }
+
+        public static EquipmentInstance Restore(EquipmentSaveData data, EquipmentSO so)
+        {
+            return new EquipmentInstance(so, data.BaseStats, data.AppliedPassives)
+            {
+                Id = data.Id // 저장된 ID 유지
+            };
+        }
     }
 }

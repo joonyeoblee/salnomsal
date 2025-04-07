@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Equipment
 {
     public class EquipmentInstance
     {
+        public string Id;
         public EquipmentSO Template { get; }
         public List<StatModifier> BaseStats { get; }
         public List<AppliedPassiveEffect> AppliedPassives { get; }
@@ -13,6 +15,8 @@ namespace Equipment
             List<StatModifier> baseStats,
             List<AppliedPassiveEffect> appliedPassives)
         {
+            Id = Guid.NewGuid().ToString();
+            
             Template = template;
             BaseStats = baseStats;
             AppliedPassives = appliedPassives;

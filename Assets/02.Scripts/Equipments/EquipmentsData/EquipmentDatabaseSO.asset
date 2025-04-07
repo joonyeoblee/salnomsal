@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e557adb23903247a3af1b346625e3b, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: 33c240a019a0fc24c9a32ffd5381173f, type: 3}
+  m_Name: EquipmentDatabaseSO
   m_EditorClassIdentifier: 
-  ItemName: "\uCE7C"
-  Type: 0
-  Rarity: 0
-  BaseStatRanges: []
-  passiveEffects: []
+  equipmentList:
+  - {fileID: 11400000, guid: 314ee1067e83917449087235a79835fe, type: 2}
+  - {fileID: 11400000, guid: 807c86f36d12d0a43b1bd0d4248d7c8d, type: 2}

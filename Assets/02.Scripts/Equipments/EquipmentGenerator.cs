@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Equipment
@@ -15,6 +14,8 @@ namespace Equipment
         {
             EquipmentInstance = EquipmentFactory.Create(_data, _data.Rarity);
 
+            
+            
             // 1. 생성된 아이템에 EquipmentDragItem 컴포넌트를 가져옴
             EquipmentDragItem dragItem = GetComponent<EquipmentDragItem>();
 
@@ -26,8 +27,6 @@ namespace Equipment
             
             if (EquipmentInstance != null)
             {
-                Debug.Log($"템플릿에 등록된 패시브 수: {_data.PassiveEffects.Count}");
-                
                 Debug.Log($"[생성된 장비] {_data.ItemName} ({_data.Rarity})");
 
                 foreach (StatModifier stat in EquipmentInstance.BaseStats)
