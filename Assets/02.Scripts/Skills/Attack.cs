@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TestGlobalAttack : Skill
+public class Attack : Skill
 {
     public float Multiplier;
 

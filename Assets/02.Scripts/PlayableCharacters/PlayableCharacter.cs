@@ -43,7 +43,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
     private void Start()
     {
         _health = MaxHealth;
-        _mana = MaxMana;
+        _cost = MaxCost;
         _isAlive = true;
         _currentSpeed = BasicSpeed;
     }
@@ -53,6 +53,12 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 
 	}
+
+    public void CostGain()
+    {
+        _cost += CostRegen;
+        _cost = Mathf.Min(_cost, MaxCost);
+    }
 
 	public void StartTurn()
 	{
