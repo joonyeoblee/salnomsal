@@ -43,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Characters
+    uniqueID: 1942959323
+    locked: 0
+  - name: UI_Battle
+    uniqueID: 818929189
+    locked: 0
   - name: UI_Map
     uniqueID: 2800709729
     locked: 0

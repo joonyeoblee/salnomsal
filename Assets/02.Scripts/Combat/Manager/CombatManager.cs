@@ -70,16 +70,20 @@ public class CombatManager : MonoBehaviour
 
     public void SetSelectedSkill(SkillSlot slot)
     {
+        Debug.Log((int)slot);
         if (CurrentActor == null)
         {
-            Debug.Log("현재 캐릭터가 없습니다");
+            Debug.Log("상대턴 입니다.");
             return;
         }
 
-        if (_target != null)
+        if (slot == SelectedSkill)
         {
-            _target.Clear();
+            Debug.Log("스킬 선택 취소");
+            SelectedSkill = SkillSlot.None;
+            return;
         }
+
         if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Cost)
         {
             Debug.Log("마나가 부족합니다");
@@ -93,7 +97,7 @@ public class CombatManager : MonoBehaviour
     {
         if (SelectedSkill == SkillSlot.None)
         {
-            Debug.Log("스킬이 선택되지 않았습니다");
+            Debug.Log("선택된 적 정보 출력");
             return;
         }
 
@@ -129,24 +133,13 @@ public class CombatManager : MonoBehaviour
                 }
             }   
         }
-    }
-
-    public void UseSkill()
-    {
-        if (_target.Count == 0)
-        {
-            Debug.Log("타겟이 선택되지 않았습니다");
-            return;
-        }
-
         CurrentActor.DoAction(SelectedSkill, _target);
-
     }
 
     public void StartTurn()
     {
         ITurnActor unit = TurnOrder[0];
-        GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
+        //GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
         TurnOrder.RemoveAt(0);
         unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가

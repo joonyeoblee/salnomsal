@@ -21,9 +21,4 @@ public class UI_Battle : MonoBehaviour
     {
         CombatManager.Instance.SetSelectedSkill(SkillSlot.Skill2);
     }
-
-    public void OnClickSkillUse()
-    {
-        CombatManager.Instance.UseSkill();
-    }
 }
