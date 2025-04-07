@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae9e1834c7bbf743a7436515166eddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FillImage: {fileID: 0}
+  ProgressBar: {fileID: 0}
   assignedKey: 113
-  MaxTime: 1
+  MaxTime: 3
 --- !u!222 &3721898086289542496
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 
-  ForegroundBar: {fileID: 0}
+  ForegroundBar: {fileID: 5495808628823248190}
   DelayedBarDecreasing: {fileID: 0}
   DelayedBarIncreasing: {fileID: 0}
   MinimumBarFillValue: 0

@@ -40,7 +40,7 @@ namespace Jun.Monster
 
             float damageAmount = AttackPower * _skillComponent.skillDataList[0].SkillMultiplier;
             Damage damage = new Damage(DamageType.Melee, damageAmount, gameObject);
-            EnterMiniGame(damage, "skill1");
+            EnterMiniGame(damage, "Skill1");
         }
 
         protected override void Skill2()
@@ -51,7 +51,7 @@ namespace Jun.Monster
 
             float damageAmount = _skillComponent.skillDataList[1].SkillMultiplier;
             Damage damage = new Damage(DamageType.Magic, damageAmount, gameObject);
-            EnterMiniGame(damage, "skill2");
+            EnterMiniGame(damage, "Skill2");
         }
 
         void EnterMiniGame(Damage damage, string skillName)
@@ -59,9 +59,7 @@ namespace Jun.Monster
             if (_target.WouldDieFromAttack(damage))
             {
                 Time.timeScale = 0.2f;
-                StartCoroutine(WaitForAnimationEndAndEndTurn(skillName));
-                MiniGameScenesManager.instance.player = _target.gameObject;
-                MiniGameScenesManager.instance.ChangeSceneToMiniGameMagic();
+                StartCoroutine(WaitForAnimationEndThenMiniGame(skillName));
             }
             else
             {
@@ -69,6 +67,38 @@ namespace Jun.Monster
                 StartCoroutine(WaitForAnimationEndAndEndTurn(skillName));
             }
         }
+
+        IEnumerator WaitForAnimationEndThenMiniGame(string animName)
+        {
+            yield return null;
+
+            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
+
+            Debug.Log($"[Start] Waiting for animation: {animName}");
+
+            while (!info.IsName(animName))
+            {
+                Debug.Log($"Waiting for state '{animName}', current: {info.fullPathHash}, normalizedTime: {info.normalizedTime}");
+                yield return null;
+                info = _animator.GetCurrentAnimatorStateInfo(0);
+            }
+
+            Debug.Log($"[Matched] Animation '{animName}' started.");
+
+            while (info.normalizedTime < 1f)
+            {
+                Debug.Log($"Animation '{animName}' playing... normalizedTime: {info.normalizedTime}");
+                yield return null;
+                info = _animator.GetCurrentAnimatorStateInfo(0);
+            }
+
+            Debug.Log($"[Finished] Animation '{animName}' finished. Proceeding to mini game.");
+
+            Time.timeScale = 1f;
+            MiniGameScenesManager.instance.player = _target.gameObject;
+            MiniGameScenesManager.instance.ChangeSceneToMiniGameMagic();
+        }
+
 
         IEnumerator WaitForAnimationEndAndEndTurn(string animName)
         {
@@ -90,7 +120,6 @@ namespace Jun.Monster
 
             EndTurn(); // ✅ 애니메이션이 끝난 후에 실행됨
         }
-
         
     }
 }
