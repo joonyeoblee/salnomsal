@@ -13,7 +13,7 @@ public enum SkillRange
     Global
 }
 
-public enum SkillTarget
+public enum TargetType
 {
     Ally,
     Enemy
@@ -32,6 +32,6 @@ namespace Jun
         public int Priority;
         public SkillType SkillType;
         public SkillRange SkillRange;
-        public SkillTarget SkillTarget;
+        public TargetType SkillTarget;
     }
 }

@@ -40,7 +40,7 @@ namespace Jun.Monster
 
             float damageAmount = AttackPower * _skillComponent.skillDataList[0].SkillMultiplier;
             Damage damage = new Damage(DamageType.Melee, damageAmount, gameObject);
-            EnterMiniGame(damage, "skill1");
+            EnterMiniGame(damage, "Skill1");
         }
 
         protected override void Skill2()
@@ -51,7 +51,7 @@ namespace Jun.Monster
 
             float damageAmount = _skillComponent.skillDataList[1].SkillMultiplier;
             Damage damage = new Damage(DamageType.Magic, damageAmount, gameObject);
-            EnterMiniGame(damage, "skill2");
+            EnterMiniGame(damage, "Skill2");
         }
 
         void EnterMiniGame(Damage damage, string skillName)

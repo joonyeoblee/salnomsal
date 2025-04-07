@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d7607b45173314ea33192b8a78ace4, type: 3}
   m_Name: TestGlobalAttack
   m_EditorClassIdentifier: 
-  SkillName: 
-  SkillDescription: 
-  SkillCost: 0
+  SkillName: global attack
+  SkillDescription: global attack description
+  SkillCost: 3
   SkillType: 0
-  SkillRange: 0
-  SkillTarget: 0
+  SkillRange: 1
+  SkillTarget: 1

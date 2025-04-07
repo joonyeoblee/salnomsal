@@ -89,7 +89,7 @@ public class CombatManager : MonoBehaviour
         SelectedSkill = slot;
     }
 
-    public void SetTarget(ITargetable target)
+    public void SetTarget(ITargetable clicked)
     {
         if (SelectedSkill == SkillSlot.None)
         {
@@ -98,34 +98,36 @@ public class CombatManager : MonoBehaviour
         }
 
         PlayableSkillSO selectedSkillData = CurrentActor.Skills[(int)SelectedSkill].SkillData;
+
+        if (selectedSkillData.SkillTarget != clicked.TargetType)
+        {
+            Debug.Log("올바르지 않은 타겟입니다");
+            return;
+        }
+
         if (selectedSkillData.SkillRange == SkillRange.Single)
         {
-            _target.Add(target);
+            _target.Add(clicked);
             Debug.Log("단일 타겟 스킬");
         }
         else if (selectedSkillData.SkillRange == SkillRange.Global)
         {
             Debug.Log("전체 타겟 스킬");
-            if (selectedSkillData.SkillTarget == SkillTarget.Ally)
+            foreach (ITargetable target in PlayableCharacter)
             {
-                foreach (ITargetable ally in PlayableCharacter)
+                if (target.IsAlive && target.TargetType == selectedSkillData.SkillTarget)
                 {
-                    if (ally.IsAlive)
-                    {
-                        _target.Add(ally);
-                    }
+                    _target.Add(target);
                 }
             }
-            else if (selectedSkillData.SkillTarget == SkillTarget.Enemy)
+
+            foreach (ITargetable target in Monsters)
             {
-                foreach (ITargetable enemy in Monsters)
+                if (target.IsAlive && target.TargetType == selectedSkillData.SkillTarget)
                 {
-                    if (enemy.IsAlive)
-                    {
-                        _target.Add(enemy);
-                    }
+                    _target.Add(target);
                 }
-            }
+            }   
         }
     }
 

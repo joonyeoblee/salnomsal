@@ -167,6 +167,7 @@ MonoBehaviour:
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
+  _targetType: 1
   _basicSpeed: 0
   _animator: {fileID: 1293577553677510682}
   IsMyTurn: 0
@@ -185,7 +186,6 @@ MonoBehaviour:
   skillDataList:
   - {fileID: 0}
   - {fileID: 0}
-  basePriorities: 0000000000000000
 --- !u!114 &924079782641208618
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,9 +14,16 @@ public enum SkillSlot
 public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
-	public List<Skill> Skills;
+    public List<Skill> Skills;
 
-	private bool _isAlive;
+    public TargetType _targetType;
+    public TargetType TargetType
+    {
+        get => _targetType;
+        set => _targetType = value;
+    }
+
+    private bool _isAlive;
     public bool IsAlive => _isAlive;
 
 	[SerializeField] private int _basicSpeed;
