@@ -86,11 +86,15 @@ namespace SeongIl
             Vector2 currentPosition = slash.transform.position; 
             Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(slash.transform.DOMove(oppositePosition, _parrySpeed).SetEase(Ease.OutCubic));
-            StartCoroutine(FlashBackGround());
+            sequence.Append(slash.transform.DOMove(oppositePosition, 0.1f).SetEase(Ease.OutCubic));
+     
             sequence.AppendInterval(_parryInstatiateTime * _count + 1);
             
-            sequence.Append(slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic));           
+            sequence.Append(slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic).OnStart(() =>
+            {
+                StartCoroutine(FlashBackGround());
+            }));        
+
             
         }
         

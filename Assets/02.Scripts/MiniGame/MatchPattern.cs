@@ -10,12 +10,13 @@ namespace SeongIl
     {
         public TextMeshProUGUI Text;
         private string _currentkey;
-
+        
         public Image MagicCircle;
         
         [Header("시간 설정")]
         public float TimeLimit = 0;
         public float Timer;
+        public float DeclineTime;
         [Header("게임 시작")] private bool _isGameActive = true;
         
         private Queue<string> _keyQueue = new Queue<string>();
@@ -32,11 +33,7 @@ namespace SeongIl
 
         private void Update()
         {
-
-            if (_keyQueue.Count < 2)
-            {
-              GenerateKeysQueue();
-            }
+            
             if (!_isGameActive)
             {
                 return;
@@ -56,12 +53,14 @@ namespace SeongIl
                     {
                         DisplayKeys();
                         
-                        MagicCircle.fillAmount -= 0.1f;
+                        MagicCircle.fillAmount -= DeclineTime;
 
                     }
                     else
                     {
-                        
+                        Debug.Log("Reload");
+                        GenerateKeysQueue();
+                        DisplayKeys();
                         Success();                    }
                 }
                 else
