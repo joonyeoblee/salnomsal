@@ -106,9 +106,43 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		}
 		return false;
 	}
-    public void GetBuff(float amount)
+
+    public void GetBuff(Buff buff)
     {
-		Debug.Log($"버프를 얻었습니다. {amount}");
+        Debug.Log($"버프 사용. {buff.BuffStatType} : {buff.BuffMultiplier}");
+        switch (buff.BuffStatType)
+        {
+            case BuffStatType.AttackPower:
+                AttackPower *= 1f + buff.BuffMultiplier;
+                break;
+            case BuffStatType.CriticalChance:
+                CriticalChance += buff.BuffMultiplier;
+                break;
+            case BuffStatType.CriticalDamage:
+                CriticalDamage += buff.BuffMultiplier;
+                break;
+        }
+
+		OnTurnEnd += buff.RemoveBuff;
+    }
+
+	public void RemoveBuff(Buff buff)
+	{
+        Debug.Log($"버프 해제. {buff.BuffStatType} : {buff.BuffMultiplier}");
+        switch (buff.BuffStatType)
+        {
+            case BuffStatType.AttackPower:
+                AttackPower /= buff.BuffMultiplier;
+                break;
+            case BuffStatType.CriticalChance:
+                CriticalChance -= buff.BuffMultiplier;
+                break;
+            case BuffStatType.CriticalDamage:
+                CriticalDamage -= buff.BuffMultiplier;
+                break;
+        }
+
+        OnTurnEnd -= buff.RemoveBuff;
     }
 
     public void GetHeal(float amount)
