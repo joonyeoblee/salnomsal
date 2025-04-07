@@ -11,7 +11,7 @@ namespace SeongIl
         public Avoid Avoid;
         public GameObject Spawner;
         
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Avoid"))
             {
@@ -30,5 +30,6 @@ namespace SeongIl
                 }
             }
         }
+        
     }
 }
