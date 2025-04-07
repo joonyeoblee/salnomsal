@@ -13,6 +13,7 @@ public class SlashChecker : MonoBehaviour
         _isParried = true;
     }
 
+    // 놓쳤을 경우 실패 호출용
     public void MissedCheck()
     {
         Debug.Log("CheckMiss 호출됨");

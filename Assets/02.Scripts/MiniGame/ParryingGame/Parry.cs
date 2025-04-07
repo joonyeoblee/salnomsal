@@ -143,13 +143,6 @@ namespace SeongIl
         private void Fail()
         {
             Debug.Log("Fail");
-            
-            //for (int i = _timingChecks.Count - 1; i >= 0; i--)
-            //{
-            //    Destroy(_timingChecks[i]);
-            //    _timingChecks.RemoveAt(i);
-            //}
-
         }
         
         // 성공

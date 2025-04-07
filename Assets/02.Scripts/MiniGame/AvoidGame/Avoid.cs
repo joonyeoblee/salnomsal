@@ -34,7 +34,7 @@ namespace SeongIl
         
         // 화살 다 피함? 카운트 세기
         public int ArrowCount = 10;
-        
+        // 게임 시작
         public bool _isGameOver = false;
         private void Start()
         {
