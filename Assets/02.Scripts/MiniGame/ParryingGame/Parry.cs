@@ -16,24 +16,27 @@ namespace SeongIl
         // 패링 타이밍 시간
         [SerializeField]
         private float _parrySpeed = 0;
+        
         [SerializeField]
         private float _parryInstatiateTime = 0;
+        
         [SerializeField]
         private int _count = 3;
-        [SerializeField]
-        private float _checkAmount = 0.3f;
+
         [SerializeField]
         private int _distance = 11;
         
         // 미니게임 시작 여부
         [SerializeField]
-        private bool _gameStart = false;
+        public bool GameStart = false;
         // 패링 중임? 
         public bool IsParried = false;
         
         // 미니게임 이펙트
         public GameObject SlashEffect;
-        
+        // 애니메이션
+        public Animator[] ParryAnimation;
+        public Animator ParryingAnimation;
         // 패링 판단 여부 위치
         private Vector2 _successPosition;
         
@@ -50,9 +53,11 @@ namespace SeongIl
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                
                 StartCoroutine(Parrying());
+                
             }
-            if (!_gameStart)
+            if (!GameStart)
             {
                 return;
             }
@@ -61,20 +66,6 @@ namespace SeongIl
 
 
         }
-        
-        
-        // //  슬래시 움직임주기
-        // private void SlashMovement(GameObject slash)
-        // {
-        //     Debug.Log(Player.transform.position);
-        //     Vector2 currentPosition = slash.transform.position;
-        //     Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
-        //     slash.transform.DOMove(oppositePosition, _parrySpeed).SetEase(Ease.OutCubic).OnComplete(() =>
-        //     {
-        //         slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic);
-        //     });
-        //
-        // }
 
         // 슬래시 움직임 버전 2
         private void SlashMovement(GameObject slash)
@@ -110,32 +101,23 @@ namespace SeongIl
                 slashCheck.OnMissed = Fail;
                 // 움직임 시작
                 SlashMovement(slash);
-                _gameStart = false;
+                GameStart = false;
                 yield return new WaitForSeconds(_parryInstatiateTime);
             }
 
         }
-
-        // private void CheckTiming()
-        // {
-        //     // x 축 y 축 판정 범위 설정
-        //     float Xcheck = _timingChecks[_timingCheckIndex].transform.position.x - _successPosition.x;
-        //     float Ycheck = _timingChecks[_timingCheckIndex].transform.position.y - _successPosition.y;
-        //
-        //     if (Xcheck < _checkAmount && Xcheck > -_checkAmount && Ycheck < _checkAmount && Ycheck > -_checkAmount)
-        //     {
-        //         Success();
-        //     }
-        //     
-        //     _timingCheckIndex++;
-        //         
-        // }
+        
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("Avoid") && IsParried)
             {
               Success();   
               Destroy(other.gameObject);
+              for (int i = 0; i < ParryAnimation.Length; i++)
+              {
+                  ParryAnimation[i].SetTrigger("Parry");
+              }
+              
             }
         }
 
@@ -169,6 +151,7 @@ namespace SeongIl
         private IEnumerator Parrying()
         {
             IsParried = true;
+            ParryingAnimation.SetTrigger("Parry");
             yield return new WaitForSeconds(0.1f);
             IsParried = false;
         }

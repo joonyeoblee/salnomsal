@@ -9,6 +9,8 @@ namespace SeongIl
     {
         public TextMeshProUGUI Text;
         private string _currentkey;
+        // 이펙트
+        public Animator MagicEffect;
         
         public Image MagicCircle;
         
@@ -71,6 +73,7 @@ namespace SeongIl
                         DisplayKeys();
                         MagicCircle.fillAmount -= BonusDecline;
                     }
+                    MagicEffect.SetTrigger("Key");
                 }
                 else
                 {
@@ -114,6 +117,10 @@ namespace SeongIl
             Debug.Log("성공");
             _isGameActive = false;  
         }
-        
+
+        public void Restart()
+        {
+            _isGameActive = true;
+        }
     }
 }
