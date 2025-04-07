@@ -5,7 +5,8 @@ public abstract class Character : MonoBehaviour
 {
 	public DamageType DamageType;
 	public float MaxHealth;
-	public float MaxMana;
+	public float MaxCost;
+	public float CostRegen;
 	public float AttackPower;
 	public float CriticalChance;
 	public float CriticalDamage;
@@ -15,8 +16,8 @@ public abstract class Character : MonoBehaviour
 
 	protected float _health;
 	public float CurrentHealth => _health;
-	protected float _mana;
-	public float Mana => _mana;
+	protected float _cost;
+	public float Cost => _cost;
 	
 	public Action OnTurnStart;
 	public Action OnTurnEnd;

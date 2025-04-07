@@ -80,7 +80,7 @@ public class CombatManager : MonoBehaviour
         {
             _target.Clear();
         }
-        if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Mana)
+        if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Cost)
         {
             Debug.Log("마나가 부족합니다");
             SelectedSkill = SkillSlot.None;
@@ -146,6 +146,7 @@ public class CombatManager : MonoBehaviour
     public void StartTurn()
     {
         ITurnActor unit = TurnOrder[0];
+        GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
         TurnOrder.RemoveAt(0);
         unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가

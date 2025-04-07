@@ -41,7 +41,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
     private void Start()
     {
         _health = MaxHealth;
-        _mana = MaxMana;
+        _cost = MaxCost;
         _isAlive = true;
         _currentSpeed = BasicSpeed;
     }
@@ -52,10 +52,17 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	}
 
+    public void CostGain()
+    {
+        _cost += CostRegen;
+        _cost = Mathf.Min(_cost, MaxCost);
+    }
+
 	public void StartTurn()
 	{
 		Debug.Log($"{CharacterName}: Playable Turn Start");
         CombatManager.Instance.CurrentActor = this;
+        // UI로 캐릭터 정보 전송
 		OnTurnStart?.Invoke();
 	}
 
