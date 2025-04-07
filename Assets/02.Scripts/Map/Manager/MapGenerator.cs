@@ -18,6 +18,7 @@ namespace Jun.Map
         public List<MapNode> Parents = new List<MapNode>();
         public List<MapNode> Children = new List<MapNode>();
     }
+    
 
     public class Map
     {
@@ -60,7 +61,7 @@ namespace Jun.Map
             MapNode[,] grid = new MapNode[height, width];
             HashSet<(int y, int x)> usedPositions = new HashSet<(int y, int x)>();
             int centerX = Mathf.FloorToInt(width / 2);
-
+         
             // 1. 격자 전체 생성 (모든 위치에 노드 미리 생성)
             for (int y = 0; y < height; y++)
             {
@@ -84,20 +85,6 @@ namespace Jun.Map
 
             List<int> validStartXs = Enumerable.Range(width / 2, Mathf.Max(1, width - width / 2)).Where(x => x < width && grid[0, x] != null).ToList();
 
-            // if (validStartXs.Count == 0)
-            // {
-            //     // fallback: 중앙 X에 강제 생성
-            //     int fallbackX = centerX;
-            //     MapNode fallbackNode = new MapNode
-            //     {
-            //         X = fallbackX,
-            //         Y = 0,
-            //         Type = NodeType.Combat
-            //     };
-            //     grid[0, fallbackX] = fallbackNode;
-            //     validStartXs.Add(fallbackX);
-            // }
-
             List<int> startXs = validStartXs.OrderBy(_ => rng.Next()).Take(Mathf.Min(pathCount, validStartXs.Count)).ToList();
 
             for (int i = 0; i < startXs.Count; i++)
@@ -106,8 +93,9 @@ namespace Jun.Map
                 int y = 0;
 
                 MapNode start = grid[y, x];
+      
                 usedPositions.Add((y, x));
-
+                Debug.Log($"[경로 {i}] 시작 노드: ({x}, {y})");
                 // 경로 따라 올라가며 연결
                 for (int step = 0; step < height - 1 && y + 1 < height; step++)
 
@@ -133,7 +121,7 @@ namespace Jun.Map
 
                     from.Children.Add(to);
                     to.Parents.Add(from);
-
+                    Debug.Log($"연결됨: ({from.X}, {from.Y}) → ({to.X}, {to.Y})");
                     x = nextX;
                     y = nextY;
                 }
@@ -190,7 +178,22 @@ namespace Jun.Map
             }
 
             AssignRoomTypes(map);
-            AssignRoomTypes(map);
+
+            MapNode startNode = new MapNode
+            {
+                X = centerX,
+                Y = -1,
+                Type = NodeType.Combat
+            };
+            foreach (MapNode node in map.Nodes)
+            {
+                if (node.Y == 0)
+                {
+                    startNode.Children.Add(node);
+                    node.Parents.Add(startNode);
+                }
+            }
+            map.Nodes.Add(startNode); // << 이 줄 추가            
             Debug.Log($"생성된 총 노드 수: {map.Nodes.Count}");
             return map;
         }

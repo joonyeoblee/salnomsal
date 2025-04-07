@@ -33,9 +33,9 @@ public class CombatManager : MonoBehaviour
     public void InitializeCombat()
     {
         // 전투가 시작되면 호출될 함수
-        PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
-            .Select(obj => obj.GetComponent<PlayableCharacter>())
-            .ToList(); // test
+        // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
+        //     .Select(obj => obj.GetComponent<PlayableCharacter>())
+        //     .ToList(); // test
 
         Monsters = GameObject.FindGameObjectsWithTag("Enemy")
             .Select(obj => obj.GetComponent<EnemyCharacter>())

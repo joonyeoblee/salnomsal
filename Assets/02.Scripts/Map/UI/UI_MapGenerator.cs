@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Jun.Map
 {
-    public class MapGeneratorUI : MonoBehaviour
+    public class UI_MapGenerator : MonoBehaviour
     {
         [Header("UI References")]
         public RectTransform mapRoot;
@@ -35,13 +36,9 @@ namespace Jun.Map
         {
             Dictionary<MapNode, UI_MapNode> nodeUIMap = new Dictionary<MapNode, UI_MapNode>();
 
-            // 1. 노드 배치
             foreach (MapNode node in map.Nodes)
             {
-                Vector2 pos = new Vector2(
-                    node.X * nodeSpacingX,
-                    -node.Y * nodeSpacingY
-                );
+                Vector2 pos = new Vector2(node.X * nodeSpacingX, -node.Y * nodeSpacingY);
 
                 GameObject go = Instantiate(mapNodePrefab, mapRoot);
                 UI_MapNode nodeUI = go.GetComponent<UI_MapNode>();
@@ -49,11 +46,10 @@ namespace Jun.Map
                 string label = node.Type.ToString().Substring(0, 1);
                 Color color = GetColorByType(node.Type);
 
-                nodeUI.Init(pos, label, color);
+                nodeUI.Init(pos, label, color, node);
                 nodeUIMap[node] = nodeUI;
             }
 
-            // 2. 연결선 그리기
             foreach (MapNode node in map.Nodes)
             {
                 if (!nodeUIMap.ContainsKey(node)) continue;
@@ -69,7 +65,20 @@ namespace Jun.Map
                     lineObj.GetComponent<UI_LineDrawer>().DrawLine(from, to);
                 }
             }
+
+            // 시작 노드 설정 (Y == -1인 노드 선택)
+            MapNode startNode = map.Nodes.FirstOrDefault(n => n.Y == -1);
+
+            if (startNode == null)
+            {
+                Debug.LogError("Start node is null! Y == -1 노드를 찾을 수 없습니다.");
+                return;
+            }
+
+            MapManager.instance.map = map;
+            MapManager.instance.SetCurrentNode(startNode);
         }
+
 
         Color GetColorByType(NodeType type)
         {

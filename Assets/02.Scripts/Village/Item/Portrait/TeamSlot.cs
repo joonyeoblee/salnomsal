@@ -2,7 +2,7 @@ using Equipment;
 
 namespace Team
 {
-    public class TeamSlot : Slot
+    public class TeamSlot : CharacterSlot
     {
     }
 }

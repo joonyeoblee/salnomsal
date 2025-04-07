@@ -14,10 +14,11 @@ namespace Equipment
         [SerializeField] private Image _borderImage;
         public EquipmentInstance EquipmentInstance { get; private set; }
 
-        void Start()
-        {
-            Init(ItemId);
-        }
+        // void Start()
+        // {
+        //     // 만약 아이템 생성하려면 이렇게 해야함
+        //     Init(ItemId);
+        // }
         public void Init(string id)
         {
             ItemId = id;

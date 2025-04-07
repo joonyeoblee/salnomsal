@@ -6,6 +6,12 @@ namespace Jun.Map
     {
         public static MapManager instance;
 
+        public long seed = 123456;
+        public bool ascensionZero;
+
+        public Map map; // 현재 맵
+        public MapNode currentNode; // 현재 위치 노드
+
         void Awake()
         {
             if (instance == null)
@@ -17,19 +23,23 @@ namespace Jun.Map
                 Destroy(gameObject);
             }
         }
-        public long seed = 123456;
-        public bool ascensionZero;
 
-        void Start()
+        public void SetCurrentNode(MapNode node)
         {
-            MapGenerator generator = new MapGenerator(seed);
-            Map map = generator.GenerateMap(15, 7, 6, ascensionZero);
+            currentNode = node;
 
-            // TODO: map 시각화
-            foreach (MapNode node in map.Nodes)
+            // 자식 중에서 '이 노드를 부모로 갖고 있는' 노드만 활성화
+            foreach (UI_MapNode uiNode in FindObjectsOfType<UI_MapNode>())
             {
-                Debug.Log($"Node: {node.X}, {node.Y}, Type: {node.Type}");
+                MapNode target = uiNode.Source;
+
+                bool isNext =
+                    currentNode.Children.Contains(target) &&
+                    target.Parents.Contains(currentNode);
+
+                uiNode.SetInteractable(isNext);
             }
         }
+        
     }
 }

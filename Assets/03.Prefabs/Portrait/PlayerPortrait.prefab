@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5711848221618334454, guid: ed303b449e66a38499caeb8e97cf0b9b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -101,7 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24375f5f7de4652a57a8f016601c021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterId: 
+  portrait: {fileID: 0}
   MyParent: {fileID: 0}
-  equipment:
-    PortraitSO: {fileID: 0}
-    Icon: {fileID: 0}
+  MaxHealth: 0
+  MaxMana: 0
+  AttackPower: 0
