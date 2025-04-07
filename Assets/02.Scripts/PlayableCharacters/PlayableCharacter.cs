@@ -1,7 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
-
 public enum SkillSlot
 {
 	DefaultAttack,
@@ -95,7 +93,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         }
 		else
 		{
-			Debug.Log($"Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+			Debug.Log($"{gameObject.name} Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
 		}
 	}
 	public bool WouldDieFromAttack(Damage damage)

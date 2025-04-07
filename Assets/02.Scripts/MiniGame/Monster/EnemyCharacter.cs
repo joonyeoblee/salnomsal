@@ -49,6 +49,8 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	protected abstract void Attack();
 	protected abstract void Skill1();
 	protected abstract void Skill2();
+	protected abstract void Skill3();
+	protected abstract void Skill4();
 	protected abstract void Death(DamageType type);
 
 	public abstract void TakeDamage(Damage damage);
@@ -67,4 +69,5 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
     {
         throw new NotImplementedException();
     }
+   
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Jun.Skill;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Jun.Monster
     {
         public Animator _animator;
         protected MonsterSkill _skillComponent;
-        List<PlayableCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
+        protected List<PlayableCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
         PlayableCharacter _lastTarget;
         protected PlayableCharacter _target;
         public bool IsMyTurn;
@@ -27,15 +28,51 @@ namespace Jun.Monster
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
-
-
         }
+
+        // protected virtual void Update()
+        // {
+        //     if (!IsMyTurn) return;
+        //
+        //     IsMyTurn = false;
+        //
+        //     if (_skillComponent == null || _target == null)
+        //     {
+        //         Debug.LogWarning($"{name}: 스킬 또는 타겟이 없음 → 기본 공격");
+        //         Attack();
+        //         return;
+        //     }
+        //
+        //     SkillDecision decision = _skillComponent.ChooseSkillWithIndex(_target);
+        //
+        //     Debug.Log(decision == null);
+        //     Debug.Log(decision.Skill == null);
+        //     if (decision == null || decision.Skill == null)
+        //     {
+        //         Debug.Log($"{name}: 선택된 스킬이 없음 → 기본 공격");
+        //         Attack();
+        //         return;
+        //     }
+        //
+        //     switch (decision.Index)
+        //     {
+        //     case 0:
+        //         Skill1();
+        //         break;
+        //     case 1:
+        //         Skill2();
+        //         break;
+        //     default:
+        //         Attack();
+        //         break;
+        //     }
+        // }
         protected virtual void Update()
         {
             if (!IsMyTurn) return;
-
+            
             IsMyTurn = false;
-
+            Debug.Log("보스 업데이트");
             if (_skillComponent == null || _target == null)
             {
                 Debug.LogWarning($"{name}: 스킬 또는 타겟이 없음 → 기본 공격");
@@ -45,8 +82,6 @@ namespace Jun.Monster
 
             SkillDecision decision = _skillComponent.ChooseSkillWithIndex(_target);
 
-            Debug.Log(decision == null);
-            Debug.Log(decision.Skill == null);
             if (decision == null || decision.Skill == null)
             {
                 Debug.Log($"{name}: 선택된 스킬이 없음 → 기본 공격");
@@ -54,34 +89,31 @@ namespace Jun.Monster
                 return;
             }
 
-            switch (decision.Index)
-            {
-            case 0:
-                Skill1();
-                break;
-            case 1:
-                Skill2();
-                break;
-            default:
-                Attack();
-                break;
-            }
-        }
+            int index = decision.Index;
 
-        protected override void Register()
-        {
-            CombatManager.Instance.Monsters.Add(this);
+            // 스킬 인덱스에 따른 실행 함수 목록
+            List<Action> skillActions = new List<Action> { Skill1, Skill2, Skill3, Skill4 };
+            Debug.Log("123");
+            if (index >= 0 && index < skillActions.Count)
+            {
+                Debug.Log($"{index}스킬 실행됌");
+                skillActions[index].Invoke();
+            } else
+            {
+                Attack();
+            }
         }
         public override void StartTurn()
         {
             IsMyTurn = true;
             _target = GetTarget();
             _lastTarget = _target; // 다음 타겟 우선도 계산용
-            
+            Debug.Log(gameObject.name);
         }
+
+
         protected override void Attack()
         {
-            
             _animator.Play("Attack");
         }
         protected override void Skill1()
@@ -92,6 +124,20 @@ namespace Jun.Monster
         {
             _animator.Play("Skill2");
         }
+        protected override void Skill3()
+        {
+            _animator.Play("Skill3");
+        }
+        protected override void Skill4()
+        {
+            _animator.Play("Skill4");
+        }
+        
+        protected override void Register()
+        {
+            CombatManager.Instance.Monsters.Add(this);
+        }
+   
         protected override void Death(DamageType type)
         {
             Debug.Log("Death");

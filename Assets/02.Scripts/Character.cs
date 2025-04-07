@@ -1,8 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
-
+using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
 	public DamageType DamageType;
@@ -26,3 +24,16 @@ public abstract class Character : MonoBehaviour
 	public abstract void DoAction(SkillSlot slot, List<ITargetable> targets);
 	public abstract void Death(DamageType type);
 }
+
+// 저장시 key value 
+// id key value
+
+// 게임시작 
+// 너 필드에 있어 그럼 나 한번 생겼었구나
+// 저장공간에서 내 id 검색해야지
+// id 불변 
+// Load id -> 대입
+// 장비 구조체
+
+// _saveData => 장비 구조체
+// => AttackPower => _saveData.AttackPower

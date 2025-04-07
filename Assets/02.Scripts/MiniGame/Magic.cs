@@ -44,7 +44,6 @@ namespace Jun.MiniGame
 
         public void TryResolve()
         {
-            float duration = 1f;
             if (_isKeyPressed) return;
 
             _isKeyPressed = true;
