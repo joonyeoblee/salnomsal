@@ -9,42 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e557adb23903247a3af1b346625e3b, type: 3}
+  m_Script: {fileID: 11500000, guid: d1979690f702262448692b46b10e3a67, type: 3}
   m_Name: EquipmentsDataSO_Armor
   m_EditorClassIdentifier: 
-  ItemName: "\uAC11\uC637"
-  Icon: {fileID: -855298285791758126, guid: ee4ef8283f3d09b40ab2ef004aec7c26, type: 3}
-  BorderSprite: {fileID: 6350808193281230553, guid: 94065fb4d55e94b4b8879a3dfbf06a67, type: 3}
-  Type: 1
+  ItemName: 
+  Icon: {fileID: 0}
+  BorderSprite: {fileID: 0}
+  Type: 0
   Rarity: 0
-  BaseStatRanges:
-  - StatType: 1
-    MinValue: 5
-    MaxValue: 8
-  PassiveEffects:
-  - PassiveType: 1
-    CommonRange:
-      Min: 2
-      Max: 4
-    RareRange:
-      Min: 3
-      Max: 5
-    EpicRange:
-      Min: 4
-      Max: 6
-    LegendaryRange:
-      Min: 5
-      Max: 7
-  - PassiveType: 5
-    CommonRange:
-      Min: 1
-      Max: 1
-    RareRange:
-      Min: 2
-      Max: 2
-    EpicRange:
-      Min: 3
-      Max: 3
-    LegendaryRange:
-      Min: 4
-      Max: 5
+  BaseStatRanges: []
+  PassiveEffects: []
