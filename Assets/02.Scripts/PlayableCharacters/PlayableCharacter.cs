@@ -49,7 +49,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _isAlive = true;
         _currentSpeed = BasicSpeed;
 
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void ApplyStat(float health, float cost, float attack, int speed)
