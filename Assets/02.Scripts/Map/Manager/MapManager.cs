@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -33,6 +33,7 @@ namespace Jun.Map
         }
         void Awake()
         {
+            Debug.Log("MapGenerator Awake");
             if (Instance == null)
             {
                 Instance = this;

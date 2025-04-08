@@ -22,11 +22,13 @@ namespace Jun.Map
 
         void OnDisable()
         {
+            Debug.Log("MapGenerator Disable");
             MapManager.Instance.OnMapNodeChanged -= () => gameObject.SetActive(false);
         }
 
         void Start()
         {
+            Debug.Log("MapGenerator Start");
             MapManager.Instance.OnMapNodeChanged += () => gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
