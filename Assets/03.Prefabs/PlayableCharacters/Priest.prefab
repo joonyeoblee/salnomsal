@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1942959323
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4749681873034518491, guid: 762398ea3dfa6f8469c47ca19912148c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,12 +173,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 0
-  MaxCost: 0
+  MaxHealth: 7
+  MaxCost: 6
   CostRegen: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  AttackPower: 9
+  CriticalChance: 1.2
+  CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
   IsDefending: 0

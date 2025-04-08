@@ -148,13 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageType: 0
+  DamageType: 2
   MaxHealth: 0
   MaxCost: 0
   CostRegen: 0
   AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  CriticalChance: 1.2
+  CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
   IsDefending: 0

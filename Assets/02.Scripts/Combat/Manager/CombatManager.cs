@@ -11,6 +11,8 @@ public class CombatManager : MonoBehaviour
     public SkillSlot SelectedSkill;
     public int SpeedIncrementPerTurn;
 
+    public GameObject OpenMapButton;
+
     public Transform[] SpawnPoint;
 
     private List<ITargetable> _target = new List<ITargetable>();
@@ -27,6 +29,15 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ResetManager()
+    {
+        Monsters.Clear();
+        TurnOrder.Clear();
+        CurrentActor = null;
+        SelectedSkill = SkillSlot.None;
+        _target.Clear();
     }
 
     void Start()
@@ -62,10 +73,16 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
-
+        OpenMapButton.SetActive(false);
+        TurnOrder.Clear();
      
         foreach (PlayableCharacter character in PlayableCharacter)
         {
+            if (character.IsAlive == false)
+            {
+                Debug.Log("전투 불가능 캐릭터");
+                continue;
+            }
             character.CurrentSpeed = character.BasicSpeed;
             TurnOrder.Add(character);
         }
@@ -167,15 +184,23 @@ public class CombatManager : MonoBehaviour
     public void EndTurn(ITurnActor unit)
     {
         unit.CurrentSpeed = unit.BasicSpeed;
-        foreach (ITurnActor turnActor in TurnOrder)
+
+        for (int i = 0; i < TurnOrder.Count; ++i)
         {
-            turnActor.CurrentSpeed += SpeedIncrementPerTurn;
+            TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
+            if (TurnOrder[i].IsAlive == false)
+            {
+                TurnOrder.RemoveAt(i);
+                --i;
+            }
         }
+
         TurnOrder.Add(unit);
         SetOrder();
         SetNewTurn();
         IsBattleEnd();
         IsGameOver();
+
         StartTurn();
     }
 
@@ -196,7 +221,15 @@ public class CombatManager : MonoBehaviour
             }
         }
         Debug.Log("전투 종료, 승리");
-        // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+        
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            character.ResetAfterBattle();
+        }
+
+        RemoveDeadCharacter();
+        ResetManager();
+        OpenMapButton.SetActive(true);
     }
 
     public void IsGameOver()
@@ -208,7 +241,24 @@ public class CombatManager : MonoBehaviour
                 return;
             }
         }
+
+        RemoveDeadCharacter();
+        ResetManager();
+        OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+    }
+
+    public void RemoveDeadCharacter()
+    {
+        for (int i = 0; i < PlayableCharacter.Count; i++)
+        {
+            if (PlayableCharacter[i].IsAlive == false)
+            {
+                Destroy(PlayableCharacter[i].gameObject);
+                PlayableCharacter.RemoveAt(i);
+                --i;
+            }
+        }
     }
 }

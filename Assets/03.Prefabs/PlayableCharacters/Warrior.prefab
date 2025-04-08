@@ -49,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageType: 2
-  MaxHealth: 0
-  MaxCost: 0
+  DamageType: 0
+  MaxHealth: 9
+  MaxCost: 7
   CostRegen: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  AttackPower: 8
+  CriticalChance: 1.2
+  CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
@@ -131,18 +131,7 @@ MonoBehaviour:
   complexMaskingMode: 0
   drawingMode: 1
   outlineLayer: 0
-  outlineTargets:
-  - CutoutMask: 8
-    renderer: {fileID: 0}
-    SubmeshIndex: 0
-    BoundsMode: 0
-    Bounds:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-    CutoutThreshold: 0.5
-    CullMode: 0
-    cutoutTextureName: 
-    cutoutTextureIndex: 0
+  outlineTargets: []
   renderStyle: 1
   outlineParameters:
     enabled: 1

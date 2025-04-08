@@ -2166,7 +2166,8 @@ MonoBehaviour:
   PlayableCharacter: []
   CurrentActor: {fileID: 0}
   SelectedSkill: 0
-  SpeedIncrementPerTurn: 0
+  SpeedIncrementPerTurn: 1
+  OpenMapButton: {fileID: 363625690}
   SpawnPoint:
   - {fileID: 442782984}
   - {fileID: 784264067}
@@ -3398,7 +3399,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1494257567
   m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1887852939

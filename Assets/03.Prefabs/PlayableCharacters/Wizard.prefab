@@ -49,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageType: 0
-  MaxHealth: 0
-  MaxCost: 0
+  DamageType: 2
+  MaxHealth: 8
+  MaxCost: 8
   CostRegen: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  AttackPower: 9
+  CriticalChance: 1.2
+  CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
@@ -243,8 +243,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1942959323
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8172555116988831821, guid: 4225bda57382bed4494cb8f3cb7ef24a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

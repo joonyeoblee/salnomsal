@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
   m_Name: HolyKnight
   m_EditorClassIdentifier: 
-  DamageType: 0
-  MaxHealth: 5
-  MaxMana: 5
-  AttackPower: 5
-  CriticalChance: 5
-  CriticalDamage: 5
-  Resistance: 5
+  MaxHealth: 100
+  MaxMana: 10
+  AttackPower: 20
+  Speed: 3
   Character: {fileID: 425806411070870425, guid: 7972a3f24c732d941b291697d1c58a2b, type: 3}
   Icon: {fileID: -3244605403560332564, guid: 67d85d84c387e4742991b6fe2e99d80f, type: 3}

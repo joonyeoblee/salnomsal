@@ -13,12 +13,14 @@ namespace Portrait
         public string CharacterId;
         public PortraitSO Portrait;
         public CharacterStat CharacterStat;
+        public int ClearCount;
 
-        public PortraitItemData(string characterId, PortraitSO portrait, CharacterStat characterStat)
+        public PortraitItemData(string characterId, PortraitSO portrait, CharacterStat characterStat, int clearCount)
         {
             CharacterId = characterId;
             Portrait = portrait;
             CharacterStat = characterStat;
+            ClearCount = clearCount;
         }
     }
 
@@ -42,7 +44,8 @@ namespace Portrait
         public float MaxHealth;
         public float MaxMana;
         public float AttackPower;
-
+        public int Speed;
+        
         PortraitItemData _saveData;
 
         Image _iconImage;
@@ -56,10 +59,6 @@ namespace Portrait
             _iconImage = GetComponent<Image>();
         }
 
-        // void Start()
-        // {
-        //     Init("1");
-        // }
         public void Init(string characterId)
         {
             CharacterId = characterId;
@@ -77,16 +76,17 @@ namespace Portrait
             {
                 AddRandom();
                 _iconImage.sprite = portrait != null ? portrait.Icon : null;
-                CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower);
-                _saveData = new PortraitItemData(CharacterId, portrait, _characterStat);
+                CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
+                _saveData = new PortraitItemData(CharacterId, portrait, _characterStat, ClearCount);
                 Save();
             }
         }
         void AddRandom()
         {
-            MaxHealth = portrait.MaxHealth + Random.Range(1, 5); // 1~4
-            MaxMana = portrait.MaxMana + Random.Range(1, 5); // 1~4
-            AttackPower = portrait.AttackPower + Random.Range(1, 5); // 1~4
+            MaxHealth = portrait.MaxHealth + Random.Range(0, 20);
+            MaxMana = portrait.MaxMana + Random.Range(0, 2);
+            AttackPower = portrait.AttackPower + Random.Range(0, 10);
+            Speed = portrait.Speed + Random.Range(0, 2);
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -110,21 +110,30 @@ namespace Portrait
         public void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.blocksRaycasts = true;
-            Slot targetSlot = eventData.pointerEnter?.GetComponentInParent<Slot>();
+
+            // 드롭된 슬롯 판단은 CharacterSlot에서 처리하도록 위임
+            CharacterSlot targetSlot = eventData.pointerEnter?.GetComponentInParent<CharacterSlot>();
 
             if (targetSlot == null)
             {
-                // 슬롯이 아닌 곳 → 삭제
-                Debug.Log("슬롯 외부로 드롭됨 → 삭제");
-
-                // Destroy(gameObject);
+                ReturnToOriginalParent();
             }
 
-            IsInSlot = true;
+            // 슬롯이 유효하면 아무것도 하지 않고, CharacterSlot.OnDrop()에서 처리
+        }
+        void ReturnToOriginalParent()
+        {
+            // 부모 복원
+            transform.SetParent(originalParent, true);
 
-            // 슬롯에 잘 드롭됨 → 처리 생략 (OnDrop이 자동으로 실행됨)
+            // 위치 복원
+            rectTransform.anchoredPosition = originalPosition;
         }
 
+        void ChangeParent()
+        {
+
+        }
         public void StartManualDrag()
         {
             originalParent = transform;
@@ -148,9 +157,10 @@ namespace Portrait
                 _saveData = JsonUtility.FromJson<PortraitItemData>(data);
                 portrait = _saveData.Portrait;
                 _iconImage.sprite = portrait.Icon;
-                MaxHealth = _saveData.CharacterStat.MaxHealth;
-                MaxMana = _saveData.CharacterStat.MaxMana;
-                AttackPower = _saveData.CharacterStat.AttackPower;
+                MaxHealth = _saveData.CharacterStat.MaxHealth + _saveData.ClearCount;
+                MaxMana = _saveData.CharacterStat.MaxMana + _saveData.ClearCount;
+                AttackPower = _saveData.CharacterStat.AttackPower + _saveData.ClearCount;
+                Speed = _saveData.CharacterStat.Speed + _saveData.ClearCount; 
             }
         }
     }

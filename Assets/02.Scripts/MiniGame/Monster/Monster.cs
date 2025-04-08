@@ -9,24 +9,19 @@ namespace Jun.Monster
     {
         Damage _damage;
         List<PlayableCharacter> targets;
-        void OnEnable()
-        {
-            MiniGameScenesManager.instance.Success += OnSuccess;
-            MiniGameScenesManager.instance.Fail += OnFail;
-            MiniGameScenesManager.instance.Parring += OnParrying;
-        }
 
-        void OnDisable()
+        public override void EndTurn()
         {
+            base.EndTurn();
             MiniGameScenesManager.instance.Success -= OnSuccess;
             MiniGameScenesManager.instance.Fail -= OnFail;
             MiniGameScenesManager.instance.Parring -= OnParrying;
         }
-
         void OnSuccess()
         {
             if (!IsMyTurn) return;
             EndTurn();
+            
         }
 
         void OnFail()
@@ -95,6 +90,7 @@ namespace Jun.Monster
                 if (target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
+                    Debug.Log(target.gameObject.name + " is attacking " + target.gameObject.name + ".");
                 }
             }
 
@@ -128,8 +124,13 @@ namespace Jun.Monster
                 Time.timeScale = 1f;
 
                 // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
-                MiniGameScenesManager.instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
+                // MiniGameScenesManager.instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
                 MiniGameScenesManager.instance.StartMiniGame(_damage.Type);
+                MiniGameScenesManager.instance.Success += OnSuccess;
+                MiniGameScenesManager.instance.Fail += OnFail;
+                MiniGameScenesManager.instance.Parring += OnParrying;
+
+                // EndTurn();
                 
             } else
             {

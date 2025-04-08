@@ -1284,9 +1284,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Flash: {fileID: 676192853}
-  _parrySpeed: 0.8
+  _parrySpeed: 3
   _parryInstatiateTime: 0.3
-  _count: 3
+  _count: 1
   _distance: 11
   GameStart: 0
   IsParried: 0
