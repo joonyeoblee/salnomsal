@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 public enum SkillSlot
 {
 	DefaultAttack,
@@ -46,11 +48,23 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _currentSpeed = BasicSpeed;
     }
 
-
     public override void Register()
 	{
 
 	}
+
+    public void ResetAfterBattle()
+    {
+        gameObject.transform.DOScale(1f, 0.5f);
+        _cost = MaxCost;
+        _currentSpeed = BasicSpeed;
+
+        while (OnTurnEnd != null)
+        {
+            OnTurnStart?.Invoke();
+            OnTurnEnd?.Invoke();
+        }
+    }
 
     public void CostGain()
     {
@@ -60,7 +74,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void StartTurn()
 	{
-		Debug.Log($"{CharacterName}: Playable Turn Start");
+        gameObject.transform.DOScale(1.2f, 0.5f);
+        Debug.Log($"{CharacterName}: Playable Turn Start");
         CombatManager.Instance.CurrentActor = this;
         // UI로 캐릭터 정보 전송
 		OnTurnStart?.Invoke();
@@ -68,6 +83,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void EndTurn()
 	{
+        gameObject.transform.DOScale(1f, 0.5f);
         Debug.Log($"{CharacterName}: Playable Turn End");
         OnTurnEnd?.Invoke();
 		CombatManager.Instance.EndTurn(this);
@@ -86,8 +102,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		{
 			Skills[(int)slot].UseSkill(this, target);
         }
-		OnTurnEnd?.Invoke();
-        CombatManager.Instance.EndTurn(this);
+        EndTurn();
     }
 
 	public override void Death(DamageType type)

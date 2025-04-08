@@ -2167,6 +2167,7 @@ MonoBehaviour:
   CurrentActor: {fileID: 0}
   SelectedSkill: 0
   SpeedIncrementPerTurn: 1
+  OpenMapButton: {fileID: 363625690}
   SpawnPoint:
   - {fileID: 442782984}
   - {fileID: 784264067}

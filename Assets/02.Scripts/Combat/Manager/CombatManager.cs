@@ -11,6 +11,8 @@ public class CombatManager : MonoBehaviour
     public SkillSlot SelectedSkill;
     public int SpeedIncrementPerTurn;
 
+    public GameObject OpenMapButton;
+
     public Transform[] SpawnPoint;
 
     private List<ITargetable> _target = new List<ITargetable>();
@@ -204,7 +206,12 @@ public class CombatManager : MonoBehaviour
             }
         }
         Debug.Log("전투 종료, 승리");
-        // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+        
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            character.ResetAfterBattle();
+        }
+        OpenMapButton.SetActive(true);
     }
 
     public void IsGameOver()
