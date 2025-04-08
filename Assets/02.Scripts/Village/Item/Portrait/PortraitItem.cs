@@ -129,11 +129,7 @@ namespace Portrait
             // 위치 복원
             rectTransform.anchoredPosition = originalPosition;
         }
-
-        void ChangeParent()
-        {
-
-        }
+        
         public void StartManualDrag()
         {
             originalParent = transform;
