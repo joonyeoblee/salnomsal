@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
+  m_Name: Priest
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  MaxMana: 10
+  AttackPower: 15
+  Speed: 3
+  Character: {fileID: 6392775077024926136, guid: 0c98af4563d5340448d7251f770ac400, type: 3}
+  Icon: {fileID: -5684705202673809364, guid: 23f9f9fa2f86fcf4ca5e0e8fc512f569, type: 3}

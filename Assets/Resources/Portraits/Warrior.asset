@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  MaxMana: 10
+  AttackPower: 20
+  Speed: 3
+  Character: {fileID: 1205681160861735156, guid: 5c7cb657f59baeb4cb3175bbb73e66e3, type: 3}
+  Icon: {fileID: -4193875274272780541, guid: 1d263c384d68c22438c3eb9803dd1b0f, type: 3}
