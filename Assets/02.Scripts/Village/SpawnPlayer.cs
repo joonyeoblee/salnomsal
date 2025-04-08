@@ -10,6 +10,7 @@ public class SpawnPlayer : MonoBehaviour
     public PortraitSO[] portraits; // 가능한 초상화 리스트
 
     public SpawnSlot[] spawnSlot;
+    
     public void Spawn()
     {
         for (int i = 0; i < spawnSlot.Length; i++)

@@ -1352,7 +1352,7 @@ MonoBehaviour:
   - {fileID: -1154344993935458473, guid: 247bfa3b1a6b8da4abb798e44f0e6e59, type: 3}
   - {fileID: -672569068813456947, guid: 7b04ad33082b60245b0e0013111333b1, type: 3}
   - {fileID: -4118689495681347844, guid: 12edb6a5c073f294594f2f3fabd02970, type: 3}
-  - {fileID: -8149436484959257347, guid: f97cdbc7510cf5548a71302ff8dd9b67, type: 3}
+  BossBackGround: {fileID: 2009138418216532846, guid: b53a3d9a97d6fa84c826fb3db5c9afc0, type: 3}
 --- !u!1 &784264066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,6 +2569,8 @@ MonoBehaviour:
   - {fileID: 1995785630}
   monsterPrefabs:
   - {fileID: 7040579665520616671, guid: 95756ca80ef40cb429c29c6522427d25, type: 3}
+  EliteMonster: {fileID: 5088683969083430609, guid: 3e487aff18f35f347a6882703250921d, type: 3}
+  BossMonster: {fileID: 6915706932143878481, guid: 11c61a65147538c43889748341b54333, type: 3}
 --- !u!1 &1325841078
 GameObject:
   m_ObjectHideFlags: 0

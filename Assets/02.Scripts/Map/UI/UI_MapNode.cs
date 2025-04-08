@@ -42,9 +42,10 @@ namespace Jun.Map
             MapManager.Instance.SetCurrentNode(Source);
             Debug.Log($"노드 선택: {Source.X}, {Source.Y}");
 
+            // Source.Type
             // TODO: 맵 선택
             MapManager.Instance.OnMapNodeChanged.Invoke();
-
+            
             // 몬스터 소환
             // 캠버스끄기    
 

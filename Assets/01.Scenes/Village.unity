@@ -9065,6 +9065,7 @@ MonoBehaviour:
   mapGenerator: {fileID: 0}
   BackGround: {fileID: 0}
   BackGroundSprites: []
+  BossBackGround: {fileID: 0}
 --- !u!1 &1187081109
 GameObject:
   m_ObjectHideFlags: 0

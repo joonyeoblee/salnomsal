@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
-
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 public enum SkillSlot
 {
 	DefaultAttack,
@@ -40,12 +40,16 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		set => _currentSpeed = value;
 	}
 
+	[SerializeField] Animator animator;
+
     private void Start()
     {
         _health = MaxHealth;
         _cost = MaxCost;
         _isAlive = true;
         _currentSpeed = BasicSpeed;
+
+        animator = GetComponent<Animator>();
     }
 
     public void ApplyStat(float health, float cost, float attack, int speed)
@@ -97,17 +101,24 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
-		// 스킬 이펙트 시전
-        Animator animator = GetComponent<Animator>();
-        if (animator != null)
-        {
-            animator.SetTrigger("Attack"); // 트리거 배열 만들어서 슬롯따라서 실행
-        }
+
+		switch (slot)
+		{
+		case SkillSlot.DefaultAttack:
+			animator.SetTrigger("Attack");
+			break;
+		case SkillSlot.Skill1:
+			animator.SetTrigger("Skill1");
+			break;
+		case SkillSlot.Skill2:
+			animator.SetTrigger("Skill2");
+			break;
+		}
 
         foreach (ITargetable target in targets)
 		{
 			Skills[(int)slot].UseSkill(this, target);
-        }
+		}
         EndTurn();
     }
 
