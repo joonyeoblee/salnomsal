@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using Jun;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace SeongIl
@@ -94,7 +93,7 @@ namespace SeongIl
             for (int i = 0; i < _count; i++) // 예시 값
             {
                 // 위치 정하기
-                float angle = UnityEngine.Random.Range(0f, Mathf.PI *2);
+                float angle = Random.Range(0f, Mathf.PI *2);
                 Vector2 pos =  new Vector2( centerPosition.x + distance * Mathf.Cos(angle), centerPosition.y + distance * Mathf.Sin(angle));
                 GameObject slash = Instantiate(SlashEffect,pos, Quaternion.identity); 
                 SlashChecker slashCheck = slash.AddComponent<SlashChecker>();
@@ -125,6 +124,7 @@ namespace SeongIl
         private void Fail()
         {
             Debug.Log("Fail");
+            MiniGameScenesManager.instance.Fail?.Invoke();
         }
         
         // 성공
@@ -136,6 +136,7 @@ namespace SeongIl
             if (_parriedCount >= _count)
             {
                 Debug.Log("Success");
+                MiniGameScenesManager.instance.Success?.Invoke();
             }
         }
 

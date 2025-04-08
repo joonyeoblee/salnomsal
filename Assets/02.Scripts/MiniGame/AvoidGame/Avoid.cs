@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Threading;
+using Jun;
 using UnityEngine;
 
 namespace SeongIl
@@ -115,18 +115,23 @@ namespace SeongIl
         public void Fail()
         {
             Debug.Log("Fail");
+            MiniGameScenesManager.instance.Fail?.Invoke();
         }
         // 성공
         public void Success()
         {
             Debug.Log("Success");
             _isGameOver = true;
+
+            MiniGameScenesManager.instance.Success?.Invoke();
         }
         // 패링 성공
         public void ParryingSuccess()
         {
             ParrySound.PlayOneShot(ParrySound.clip);
             Debug.Log("ParryingSuccess");
+            _isGameOver = true;
+            MiniGameScenesManager.instance.Parring?.Invoke();
         }
     }
 }
