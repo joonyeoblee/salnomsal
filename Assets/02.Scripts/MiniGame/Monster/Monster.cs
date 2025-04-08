@@ -25,11 +25,13 @@ namespace Jun.Monster
 
         void OnSuccess()
         {
+            if (!IsMyTurn) return;
             EndTurn();
         }
 
         void OnFail()
         {
+            if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
             {
                 target.TakeDamage(_damage);
@@ -39,6 +41,7 @@ namespace Jun.Monster
 
         void OnParrying()
         {
+            if (!IsMyTurn) return;
             TakeDamage(_damage);
             EndTurn();
         }
