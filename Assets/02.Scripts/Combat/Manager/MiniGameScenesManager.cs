@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,10 @@ namespace Jun
         public static MiniGameScenesManager instance;
         public Camera BattleSceneCamera;
         public GameObject player;
+
+        public Action Sucess;
+        public Action Fail;
+        
         void Awake()
         {
             // Singleton 패턴
@@ -24,12 +29,24 @@ namespace Jun
         {
             SceneManager.LoadScene(index);
         }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                ChangeSceneToMiniGameMagic();
+            }
+        }
+        public void StartMiniGame(DamageType damageType)
+        {
+
+        }
         public void ChangeSceneToMiniGameMagic()
         {
             Debug.Log("미니게임 매직 시작됌");
             BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // LayerA만 보임
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            SceneManager.LoadScene(5, LoadSceneMode.Additive);
             
         }
     }
