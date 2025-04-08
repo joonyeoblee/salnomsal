@@ -1,5 +1,6 @@
 using System;
 using SeongIl;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
@@ -43,7 +44,15 @@ namespace Jun
 
         void ChangeCamera()
         {
-            BattleSceneCamera.cullingMask = ~(1 << LayerMask.NameToLayer("MiniGameUI"));
+            if (BattleSceneCamera.cullingMask == 0)
+            {
+                BattleSceneCamera.cullingMask = ~(1 << LayerMask.NameToLayer("MiniGameUI"));
+            }
+            else
+            {
+
+                BattleSceneCamera.cullingMask = -1;
+            }
         }
 
         void LogSuccess()
