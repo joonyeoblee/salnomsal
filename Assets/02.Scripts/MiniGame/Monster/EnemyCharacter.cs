@@ -55,11 +55,8 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 
 	public abstract void TakeDamage(Damage damage);
 
-    public void EndTurn()
-    {
-		CombatManager.Instance.EndTurn(this);
-    }
-
+	public abstract void EndTurn();
+  
     public void GetBuff(Buff buff)
     {
         throw new NotImplementedException();

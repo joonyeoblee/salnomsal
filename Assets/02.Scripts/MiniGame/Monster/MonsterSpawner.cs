@@ -21,10 +21,11 @@ namespace Jun.Spawner
         }
         public void InitBattle()
         {
-            for (int i = 0; i < spawnPositions.Length; i++)
-            {
+            // for (int i = 0; i < spawnPositions.Length; i++)
+            // {
                 SpawnRandomMonster();
-            }
+
+                // }
         }
         public void SpawnRandomMonster()
         {
@@ -57,7 +58,7 @@ namespace Jun.Spawner
 
             // 몬스터 생성
             GameObject spawnedMonster = Instantiate(monsterPrefab, spawnPoint.position, spawnPoint.rotation);
-            
+            spawnedMonster.name = "Goblin" + spawnPoint.name;
             // 생성된 위치를 사용 중으로 표시
             occupiedPositions.Add(spawnPoint);
 

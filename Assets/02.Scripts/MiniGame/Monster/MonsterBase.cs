@@ -30,7 +30,6 @@ namespace Jun.Monster
         {
             if (!IsMyTurn) return;
 
-            Debug.Log("보스 업데이트");
             if (_skillComponent == null || _target == null)
             {
                 Debug.LogWarning($"{name}: 스킬 또는 타겟이 없음 → 기본 공격");
@@ -51,7 +50,7 @@ namespace Jun.Monster
 
             // 스킬 인덱스에 따른 실행 함수 목록
             List<Action> skillActions = new List<Action> { Skill1, Skill2, Skill3, Skill4 };
-            Debug.Log("123");
+                
             if (index >= 0 && index < skillActions.Count)
             {
                 Debug.Log($"{index}스킬 실행됌");
@@ -133,10 +132,20 @@ namespace Jun.Monster
         {
             List<TargetCandidate> candidates = new();
             foreach (var Character in playerCharacters) {
-                candidates.Add(EvaluateTarget(Character));
+                if (Character.IsAlive)
+                {
+                    candidates.Add(EvaluateTarget(Character));
+                }
             }
 
             return candidates.OrderByDescending(c => c.priority).First().Character;
+        }
+
+        public override void EndTurn()
+        {
+            IsMyTurn = false;
+            CombatManager.Instance.EndTurn(this);
+            Debug.Log($"{name} EndTurn");
         }
 
         protected PlayableCharacter GetTarget()

@@ -100,7 +100,7 @@ namespace Equipment
             {
                 string json = PlayerPrefs.GetString(SaveKey);
                 _slotItemData = JsonUtility.FromJson<CharacterSlotItemData>(json);
-                Debug.Log($"[Slot {SaveKey}] 불러옴: {_slotItemData.id}");
+                // Debug.Log($"[Slot {SaveKey}] 불러옴: {_slotItemData.id}");
 
                 // 아이템 프리팹을 인스턴스화해서 슬롯에 배치
                 GameObject newItem = Instantiate(_itemPrefab, transform);
