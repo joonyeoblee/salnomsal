@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,14 @@ namespace SeongIl
         public Image Enemy;
         public Parry Parry;
 
+        public Image ParryZone;
+        // 이미지 받아오기
+        public Sprite EnemySprite;
+        private void Start()
+        {
+            Enemy.sprite = EnemySprite;
+            
+        }
 
         private void Update()
         {
@@ -31,14 +40,17 @@ namespace SeongIl
             Jump.SetActive(true);
             Enemy.enabled = false;
             GameStart = false;
+            ParryZone.enabled = true;
             yield return new WaitForSeconds(2f);
             Parry.GameStart = true;
         }
 
-        private void Refresh()
+        public void Refresh()
         {
             if (Enemy.enabled == false)
             {
+                
+                ParryZone.enabled = false;
                 Jump.SetActive(false);
                 Enemy.enabled = true;
             }
