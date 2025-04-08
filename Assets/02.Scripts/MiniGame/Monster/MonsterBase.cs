@@ -19,21 +19,17 @@ namespace Jun.Monster
         PlayableCharacter _lastTarget;
         protected PlayableCharacter _target;
         public bool IsMyTurn;
-        void OnEnable()
-        {
-            // Register();
-        }
+
         protected virtual void Start()
         {
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
         }
-        protected virtual void Update()
+        protected void ChoiceSkill()
         {
             if (!IsMyTurn) return;
-            
-            IsMyTurn = false;
+
             Debug.Log("보스 업데이트");
             if (_skillComponent == null || _target == null)
             {
@@ -71,6 +67,7 @@ namespace Jun.Monster
             _target = GetTarget();
             _lastTarget = _target; // 다음 타겟 우선도 계산용
             Debug.Log(gameObject.name);
+            ChoiceSkill();
         }
 
 
