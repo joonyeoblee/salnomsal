@@ -889,7 +889,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1077704676}
   - component: {fileID: 1077704677}
-  - component: {fileID: 1077704678}
   m_Layer: 0
   m_Name: CombatManger
   m_TagString: Untagged
@@ -933,23 +932,6 @@ MonoBehaviour:
   - {fileID: 442782984}
   - {fileID: 784264067}
   - {fileID: 334466474}
---- !u!114 &1077704678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077704675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bab4eed761288546bede07a62c86f4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seed: 123456
-  ascensionZero: 0
-  mapGenerator: {fileID: 0}
-  BackGround: {fileID: 0}
-  BackGroundSprites: []
 --- !u!1 &1131669996
 GameObject:
   m_ObjectHideFlags: 0

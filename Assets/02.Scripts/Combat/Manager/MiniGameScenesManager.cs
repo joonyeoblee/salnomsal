@@ -30,6 +30,7 @@ namespace Jun
             BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // LayerA만 보임
             SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            
         }
     }
 }

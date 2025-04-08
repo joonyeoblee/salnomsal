@@ -19,5 +19,5 @@ MonoBehaviour:
   CriticalChance: 5
   CriticalDamage: 5
   Resistance: 5
-  Character: {fileID: 7516978498189177386, guid: 7e9e9626e5f3bac4995c8f71db0750db, type: 3}
+  Character: {fileID: 1205681160861735156, guid: 5c7cb657f59baeb4cb3175bbb73e66e3, type: 3}
   Icon: {fileID: -5711848221618334454, guid: ed303b449e66a38499caeb8e97cf0b9b, type: 3}
