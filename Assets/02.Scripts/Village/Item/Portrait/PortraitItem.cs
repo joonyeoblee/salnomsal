@@ -83,10 +83,10 @@ namespace Portrait
         }
         void AddRandom()
         {
-            MaxHealth = portrait.MaxHealth + Random.Range(1, 5); // 1~4
-            MaxMana = portrait.MaxMana + Random.Range(1, 5); // 1~4
-            AttackPower = portrait.AttackPower + Random.Range(1, 5); // 1~4
-            Speed = portrait.Speed + Random.Range(1, 3); // 1~2
+            MaxHealth = portrait.MaxHealth + Random.Range(0, 20);
+            MaxMana = portrait.MaxMana + Random.Range(0, 2);
+            AttackPower = portrait.AttackPower + Random.Range(0, 10);
+            Speed = portrait.Speed + Random.Range(0, 2);
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
