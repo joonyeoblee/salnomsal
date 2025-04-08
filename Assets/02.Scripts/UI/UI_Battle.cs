@@ -23,7 +23,7 @@ public class UI_Battle : MonoBehaviour
         CombatManager.Instance.SetSelectedSkill(SkillSlot.Skill2);
     }
 
-    public void OnTurnStart(PlayableCharacter character)
+    public void RefreshStatText(PlayableCharacter character)
     {
         StatTMP.text = $"HP :  {character.CurrentHealth} / {character.MaxHealth}\nCost : {character.Cost} / {character.MaxCost}\n공격력  {character.AttackPower}\n속도  {character.CurrentSpeed}\n저항력  {character.Resistance}";
     }

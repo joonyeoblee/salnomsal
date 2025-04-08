@@ -19,6 +19,9 @@ public class CombatManager : MonoBehaviour
 
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
+    [Header("UI Elements")]
+    public UI_Battle UIBattle;
+
     void Awake()
     {
         if (Instance == null)
