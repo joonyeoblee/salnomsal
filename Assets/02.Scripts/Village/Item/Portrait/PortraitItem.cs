@@ -112,21 +112,30 @@ namespace Portrait
         public void OnEndDrag(PointerEventData eventData)
         {
             canvasGroup.blocksRaycasts = true;
-            Slot targetSlot = eventData.pointerEnter?.GetComponentInParent<Slot>();
+
+            // 드롭된 슬롯 판단은 CharacterSlot에서 처리하도록 위임
+            CharacterSlot targetSlot = eventData.pointerEnter?.GetComponentInParent<CharacterSlot>();
 
             if (targetSlot == null)
             {
-                // 슬롯이 아닌 곳 → 삭제
-                Debug.Log("슬롯 외부로 드롭됨 → 삭제");
-
-                // Destroy(gameObject);
+                ReturnToOriginalParent();
             }
 
-            IsInSlot = true;
+            // 슬롯이 유효하면 아무것도 하지 않고, CharacterSlot.OnDrop()에서 처리
+        }
+        void ReturnToOriginalParent()
+        {
+            // 부모 복원
+            transform.SetParent(originalParent, true);
 
-            // 슬롯에 잘 드롭됨 → 처리 생략 (OnDrop이 자동으로 실행됨)
+            // 위치 복원
+            rectTransform.anchoredPosition = originalPosition;
         }
 
+        void ChangeParent()
+        {
+
+        }
         public void StartManualDrag()
         {
             originalParent = transform;

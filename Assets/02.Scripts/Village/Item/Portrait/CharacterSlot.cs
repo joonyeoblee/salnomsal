@@ -12,7 +12,7 @@ namespace Equipment
     }
     public class CharacterSlot : MonoBehaviour, IDropHandler
     {
-        [SerializeField] RectTransform _draggedSlot;
+        public RectTransform DraggedSlot;
         [SerializeField] public GameObject currentCharacterPortrait;
         [SerializeField] Canvas canvas;
         [SerializeField] GameObject _itemPrefab;
@@ -24,28 +24,60 @@ namespace Equipment
         }
         public void SetItem(PortraitItem portraitItem)
         {
+            if (portraitItem == null) return;
+
             currentCharacterPortrait = portraitItem.gameObject;
             currentCharacterPortrait.transform.SetParent(transform);
-            currentCharacterPortrait.transform.localPosition = _draggedSlot.localPosition;
+            currentCharacterPortrait.transform.localPosition = DraggedSlot.localPosition;
+            portraitItem.MyParent = this;
+        }
+
+        public void ChangeSlot(PortraitItem newPortraitItem)
+        {
+            // 현재 슬롯에 있는 아이템
+            GameObject previousItem = currentCharacterPortrait;
+
+            if (previousItem == null || newPortraitItem == null)
+                return;
+
+            // 현재 슬롯의 이전 아이템 정보
+            PortraitItem previousPortrait = previousItem.GetComponent<PortraitItem>();
+            CharacterSlot oldSlotOfNewPortrait = newPortraitItem.MyParent;
+
+            // 이전 아이템을 newPortraitItem이 있던 슬롯으로 이동
+            if (oldSlotOfNewPortrait != null)
+            {
+                oldSlotOfNewPortrait.SetItem(previousPortrait);
+                previousPortrait.MyParent = oldSlotOfNewPortrait;
+                oldSlotOfNewPortrait.Save();
+            } else
+            {
+                // 이전 슬롯 정보가 없다면 월드로 이동하거나 제거할 수도 있음
+                previousItem.transform.SetParent(null);
+            }
+
+            // 새 아이템을 현재 슬롯에 설정
+            newPortraitItem.MyParent = this;
+            SetItem(newPortraitItem);
+            Save();
         }
 
         public void OnDrop(PointerEventData eventData)
         {
+            PortraitItem portraitItem = eventData.pointerDrag?.GetComponent<PortraitItem>();
+            if (portraitItem == null) return;
+
+            // 현재 슬롯에 아이템이 있으면 스왑 처리
             if (currentCharacterPortrait != null)
             {
-                return;
-            }
-
-            PortraitItem portraitItem = eventData.pointerDrag.GetComponent<PortraitItem>();
-            portraitItem.IsInSlot = true;
-            portraitItem.MyParent = this;
-            if (portraitItem != null)
+                ChangeSlot(portraitItem);
+            } else
             {
                 SetItem(portraitItem);
                 Save();
-
-                // Destroy(dragItem.gameObject);
             }
+
+            portraitItem.IsInSlot = true;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -103,7 +135,7 @@ namespace Equipment
 
                 // 아이템 프리팹을 인스턴스화해서 슬롯에 배치
                 GameObject newItem = Instantiate(_itemPrefab, transform);
-                newItem.transform.localPosition = _draggedSlot.localPosition;
+                newItem.transform.localPosition = DraggedSlot.localPosition;
 
                 // 해당하는 플레이어 소환해서 붙여야함
                 PortraitItem portraitItem = newItem.GetComponent<PortraitItem>();
