@@ -3635,8 +3635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "HP :  25 / 25\nCost : 10 / 10\n\uACF5\uACA9\uB825  22\n\uC18D\uB3C4  3\n\uC800\uD56D\uB825 
-    2"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4be1fe80ae383d438fa1aff5cf106b7, type: 2}
   m_sharedMaterial: {fileID: 6562047208543857072, guid: b4be1fe80ae383d438fa1aff5cf106b7, type: 2}
