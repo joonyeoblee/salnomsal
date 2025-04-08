@@ -64,7 +64,7 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
-
+        TurnOrder.Clear();
      
         foreach (PlayableCharacter character in PlayableCharacter)
         {
