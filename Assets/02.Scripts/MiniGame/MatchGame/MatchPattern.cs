@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Jun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace SeongIl
@@ -104,6 +105,8 @@ namespace SeongIl
             _isGameActive = false;
             
             MiniGameScenesManager.instance.Fail?.Invoke();
+            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+            SceneManager.UnloadSceneAsync(sceneToUnload);
             
         }
 
@@ -113,6 +116,8 @@ namespace SeongIl
             _isGameActive = false;
             
             MiniGameScenesManager.instance.Sucess?.Invoke();
+            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+            SceneManager.UnloadSceneAsync(sceneToUnload);
         }
 
         public void GameStart()

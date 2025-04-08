@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Jun;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace SeongIl
@@ -127,6 +128,8 @@ namespace SeongIl
         {
             Debug.Log("Fail");
             MiniGameScenesManager.instance.Fail?.Invoke();
+            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+            SceneManager.UnloadSceneAsync(sceneToUnload);
         }
         
         // 성공
@@ -139,6 +142,8 @@ namespace SeongIl
             {
                 Debug.Log("Success");
                 MiniGameScenesManager.instance.Sucess?.Invoke();
+                Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+                SceneManager.UnloadSceneAsync(sceneToUnload);
             }
         }
 
@@ -157,6 +162,7 @@ namespace SeongIl
             ParryingAnimation.SetTrigger("Parry");
             yield return new WaitForSeconds(0.1f);
             IsParried = false;
+            
         }
     }
 }
