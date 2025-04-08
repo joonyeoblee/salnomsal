@@ -1,4 +1,5 @@
 using System;
+using SeongIl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
@@ -10,6 +11,7 @@ namespace Jun
         public static MiniGameScenesManager instance;
         public Camera BattleSceneCamera;
         public GameObject player;
+        public SceneTransition Transition;
 
         public Action Success;
         public Action Fail;
@@ -75,6 +77,7 @@ namespace Jun
         public void ChangeScene(int index)
         {
             SceneManager.LoadScene(index);
+            Transition.IsTransition?.Invoke();
         }
 
         public void StartMiniGame(DamageType damageType)
@@ -99,6 +102,7 @@ namespace Jun
             BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // MiniGameUI 레이어만 보이게
             SceneManager.LoadScene(index, LoadSceneMode.Additive);
+            
         }
     }
 }
