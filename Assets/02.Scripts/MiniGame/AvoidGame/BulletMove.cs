@@ -29,7 +29,7 @@ namespace SeongIl
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("A"))
+            if (other.CompareTag("DestroyZone"))
             {
                 Destroy(gameObject);
             }
