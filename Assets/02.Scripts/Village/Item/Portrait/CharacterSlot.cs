@@ -17,10 +17,9 @@ namespace Equipment
         [SerializeField] Canvas canvas;
         [SerializeField] GameObject _itemPrefab;
         CharacterSlotItemData _slotItemData;
-        string SaveKey;
+        protected virtual string SaveKey => "CharacterSlot_" + transform.GetSiblingIndex();
         void Start()
         {
-            SaveKey = "CharaceterSlot_" + transform.GetSiblingIndex();
             Load();
         }
         public void SetItem(PortraitItem portraitItem)
