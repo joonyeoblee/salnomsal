@@ -8,7 +8,7 @@ namespace Jun.Spawner
     {
         public Transform[] spawnPositions; // 몬스터가 스폰될 위치 배열
         public GameObject[] monsterPrefabs; // 스폰할 몬스터 프리팹 배열
-        readonly HashSet<Transform> occupiedPositions = new HashSet<Transform>(); // 이미 사용된 위치 추적
+        HashSet<Transform> occupiedPositions; // 이미 사용된 위치 추적
 
         void OnEnable()
         {
@@ -21,6 +21,7 @@ namespace Jun.Spawner
         }
         public void InitBattle()
         {
+            occupiedPositions = new HashSet<Transform>();
             for (int i = 0; i < spawnPositions.Length; i++)
             {
                 SpawnRandomMonster();
@@ -28,11 +29,13 @@ namespace Jun.Spawner
         }
         public void SpawnRandomMonster()
         {
+            
             if (spawnPositions.Length == 0 || monsterPrefabs.Length == 0)
             {
                 Debug.LogWarning("스폰 위치 또는 몬스터 프리팹이 설정되지 않았습니다.");
                 return;
             }
+            
 
             // 사용 가능한 위치 필터링
             List<Transform> availablePositions = new List<Transform>();
