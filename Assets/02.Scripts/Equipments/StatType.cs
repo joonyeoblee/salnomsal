@@ -6,10 +6,5 @@
         MaxHealth,
         MaxMana,
         Speed,
-        CritChance,
-        CritDamage,
-        Accuracy,
-        Evasion,
-        Resistance
     }
 }

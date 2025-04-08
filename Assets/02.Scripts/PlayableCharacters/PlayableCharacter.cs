@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
+using Equipment;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 public enum SkillSlot
@@ -23,6 +24,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         set => _targetType = value;
     }
 
+    public EquipmentSaveData Weapon;
+    public EquipmentSaveData Armor;
+    
     private bool _isAlive;
     public bool IsAlive => _isAlive;
 
@@ -50,6 +54,22 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _currentSpeed = BasicSpeed;
 
         animator = GetComponentInChildren<Animator>();
+
+        if (Weapon != null)
+        {
+	        foreach (StatModifier stat in Weapon.BaseStats)
+	        {
+		        // 스탯 해줘
+	        }
+        }
+
+        if (Armor != null)
+        {
+	        foreach (StatModifier stat in Armor.BaseStats)
+	        {
+		        // 스탯 해줘
+	        }
+        }
     }
 
     public void ApplyStat(float health, float cost, float attack, int speed)
