@@ -21,11 +21,10 @@ namespace Jun.Spawner
         }
         public void InitBattle()
         {
-            // for (int i = 0; i < spawnPositions.Length; i++)
-            // {
+            for (int i = 0; i < spawnPositions.Length; i++)
+            {
                 SpawnRandomMonster();
-
-                // }
+            }
         }
         public void SpawnRandomMonster()
         {
