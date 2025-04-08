@@ -27,14 +27,6 @@ namespace SeongIl
 
         public int KeyCount = 5;
         
-
-        private void Start()
-        {
-            GenerateKeysQueue();
-            DisplayKeys();
-            MagicCircle.fillAmount = 0.01f;
-        }
-
         private void Update()
         {
             
@@ -118,8 +110,11 @@ namespace SeongIl
             _isGameActive = false;  
         }
 
-        public void Restart()
+        public void GameStart()
         {
+            GenerateKeysQueue();
+            DisplayKeys();
+            MagicCircle.fillAmount = 0.1f;
             _isGameActive = true;
         }
     }

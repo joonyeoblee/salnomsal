@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 namespace SeongIl
@@ -10,24 +11,44 @@ namespace SeongIl
 
     public class MagicSequence : MonoBehaviour
     {
+        // 에너미 스프라이트 렌더러 받아오기
+        public Sprite EnemyRenderer;
+        
+        public Camera Camera;
         public Image Book;
         public GameObject Enemy;
         public Image MainMagicCircle;
         public Image SubMagicCircle;
         public float ScaleValue;
 
-        public IEnumerator StartSequence()
+        private void Start()
         {
-            Enemy.transform.DOScale(ScaleValue, 0.5f).OnComplete(() =>
-            {
-                SubMagicCircle.DOColor(new Color(1,1,1, 1), 0.2f);
-                MainMagicCircle.DOColor(new Color(1, 1, 1, 1), 0.5f);
-            });
-            yield return new WaitForSeconds(3f);
-            Enemy.transform.DOScale(1f, 0.5f).OnComplete((() =>
-            {
-                Book.rectTransform.DOMove(new Vector3(0, -5f, 0) ,1f);
-            }));
+            //때긴놈 spriterenderer 입히기
+           // EnemyRenderer = new SpriteRenderer()
+           Enemy.GetComponent<SpriteRenderer>().sprite = EnemyRenderer;
+        }
+
+
+        // 마법 연출
+        public void StartSequence()
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(Camera.DOOrthoSize(3f, ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(Camera.transform.DOMove(new Vector3(0, -2f, -10f), ScaleValue).SetEase(Ease.OutCubic));
+            //
+            sequence.AppendInterval(0.2f);
+
+            sequence.Append(Camera.transform.DOMove(new Vector3(0, 2f, -10f), ScaleValue).SetEase(Ease.OutCubic));
+            
+            sequence.Append( SubMagicCircle.DOColor(new Color(1,1,1, 1), 0.2f));
+            sequence.Append(MainMagicCircle.DOColor(new Color(1,1,1, 1), 0.2f));
+            
+            sequence.AppendInterval(0.2f);
+            
+            sequence.Append(Camera.DOOrthoSize(5f, ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(Camera.transform.DOMove(new Vector3(0, 0f, -10f), ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(Book.rectTransform.DOMove(new Vector3(0, -5f, 0) ,1f));
+
         }
         private void Update()
         {
@@ -36,8 +57,8 @@ namespace SeongIl
         }
 
         public void Play()
-        {
-            StartCoroutine(StartSequence());
+        { 
+            StartSequence();
         }
     }
 }
