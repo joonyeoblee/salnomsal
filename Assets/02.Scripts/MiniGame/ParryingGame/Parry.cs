@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Jun;
 using UnityEngine.UI;
 
 namespace SeongIl
@@ -125,6 +126,7 @@ namespace SeongIl
         private void Fail()
         {
             Debug.Log("Fail");
+            MiniGameScenesManager.instance.Fail?.Invoke();
         }
         
         // 성공
@@ -136,6 +138,7 @@ namespace SeongIl
             if (_parriedCount >= _count)
             {
                 Debug.Log("Success");
+                MiniGameScenesManager.instance.Sucess?.Invoke();
             }
         }
 
