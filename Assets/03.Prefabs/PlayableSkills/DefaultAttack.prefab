@@ -45,4 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillData: {fileID: 11400000, guid: cbdba3ccd488aa4429515162ab8edf41, type: 2}
+  SkillName: "\uACF5\uACA9"
+  SkillDescription: "\uC801 \uD55C\uBA85\uC5D0\uAC8C \uACF5\uACA9\uB825 80% \uD53C\uD574\uB97C
+    \uC785\uD799\uB2C8\uB2E4."
+  SkillCost: 0
   Multiplier: 0.8

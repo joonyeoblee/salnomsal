@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillData: {fileID: 11400000, guid: 94b32ccaa2b6a5f4e9114f1733c76614, type: 2}
+  SkillName: "\uB3C4\uBC1C"
+  SkillDescription: "\uC9C0\uC815\uD55C \uC544\uAD70\uC5D0\uAC8C 3\uD134\uAC04 \uB3C4\uBC1C\uC744
+    \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+  SkillCost: 2
   RemainingTurns: 3
   BuffMultiplier: 0
   BuffStatType: 3

@@ -138,6 +138,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
                 break;
         }
 
+        HasBuff = true;
+
         OnTurnStart += buff.TickBuff;
         OnTurnEnd += buff.RemoveBuff;
     }
@@ -163,6 +165,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
         OnTurnStart -= buff.TickBuff;
         OnTurnEnd -= buff.RemoveBuff;
+
+        if (OnTurnEnd == null)
+        {
+            HasBuff = false;
+        }
     }
 
     public void GetHeal(float amount)

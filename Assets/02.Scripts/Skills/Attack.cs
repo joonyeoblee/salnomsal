@@ -8,7 +8,7 @@ public class Attack : Skill
     {
 
         // Implement the attack logic here
-        Debug.Log($"{caster.CharacterName} used {SkillData.SkillName}");
+        Debug.Log($"{caster.CharacterName} used {SkillName}");
         // Example: target.TakeDamage(SkillData.SkillMultiplier);
         Damage damage = new Damage(caster.DamageType, caster.AttackPower * Multiplier, caster.gameObject);
         target.TakeDamage(damage);

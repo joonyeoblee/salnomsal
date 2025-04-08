@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d7607b45173314ea33192b8a78ace4, type: 3}
-  m_Name: Attack
+  m_Name: Attack_Global_Enemy
   m_EditorClassIdentifier: 
-  SkillName: "\uAE30\uBCF8 \uACF5\uACA9"
-  SkillDescription: "\uC801\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758 80% \uD53C\uD574\uB97C
-    \uC785\uD799\uB2C8\uB2E4."
-  SkillCost: 0
+  SkillCost: 1
   SkillType: 0
-  SkillRange: 0
+  SkillRange: 1
   SkillTarget: 1

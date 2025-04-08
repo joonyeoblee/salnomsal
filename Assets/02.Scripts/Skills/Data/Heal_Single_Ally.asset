@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d7607b45173314ea33192b8a78ace4, type: 3}
-  m_Name: Heal
+  m_Name: Heal_Single_Ally
   m_EditorClassIdentifier: 
-  SkillName: TestHeal
-  SkillDescription: TestHeal Description
-  SkillCost: 2
   SkillType: 3
-  SkillRange: 1
+  SkillRange: 0
   SkillTarget: 0
