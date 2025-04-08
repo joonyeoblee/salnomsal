@@ -30,23 +30,32 @@ namespace Jun.Map
     {
         void AssignRoomTypes(Map map)
         {
+            int eliteLine = map.Nodes.Max(n => n.Y) / 2;
+          
             foreach (MapNode node in map.Nodes)
             {
-                if (node.Y == 0 || node.Type == NodeType.Boss) continue;
+                if (node.Y == 0 || node.Type == NodeType.Boss)
+                    continue;
 
-                float roll = (float)rng.NextDouble();
-                if (roll < 0.08f)
+                if (node.Y == eliteLine)
+                {
                     node.Type = NodeType.Elite;
-                else if (roll < 0.22f)
-                    node.Type = NodeType.Mystery;
-                else if (roll < 0.34f)
-                    node.Type = NodeType.Rest;
-                else if (roll < 0.39f)
-                    node.Type = NodeType.Shop;
-                else
-                    node.Type = NodeType.Combat;
+
+                } else
+                {
+                    float roll = (float)rng.NextDouble();
+                    if (roll < 0.14f)
+                        node.Type = NodeType.Mystery;
+                    else if (roll < 0.28f)
+                        node.Type = NodeType.Rest;
+                    else if (roll < 0.35f)
+                        node.Type = NodeType.Shop;
+                    else
+                        node.Type = NodeType.Combat;
+                }
             }
         }
+
         readonly Random rng;
         bool bossPlaced;
 
@@ -195,7 +204,7 @@ namespace Jun.Map
                     node.Parents.Add(startNode);
                 }
             }
-            map.Nodes.Add(startNode); // << 이 줄 추가            
+            map.Nodes.Add(startNode);   
 
             // Debug.Log($"생성된 총 노드 수: {map.Nodes.Count}");
             return map;
