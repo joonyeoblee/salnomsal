@@ -95,6 +95,7 @@ namespace Jun.Monster
                 if (target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
+                    Debug.Log(target.gameObject.name + " is attacking " + target.gameObject.name + ".");
                 }
             }
 

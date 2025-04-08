@@ -183,6 +183,7 @@ public class CombatManager : MonoBehaviour
         SetNewTurn();
         IsBattleEnd();
         IsGameOver();
+
         StartTurn();
     }
 

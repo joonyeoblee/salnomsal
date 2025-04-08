@@ -66,7 +66,7 @@ MonoBehaviour:
   - {fileID: 731159558023248803, guid: 9d6a213308343284a95091cc0c87270b, type: 3}
   - {fileID: 1052691500520007469, guid: 921c6c31c6c0e77458d8e0c3cd6c5f1b, type: 3}
   _targetType: 0
-  _basicSpeed: 0
+  _basicSpeed: 3
 --- !u!114 &1337149085237245367
 MonoBehaviour:
   m_ObjectHideFlags: 0
