@@ -45,7 +45,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	}
 
 	[SerializeField] Animator animator;
-
+	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
     private void Start()
     {
         _health = MaxHealth;
@@ -55,23 +55,59 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
         animator = GetComponentInChildren<Animator>();
 
-        if (Weapon != null)
-        {
-	        foreach (StatModifier stat in Weapon.BaseStats)
-	        {
-		        // 스탯 해줘
-	        }
-        }
-
-        if (Armor != null)
-        {
-	        foreach (StatModifier stat in Armor.BaseStats)
-	        {
-		        // 스탯 해줘
-	        }
-        }
+        ApplyItems();
     }
+    void ApplyItems()
+    {
 
+	    if (Weapon != null)
+	    {
+		    foreach (StatModifier stat in Weapon.BaseStats)
+		    {
+			    if (!finalStats.ContainsKey(stat.StatType))
+				    finalStats[stat.StatType] = 0;
+
+			    finalStats[stat.StatType] += stat.Value;
+
+		    }
+	    }
+
+	    if (Armor != null)
+	    {
+		    foreach (StatModifier stat in Armor.BaseStats)
+		    {
+			    if (!finalStats.ContainsKey(stat.StatType))
+				    finalStats[stat.StatType] = 0;
+
+			    finalStats[stat.StatType] += stat.Value;
+		    }
+	    }
+	    ApplyStats(finalStats);
+    }
+    void ApplyStats(Dictionary<StatType, float> finalStats)
+    {
+	    foreach (KeyValuePair<StatType, float> stat in finalStats)
+	    {
+		    switch (stat.Key)
+		    {
+		    case StatType.Attack:
+			    AttackPower += stat.Value;
+			    break;
+
+		    case StatType.MaxHealth:
+			    MaxHealth += stat.Value;
+			    break;
+
+		    case StatType.MaxMana:
+			    MaxCost += stat.Value;
+			    break;
+
+		    case StatType.Speed:
+			    BasicSpeed += (int)stat.Value;
+			    break;
+		    }
+	    }
+    }
     public void ApplyStat(float health, float cost, float attack, int speed)
     {
         MaxHealth = health;
