@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Jun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -102,12 +103,16 @@ namespace SeongIl
             Debug.Log("Fail");
             _isGameActive = false;
             
+            MiniGameScenesManager.instance.Fail?.Invoke();
+            
         }
 
         public void Success()
         {
             Debug.Log("성공");
-            _isGameActive = false;  
+            _isGameActive = false;
+            
+            MiniGameScenesManager.instance.Sucess?.Invoke();
         }
 
         public void GameStart()
