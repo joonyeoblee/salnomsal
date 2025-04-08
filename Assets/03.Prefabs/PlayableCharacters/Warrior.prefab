@@ -104,17 +104,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 100
-  MaxCost: 10
+  MaxHealth: 0
+  MaxCost: 0
   CostRegen: 0
-  AttackPower: 5
-  CriticalChance: 0.3
-  CriticalDamage: 2
-  Resistance: 10
+  AttackPower: 0
+  CriticalChance: 0
+  CriticalDamage: 0
+  Resistance: 0
   HasBuff: 0
   IsDefending: 0
   Taunt: 0
-  CharacterName: c3
+  CharacterName: Warrior
   Skills:
   - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
   - {fileID: 731159558023248803, guid: 9d6a213308343284a95091cc0c87270b, type: 3}

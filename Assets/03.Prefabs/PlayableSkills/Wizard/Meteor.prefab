@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4576826027196127113
+--- !u!1 &5882129407901556729
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6439891127899541182}
-  - component: {fileID: 4649674558581916710}
+  - component: {fileID: 4899540434356092268}
+  - component: {fileID: 3253124159677751141}
   m_Layer: 0
-  m_Name: Heal
+  m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6439891127899541182
+--- !u!4 &4899540434356092268
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4576826027196127113}
+  m_GameObject: {fileID: 5882129407901556729}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,21 +32,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4649674558581916710
+--- !u!114 &3253124159677751141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4576826027196127113}
+  m_GameObject: {fileID: 5882129407901556729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c5a7cc2a3e12f4b921c6065697896e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d2054cb74a7fab478b0fa8547d07bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillData: {fileID: 11400000, guid: b347d5506d4fe364f8ba2f544bf5b30e, type: 2}
-  SkillName: "\uCE58\uC720 \uB9C8\uBC95"
-  SkillDescription: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uCCB4\uB825\uC744 30\uB9CC\uD07C
-    \uD68C\uBCF5 \uC2DC\uD0B5\uB2C8\uB2E4."
-  SkillCost: 4
-  HealAmount: 30
+  SkillData: {fileID: 11400000, guid: cbdba3ccd488aa4429515162ab8edf41, type: 2}
+  SkillName: "\uBA54\uD14C\uC624"
+  SkillDescription: "\uC801 \uD55C\uBA85\uC5D0\uAC8C \uACF5\uACA9\uB825 250% \uB370\uBBF8\uC9C0\uB97C
+    \uC785\uD799\uB2C8\uB2E4."
+  SkillCost: 5
+  Multiplier: 2.5
