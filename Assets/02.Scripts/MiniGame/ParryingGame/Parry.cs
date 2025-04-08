@@ -33,6 +33,8 @@ namespace SeongIl
         public bool GameStart = false;
         // 패링 중임? 
         public bool IsParried = false;
+        // 실패함?
+        public bool AlreadyFail = false;
         
         // 미니게임 이펙트
         public GameObject SlashEffect;
@@ -47,6 +49,7 @@ namespace SeongIl
         private void Start()
         {
             _successPosition = transform.position;
+            AlreadyFail = false;
 
         }
 
@@ -84,6 +87,7 @@ namespace SeongIl
                 StartCoroutine(FlashBackGround());
             }).OnComplete(() =>
             {
+                
                 slash.GetComponent<SlashChecker>()?.MissedCheck();
             }));        
 
@@ -126,6 +130,13 @@ namespace SeongIl
         // 판정
         private void Fail()
         {
+            if (AlreadyFail)
+            {
+                return;
+            }
+            
+            AlreadyFail = true;
+            
             Debug.Log("Fail");
             MiniGameScenesManager.instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
