@@ -32,6 +32,7 @@ namespace Jun
         public float SkillMultiplier;
         public float Duration;
         public int Priority;
+        public DamageType DamageType;
         public SkillType SkillType;
         public SkillRange SkillRange;
         public TargetType SkillTarget;
