@@ -42,6 +42,11 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void SpawnEnemy(EnemyCharacter enemyCharacter)
+    {
+        Monsters.Add(enemyCharacter);
+    }
+
     public void InitializeCombat()
     {
         // 전투가 시작되면 호출될 함수
@@ -49,10 +54,7 @@ public class CombatManager : MonoBehaviour
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
 
-        Monsters = GameObject.FindGameObjectsWithTag("Enemy")
-            .Select(obj => obj.GetComponent<EnemyCharacter>())
-            .ToList(); // test
-
+     
         foreach (PlayableCharacter character in PlayableCharacter)
         {
             character.CurrentSpeed = character.BasicSpeed;

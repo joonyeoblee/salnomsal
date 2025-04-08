@@ -16,7 +16,7 @@ MonoBehaviour:
   MaxHealth: 5
   MaxMana: 5
   AttackPower: 5
-  CriticalChance: 5
+  CriticalChance: 1.2
   CriticalDamage: 5
   Resistance: 5
   Character: {fileID: 1205681160861735156, guid: 5c7cb657f59baeb4cb3175bbb73e66e3, type: 3}

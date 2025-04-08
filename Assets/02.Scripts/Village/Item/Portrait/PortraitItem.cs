@@ -21,6 +21,8 @@ namespace Portrait
             CharacterStat = characterStat;
         }
     }
+
+    //초상화 크래스인데 이게 캐릭터 이기도 함 캐릭터별
     public class PortraitItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         public string CharacterId;

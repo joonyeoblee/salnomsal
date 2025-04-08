@@ -29,44 +29,6 @@ namespace Jun.Monster
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
         }
-
-        // protected virtual void Update()
-        // {
-        //     if (!IsMyTurn) return;
-        //
-        //     IsMyTurn = false;
-        //
-        //     if (_skillComponent == null || _target == null)
-        //     {
-        //         Debug.LogWarning($"{name}: 스킬 또는 타겟이 없음 → 기본 공격");
-        //         Attack();
-        //         return;
-        //     }
-        //
-        //     SkillDecision decision = _skillComponent.ChooseSkillWithIndex(_target);
-        //
-        //     Debug.Log(decision == null);
-        //     Debug.Log(decision.Skill == null);
-        //     if (decision == null || decision.Skill == null)
-        //     {
-        //         Debug.Log($"{name}: 선택된 스킬이 없음 → 기본 공격");
-        //         Attack();
-        //         return;
-        //     }
-        //
-        //     switch (decision.Index)
-        //     {
-        //     case 0:
-        //         Skill1();
-        //         break;
-        //     case 1:
-        //         Skill2();
-        //         break;
-        //     default:
-        //         Attack();
-        //         break;
-        //     }
-        // }
         protected virtual void Update()
         {
             if (!IsMyTurn) return;

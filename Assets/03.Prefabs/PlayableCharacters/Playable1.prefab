@@ -105,18 +105,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 0
-  MaxHealth: 100
-  MaxMana: 10
-  AttackPower: 5
-  CriticalChance: 0.4
-  CriticalDamage: 1.5
-  Resistance: 10
+  MaxHealth: 0
+  MaxCost: 0
+  CostRegen: 0
+  AttackPower: 0
+  CriticalChance: 0
+  CriticalDamage: 0
+  Resistance: 0
   HasBuff: 0
   IsDefending: 0
+  Taunt: 0
   CharacterName: Character1
   Skills:
   - {fileID: 731159558023248803, guid: 4242f43ad0e2ea941bd6fe4562e5a406, type: 3}
-  - {fileID: 4000991059851655396, guid: 2723ae0c897ba2943b1494ee2956cdb2, type: 3}
+  - {fileID: 0}
   - {fileID: 4649674558581916710, guid: 671af462eac9b38428283371cd39c504, type: 3}
   _targetType: 0
   _basicSpeed: 3
