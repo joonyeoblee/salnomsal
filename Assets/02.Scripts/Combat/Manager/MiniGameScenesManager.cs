@@ -18,20 +18,47 @@ namespace Jun
         void OnEnable()
         {
             Success += ChangeCamera;
+            Success += LogSuccess;
+
             Fail += ChangeCamera;
+            Fail += LogFail;
+
             Parring += ChangeCamera;
+            Parring += LogParring;
         }
 
         void OnDisable()
         {
             Success -= ChangeCamera;
+            Success -= LogSuccess;
+
             Fail -= ChangeCamera;
+            Fail -= LogFail;
+
             Parring -= ChangeCamera;
+            Parring -= LogParring;
         }
+
         void ChangeCamera()
         {
             BattleSceneCamera.cullingMask = ~(1 << LayerMask.NameToLayer("MiniGameUI"));
         }
+
+        void LogSuccess()
+        {
+            Debug.Log("[MiniGame] 성공 이벤트 발생");
+        }
+
+        void LogFail()
+        {
+            Debug.Log("[MiniGame] 실패 이벤트 발생");
+        }
+
+        void LogParring()
+        {
+            Debug.Log("[MiniGame] 패링 이벤트 발생");
+        }
+
         void Awake()
         {
             // Singleton 패턴
@@ -44,12 +71,12 @@ namespace Jun
                 Destroy(gameObject);
             }
         }
+
         public void ChangeScene(int index)
         {
             SceneManager.LoadScene(index);
         }
 
- 
         public void StartMiniGame(DamageType damageType)
         {
             switch (damageType)
@@ -63,16 +90,15 @@ namespace Jun
             case DamageType.Melee:
                 ChangeSceneToMiniGame(5);
                 break;
-
             }
         }
+
         public void ChangeSceneToMiniGame(int index)
         {
-            Debug.Log("미니게임 매직 시작됌");
+            Debug.Log("미니게임 시작됨: 씬 인덱스 " + index);
             BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-            BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // LayerA만 보임
+            BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // MiniGameUI 레이어만 보이게
             SceneManager.LoadScene(index, LoadSceneMode.Additive);
-            
         }
     }
 }

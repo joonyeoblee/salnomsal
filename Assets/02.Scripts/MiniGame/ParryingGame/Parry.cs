@@ -140,22 +140,24 @@ namespace SeongIl
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }
-        
-        // 성공
+
+        bool AlreadySuccess;
+
         private void Success()
         {
+            if (AlreadySuccess) return;
+
             _parriedCount += 1;
             Debug.Log("Parried");
-            
+
             if (_parriedCount >= _count)
             {
+                AlreadySuccess = true;
                 Debug.Log("Success");
                 MiniGameScenesManager.instance.Success?.Invoke();
-                Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-                SceneManager.UnloadSceneAsync(sceneToUnload);
+                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
             }
         }
-
         private IEnumerator FlashBackGround()
         {
             yield return new WaitForSeconds(0.25f);
