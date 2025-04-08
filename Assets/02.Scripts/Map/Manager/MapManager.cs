@@ -46,7 +46,7 @@ namespace Jun.Map
         void Start()
         {
             mapGenerator.ButtonEvent();
-            mapGenerator.gameObject.SetActive(false);
+            
         }
         
         public void SetCurrentNode(MapNode node)

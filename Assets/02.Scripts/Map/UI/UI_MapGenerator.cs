@@ -18,15 +18,17 @@ namespace Jun.Map
         public float nodeSpacingY = 180f;
         public long seed = 123456;
         public bool ascensionZero;
-
-        void OnEnable()
-        {
-            MapManager.Instance.OnMapNodeChanged += () => gameObject.SetActive(false);
-        }
+        
 
         void OnDisable()
         {
             MapManager.Instance.OnMapNodeChanged -= () => gameObject.SetActive(false);
+        }
+
+        void Start()
+        {
+            MapManager.Instance.OnMapNodeChanged += () => gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         public void ButtonEvent()
