@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Jun.Map;
 using UnityEngine;
 
 namespace Jun.Spawner
@@ -9,11 +10,21 @@ namespace Jun.Spawner
         public GameObject[] monsterPrefabs; // 스폰할 몬스터 프리팹 배열
         readonly HashSet<Transform> occupiedPositions = new HashSet<Transform>(); // 이미 사용된 위치 추적
 
-        void Start()
+        void OnEnable()
         {
-            SpawnRandomMonster();
-            SpawnRandomMonster();
-            SpawnRandomMonster();
+            MapManager.Instance.OnMapNodeChanged += InitBattle;
+        }
+
+        void OnDisable()
+        {
+            MapManager.Instance.OnMapNodeChanged -= InitBattle;
+        }
+        public void InitBattle()
+        {
+            for (int i = 0; i < spawnPositions.Length; i++)
+            {
+                SpawnRandomMonster();
+            }
         }
         public void SpawnRandomMonster()
         {
@@ -46,9 +57,11 @@ namespace Jun.Spawner
 
             // 몬스터 생성
             GameObject spawnedMonster = Instantiate(monsterPrefab, spawnPoint.position, spawnPoint.rotation);
-
+            
             // 생성된 위치를 사용 중으로 표시
             occupiedPositions.Add(spawnPoint);
+
+            CombatManager.Instance.SpawnEnemy(spawnedMonster.GetComponent<EnemyCharacter>());
         }
     }
 }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 10605795183380961}
   - component: {fileID: 1337149085237245367}
   - component: {fileID: 47928850628619964}
+  - component: {fileID: -8418564884000176671}
+  - component: {fileID: -5067188059499960065}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: PlayableCharacter
@@ -104,23 +106,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 100
-  MaxCost: 10
+  MaxHealth: 0
+  MaxCost: 0
   CostRegen: 0
-  AttackPower: 5
-  CriticalChance: 0.3
-  CriticalDamage: 2
-  Resistance: 10
+  AttackPower: 0
+  CriticalChance: 0
+  CriticalDamage: 0
+  Resistance: 0
   HasBuff: 0
   IsDefending: 0
   Taunt: 0
-  CharacterName: c3
+  CharacterName: Warrior
   Skills:
-  - {fileID: 731159558023248803, guid: 4242f43ad0e2ea941bd6fe4562e5a406, type: 3}
+  - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
   - {fileID: 731159558023248803, guid: 9d6a213308343284a95091cc0c87270b, type: 3}
   - {fileID: 1052691500520007469, guid: 921c6c31c6c0e77458d8e0c3cd6c5f1b, type: 3}
   _targetType: 0
-  _basicSpeed: 4
+  _basicSpeed: 0
 --- !u!95 &10605795183380961
 Animator:
   serializedVersion: 7
@@ -192,3 +194,67 @@ CapsuleCollider2D:
   m_Offset: {x: 0.13222194, y: 0}
   m_Size: {x: 1.9088902, y: 3.3611112}
   m_Direction: 0
+--- !u!114 &-8418564884000176671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205681160861735156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 1252623122848120887}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 0
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!114 &-5067188059499960065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205681160861735156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

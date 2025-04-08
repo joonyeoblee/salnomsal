@@ -59,7 +59,7 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 1
   _targetType: 1
-  _basicSpeed: 2
+  _basicSpeed: 4
   _animator: {fileID: 97022630043293041}
   IsMyTurn: 0
 --- !u!114 &2888882090915731190

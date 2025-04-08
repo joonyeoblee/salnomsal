@@ -54,5 +54,8 @@ TagManager:
   - name: UI_Map
     uniqueID: 2800709729
     locked: 0
+  - name: UI_MiniGame
+    uniqueID: 1054654253
+    locked: 0
   m_RenderingLayers:
   - Default

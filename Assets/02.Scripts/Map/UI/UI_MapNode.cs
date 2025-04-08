@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,7 +13,7 @@ namespace Jun.Map
         public MapNode Source { get; private set; } // 연결된 실제 노드
         bool interactable;
         Color originalColor; // 원래 색상 저장용
-
+        
         public void Init(Vector2 position, string labelText, Color color, MapNode source)
         {
             GetComponent<RectTransform>().anchoredPosition = position;
@@ -39,18 +38,29 @@ namespace Jun.Map
             Debug.Log("나 클릭됌");
             if (!interactable) return;
 
-            MapManager.instance.SetCurrentNode(Source);
+            // 현재 노드 저장
+            MapManager.Instance.SetCurrentNode(Source);
             Debug.Log($"노드 선택: {Source.X}, {Source.Y}");
 
-            // TODO: 맵 선택 적 소환 컴뱃
+            // TODO: 맵 선택
+            MapManager.Instance.OnMapNodeChanged.Invoke();
+
+            // 몬스터 소환
+            // 캠버스끄기    
+
+            // 배경전환
+
+
+            
+            
         }
         public void OnPointerEnter(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+            
         }
         public void OnPointerExit(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

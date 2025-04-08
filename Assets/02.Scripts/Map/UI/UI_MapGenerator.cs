@@ -18,6 +18,17 @@ namespace Jun.Map
         public float nodeSpacingY = 180f;
         public long seed = 123456;
         public bool ascensionZero;
+
+        void OnEnable()
+        {
+            MapManager.Instance.OnMapNodeChanged += () => gameObject.SetActive(false);
+        }
+
+        void OnDisable()
+        {
+            MapManager.Instance.OnMapNodeChanged -= () => gameObject.SetActive(false);
+        }
+
         public void ButtonEvent()
         {
             // 기존 노드 및 선 제거
@@ -75,8 +86,8 @@ namespace Jun.Map
                 return;
             }
 
-            MapManager.instance.map = map;
-            MapManager.instance.SetCurrentNode(startNode);
+            MapManager.Instance.map = map;
+            MapManager.Instance.SetCurrentNode(startNode);
         }
 
 

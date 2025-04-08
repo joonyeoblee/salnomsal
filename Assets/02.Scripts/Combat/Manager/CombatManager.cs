@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Jun.Map;
 using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
@@ -32,6 +33,16 @@ public class CombatManager : MonoBehaviour
     {
         SpawnPlayer();
     }
+
+    void OnEnable()
+    {
+        MapManager.Instance.OnMapNodeChanged += InitializeCombat;
+    }
+
+    void OnDisable()
+    {
+        MapManager.Instance.OnMapNodeChanged -= InitializeCombat;
+    }
     public void SpawnPlayer()
     {
         List<GameObject> players = GameManager.Instance.Characters;
@@ -42,6 +53,11 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void SpawnEnemy(EnemyCharacter enemyCharacter)
+    {
+        Monsters.Add(enemyCharacter);
+    }
+
     public void InitializeCombat()
     {
         // 전투가 시작되면 호출될 함수
@@ -49,10 +65,7 @@ public class CombatManager : MonoBehaviour
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
 
-        Monsters = GameObject.FindGameObjectsWithTag("Enemy")
-            .Select(obj => obj.GetComponent<EnemyCharacter>())
-            .ToList(); // test
-
+     
         foreach (PlayableCharacter character in PlayableCharacter)
         {
             character.CurrentSpeed = character.BasicSpeed;
@@ -96,7 +109,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Cost)
+        if (CurrentActor.Skills[(int)slot].SkillCost > CurrentActor.Cost)
         {
             Debug.Log("마나가 부족합니다");
             SelectedSkill = SkillSlot.None;

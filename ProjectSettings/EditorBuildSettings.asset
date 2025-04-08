@@ -15,8 +15,14 @@ EditorBuildSettings:
     path: Assets/01.Scenes/StartMapScene.unity
     guid: 3fe73f8767cebdd4eb53a474eff1e1fd
   - enabled: 1
-    path: Assets/01.Scenes/JunMagic.unity
-    guid: 8101dfd0363f44446b91e516cd369afa
+    path: Assets/01.Scenes/MagicScene.unity
+    guid: b23ed5a53bb3bd947bcd01a3e7e33bf4
+  - enabled: 1
+    path: Assets/01.Scenes/AvoidScene.unity
+    guid: 520c5a5e46997e94aa152f75a80ee848
+  - enabled: 1
+    path: Assets/01.Scenes/ParryingScene.unity
+    guid: 1a7ea5c210f52414789859d99748bccf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

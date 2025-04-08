@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Jun.Map
 {
     public class MapManager : MonoBehaviour
     {
-        public static MapManager instance;
+        public static MapManager Instance;
 
         public long seed = 123456;
         public bool ascensionZero;
@@ -12,18 +15,40 @@ namespace Jun.Map
         public Map map; // 현재 맵
         public MapNode currentNode; // 현재 위치 노드
 
+        public UI_MapGenerator mapGenerator;
+        public Image BackGround;
+
+        public Sprite[] BackGroundSprites;
+
+        public Action OnMapNodeChanged;
+
+        void OnEnable()
+        {
+            OnMapNodeChanged += SetRandomBackground;
+        }
+
+        void OnDisable()
+        {
+            OnMapNodeChanged -= SetRandomBackground;
+        }
         void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
                 DontDestroyOnLoad(this);
-            } else if (instance != this)
+            } else if (Instance != this)
             {
                 Destroy(gameObject);
             }
         }
 
+        void Start()
+        {
+            mapGenerator.ButtonEvent();
+            mapGenerator.gameObject.SetActive(false);
+        }
+        
         public void SetCurrentNode(MapNode node)
         {
             currentNode = node;
@@ -40,6 +65,17 @@ namespace Jun.Map
                 uiNode.SetInteractable(isNext);
             }
         }
-        
+
+        public void SetRandomBackground()
+        {
+            if (BackGroundSprites == null || BackGroundSprites.Length == 0)
+            {
+                Debug.LogWarning("BackGroundSprites 배열이 비어있습니다.");
+                return;
+            }
+
+            int randomIndex = Random.Range(0, BackGroundSprites.Length);
+            BackGround.sprite = BackGroundSprites[randomIndex];
+        }
     }
 }
