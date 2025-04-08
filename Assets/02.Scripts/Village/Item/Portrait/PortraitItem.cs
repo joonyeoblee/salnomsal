@@ -13,12 +13,14 @@ namespace Portrait
         public string CharacterId;
         public PortraitSO Portrait;
         public CharacterStat CharacterStat;
+        public int ClearCount;
 
-        public PortraitItemData(string characterId, PortraitSO portrait, CharacterStat characterStat)
+        public PortraitItemData(string characterId, PortraitSO portrait, CharacterStat characterStat, int clearCount)
         {
             CharacterId = characterId;
             Portrait = portrait;
             CharacterStat = characterStat;
+            ClearCount = clearCount;
         }
     }
 
@@ -78,7 +80,7 @@ namespace Portrait
                 AddRandom();
                 _iconImage.sprite = portrait != null ? portrait.Icon : null;
                 CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower);
-                _saveData = new PortraitItemData(CharacterId, portrait, _characterStat);
+                _saveData = new PortraitItemData(CharacterId, portrait, _characterStat, ClearCount);
                 Save();
             }
         }
@@ -148,9 +150,9 @@ namespace Portrait
                 _saveData = JsonUtility.FromJson<PortraitItemData>(data);
                 portrait = _saveData.Portrait;
                 _iconImage.sprite = portrait.Icon;
-                MaxHealth = _saveData.CharacterStat.MaxHealth;
-                MaxMana = _saveData.CharacterStat.MaxMana;
-                AttackPower = _saveData.CharacterStat.AttackPower;
+                MaxHealth = _saveData.CharacterStat.MaxHealth + _saveData.ClearCount;
+                MaxMana = _saveData.CharacterStat.MaxMana + _saveData.ClearCount;
+                AttackPower = _saveData.CharacterStat.AttackPower + _saveData.ClearCount;
             }
         }
     }
