@@ -19,15 +19,17 @@ namespace Jun.Map
         public long seed = 123456;
         public bool ascensionZero;
 
-        void OnEnable()
+
+        void Start()
         {
             MapManager.Instance.OnMapNodeChanged += () => gameObject.SetActive(false);
         }
 
-        void OnDisable()
-        {
-            MapManager.Instance.OnMapNodeChanged -= () => gameObject.SetActive(false);
-        }
+
+        // void Start()
+        // {
+        //     gameObject.SetActive(false);
+        // }
 
         public void ButtonEvent()
         {

@@ -82,7 +82,7 @@ namespace SeongIl
 
             for (int i = 0; i < KeyCount; i++)
             {
-                int index = UnityEngine.Random.Range(0, keys.Length);
+                int index = Random.Range(0, keys.Length);
                 _keyQueue.Enqueue(keys[index]);
             }
             
@@ -114,8 +114,8 @@ namespace SeongIl
         {
             Debug.Log("성공");
             _isGameActive = false;
-            
-            MiniGameScenesManager.instance.Sucess?.Invoke();
+
+            MiniGameScenesManager.instance.Success?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 79dfbac93d1184946a543d1f6708f885
+guid: 39d91537e5c379f438d4c0154c199f10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8719188914951193743
-    second: goblinThrust_0
-  - first:
-      213: -4909248900282257787
-    second: goblinThrust_1
-  - first:
-      213: 8719460414665948342
-    second: goblinThrust_2
+      213: -5852682264246478009
+    second: Portrait_Wizard_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 135
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,84 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goblinThrust_0
+      name: Portrait_Wizard_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 446
-        width: 434
-        height: 442
-      alignment: 8
-      pivot: {x: 1, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 17b7fcac0e73ff680800000000000000
-      internalID: -8719188914951193743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goblinThrust_1
-      rect:
-        serializedVersion: 2
-        x: 483
-        y: 447
-        width: 514
-        height: 401
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 58ee2b0b228dedbb0800000000000000
-      internalID: -4909248900282257787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goblinThrust_2
-      rect:
-        serializedVersion: 2
-        x: 448
         y: 0
-        width: 533
-        height: 379
-      alignment: 9
-      pivot: {x: 0.25, y: 0}
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bc7e39ac0fb10970800000000000000
-      internalID: 8719460414665948342
+      spriteID: 74b1c505d7817cea0800000000000000
+      internalID: -5852682264246478009
       vertices: []
       indices: 
       edges: []
@@ -188,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 548d232585d5de648b309ed102a3513b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      goblinThrust_0: -8719188914951193743
-      goblinThrust_1: -4909248900282257787
-      goblinThrust_2: 8719460414665948342
+      Portrait_Wizard_0: -5852682264246478009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

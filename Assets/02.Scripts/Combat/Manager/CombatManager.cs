@@ -32,11 +32,8 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         SpawnPlayer();
-    }
-
-    void OnEnable()
-    {
         MapManager.Instance.OnMapNodeChanged += InitializeCombat;
+        Debug.Log("Battle Scene Start");
     }
 
     void OnDisable()
@@ -55,6 +52,7 @@ public class CombatManager : MonoBehaviour
 
     public void SpawnEnemy(EnemyCharacter enemyCharacter)
     {
+        Debug.Log("적 스폰");
         Monsters.Add(enemyCharacter);
     }
 
@@ -80,10 +78,6 @@ public class CombatManager : MonoBehaviour
 
         SetOrder();
         Debug.Log(TurnOrder.Count);
-        foreach (ITurnActor turnActor in TurnOrder)
-        {
-            Debug.Log(turnActor.CurrentSpeed);
-        }
         SelectedSkill = SkillSlot.None;
         StartTurn();
     }

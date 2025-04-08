@@ -7,6 +7,41 @@ namespace Jun.Monster
 {
     public class Boss : MonsterBase
     {
+        Damage _damage;
+        List<PlayableCharacter> targets;
+        void OnEnable()
+        {
+            MiniGameScenesManager.instance.Success += OnSuccess;
+            MiniGameScenesManager.instance.Fail += OnFail;
+            MiniGameScenesManager.instance.Parring += OnParrying;
+        }
+
+        void OnDisable()
+        {
+            MiniGameScenesManager.instance.Success -= OnSuccess;
+            MiniGameScenesManager.instance.Fail -= OnFail;
+            MiniGameScenesManager.instance.Parring -= OnParrying;
+        }
+
+        void OnSuccess()
+        {
+            EndTurn();
+        }
+
+        void OnFail()
+        {
+            foreach (PlayableCharacter target in targets)
+            {
+                target.TakeDamage(_damage);
+            }
+            EndTurn();
+        }
+
+        void OnParrying()
+        {
+            TakeDamage(_damage);
+            EndTurn();
+        }
         protected override void Start()
         {
             base.Start();
@@ -26,45 +61,53 @@ namespace Jun.Monster
         protected override void Attack()
         {
             base.Attack();
-            ExecuteAttack(DamageType.Melee, AttackPower, SkillRange.Single, "Attack");
+            _damage = new Damage(DamageType.Melee, AttackPower, gameObject);
+            ExecuteAttack(SkillRange.Single, "Attack");
         }
 
         protected override void Skill1()
         {
             base.Skill1();
-            float damageAmount = AttackPower * _skillComponent.skillDataList[0].SkillMultiplier;
-            ExecuteAttack(DamageType.Melee, damageAmount, _skillComponent.skillDataList[0].SkillRange, "Skill1");
+            SkillDataSO skill1 = _skillComponent.skillDataList[0];
+            float damageAmount = AttackPower * skill1.SkillMultiplier;
+            _damage = new Damage(skill1.DamageType, damageAmount, gameObject);
+            ExecuteAttack(skill1.SkillRange, "Skill1");
         }
 
         protected override void Skill2()
         {
             base.Skill2();
-            float damageAmount = _skillComponent.skillDataList[1].SkillMultiplier;
-            ExecuteAttack(DamageType.Magic, damageAmount, _skillComponent.skillDataList[1].SkillRange, "Skill2");
+            SkillDataSO skill2 = _skillComponent.skillDataList[1];
+            float damageAmount = AttackPower * skill2.SkillMultiplier;
+            _damage = new Damage(skill2.DamageType, damageAmount, gameObject);
+            ExecuteAttack(skill2.SkillRange, "Skill2");
         }
 
         protected override void Skill3()
         {
             base.Skill3();
-            float damageAmount = _skillComponent.skillDataList[2].SkillMultiplier;
-            ExecuteAttack(DamageType.Magic, damageAmount, _skillComponent.skillDataList[2].SkillRange, "Skill3");
+            SkillDataSO skill3 = _skillComponent.skillDataList[1];
+            float damageAmount = AttackPower * skill3.SkillMultiplier;
+            _damage = new Damage(skill3.DamageType, damageAmount, gameObject);
+            ExecuteAttack(skill3.SkillRange, "Skill3");
         }
         protected override void Skill4()
         {
-            base.Skill3();
-            float damageAmount = _skillComponent.skillDataList[2].SkillMultiplier;
-            ExecuteAttack(DamageType.Magic, damageAmount, _skillComponent.skillDataList[2].SkillRange, "Skill3");
+            base.Skill4();
+            SkillDataSO skill4 = _skillComponent.skillDataList[1];
+            float damageAmount = AttackPower * skill4.SkillMultiplier;
+            _damage = new Damage(skill4.DamageType, damageAmount, gameObject);
+            ExecuteAttack(skill4.SkillRange, "Skill4");
         }
 
-        void ExecuteAttack(DamageType type, float amount, SkillRange range, string animName)
+        void ExecuteAttack(SkillRange range, string animName)
         {
-            List<PlayableCharacter> targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
+            targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
             List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
 
             foreach (PlayableCharacter target in targets)
             {
-                Damage damage = new Damage(type, amount, gameObject);
-                if (target.WouldDieFromAttack(damage))
+                if (target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
                 }
@@ -72,11 +115,11 @@ namespace Jun.Monster
 
             bool anyWillDie = dyingTargets.Count > 0;
 
-            StartCoroutine(PlayAnimationAndProcessTargets(animName, targets, type, amount, anyWillDie));
+            StartCoroutine(PlayAnimationAndProcessTargets(animName, targets, anyWillDie));
         }
 
 
-        IEnumerator PlayAnimationAndProcessTargets(string animName, List<PlayableCharacter> targets, DamageType type, float amount, bool anyWillDie)
+        IEnumerator PlayAnimationAndProcessTargets(string animName, List<PlayableCharacter> targets, bool anyWillDie)
         {
             yield return null;
 
@@ -100,18 +143,19 @@ namespace Jun.Monster
                 Time.timeScale = 1f;
 
                 // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
-                MiniGameScenesManager.instance.player = targets.Find(t => t.WouldDieFromAttack(new Damage(type, amount, gameObject))).gameObject;
-                MiniGameScenesManager.instance.ChangeSceneToMiniGameMagic();
+                MiniGameScenesManager.instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
+                MiniGameScenesManager.instance.StartMiniGame(_damage.Type);
+                
             } else
             {
                 Debug.Log("아무도 죽지 않음");
                 foreach (PlayableCharacter target in targets)
                 {
-                    Damage damage = new Damage(type, amount, gameObject);
-                    target.TakeDamage(damage);
+                    target.TakeDamage(_damage);
                 }
                 EndTurn();
             }
+        
         }
     }
 }

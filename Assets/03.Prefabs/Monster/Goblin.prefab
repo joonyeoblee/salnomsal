@@ -17,7 +17,7 @@ GameObject:
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -59,7 +59,7 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 1
   _targetType: 1
-  _basicSpeed: 4
+  _basicSpeed: 1
   _animator: {fileID: 97022630043293041}
   IsMyTurn: 0
 --- !u!114 &2888882090915731190
@@ -124,7 +124,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.13380265, y: 1.5967106}
-  m_Size: {x: 2.2661939, y: 3.194362}
+  m_Size: {x: 2.43, y: 3.74}
   m_Direction: 0
 --- !u!114 &2053927417445096867
 MonoBehaviour:
@@ -141,18 +141,7 @@ MonoBehaviour:
   complexMaskingMode: 0
   drawingMode: 1
   outlineLayer: 0
-  outlineTargets:
-  - CutoutMask: 8
-    renderer: {fileID: 0}
-    SubmeshIndex: 0
-    BoundsMode: 0
-    Bounds:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-    CutoutThreshold: 0.5
-    CullMode: 0
-    cutoutTextureName: 
-    cutoutTextureIndex: 0
+  outlineTargets: []
   renderStyle: 1
   outlineParameters:
     enabled: 1
@@ -206,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 8583637697979894963}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -256,12 +245,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 2572365745140355499, guid: 7af76392d0ce1e64fad1706a880126db, type: 3}
+  m_Sprite: {fileID: -257535748, guid: 7af76392d0ce1e64fad1706a880126db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 4.7}
+  m_Size: {x: 0.94814813, y: 0.94814813}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

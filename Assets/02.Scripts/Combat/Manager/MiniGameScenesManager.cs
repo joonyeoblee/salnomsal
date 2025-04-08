@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 namespace Jun
 {
@@ -10,10 +11,27 @@ namespace Jun
         public Camera BattleSceneCamera;
         public GameObject player;
 
-        public Action Sucess;
+        public Action Success;
         public Action Fail;
-        public Action ParryingSuccess;
-        
+        public Action Parring;
+
+        void OnEnable()
+        {
+            Success += ChangeCamera;
+            Fail += ChangeCamera;
+            Parring += ChangeCamera;
+        }
+
+        void OnDisable()
+        {
+            Success -= ChangeCamera;
+            Fail -= ChangeCamera;
+            Parring -= ChangeCamera;
+        }
+        void ChangeCamera()
+        {
+            BattleSceneCamera.cullingMask = ~(1 << LayerMask.NameToLayer("MiniGameUI"));
+        }
         void Awake()
         {
             // Singleton 패턴
@@ -31,23 +49,29 @@ namespace Jun
             SceneManager.LoadScene(index);
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                ChangeSceneToMiniGameMagic();
-            }
-        }
+ 
         public void StartMiniGame(DamageType damageType)
         {
+            switch (damageType)
+            {
+            case DamageType.Magic:
+                ChangeSceneToMiniGame(3);
+                break;
+            case DamageType.Ranged:
+                ChangeSceneToMiniGame(4);
+                break;
+            case DamageType.Melee:
+                ChangeSceneToMiniGame(5);
+                break;
 
+            }
         }
-        public void ChangeSceneToMiniGameMagic()
+        public void ChangeSceneToMiniGame(int index)
         {
             Debug.Log("미니게임 매직 시작됌");
             BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // LayerA만 보임
-            SceneManager.LoadScene(5, LoadSceneMode.Additive);
+            SceneManager.LoadScene(index, LoadSceneMode.Additive);
             
         }
     }

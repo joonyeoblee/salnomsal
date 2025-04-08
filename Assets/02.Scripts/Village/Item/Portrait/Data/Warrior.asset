@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
-  m_Name: PortraitSO 1
+  m_Name: Warrior
   m_EditorClassIdentifier: 
   DamageType: 0
   MaxHealth: 5
   MaxMana: 5
   AttackPower: 5
-  CriticalChance: 1.2
+  CriticalChance: 5
   CriticalDamage: 5
   Resistance: 5
-  Character: {fileID: 6392775077024926136, guid: 0c98af4563d5340448d7251f770ac400, type: 3}
-  Icon: {fileID: 21300000, guid: 908ed134be21f9743888536fd8034915, type: 3}
+  Character: {fileID: 1205681160861735156, guid: 5c7cb657f59baeb4cb3175bbb73e66e3, type: 3}
+  Icon: {fileID: -4193875274272780541, guid: 1d263c384d68c22438c3eb9803dd1b0f, type: 3}
