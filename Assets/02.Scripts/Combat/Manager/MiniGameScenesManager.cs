@@ -14,7 +14,6 @@ namespace Jun
         public Action Success;
         public Action Fail;
         public Action Parring;
-        public Action ParryingSuccess;
         
         void Awake()
         {

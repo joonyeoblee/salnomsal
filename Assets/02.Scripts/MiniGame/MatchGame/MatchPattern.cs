@@ -81,7 +81,7 @@ namespace SeongIl
 
             for (int i = 0; i < KeyCount; i++)
             {
-                int index = UnityEngine.Random.Range(0, keys.Length);
+                int index = Random.Range(0, keys.Length);
                 _keyQueue.Enqueue(keys[index]);
             }
             
@@ -111,8 +111,8 @@ namespace SeongIl
         {
             Debug.Log("성공");
             _isGameActive = false;
-            
-            MiniGameScenesManager.instance.Sucess?.Invoke();
+
+            MiniGameScenesManager.instance.Success?.Invoke();
         }
 
         public void GameStart()

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Threading;
 using Jun;
 using UnityEngine;
 
@@ -123,8 +122,8 @@ namespace SeongIl
         {
             Debug.Log("Success");
             _isGameOver = true;
-            
-            MiniGameScenesManager.instance.Sucess?.Invoke();
+
+            MiniGameScenesManager.instance.Success?.Invoke();
         }
         // 패링 성공
         public void ParryingSuccess()
@@ -132,7 +131,7 @@ namespace SeongIl
             ParrySound.PlayOneShot(ParrySound.clip);
             Debug.Log("ParryingSuccess");
             _isGameOver = true;
-            MiniGameScenesManager.instance.ParryingSuccess?.Invoke();
+            MiniGameScenesManager.instance.Parring?.Invoke();
         }
     }
 }
