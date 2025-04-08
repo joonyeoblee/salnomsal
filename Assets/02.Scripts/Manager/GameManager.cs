@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
                 GameObject character = slot.currentCharacterPortrait.GetComponent<PortraitItem>().portrait.Character;
                 PlayableCharacter a = character.GetComponent<PlayableCharacter>();
 
-                // a.ApplyStat(_portraitItem.MaxHealth,_portraitItem.MaxMana,_portraitItem.AttackPower);
+                a.ApplyStat(_portraitItem.MaxHealth, _portraitItem.MaxMana, _portraitItem.AttackPower, _portraitItem.Speed);
 
                 Characters.Add(character);
                 Debug.Log($"출정 캐릭터 추가됨: {slot.currentCharacterPortrait.name}");

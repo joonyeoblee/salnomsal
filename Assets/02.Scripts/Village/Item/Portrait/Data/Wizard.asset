@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  DamageType: 0
-  MaxHealth: 5
-  MaxMana: 5
-  AttackPower: 5
-  CriticalChance: 5
-  CriticalDamage: 5
-  Resistance: 5
+  MaxHealth: 100
+  MaxMana: 10
+  AttackPower: 15
+  Speed: 3
   Character: {fileID: 1328670811569993804, guid: 88727a88be91aea4bbc7b4ca3b59de4e, type: 3}
   Icon: {fileID: -5852682264246478009, guid: 39d91537e5c379f438d4c0154c199f10, type: 3}

@@ -59,10 +59,6 @@ namespace Portrait
             _iconImage = GetComponent<Image>();
         }
 
-        // void Start()
-        // {
-        //     Init("1");
-        // }
         public void Init(string characterId)
         {
             CharacterId = characterId;

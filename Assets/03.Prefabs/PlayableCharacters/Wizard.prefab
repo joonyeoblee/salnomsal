@@ -49,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce7e9106286fbb48b0c3a29954bb1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageType: 0
-  MaxHealth: 0
-  MaxCost: 0
+  DamageType: 2
+  MaxHealth: 8
+  MaxCost: 8
   CostRegen: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  AttackPower: 9
+  CriticalChance: 1.2
+  CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   - {fileID: 3253124159677751141, guid: ec62e956d5d5bdc4cb2a0bca6380131e, type: 3}
   - {fileID: 6121310222754271668, guid: 278492f74e2bc444d9c03ba1f77c9adc, type: 3}
   _targetType: 0
-  _basicSpeed: 3
+  _basicSpeed: 0
 --- !u!114 &3678347721519980572
 MonoBehaviour:
   m_ObjectHideFlags: 0

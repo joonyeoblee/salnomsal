@@ -173,12 +173,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 0
-  MaxCost: 0
+  MaxHealth: 7
+  MaxCost: 6
   CostRegen: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  AttackPower: 9
+  CriticalChance: 1.2
+  CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 4649674558581916710, guid: 671af462eac9b38428283371cd39c504, type: 3}
   - {fileID: 7221374992292175630, guid: ae96a37a7e9458f4fa8180dc2ebc7fb2, type: 3}
   _targetType: 0
-  _basicSpeed: 3
+  _basicSpeed: 0
 --- !u!114 &5442923140440288708
 MonoBehaviour:
   m_ObjectHideFlags: 0
