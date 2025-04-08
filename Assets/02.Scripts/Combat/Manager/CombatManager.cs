@@ -31,6 +31,15 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void ResetManager()
+    {
+        Monsters.Clear();
+        TurnOrder.Clear();
+        CurrentActor = null;
+        SelectedSkill = SkillSlot.None;
+        _target.Clear();
+    }
+
     void Start()
     {
         SpawnPlayer();
@@ -64,6 +73,7 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
+        OpenMapButton.SetActive(false);
         TurnOrder.Clear();
      
         foreach (PlayableCharacter character in PlayableCharacter)
@@ -218,6 +228,7 @@ public class CombatManager : MonoBehaviour
         }
 
         RemoveDeadCharacter();
+        ResetManager();
         OpenMapButton.SetActive(true);
     }
 
@@ -232,6 +243,7 @@ public class CombatManager : MonoBehaviour
         }
 
         RemoveDeadCharacter();
+        ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
