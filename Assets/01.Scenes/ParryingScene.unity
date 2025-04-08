@@ -407,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &545776871
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1290,6 +1290,7 @@ MonoBehaviour:
   _distance: 11
   GameStart: 0
   IsParried: 0
+  AlreadyFail: 0
   SlashEffect: {fileID: 7543717012507016070, guid: 0dde9566a1f0cfa4bbc8911972127d38, type: 3}
   ParryAnimation:
   - {fileID: 1387929219}
@@ -1422,6 +1423,7 @@ MonoBehaviour:
   Jump: {fileID: 2010303110}
   Enemy: {fileID: 2062636764}
   Parry: {fileID: 1829688941}
+  camera: {fileID: 0}
   ParryZone: {fileID: 1829688944}
   EnemySprite: {fileID: 0}
 --- !u!114 &1829688947
