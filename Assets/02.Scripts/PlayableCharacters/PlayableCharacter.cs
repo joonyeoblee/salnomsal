@@ -48,6 +48,14 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _currentSpeed = BasicSpeed;
     }
 
+    public void ApplyStat(float health, float cost, float attack, int speed)
+    {
+        MaxHealth = health;
+        MaxCost = cost;
+        AttackPower = attack;
+        BasicSpeed = speed;
+    }
+
     public void ResetAfterBattle()
     {
         int loopSafeCount = 20; // 매직넘버
