@@ -68,6 +68,11 @@ public class CombatManager : MonoBehaviour
      
         foreach (PlayableCharacter character in PlayableCharacter)
         {
+            if (character.IsAlive == false)
+            {
+                Debug.Log("전투 불가능 캐릭터");
+                continue;
+            }
             character.CurrentSpeed = character.BasicSpeed;
             TurnOrder.Add(character);
         }

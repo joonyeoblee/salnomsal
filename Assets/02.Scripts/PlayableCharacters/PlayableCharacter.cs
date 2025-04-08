@@ -48,21 +48,19 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _currentSpeed = BasicSpeed;
     }
 
-    public override void Register()
-	{
-
-	}
-
     public void ResetAfterBattle()
     {
+        int loopSafeCount = 20; // 매직넘버
+
         gameObject.transform.DOScale(1f, 0.5f);
         _cost = MaxCost;
         _currentSpeed = BasicSpeed;
 
-        while (OnTurnEnd != null)
+        while (OnTurnEnd != null && loopSafeCount > 0)
         {
             OnTurnStart?.Invoke();
             OnTurnEnd?.Invoke();
+            --loopSafeCount;
         }
     }
 
