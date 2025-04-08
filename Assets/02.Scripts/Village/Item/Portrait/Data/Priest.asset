@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
-  m_Name: PortraitSO 2
+  m_Name: Priest
   m_EditorClassIdentifier: 
   DamageType: 0
   MaxHealth: 5
   MaxMana: 5
   AttackPower: 5
-  CriticalChance: 5
+  CriticalChance: 1.2
   CriticalDamage: 5
   Resistance: 5
-  Character: {fileID: 425806411070870425, guid: 7972a3f24c732d941b291697d1c58a2b, type: 3}
-  Icon: {fileID: 21300000, guid: e305d4ff6fcb66148a89b78f93cc03fa, type: 3}
+  Character: {fileID: 6392775077024926136, guid: 0c98af4563d5340448d7251f770ac400, type: 3}
+  Icon: {fileID: -5684705202673809364, guid: 23f9f9fa2f86fcf4ca5e0e8fc512f569, type: 3}
