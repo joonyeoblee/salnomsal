@@ -2166,7 +2166,7 @@ MonoBehaviour:
   PlayableCharacter: []
   CurrentActor: {fileID: 0}
   SelectedSkill: 0
-  SpeedIncrementPerTurn: 0
+  SpeedIncrementPerTurn: 1
   SpawnPoint:
   - {fileID: 442782984}
   - {fileID: 784264067}

@@ -167,10 +167,17 @@ public class CombatManager : MonoBehaviour
     public void EndTurn(ITurnActor unit)
     {
         unit.CurrentSpeed = unit.BasicSpeed;
-        foreach (ITurnActor turnActor in TurnOrder)
+
+        for (int i = 0; i < TurnOrder.Count; ++i)
         {
-            turnActor.CurrentSpeed += SpeedIncrementPerTurn;
+            TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
+            if (TurnOrder[i].IsAlive == false)
+            {
+                TurnOrder.RemoveAt(i);
+                --i;
+            }
         }
+
         TurnOrder.Add(unit);
         SetOrder();
         SetNewTurn();
