@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 193980136}
   - component: {fileID: 193980138}
   - component: {fileID: 193980137}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 209237519}
   - component: {fileID: 209237518}
   - component: {fileID: 209237517}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 328742923}
   - component: {fileID: 328742925}
   - component: {fileID: 328742924}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 1202996961}
   - component: {fileID: 1202996963}
   - component: {fileID: 1202996962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagicEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 1396452282}
   - component: {fileID: 1396452284}
   - component: {fileID: 1396452283}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 1524202322}
   - component: {fileID: 1524202323}
   - component: {fileID: 1524202324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MatchPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 1627748805}
   - component: {fileID: 1627748804}
   - component: {fileID: 1627748803}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 1888079055}
   - component: {fileID: 1888079057}
   - component: {fileID: 1888079056}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: MagicCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 1932697041}
   - component: {fileID: 1932697040}
   - component: {fileID: 1932697039}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1449,7 @@ GameObject:
   - component: {fileID: 1992361284}
   - component: {fileID: 1992361286}
   - component: {fileID: 1992361285}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1585,7 +1585,7 @@ GameObject:
   - component: {fileID: 2085485460}
   - component: {fileID: 2085485462}
   - component: {fileID: 2085485461}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 2088918764}
   - component: {fileID: 2088918766}
   - component: {fileID: 2088918765}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1796,7 +1796,7 @@ GameObject:
   - component: {fileID: 2129928994}
   - component: {fileID: 2129928996}
   - component: {fileID: 2129928995}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
