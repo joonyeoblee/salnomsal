@@ -216,6 +216,8 @@ public class CombatManager : MonoBehaviour
         {
             character.ResetAfterBattle();
         }
+
+        RemoveDeadCharacter();
         OpenMapButton.SetActive(true);
     }
 
@@ -228,7 +230,23 @@ public class CombatManager : MonoBehaviour
                 return;
             }
         }
+
+        RemoveDeadCharacter();
+        OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+    }
+
+    public void RemoveDeadCharacter()
+    {
+        for (int i = 0; i < PlayableCharacter.Count; i++)
+        {
+            if (PlayableCharacter[i].IsAlive == false)
+            {
+                Destroy(PlayableCharacter[i].gameObject);
+                PlayableCharacter.RemoveAt(i);
+                --i;
+            }
+        }
     }
 }
