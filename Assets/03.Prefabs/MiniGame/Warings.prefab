@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2189915597392555061}
   - component: {fileID: 8107860056166521902}
   - component: {fileID: 6544631094982899251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Warings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
