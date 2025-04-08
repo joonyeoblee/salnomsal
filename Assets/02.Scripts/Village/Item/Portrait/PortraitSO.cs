@@ -9,6 +9,7 @@ public class PortraitSO : ScriptableObject
     public float CriticalChance;
     public float CriticalDamage;
     public int Resistance;
+    public int Speed;
     public GameObject Character;
     public Sprite Icon;
    

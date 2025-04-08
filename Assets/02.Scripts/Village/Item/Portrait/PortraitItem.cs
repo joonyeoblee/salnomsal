@@ -44,7 +44,8 @@ namespace Portrait
         public float MaxHealth;
         public float MaxMana;
         public float AttackPower;
-
+        public int Speed;
+        
         PortraitItemData _saveData;
 
         Image _iconImage;
@@ -79,7 +80,7 @@ namespace Portrait
             {
                 AddRandom();
                 _iconImage.sprite = portrait != null ? portrait.Icon : null;
-                CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower);
+                CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
                 _saveData = new PortraitItemData(CharacterId, portrait, _characterStat, ClearCount);
                 Save();
             }
@@ -89,6 +90,7 @@ namespace Portrait
             MaxHealth = portrait.MaxHealth + Random.Range(1, 5); // 1~4
             MaxMana = portrait.MaxMana + Random.Range(1, 5); // 1~4
             AttackPower = portrait.AttackPower + Random.Range(1, 5); // 1~4
+            Speed = portrait.Speed + Random.Range(1, 3); // 1~2
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -162,6 +164,7 @@ namespace Portrait
                 MaxHealth = _saveData.CharacterStat.MaxHealth + _saveData.ClearCount;
                 MaxMana = _saveData.CharacterStat.MaxMana + _saveData.ClearCount;
                 AttackPower = _saveData.CharacterStat.AttackPower + _saveData.ClearCount;
+                Speed = _saveData.CharacterStat.Speed + _saveData.ClearCount; 
             }
         }
     }
