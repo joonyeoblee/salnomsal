@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d7607b45173314ea33192b8a78ace4, type: 3}
-  m_Name: Buff
+  m_Name: Buff_Global_Ally
   m_EditorClassIdentifier: 
   SkillName: Buff
   SkillDescription: "\uC544\uAD70\uC758 \uACF5\uACA9\uB825\uC744 2\uD134\uAC04 30%

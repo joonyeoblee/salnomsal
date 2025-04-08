@@ -96,7 +96,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
-        if (CurrentActor.Skills[(int)slot].SkillData.SkillCost > CurrentActor.Cost)
+        if (CurrentActor.Skills[(int)slot].SkillCost > CurrentActor.Cost)
         {
             Debug.Log("마나가 부족합니다");
             SelectedSkill = SkillSlot.None;
