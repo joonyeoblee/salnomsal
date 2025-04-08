@@ -18,20 +18,18 @@ namespace Jun.Map
         public float nodeSpacingY = 180f;
         public long seed = 123456;
         public bool ascensionZero;
-        
 
-        void OnDisable()
-        {
-            Debug.Log("MapGenerator Disable");
-            MapManager.Instance.OnMapNodeChanged -= () => gameObject.SetActive(false);
-        }
 
         void Start()
         {
-            Debug.Log("MapGenerator Start");
             MapManager.Instance.OnMapNodeChanged += () => gameObject.SetActive(false);
-            gameObject.SetActive(false);
         }
+
+
+        // void Start()
+        // {
+        //     gameObject.SetActive(false);
+        // }
 
         public void ButtonEvent()
         {

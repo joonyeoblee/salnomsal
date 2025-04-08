@@ -14,7 +14,24 @@ namespace Jun
         public Action Success;
         public Action Fail;
         public Action Parring;
-        
+
+        void OnEnable()
+        {
+            Success += ChangeCamera;
+            Fail += ChangeCamera;
+            Parring += ChangeCamera;
+        }
+
+        void OnDisable()
+        {
+            Success -= ChangeCamera;
+            Fail -= ChangeCamera;
+            Parring -= ChangeCamera;
+        }
+        void ChangeCamera()
+        {
+            BattleSceneCamera.cullingMask = ~(1 << LayerMask.NameToLayer("MiniGameUI"));
+        }
         void Awake()
         {
             // Singleton 패턴
@@ -32,13 +49,7 @@ namespace Jun
             SceneManager.LoadScene(index);
         }
 
-        // void Update()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.Alpha0))
-        //     {
-        //         ChangeSceneToMiniGameMagic();
-        //     }
-        // }
+ 
         public void StartMiniGame(DamageType damageType)
         {
             switch (damageType)
