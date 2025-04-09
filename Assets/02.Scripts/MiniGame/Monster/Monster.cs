@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Jun.Monster
@@ -9,7 +10,8 @@ namespace Jun.Monster
     {
         Damage _damage;
         List<PlayableCharacter> targets;
-
+        Transform OriginTransform;
+        public float moveDuration = 0.5f;
         public override void EndTurn()
         {
             base.EndTurn();
@@ -46,6 +48,8 @@ namespace Jun.Monster
             _health = MaxHealth;
             _mana = MaxMana;
 
+            OriginTransform = gameObject.transform;
+            
             List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
             {
                 target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0,
@@ -82,6 +86,8 @@ namespace Jun.Monster
 
         void ExecuteAttack(SkillRange range, string animName)
         {
+            transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
+            
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
             List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
 
@@ -90,17 +96,42 @@ namespace Jun.Monster
                 if (target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
-                    Debug.Log(target.gameObject.name + " is attacking " + target.gameObject.name + ".");
                 }
             }
 
             bool anyWillDie = dyingTargets.Count > 0;
 
-            StartCoroutine(PlayAnimationAndProcessTargets(animName, targets, anyWillDie));
+            StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
         }
 
+        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+        {
+            yield return StartCoroutine(WaitForAnimation(animName));
 
-        IEnumerator PlayAnimationAndProcessTargets(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+            if (anyWillDie)
+            {
+                Time.timeScale = 0.2f;
+                yield return StartCoroutine(MiniGameScenesManager.instance.Transition.MiniGameTransition());
+                yield return new WaitForSecondsRealtime(1f);
+                Time.timeScale = 1f;
+                yield return new WaitForSeconds(0.3f);
+
+                MiniGameScenesManager.instance.StartMiniGame(_damage.Type);
+                MiniGameScenesManager.instance.Success += OnSuccess;
+                MiniGameScenesManager.instance.Fail += OnFail;
+                MiniGameScenesManager.instance.Parring += OnParrying;
+            } else
+            {
+                foreach (PlayableCharacter target in targets)
+                {
+                    target.TakeDamage(_damage);
+                }
+                transform.DOMove(OriginTransform.position, moveDuration).SetEase(Ease.OutQuad);
+
+                EndTurn();
+            }
+        }
+        IEnumerator WaitForAnimation(string animName)
         {
             yield return null;
 
@@ -115,33 +146,6 @@ namespace Jun.Monster
             {
                 yield return null;
                 info = _animator.GetCurrentAnimatorStateInfo(0);
-            }
-
-            if (anyWillDie)
-            {
-                
-                Time.timeScale = 0.2f;
-                StartCoroutine(MiniGameScenesManager.instance.Transition.MiniGameTransition());
-                yield return new WaitForSecondsRealtime(0.2f);
-                Time.timeScale = 1f;
-                yield return new WaitForSeconds(0.2f);
-                // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
-                // MiniGameScenesManager.instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
-                MiniGameScenesManager.instance.StartMiniGame(_damage.Type);
-                MiniGameScenesManager.instance.Success += OnSuccess;
-                MiniGameScenesManager.instance.Fail += OnFail;
-                MiniGameScenesManager.instance.Parring += OnParrying;
-
-                // EndTurn();
-                
-            } else
-            {
-                Debug.Log("아무도 죽지 않음");
-                foreach (PlayableCharacter target in targets)
-                {
-                    target.TakeDamage(_damage);
-                }
-                EndTurn();
             }
         }
     }

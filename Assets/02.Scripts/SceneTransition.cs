@@ -10,11 +10,15 @@ namespace SeongIl
     public class SceneTransition : MonoBehaviour
     {
         public Action IsTransition;
+        public Action MapTransition;
         public Image Fade;
         public Image Loading;
+        public Image Hit;
         private void Start()
         {
             IsTransition += BasicTranstition;
+            MapTransition += NodeTranstition;
+
         }
 
         public void BasicTranstition()
@@ -25,19 +29,36 @@ namespace SeongIl
             sequence.Join(Loading.rectTransform.DOPivot(new Vector2(331f, 182f), 1f));
             sequence.AppendInterval(0.5f);
             sequence.Append(Fade.DOColor(new Color(0f, 0f, 0f, 0f), 1f).SetEase(Ease.InCubic));
-            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.3f).SetEase(Ease.InCubic));
+            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.7f).SetEase(Ease.InCubic));
             
             Debug.Log("씬 전환");
         }
 
+        public void NodeTranstition()
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append( Fade.DOColor(new Color(0f, 0f, 0f, 1f), 0).SetEase(Ease.OutCubic));
+            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(1f, 0.3f).SetEase(Ease.OutCubic));
+            sequence.Join(Loading.rectTransform.DOPivot(new Vector2(331f, 182f), 0.3f));
+            // sequence.AppendInterval(f);
+            sequence.Append(Fade.DOColor(new Color(0f, 0f, 0f, 0f), 0.7f).SetEase(Ease.InCubic));
+            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.2f).SetEase(Ease.InCubic));
+            
+            Debug.Log("씬 전환");
+        }
         public IEnumerator MiniGameTransition()
         {
-            Fade.DOColor(new Color(0f, 0f, 0f, 1f), 0.5f);
-            yield return new WaitForSeconds(2f);
-            Fade.DOColor(new  Color(0.3f, 0.3f, 0.3f, 0.75f), 2f);
+            Fade.DOColor(new Color(1,0,0, 0.15f), 0f);
+            Hit.DOFade(0.8f, 0.15f);
             
+            yield return new WaitForSeconds(1f);
+            
+            Hit.DOFade(0f, 0.5f);
+            
+            Fade.DOColor(new Color(1,0,0, 0f), 0.5f);
+
         }
-        
+
         
     }
 }
