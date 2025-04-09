@@ -1,8 +1,7 @@
 
-using System;
-using System.Collections;
+
 using DG.Tweening;
-using Unity.Mathematics;
+using Jun.MiniGame;
 using UnityEngine;
 using UnityEngine.UI;
 namespace SeongIl
@@ -13,19 +12,27 @@ namespace SeongIl
     {
         // 에너미 스프라이트 렌더러 받아오기
         public Sprite EnemyRenderer;
-        
+        public Image Transition;
         public Camera Camera;
         public Image Book;
         public GameObject Enemy;
         public Image MainMagicCircle;
         public Image SubMagicCircle;
         public float ScaleValue;
-
+        public Canvas UICanvas;
         private void Start()
         {
+
+            Camera = Camera.main;
             //때긴놈 spriterenderer 입히기
            // EnemyRenderer = new SpriteRenderer()
+           
            Enemy.GetComponent<SpriteRenderer>().sprite = EnemyRenderer;
+           Transition.DOColor(new Color(0, 0, 0, 0), 2f).OnComplete(() =>
+           {
+               GamePlay();
+           });
+           
         }
 
 
@@ -56,9 +63,12 @@ namespace SeongIl
             SubMagicCircle.rectTransform.Rotate(0,0, 10f * Time.deltaTime);
         }
 
-        public void Play()
+        public void GamePlay()
         { 
             StartSequence();
+            
+            MatchPattern magic = GetComponent<MatchPattern>();
+            StartCoroutine(magic.GameStart());
         }
     }
 }

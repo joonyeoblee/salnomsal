@@ -7,6 +7,7 @@ public class SlashChecker : MonoBehaviour
 {
     public Action OnMissed;
     private bool _isParried = false;
+    public float StartTime;
     public void ParriedCheck()
     {
         _isParried = true;
