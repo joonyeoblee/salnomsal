@@ -226,7 +226,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public override void Death(DamageType type)
 	{
         _isAlive = false;
-        
+        _animator.SetTrigger("Die");
         Debug.Log("Death");
 	}
 
@@ -240,6 +240,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		else
 		{
 			Debug.Log($"{gameObject.name} Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
+			_animator.SetTrigger("Hit");
 		}
 	}
 	public bool WouldDieFromAttack(Damage damage)
