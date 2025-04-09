@@ -99,7 +99,7 @@ namespace Jun.Monster
 
         void ExecuteAttack(SkillRange range, string animName)
         {
-            transform.DOMove(CombatManager.Instance.EneSmyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
+            transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
             
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
             List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();

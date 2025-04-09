@@ -16,16 +16,12 @@ namespace SeongIl
         // 패링 타이밍 시간
         [SerializeField]
         private float _parrySpeed = 0;
-        
         [SerializeField]
         private float _parryInstatiateTime = 0;
-        
         [SerializeField]
         private int _count = 3;
-
         [SerializeField]
         private int _distance = 11;
-        
         // 미니게임 시작 여부
         [SerializeField]
         public bool GameStart = false;
@@ -44,6 +40,7 @@ namespace SeongIl
         
         // 판정 갯수세기 성공 여부 확인 위함
         private int _parriedCount = 0;
+        
         private void Start()
         {
             _successPosition = transform.position;
@@ -175,7 +172,7 @@ namespace SeongIl
                 Flash.DOColor(new Color(1, 1, 1, 0f), 0.2f);
             });
         }
-
+  
         private IEnumerator Parrying()
         {
             IsParried = true;
