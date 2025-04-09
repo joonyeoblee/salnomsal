@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Jun.Map;
 using UnityEngine;
 
@@ -8,8 +7,9 @@ namespace Jun.Spawner
     {
         public Transform[] spawnPositions; // 몬스터가 스폰될 위치 배열
         public GameObject[] monsterPrefabs; // 스폰할 몬스터 프리팹 배열
-        HashSet<Transform> occupiedPositions; // 이미 사용된 위치 추적
 
+        public GameObject EliteMonster;
+        public GameObject BossMonster;
         void OnEnable()
         {
             MapManager.Instance.OnMapNodeChanged += InitBattle;
@@ -21,50 +21,41 @@ namespace Jun.Spawner
         }
         public void InitBattle()
         {
-            occupiedPositions = new HashSet<Transform>();
-            for (int i = 0; i < spawnPositions.Length; i++)
+            // 보스/엘리트 방이면 중앙에만 보스몹 스폰
+            if (MapManager.Instance.currentNode.Type == NodeType.Boss)
             {
-                SpawnRandomMonster();
+                // 보스 몬스터만 스폰
+                SpawnRandomMonster(spawnPositions[1], BossMonster);
+
+            } else if (MapManager.Instance.currentNode.Type == NodeType.Elite)
+            {
+                SpawnRandomMonster(spawnPositions[1], EliteMonster);
+            } else
+            {
+                for (int i = 0; i < spawnPositions.Length; i++)
+                {
+                    GameObject monsterPrefab = monsterPrefabs[Random.Range(0, monsterPrefabs.Length)];
+
+                    // 일반 전투방인 경우 전체 포지션에 스폰
+                    SpawnRandomMonster(spawnPositions[i], monsterPrefab);
+                }
             }
+
         }
-        public void SpawnRandomMonster()
+        public void SpawnRandomMonster(Transform spawnPoint, GameObject spawnPrefab)
         {
-            
-            if (spawnPositions.Length == 0 || monsterPrefabs.Length == 0)
+            if (spawnPositions == null || monsterPrefabs.Length == 0)
             {
                 Debug.LogWarning("스폰 위치 또는 몬스터 프리팹이 설정되지 않았습니다.");
                 return;
             }
-            
 
-            // 사용 가능한 위치 필터링
-            List<Transform> availablePositions = new List<Transform>();
-            foreach (Transform pos in spawnPositions)
-            {
-                if (!occupiedPositions.Contains(pos))
-                    availablePositions.Add(pos);
-            }
 
-            // 모든 위치가 사용 중이라면 스폰하지 않음
-            if (availablePositions.Count == 0)
-            {
-                Debug.LogWarning("모든 스폰 위치가 이미 사용 중입니다.");
-                return;
-            }
-
-            // 랜덤한 위치 선택
-            Transform spawnPoint = availablePositions[Random.Range(0, availablePositions.Count)];
-
-            // 랜덤한 몬스터 선택
-            GameObject monsterPrefab = monsterPrefabs[Random.Range(0, monsterPrefabs.Length)];
-
-            // 몬스터 생성
-            GameObject spawnedMonster = Instantiate(monsterPrefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject spawnedMonster = Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
             spawnedMonster.name = "Goblin" + spawnPoint.name;
-            // 생성된 위치를 사용 중으로 표시
-            occupiedPositions.Add(spawnPoint);
 
             CombatManager.Instance.SpawnEnemy(spawnedMonster.GetComponent<EnemyCharacter>());
         }
+
     }
 }

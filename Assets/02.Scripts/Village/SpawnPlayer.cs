@@ -2,14 +2,17 @@ using System;
 using Portrait;
 using Spawn;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
-public class SpawnPlayer : MonoBehaviour
+public class SpawnPlayer : MonoBehaviour, IPointerClickHandler
 {
     public GameObject portrait; // Portrait 프리팹
     public PortraitSO[] portraits; // 가능한 초상화 리스트
 
     public SpawnSlot[] spawnSlot;
+
+    public GameObject SpawnCanvas;
     public void Spawn()
     {
         for (int i = 0; i < spawnSlot.Length; i++)
@@ -43,5 +46,9 @@ public class SpawnPlayer : MonoBehaviour
             }
         }
     }
-    
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        SpawnCanvas.SetActive(true);
+    }
 }

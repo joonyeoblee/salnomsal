@@ -1,4 +1,5 @@
 using UnityEngine;
+
 [CreateAssetMenu(fileName = "PortraitSO", menuName = "Scriptable Objects/PortraitSO")]
 public class PortraitSO : ScriptableObject
 {

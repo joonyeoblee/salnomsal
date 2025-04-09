@@ -19,6 +19,9 @@ public class CombatManager : MonoBehaviour
 
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
+    [Header("UI Elements")]
+    public UI_Battle UIBattle;
+
     void Awake()
     {
         if (Instance == null)
@@ -33,6 +36,10 @@ public class CombatManager : MonoBehaviour
 
     public void ResetManager()
     {
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            Destroy(monster.gameObject);
+        }
         Monsters.Clear();
         TurnOrder.Clear();
         CurrentActor = null;
@@ -198,10 +205,12 @@ public class CombatManager : MonoBehaviour
         TurnOrder.Add(unit);
         SetOrder();
         SetNewTurn();
-        IsBattleEnd();
-        IsGameOver();
+        if (IsBattleEnd() || IsGameOver())
+        {
+            return;
+        }
 
-        StartTurn();
+        StartTurn(); // 전투가 종료됐다면 실행되면 안됨
     }
 
     public void SetNewTurn()
@@ -211,13 +220,13 @@ public class CombatManager : MonoBehaviour
         _target.Clear();
     }
 
-    public void IsBattleEnd()
+    public bool IsBattleEnd()
     {
         foreach (EnemyCharacter monster in Monsters)
         {
             if (monster.IsAlive)
             {
-                return;
+                return false;
             }
         }
         Debug.Log("전투 종료, 승리");
@@ -230,15 +239,17 @@ public class CombatManager : MonoBehaviour
         RemoveDeadCharacter();
         ResetManager();
         OpenMapButton.SetActive(true);
+
+        return true;
     }
 
-    public void IsGameOver()
+    public bool IsGameOver()
     {
         foreach (PlayableCharacter character in PlayableCharacter)
         {
             if (character.IsAlive)
             {
-                return;
+                return false;
             }
         }
 
@@ -247,6 +258,7 @@ public class CombatManager : MonoBehaviour
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
+        return true;
     }
 
     public void RemoveDeadCharacter()

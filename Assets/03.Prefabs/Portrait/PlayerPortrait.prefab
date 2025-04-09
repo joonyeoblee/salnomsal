@@ -107,3 +107,5 @@ MonoBehaviour:
   MaxHealth: 0
   MaxMana: 0
   AttackPower: 0
+  Speed: 0
+  _iconImage: {fileID: 5526483912469303959}

@@ -10,6 +10,7 @@ namespace Son
 
         [Header("캐릭터")]
         public GameObject PortraitPanel;
+        public GameObject SpawnPanel;
         [Header("상자")]
         public GameObject ChestInventoryPanel;
         public Image ChestImage;
@@ -20,7 +21,7 @@ namespace Son
         public GameObject StageSelectButton;
         public GameObject StageSelectPanel;
         public GameObject ExitStageSelectPanelButton;
-
+        
 
 
         public void Awake()
@@ -47,7 +48,6 @@ namespace Son
             Tween.Restart();
             ChestInventoryPanel.SetActive(false);
             ChestImage.sprite = ClosedSprite;
-            ExitStageSelectPanelButton.SetActive(false);
             StageSelectButton.SetActive(true);
         }
 
@@ -55,14 +55,28 @@ namespace Son
         {
             Tween.Restart();
             PortraitPanel.SetActive(false);
-            ExitStageSelectPanelButton.SetActive(false);
+
         }
 
+        public void CloseSpawn()
+        {
+            Tween.Restart();
+            SpawnPanel.SetActive(false);
+        }
+
+        void CloseAll()
+        {
+            CloseChest();
+            ClosePortrait();
+            CloseSpawn();
+
+        }
         public void ActiveStageSelectPanel()
         {
             StageSelectButton.SetActive(false);
             StageSelectPanel.SetActive(true);
             ExitStageSelectPanelButton.SetActive(true);
+            CloseAll();
         }
 
         public void DeActiveStageSelectPanel()

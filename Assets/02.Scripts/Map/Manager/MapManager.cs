@@ -20,6 +20,8 @@ namespace Jun.Map
 
         public Sprite[] BackGroundSprites;
 
+        public Sprite BossBackGround;
+
         public Action OnMapNodeChanged;
 
         void OnEnable()
@@ -69,6 +71,11 @@ namespace Jun.Map
 
         public void SetRandomBackground()
         {
+            if (currentNode.Type == NodeType.Boss)
+            {
+                BackGround.sprite = BossBackGround;
+                return;
+            }
             if (BackGroundSprites == null || BackGroundSprites.Length == 0)
             {
                 Debug.LogWarning("BackGroundSprites 배열이 비어있습니다.");

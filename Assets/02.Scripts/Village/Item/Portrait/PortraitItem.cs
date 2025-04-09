@@ -11,14 +11,14 @@ namespace Portrait
     public class PortraitItemData
     {
         public string CharacterId;
-        public PortraitSO Portrait;
+        public string PortraitName;
         public CharacterStat CharacterStat;
         public int ClearCount;
 
-        public PortraitItemData(string characterId, PortraitSO portrait, CharacterStat characterStat, int clearCount)
+        public PortraitItemData(string characterId, string portraitName, CharacterStat characterStat, int clearCount)
         {
             CharacterId = characterId;
-            Portrait = portrait;
+            PortraitName = portraitName;
             CharacterStat = characterStat;
             ClearCount = clearCount;
         }
@@ -48,7 +48,7 @@ namespace Portrait
         
         PortraitItemData _saveData;
 
-        Image _iconImage;
+        [SerializeField] Image _iconImage;
         public bool IsInSlot { get; set; }
 
         void Awake()
@@ -77,7 +77,7 @@ namespace Portrait
                 AddRandom();
                 _iconImage.sprite = portrait != null ? portrait.Icon : null;
                 CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
-                _saveData = new PortraitItemData(CharacterId, portrait, _characterStat, ClearCount);
+                _saveData = new PortraitItemData(CharacterId, portrait.name, _characterStat, ClearCount);
                 Save();
             }
         }
@@ -140,6 +140,13 @@ namespace Portrait
 
         void Save()
         {
+            _saveData = new PortraitItemData(
+                CharacterId,
+                portrait != null ? portrait.name : "",
+                new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed),
+                ClearCount
+            );
+
             string json = JsonUtility.ToJson(_saveData);
             PlayerPrefs.SetString(key, json);
             PlayerPrefs.Save();
@@ -151,8 +158,18 @@ namespace Portrait
             {
                 string data = PlayerPrefs.GetString(key);
                 _saveData = JsonUtility.FromJson<PortraitItemData>(data);
-                portrait = _saveData.Portrait;
+
+                // 템플릿 불러오기
+                portrait = Resources.Load<PortraitSO>("Portraits/" + _saveData.PortraitName);
+
+                if (portrait == null)
+                {
+                    Debug.LogWarning($"[PortraitItem] PortraitSO 로드 실패: {_saveData.PortraitName}");
+                    return;
+                }
+
                 _iconImage.sprite = portrait.Icon;
+                
                 MaxHealth = _saveData.CharacterStat.MaxHealth + _saveData.ClearCount;
                 MaxMana = _saveData.CharacterStat.MaxMana + _saveData.ClearCount;
                 AttackPower = _saveData.CharacterStat.AttackPower + _saveData.ClearCount;

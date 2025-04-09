@@ -30,6 +30,7 @@ namespace Equipment
             currentCharacterPortrait.transform.SetParent(transform);
             currentCharacterPortrait.transform.localPosition = DraggedSlot.localPosition;
             portraitItem.MyParent = this;
+            Save();
         }
 
         public void ChangeSlot(PortraitItem newPortraitItem)
@@ -74,7 +75,7 @@ namespace Equipment
             } else
             {
                 SetItem(portraitItem);
-                Save();
+                
             }
 
             portraitItem.IsInSlot = true;

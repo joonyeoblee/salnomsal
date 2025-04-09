@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
-
+using Equipment;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 public enum SkillSlot
 {
 	DefaultAttack,
@@ -23,6 +24,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         set => _targetType = value;
     }
 
+    public EquipmentSaveData Weapon;
+    public EquipmentSaveData Armor;
+    
     private bool _isAlive;
     public bool IsAlive => _isAlive;
 
@@ -40,14 +44,70 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		set => _currentSpeed = value;
 	}
 
+	[SerializeField] Animator animator;
+	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
     private void Start()
     {
         _health = MaxHealth;
         _cost = MaxCost;
         _isAlive = true;
         _currentSpeed = BasicSpeed;
-    }
 
+        animator = GetComponentInChildren<Animator>();
+
+        ApplyItems();
+    }
+    void ApplyItems()
+    {
+
+	    if (Weapon != null)
+	    {
+		    foreach (StatModifier stat in Weapon.BaseStats)
+		    {
+			    if (!finalStats.ContainsKey(stat.StatType))
+				    finalStats[stat.StatType] = 0;
+
+			    finalStats[stat.StatType] += stat.Value;
+
+		    }
+	    }
+
+	    if (Armor != null)
+	    {
+		    foreach (StatModifier stat in Armor.BaseStats)
+		    {
+			    if (!finalStats.ContainsKey(stat.StatType))
+				    finalStats[stat.StatType] = 0;
+
+			    finalStats[stat.StatType] += stat.Value;
+		    }
+	    }
+	    ApplyStats(finalStats);
+    }
+    void ApplyStats(Dictionary<StatType, float> finalStats)
+    {
+	    foreach (KeyValuePair<StatType, float> stat in finalStats)
+	    {
+		    switch (stat.Key)
+		    {
+		    case StatType.Attack:
+			    AttackPower += stat.Value;
+			    break;
+
+		    case StatType.MaxHealth:
+			    MaxHealth += stat.Value;
+			    break;
+
+		    case StatType.MaxMana:
+			    MaxCost += stat.Value;
+			    break;
+
+		    case StatType.Speed:
+			    BasicSpeed += (int)stat.Value;
+			    break;
+		    }
+	    }
+    }
     public void ApplyStat(float health, float cost, float attack, int speed)
     {
         MaxHealth = health;
@@ -84,6 +144,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         Debug.Log($"{CharacterName}: Playable Turn Start");
         CombatManager.Instance.CurrentActor = this;
         // UI로 캐릭터 정보 전송
+        CombatManager.Instance.UIBattle.RefreshStatText(this);
 		OnTurnStart?.Invoke();
 	}
 
@@ -97,17 +158,24 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
-		// 스킬 이펙트 시전
-        Animator animator = GetComponent<Animator>();
-        if (animator != null)
-        {
-            animator.SetTrigger("Attack"); // 트리거 배열 만들어서 슬롯따라서 실행
-        }
+
+		switch (slot)
+		{
+		case SkillSlot.DefaultAttack:
+			animator.SetTrigger("Attack");
+			break;
+		case SkillSlot.Skill1:
+			animator.SetTrigger("Skill1");
+			break;
+		case SkillSlot.Skill2:
+			animator.SetTrigger("Skill2");
+			break;
+		}
 
         foreach (ITargetable target in targets)
 		{
 			Skills[(int)slot].UseSkill(this, target);
-        }
+		}
         EndTurn();
     }
 
