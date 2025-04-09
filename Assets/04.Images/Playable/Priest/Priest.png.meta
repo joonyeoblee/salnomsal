@@ -124,10 +124,10 @@ TextureImporter:
       name: Priest_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 254
-        width: 90
-        height: 123
+        x: 0
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: Priest_1
       rect:
         serializedVersion: 2
-        x: 146
-        y: 254
-        width: 90
-        height: 121
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: Priest_2
       rect:
         serializedVersion: 2
-        x: 271
-        y: 254
-        width: 91
-        height: 120
+        x: 256
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: Priest_3
       rect:
         serializedVersion: 2
-        x: 398
-        y: 254
-        width: 90
-        height: 121
+        x: 384
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: Priest_4
       rect:
         serializedVersion: 2
-        x: 524
-        y: 254
-        width: 90
-        height: 123
+        x: 512
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: Priest_5
       rect:
         serializedVersion: 2
-        x: 21
-        y: 128
-        width: 89
-        height: 123
+        x: 0
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: Priest_6
       rect:
         serializedVersion: 2
-        x: 20
-        y: 2
-        width: 90
-        height: 123
+        x: 0
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: Priest_7
       rect:
         serializedVersion: 2
-        x: 147
-        y: 2
-        width: 89
-        height: 123
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,11 +296,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Priest_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d27f31e165564e4a989e72d4b56fdea
+      internalID: -943336497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f21351fc89a227c489c429551a4d9c70
     internalID: 0
     vertices: []
     indices: 
@@ -318,6 +340,7 @@ TextureImporter:
       Priest_5: -847035963281188344
       Priest_6: -8080457553957316565
       Priest_7: 3741927761401078527
+      Priest_8: -943336497
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

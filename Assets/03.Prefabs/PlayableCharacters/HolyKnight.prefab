@@ -111,7 +111,7 @@ Animator:
   m_GameObject: {fileID: 94002621548751766}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86f1821f811d9c74cb20267400a15622, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0e27fa20faddada41afdbaeefeac012c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -187,9 +187,22 @@ MonoBehaviour:
   - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
   - {fileID: 2749973978265188498, guid: 1f89ee5acf5d9e4458c0e27fad5681f9, type: 3}
   - {fileID: 6416434181037239145, guid: 48a722173c59fb7418124565169817f8, type: 3}
+  SkillEffects: []
+  HitEffects: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 3
-  animator: {fileID: 0}
+  moveDuration: 0.5
+  _animator: {fileID: 0}
 --- !u!114 &991894845591855249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,8 +249,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.020021677, y: 1.69}
-  m_Size: {x: 2.866558, y: 3.4666667}
+  m_Offset: {x: -0.020021677, y: 1.2477131}
+  m_Size: {x: 2.866558, y: 3.523129}
   m_Direction: 0
 --- !u!114 &6816511522540664011
 MonoBehaviour:
