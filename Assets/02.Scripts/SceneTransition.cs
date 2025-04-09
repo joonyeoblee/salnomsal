@@ -14,11 +14,11 @@ namespace SeongIl
         public Image Fade;
         public Image Loading;
         public Image Hit;
-        
         private void Start()
         {
             IsTransition += BasicTranstition;
             MapTransition += NodeTranstition;
+
         }
 
         public void BasicTranstition()
@@ -58,7 +58,7 @@ namespace SeongIl
             Fade.DOColor(new Color(1,0,0, 0f), 0.5f);
 
         }
-        
+
         
     }
 }
