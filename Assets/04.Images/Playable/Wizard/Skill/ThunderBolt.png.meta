@@ -1,19 +1,49 @@
 fileFormatVersion: 2
-guid: 70ffecf93c3829d4dbce13b905558598
+guid: e8b3ffd0195c7e14ea3fd5e117a96bee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7230652870964786552
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_0"
+      213: -7242113624083656407
+    second: ThunderBolt_0
   - first:
-      213: -1265224210559248239
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_1"
+      213: -5330900368080755127
+    second: ThunderBolt_1
   - first:
-      213: 2701559662660826893
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_2"
+      213: -6831048605346690762
+    second: ThunderBolt_2
   - first:
-      213: 8943811867712748902
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_3"
+      213: -6107841176183263753
+    second: ThunderBolt_3
+  - first:
+      213: -5228894357179144789
+    second: ThunderBolt_4
+  - first:
+      213: -1859213069223493922
+    second: ThunderBolt_5
+  - first:
+      213: 8303953484556355737
+    second: ThunderBolt_6
+  - first:
+      213: 3199248565246898317
+    second: ThunderBolt_7
+  - first:
+      213: -8087884713224851577
+    second: ThunderBolt_8
+  - first:
+      213: 1468889137478804217
+    second: ThunderBolt_9
+  - first:
+      213: 2711342776684312671
+    second: ThunderBolt_10
+  - first:
+      213: 5918485434982049672
+    second: ThunderBolt_11
+  - first:
+      213: -952063219485818530
+    second: ThunderBolt_12
+  - first:
+      213: -9001476337228682053
+    second: ThunderBolt_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,106 +135,93 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_0"
+      name: ThunderBolt_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 503
-        width: 428
-        height: 474
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 20
+        width: 300
+        height: 880
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 88a4cf3068f87ab90800000000000000
-      internalID: -7230652870964786552
+      spriteID: e12fd9ca70299ca41a58172ded37dce4
+      internalID: 809213538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_1"
+      name: ThunderBolt_1
       rect:
         serializedVersion: 2
-        x: 535
-        y: 503
-        width: 426
-        height: 474
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 300
+        y: 20
+        width: 300
+        height: 880
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1985460b845017ee0800000000000000
-      internalID: -1265224210559248239
+      spriteID: 08a5d668fa9ee524296bf360ad74e7cc
+      internalID: 1988575719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_2"
+      name: ThunderBolt_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 15
-        width: 398
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 600
+        y: 20
+        width: 300
+        height: 880
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d073c60233edd7520800000000000000
-      internalID: 2701559662660826893
+      spriteID: f6e7f7577d0c5c84fa0d11a768f7ea0b
+      internalID: 1272308041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_3"
+      name: ThunderBolt_3
       rect:
         serializedVersion: 2
-        x: 527
-        y: 15
-        width: 450
-        height: 458
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 900
+        y: 20
+        width: 300
+        height: 880
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 66df0f0e18dce1c70800000000000000
-      internalID: 8943811867712748902
+      spriteID: f36fb309360cd36429938225406075cf
+      internalID: 626161950
       vertices: []
       indices: 
       edges: []
@@ -213,7 +230,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2bc492b8901432244a3ea528d2d52830
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +240,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_0": -7230652870964786552
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_1": -1265224210559248239
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_2": 2701559662660826893
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_26_14_3": 8943811867712748902
+      ThunderBolt_0: 809213538
+      ThunderBolt_1: 1988575719
+      ThunderBolt_2: 1272308041
+      ThunderBolt_3: 626161950
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

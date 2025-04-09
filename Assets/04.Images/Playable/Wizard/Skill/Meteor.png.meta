@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: c4c35e4db77734e4dbcd6d72a197cf16
+guid: 70f9eced7ef9d0247a17ba890b6ceb54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2991155171978944449
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_0"
+      213: 8961090413319157468
+    second: Meteor_0
   - first:
-      213: -7619174991321291512
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_1"
+      213: -2967113423327029113
+    second: Meteor_1
   - first:
-      213: 6230335186931149392
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_2"
+      213: 2182055113893026377
+    second: Meteor_2
   - first:
-      213: -2670042164319388564
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_3"
+      213: -6744407381781148267
+    second: Meteor_3
+  - first:
+      213: 3200402534045966826
+    second: Meteor_4
+  - first:
+      213: 8672831667117538069
+    second: Meteor_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,106 +111,93 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_0"
+      name: Meteor_0
       rect:
         serializedVersion: 2
-        x: 111
-        y: 487
-        width: 386
-        height: 482
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 538
+        width: 512
+        height: 486
+      alignment: 9
+      pivot: {x: 0.6484086, y: 0.042415164}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f306f1a08384d76d0800000000000000
-      internalID: -2991155171978944449
+      spriteID: 0fdbbceecdf39dd4eb3f3cd4df264c6b
+      internalID: 435386535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_1"
+      name: Meteor_1
       rect:
         serializedVersion: 2
-        x: 599
-        y: 487
-        width: 370
-        height: 482
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 512
+        y: 522
+        width: 512
+        height: 502
+      alignment: 9
+      pivot: {x: 0.4192866, y: 0.036839217}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 80521c8a6b0434690800000000000000
-      internalID: -7619174991321291512
+      spriteID: ff0dd7bed5e4b0e408df33719d39acf0
+      internalID: -2004091129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_2"
+      name: Meteor_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 9
-        width: 442
-        height: 457
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 87
+        width: 512
+        height: 426
+      alignment: 9
+      pivot: {x: 0.6184665, y: 0.029959988}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 05ae5a0c7d8967650800000000000000
-      internalID: 6230335186931149392
+      spriteID: 3a3d469fcb94a2d4093dd0ac3fd3433f
+      internalID: 742437392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_3"
+      name: Meteor_3
       rect:
         serializedVersion: 2
-        x: 575
-        y: 7
-        width: 410
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 512
+        y: 82
+        width: 512
+        height: 430
+      alignment: 9
+      pivot: {x: 0.42449427, y: 0.037002742}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c6c7d6c4cca12fad0800000000000000
-      internalID: -2670042164319388564
+      spriteID: 46ebe8b6ff691a844b7d7eb9bce9820d
+      internalID: 1400032596
       vertices: []
       indices: 
       edges: []
@@ -213,7 +206,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 96d12b34c580aa346a87fce8fa1f5cc1
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +216,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_0": -2991155171978944449
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_1": -7619174991321291512
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_2": 6230335186931149392
-      "ChatGPT Image 2025\uB144 4\uC6D4 3\uC77C \uC624\uD6C4 12_19_21_3": -2670042164319388564
+      Meteor_0: 435386535
+      Meteor_1: -2004091129
+      Meteor_2: 742437392
+      Meteor_3: 1400032596
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

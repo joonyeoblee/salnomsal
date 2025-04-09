@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Equipment;
 using UnityEngine;
@@ -16,7 +17,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
     public List<Skill> Skills;
-
+    public List<AnimationClip> SkillEffects;
+    public List<GameObject> HitEffects;
     public TargetType _targetType;
     public TargetType TargetType
     {
@@ -44,7 +46,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		set => _currentSpeed = value;
 	}
 
-	[SerializeField] Animator animator;
+	[SerializeField] Animator _animator;
 	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
     private void Start()
     {
@@ -53,7 +55,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _isAlive = true;
         _currentSpeed = BasicSpeed;
 
-        animator = GetComponentInChildren<Animator>();
+        _animator = GetComponentInChildren<Animator>();
 
         ApplyItems();
     }
@@ -158,26 +160,68 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
+		StartCoroutine(DoActionCoroutine(slot, targets));
+	}
+
+	IEnumerator DoActionCoroutine(SkillSlot slot, List<ITargetable> targets)
+	{
+		string animName = "";
 
 		switch (slot)
 		{
 		case SkillSlot.DefaultAttack:
-			animator.SetTrigger("Attack");
+			animName = "Attack";
+
+			_animator.SetTrigger(animName);
 			break;
 		case SkillSlot.Skill1:
-			animator.SetTrigger("Skill1");
+			animName = "Skill1";
+			_animator.SetTrigger(animName);
 			break;
 		case SkillSlot.Skill2:
-			animator.SetTrigger("Skill2");
+			animName = "Skill2";
+
+			_animator.SetTrigger(animName);
 			break;
 		}
 
-        foreach (ITargetable target in targets)
+		// 스킬 사용 처리
+		foreach (ITargetable target in targets)
 		{
+			MonoBehaviour mb = target as MonoBehaviour;
+
+			if (HitEffects.Count > 0)
+			{
+				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+			}
+			
 			Skills[(int)slot].UseSkill(this, target);
 		}
-        EndTurn();
-    }
+
+		// 애니메이션 끝날 때까지 대기
+		yield return StartCoroutine(WaitAnimationEnd(animName));
+
+		// 턴 종료
+		EndTurn();
+	}
+
+	IEnumerator WaitAnimationEnd(string animName)
+	{
+		// 트리거 입력 후, 해당 애니메이션 시작될 때까지 대기
+		AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
+		while (!info.IsName(animName))
+		{
+			yield return null;
+			info = _animator.GetCurrentAnimatorStateInfo(0);
+		}
+
+		// 애니메이션 재생 끝날 때까지 대기
+		while (info.normalizedTime < 1f)
+		{
+			yield return null;
+			info = _animator.GetCurrentAnimatorStateInfo(0);
+		}
+	}
 
 	public override void Death(DamageType type)
 	{
