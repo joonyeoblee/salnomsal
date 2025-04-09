@@ -259,7 +259,6 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public override void Death(DamageType type)
 	{
         _isAlive = false;
-        _animator.SetTrigger("Die");
         Debug.Log("Death");
 	}
 

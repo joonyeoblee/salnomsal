@@ -124,10 +124,10 @@ TextureImporter:
       name: Holyknight_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 252
-        width: 89
-        height: 104
+        x: 0
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: Holyknight_1
       rect:
         serializedVersion: 2
-        x: 140
-        y: 253
-        width: 90
-        height: 102
+        x: 128
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: Holyknight_2
       rect:
         serializedVersion: 2
-        x: 266
-        y: 253
-        width: 90
-        height: 101
+        x: 256
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: Holyknight_3
       rect:
         serializedVersion: 2
-        x: 392
-        y: 253
-        width: 90
-        height: 102
+        x: 384
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: Holyknight_4
       rect:
         serializedVersion: 2
-        x: 519
-        y: 252
-        width: 89
-        height: 104
+        x: 512
+        y: 512
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: Holyknight_5
       rect:
         serializedVersion: 2
-        x: 11
-        y: 128
-        width: 115
-        height: 105
+        x: 0
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: Holyknight_6
       rect:
         serializedVersion: 2
-        x: 139
-        y: 128
-        width: 114
-        height: 105
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: Holyknight_7
       rect:
         serializedVersion: 2
-        x: 18
-        y: 1
-        width: 91
-        height: 126
+        x: 0
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,11 +296,77 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Holyknight_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380cbc7108c03ed459dfcdf2427191bd
+      internalID: -678830670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e1a7d379694b948a3ea7250e616c19
+      internalID: -1000392843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Holyknight_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0893a9bd6cf3a34a946bee77db352b7
+      internalID: 825790486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1e9fb72b9d3bf014281615a26837d1f1
     internalID: 0
     vertices: []
     indices: 
@@ -312,12 +378,15 @@ TextureImporter:
     nameFileIdTable:
       Holyknight_0: -7644607792868427877
       Holyknight_1: 1057817503019997127
+      Holyknight_10: 825790486
       Holyknight_2: 8575648469772779771
       Holyknight_3: -7646991014175589087
       Holyknight_4: 4062014861173016142
       Holyknight_5: 1236216851601723014
       Holyknight_6: -139679454653878686
       Holyknight_7: -4186656040841011892
+      Holyknight_8: -678830670
+      Holyknight_9: -1000392843
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
