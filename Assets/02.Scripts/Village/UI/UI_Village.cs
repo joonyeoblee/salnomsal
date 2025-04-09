@@ -40,7 +40,6 @@ namespace Son
             ChestInventoryPanel.SetActive(true);
             ChestImage.sprite = OpenSprite;
             ExitStageSelectPanelButton.SetActive(true);
-            StageSelectButton.SetActive(false);
         }
 
         public void CloseChest()

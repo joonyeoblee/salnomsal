@@ -1,0 +1,44 @@
+using System;
+using System.Collections;
+using DG.Tweening;
+using UnityEngine;
+using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
+
+namespace SeongIl
+{
+    public class SceneTransition : MonoBehaviour
+    {
+        public Action IsTransition;
+        public Image Fade;
+        public Image Loading;
+        private void Start()
+        {
+            IsTransition += BasicTranstition;
+        }
+
+        public void BasicTranstition()
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append( Fade.DOColor(new Color(0f, 0f, 0f, 1f), 0).SetEase(Ease.OutCubic));
+            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(1f, 1f).SetEase(Ease.OutCubic));
+            sequence.Join(Loading.rectTransform.DOPivot(new Vector2(331f, 182f), 1f));
+            sequence.AppendInterval(0.5f);
+            sequence.Append(Fade.DOColor(new Color(0f, 0f, 0f, 0f), 1f).SetEase(Ease.InCubic));
+            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.3f).SetEase(Ease.InCubic));
+            
+            Debug.Log("씬 전환");
+        }
+
+        public IEnumerator MiniGameTransition()
+        {
+            Fade.DOColor(new Color(0f, 0f, 0f, 1f), 0.5f);
+            yield return new WaitForSeconds(2f);
+            Fade.DOColor(new  Color(0.3f, 0.3f, 0.3f, 0.75f), 2f);
+            
+        }
+        
+        
+    }
+}
+
