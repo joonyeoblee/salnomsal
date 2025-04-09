@@ -22,7 +22,7 @@ namespace Jun.Monster
         void OnSuccess()
         {
             if (!IsMyTurn) return;
-            EndTurn();
+            ReturnToOrigin(() => EndTurn());
             
         }
 
@@ -33,15 +33,22 @@ namespace Jun.Monster
             {
                 target.TakeDamage(_damage);
             }
-            EndTurn();
+            ReturnToOrigin(() => EndTurn());
         }
 
         void OnParrying()
         {
             if (!IsMyTurn) return;
             TakeDamage(_damage);
-            EndTurn();
+            ReturnToOrigin(() => EndTurn());
         }
+        void ReturnToOrigin(Action onComplete = null)
+        {
+            transform.DOMove(OriginPosition, moveDuration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => { onComplete?.Invoke(); });
+        }
+        
         protected override void Start()
         {
             base.Start();
@@ -126,9 +133,7 @@ namespace Jun.Monster
                 {
                     target.TakeDamage(_damage);
                 }
-                transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad);
-
-                EndTurn();
+                transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
         IEnumerator WaitForAnimation(string animName)

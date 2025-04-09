@@ -48,6 +48,9 @@ TagManager:
   - name: Characters
     uniqueID: 1942959323
     locked: 0
+  - name: Skill
+    uniqueID: 2999784503
+    locked: 0
   - name: UI_Battle
     uniqueID: 818929189
     locked: 0
