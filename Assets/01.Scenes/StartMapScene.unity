@@ -761,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleSceneCamera: {fileID: 1325841079}
   player: {fileID: 1187562340}
+  Transition: {fileID: 0}
 --- !u!4 &239334839
 Transform:
   m_ObjectHideFlags: 0
@@ -1480,14 +1481,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7264151, g: 0.65560806, b: 0.36663404, a: 0.8352941}
+  m_Color: {r: 0.7264151, g: 0.65560806, b: 0.36663404, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f577b7a9ba06c844bb9c13fc21f693f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2657,6 +2658,16 @@ MonoBehaviour:
   CharacterName: 
   Skills: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
   animator: {fileID: 0}
 --- !u!1 &1163765044
@@ -2923,6 +2934,16 @@ MonoBehaviour:
   CharacterName: 
   Skills: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
   animator: {fileID: 0}
 --- !u!1 &1215724746
@@ -3542,6 +3563,16 @@ MonoBehaviour:
   CharacterName: 
   Skills: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
   animator: {fileID: 0}
 --- !u!1 &1590285143

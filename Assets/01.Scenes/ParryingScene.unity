@@ -1286,7 +1286,7 @@ MonoBehaviour:
   Flash: {fileID: 676192853}
   _parrySpeed: 3
   _parryInstatiateTime: 0.3
-  _count: 1
+  _count: 3
   _distance: 11
   GameStart: 0
   IsParried: 0
