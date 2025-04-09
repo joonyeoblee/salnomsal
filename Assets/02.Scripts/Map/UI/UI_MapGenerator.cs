@@ -107,5 +107,10 @@ namespace Jun.Map
                 _ => Color.white
             };
         }
+
+        public void ReturnVillage()
+        {
+            MiniGameScenesManager.instance.ChangeScene(SceneIndex.Village);
+        }
     }
 }
