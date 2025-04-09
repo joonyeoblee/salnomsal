@@ -1,9 +1,12 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Jun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace SeongIl
 {
@@ -29,6 +32,7 @@ namespace SeongIl
 
         public int KeyCount = 5;
         
+
         private void Update()
         {
             
@@ -120,8 +124,9 @@ namespace SeongIl
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }
 
-        public void GameStart()
+        public IEnumerator GameStart()
         {
+            yield return new WaitForSeconds(4f);
             GenerateKeysQueue();
             DisplayKeys();
             MagicCircle.fillAmount = 0.1f;
