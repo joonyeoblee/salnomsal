@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Jun;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace SeongIl
         public Animator MagicEffect;
         
         public Image MagicCircle;
-        
+        public Image test;
         [Header("시간 설정")]
         public float TimeLimit = 0;
         public float BonusDecline;
@@ -54,14 +55,17 @@ namespace SeongIl
 
             if (Input.anyKeyDown)
             {
+                
+                StartCoroutine(ShakeObjetct(test));
                 if (Input.GetKeyDown(_keyQueue.Peek().ToLower()))
                 {
                     _keyQueue.Dequeue();
                     if (_keyQueue.Count > 0)
                     {
                         DisplayKeys();
-                        
+
                         MagicCircle.fillAmount -= DeclineTime;
+                        StartCoroutine(ShakeObjetct(MagicCircle));
 
                     }
                     else
@@ -131,6 +135,21 @@ namespace SeongIl
             DisplayKeys();
             MagicCircle.fillAmount = 0.1f;
             _isGameActive = true;
+        }
+
+        private IEnumerator ShakeObjetct(Image circle)
+        {
+            Vector2 origin = circle.rectTransform.anchoredPosition;
+            for (int i = 0; i < 3; i++)
+            {
+                float randX = Random.Range(-0.05f ,0.05f);
+                float randY = Random.Range(-0.05f, 0.05f);
+                circle.rectTransform.DOMove(new Vector3(randX,randY, 0), 0.1f);
+                yield return new WaitForSeconds(0.1f);
+                
+            }
+            
+            circle.rectTransform.anchoredPosition = origin;
         }
     }
 }
