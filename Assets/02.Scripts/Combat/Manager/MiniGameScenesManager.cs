@@ -1,9 +1,19 @@
-using System;
+﻿using System;
 using SeongIl;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
+
+public enum SceneIndex
+{
+    Village,
+    BattleScene,
+    StartMapScene,
+    MiniGameMagic,
+    MiniGameRanged,
+    MiniGameMelee
+}
 
 namespace Jun
 {
@@ -83,9 +93,9 @@ namespace Jun
             }
         }
 
-        public void ChangeScene(int index)
+        public void ChangeScene(SceneIndex index)
         {
-            SceneManager.LoadScene(index);
+            SceneManager.LoadScene((int)index);
             Transition.IsTransition?.Invoke();
         }
 
@@ -94,23 +104,23 @@ namespace Jun
             switch (damageType)
             {
             case DamageType.Magic:
-                ChangeSceneToMiniGame(3);
+                ChangeSceneToMiniGame(SceneIndex.MiniGameMagic);
                 break;
             case DamageType.Ranged:
-                ChangeSceneToMiniGame(4);
+                ChangeSceneToMiniGame(SceneIndex.MiniGameRanged);
                 break;
             case DamageType.Melee:
-                ChangeSceneToMiniGame(5);
+                ChangeSceneToMiniGame(SceneIndex.MiniGameMelee);
                 break;
             }
         }
 
-        public void ChangeSceneToMiniGame(int index)
+        public void ChangeSceneToMiniGame(SceneIndex index)
         {
-            Debug.Log("미니게임 시작됨: 씬 인덱스 " + index);
+            Debug.Log("미니게임 시작됨: 씬 인덱스 " + (int)index);
             BattleSceneCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             BattleSceneCamera.cullingMask = LayerMask.GetMask("MiniGameUI"); // MiniGameUI 레이어만 보이게
-            SceneManager.LoadScene(index, LoadSceneMode.Additive);
+            SceneManager.LoadScene((int)index, LoadSceneMode.Additive);
             
         }
     }

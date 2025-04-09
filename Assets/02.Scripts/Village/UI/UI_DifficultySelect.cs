@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DG.Tweening;
 using Jun;
 using UnityEngine;
@@ -62,20 +62,9 @@ namespace Son
         }
 
 
-        public void OnMapSelected(int index)
+        public void OnMapSelected()
         {
-            for(int i = 0; i < DifficultPortal.Count; i++)
-            {
-                if(i == index)
-                {
-                    MiniGameScenesManager.instance.ChangeScene(i);
-                    continue;
-                }
-                else
-                {
-                    DifficultPortal[i].gameObject.SetActive(false);
-                }
-            }
+            MiniGameScenesManager.instance.ChangeScene(SceneIndex.StartMapScene);
         }
 
     }

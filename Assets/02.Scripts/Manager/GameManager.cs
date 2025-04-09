@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Portrait;
 using Team;
 using UnityEngine;
@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 
     public List<TeamSlot> TeamSlots = new List<TeamSlot>(3);
     public List<GameObject> Characters = new List<GameObject>(3);
+
+    private bool _bossKill = false;
+    public bool BossKill => _bossKill; 
+
     void Awake()
     {
         if (Instance == null)
@@ -46,4 +50,13 @@ public class GameManager : MonoBehaviour
         Debug.Log($"총 출정 캐릭터 수: {Characters.Count}");
     }
     
+    public void SetBossKill()
+    {
+        _bossKill = true;
+    }
+
+    public void ResetBossKill()
+    {
+        _bossKill = false;
+    }
 }

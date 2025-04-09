@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -156,6 +156,12 @@ namespace Jun.Monster
                 EndTurn();
             }
         
+        }
+
+        protected override void Death(DamageType type)
+        {
+            base.Death(type);
+            GameManager.Instance.SetBossKill();
         }
     }
 }
