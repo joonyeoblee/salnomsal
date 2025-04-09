@@ -51,11 +51,11 @@ namespace SeongIl
             Fade.DOColor(new Color(1,0,0, 0.15f), 0f);
             Hit.DOFade(0.8f, 0.15f);
             
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
             
-            Hit.DOFade(0f, 0.5f);
+            Hit.DOFade(0f, 0.2f);
             
-            Fade.DOColor(new Color(1,0,0, 0f), 0.5f);
+            Fade.DOColor(new Color(1,0,0, 0f), 0.2f);
 
         }
 
