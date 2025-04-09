@@ -12,6 +12,8 @@ namespace Jun.Monster
         List<PlayableCharacter> targets;
         Vector3 OriginPosition;
         public float moveDuration = 0.5f;
+
+        // ReSharper disable Unity.PerformanceAnalysis
         public override void EndTurn()
         {
             base.EndTurn();
@@ -26,6 +28,7 @@ namespace Jun.Monster
             
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         void OnFail()
         {
             if (!IsMyTurn) return;
@@ -42,6 +45,8 @@ namespace Jun.Monster
             TakeDamage(_damage);
             ReturnToOrigin(() => EndTurn());
         }
+
+        // ReSharper disable Unity.PerformanceAnalysis
         void ReturnToOrigin(Action onComplete = null)
         {
             transform.DOMove(OriginPosition, moveDuration)
@@ -66,6 +71,7 @@ namespace Jun.Monster
             _skillComponent.SetConditionalPriorities(conditionalList);
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         protected override void Attack()
         {
             base.Attack();
@@ -93,7 +99,7 @@ namespace Jun.Monster
 
         void ExecuteAttack(SkillRange range, string animName)
         {
-            transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
+            transform.DOMove(CombatManager.Instance.EneSmyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
             
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
             List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
