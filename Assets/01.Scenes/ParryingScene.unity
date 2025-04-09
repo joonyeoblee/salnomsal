@@ -1423,6 +1423,7 @@ MonoBehaviour:
   Jump: {fileID: 2010303110}
   Enemy: {fileID: 2062636764}
   Parry: {fileID: 1829688941}
+  camera: {fileID: 0}
   ParryZone: {fileID: 1829688944}
   EnemySprite: {fileID: 0}
 --- !u!114 &1829688947

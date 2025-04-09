@@ -36,7 +36,7 @@ namespace SeongIl
         // 화살 다 피함? 카운트 세기
         public int ArrowCount = 10;
         // 게임 시작
-        public bool _isGameOver = false;
+        public bool IsGameOver = false;
         private void Start()
         {
             //플레이어 찾기
@@ -51,7 +51,7 @@ namespace SeongIl
         // 피하기 시작하기
         private void Update()
         {
-            if (_isGameOver)
+            if (IsGameOver)
             {
                 return;
             }
@@ -116,6 +116,7 @@ namespace SeongIl
         public void Fail()
         {
             Debug.Log("Fail");
+            IsGameOver = true;
             MiniGameScenesManager.instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
@@ -125,7 +126,7 @@ namespace SeongIl
         public void Success()
         {
             Debug.Log("Success");
-            _isGameOver = true;
+            IsGameOver = true;
 
             MiniGameScenesManager.instance.Success?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
@@ -136,7 +137,7 @@ namespace SeongIl
         {
             ParrySound.PlayOneShot(ParrySound.clip);
             Debug.Log("ParryingSuccess");
-            _isGameOver = true;
+            IsGameOver = true;
             MiniGameScenesManager.instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);

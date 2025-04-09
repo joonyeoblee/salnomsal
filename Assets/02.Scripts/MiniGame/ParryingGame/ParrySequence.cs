@@ -10,12 +10,13 @@ namespace SeongIl
         public GameObject Jump;
         public Image Enemy;
         public Parry Parry;
-
+        public Camera camera;
         public Image ParryZone;
         // 이미지 받아오기
         public Sprite EnemySprite;
         private void Start()
         {
+            camera = Camera.main;
             Enemy.sprite = EnemySprite;
             
         }
@@ -26,7 +27,6 @@ namespace SeongIl
             {
                 StartCoroutine(Sequence());
             }
-            
         }
         public void GamePlay()
         {
