@@ -149,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -171,7 +171,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -193,7 +193,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -215,7 +215,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -237,7 +237,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -259,7 +259,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -270,7 +270,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3992279ebd54e14c8e3c12712100e9c
+      spriteID: 2aaafb18f1a3d6f48a85c4ceb14c1794
       internalID: -176317332
       vertices: []
       indices: 
@@ -280,6 +280,28 @@ TextureImporter:
       name: StempunkGolem_6
       rect:
         serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad89d5f76de5b71408126cf7c01d1c64
+      internalID: 829003662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StempunkGolem_7
+      rect:
+        serializedVersion: 2
         x: 128
         y: 256
         width: 128
@@ -292,29 +314,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e41e11934f890924bae27d873fb43e7e
-      internalID: 829003662
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StempunkGolem_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 137bb5304af263e45bbf81e02f64b790
+      spriteID: 7ebfd76e87710cd499d13fede3c061b8
       internalID: -1356967422
       vertices: []
       indices: 
@@ -324,6 +324,28 @@ TextureImporter:
       name: StempunkGolem_8
       rect:
         serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a5036c84a92f24f82692bc6aff7c57
+      internalID: 1627219656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StempunkGolem_9
+      rect:
+        serializedVersion: 2
         x: 128
         y: 128
         width: 128
@@ -336,14 +358,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a341cfb185f2d9e49a13d9477c718185
-      internalID: 1627219656
+      spriteID: 36eca453450898b4886aef5520c4c2ca
+      internalID: 1230823908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StempunkGolem_9
+      name: StempunkGolem_10
       rect:
         serializedVersion: 2
         x: 0
@@ -358,14 +380,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba1a4ae6c2f03864aab64d80dcf4c57e
-      internalID: 1230823908
+      spriteID: 25190d21e93a0aa4bb6e4cbb1dfb15da
+      internalID: -1874924001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StempunkGolem_10
+      name: StempunkGolem_11
       rect:
         serializedVersion: 2
         x: 128
@@ -380,14 +402,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef54500bbd2052945a302aea310be815
-      internalID: -1874924001
+      spriteID: 26a60f621b3e81d4d9616cd2d86ec0a6
+      internalID: -423451659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StempunkGolem_11
+      name: StempunkGolem_12
       rect:
         serializedVersion: 2
         x: 256
@@ -402,14 +424,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b36dde759e1d0a41bc5800f87296138
-      internalID: -423451659
+      spriteID: 6518e7dcc17b4bf40b7baa9619f43387
+      internalID: 619176609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StempunkGolem_12
+      name: StempunkGolem_13
       rect:
         serializedVersion: 2
         x: 384
@@ -424,14 +446,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 490125a8365eb774a96ea03cc0ba4d62
-      internalID: 619176609
+      spriteID: beff5c51b4da3354b9a0a2bab4ecc842
+      internalID: -102465409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StempunkGolem_13
+      name: StempunkGolem_14
       rect:
         serializedVersion: 2
         x: 512
@@ -446,8 +468,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ba91848182401e4b936c7aa491306d0
-      internalID: -102465409
+      spriteID: 622afc8961bc8c94485596f38ffdeb9d
+      internalID: 1159988884
       vertices: []
       indices: 
       edges: []
@@ -472,6 +494,7 @@ TextureImporter:
       StempunkGolem_11: -423451659
       StempunkGolem_12: 619176609
       StempunkGolem_13: -102465409
+      StempunkGolem_14: 1159988884
       StempunkGolem_2: -2060481476
       StempunkGolem_3: -1362745358
       StempunkGolem_4: 1227249728

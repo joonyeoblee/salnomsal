@@ -104,6 +104,7 @@ namespace Jun.Monster
 
         public override void TakeDamage(Damage damage)
         {
+            _animator.Play("Hit");
             _health -= damage.Value;
             if (_health <= 0)
             {

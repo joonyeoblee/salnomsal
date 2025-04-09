@@ -46,6 +46,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		set => _currentSpeed = value;
 	}
 
+	Vector3 OriginPosition;
+	public float moveDuration = 0.5f;
+	
+	
+
 	[SerializeField] Animator _animator;
 	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
     private void Start()
@@ -55,6 +60,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         _isAlive = true;
         _currentSpeed = BasicSpeed;
 
+        OriginPosition = transform.position;
+        
         _animator = GetComponentInChildren<Animator>();
 
         ApplyItems();
@@ -160,7 +167,18 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
-		StartCoroutine(DoActionCoroutine(slot, targets));
+		if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
+		{
+			transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+			{
+				// 이동이 끝난 다음에 코루틴 시작
+				StartCoroutine(DoActionCoroutine(slot, targets));
+			});
+		} else
+		{
+			// 이동이 끝난 다음에 코루틴 시작
+			StartCoroutine(DoActionCoroutine(slot, targets));
+		}
 	}
 
 	IEnumerator DoActionCoroutine(SkillSlot slot, List<ITargetable> targets)
@@ -201,8 +219,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		// 애니메이션 끝날 때까지 대기
 		yield return StartCoroutine(WaitAnimationEnd(animName));
 
-		// 턴 종료
-		EndTurn();
+		// 다시 원래 위치로 이동한 다음, EndTurn 
+
+		transform.DOMove(OriginPosition, moveDuration)
+			.SetEase(Ease.InOutQuad)
+			.OnComplete(() => { EndTurn(); });
 	}
 
 	IEnumerator WaitAnimationEnd(string animName)
