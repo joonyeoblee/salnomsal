@@ -334,7 +334,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fell down sprite_0: -8834995526800930397
+      Fell down sprite_1: -9189564252467105500
+      Fell down sprite_2: 7872866041478010865
+      Fell down sprite_3: 1305713076171054556
+      Fell down sprite_4: -8878456098700365900
+      Fell down sprite_5: 4028672550215666620
+      Fell down sprite_6: 6582151870905993103
+      Fell down sprite_7: 3456381014965204181
+      Fell down sprite_8: 546519076260993505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

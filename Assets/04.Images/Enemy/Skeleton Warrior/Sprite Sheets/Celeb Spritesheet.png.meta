@@ -359,7 +359,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Celeb Spritesheet_0: -6602581847059034982
+      Celeb Spritesheet_1: -5824447440086830253
+      Celeb Spritesheet_2: 3135938828072187129
+      Celeb Spritesheet_3: 8109991477113681093
+      Celeb Spritesheet_4: 5036664168731734811
+      Celeb Spritesheet_5: 3075504192645914092
+      Celeb Spritesheet_6: 1928605168378180469
+      Celeb Spritesheet_7: 8897963791513880036
+      Celeb Spritesheet_8: 4883649629575156430
+      Celeb Spritesheet_9: -4201774437829206471
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      elboww_0: 8490314177994589282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

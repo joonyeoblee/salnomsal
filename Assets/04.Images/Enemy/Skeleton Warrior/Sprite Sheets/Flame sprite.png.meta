@@ -809,7 +809,35 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Flame sprite_0: -4611452961765769393
+      Flame sprite_1: -933947834871823037
+      Flame sprite_10: 2137497892471195787
+      Flame sprite_11: 4434190760738743574
+      Flame sprite_12: 372378644760888636
+      Flame sprite_13: -3708578913971393534
+      Flame sprite_14: -6901558764406191122
+      Flame sprite_15: -11076039983058572
+      Flame sprite_16: -3480286260469425901
+      Flame sprite_17: -1630361602345894443
+      Flame sprite_18: 3064280306203805999
+      Flame sprite_19: -2483349033277236801
+      Flame sprite_2: -5158384854963702627
+      Flame sprite_20: 2653544375270928352
+      Flame sprite_21: 216653912233454653
+      Flame sprite_22: -3496985385874776302
+      Flame sprite_23: -4929284339600966287
+      Flame sprite_24: -7467206782364326804
+      Flame sprite_25: 4754069860400483800
+      Flame sprite_26: -8568741784465084890
+      Flame sprite_27: -5814907089787357280
+      Flame sprite_3: 456280375902763783
+      Flame sprite_4: 106844991285199741
+      Flame sprite_5: -5999583072525810544
+      Flame sprite_6: 1674209939218792490
+      Flame sprite_7: 8755351726274652560
+      Flame sprite_8: 7604286933338383234
+      Flame sprite_9: 3525375151126473304
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
