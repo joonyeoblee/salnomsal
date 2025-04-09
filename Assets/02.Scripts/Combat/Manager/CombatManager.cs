@@ -10,7 +10,7 @@ public class CombatManager : MonoBehaviour
     public PlayableCharacter CurrentActor;
 
     public Transform PlayerAttackPosition;
-    public Transform EneSmyAttackPosition;
+    public Transform EnemyAttackPosition;
     
     public SkillSlot SelectedSkill;
     public int SpeedIncrementPerTurn;
