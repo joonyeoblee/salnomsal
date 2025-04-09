@@ -761,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleSceneCamera: {fileID: 1325841079}
   player: {fileID: 1187562340}
+  Transition: {fileID: 0}
 --- !u!4 &239334839
 Transform:
   m_ObjectHideFlags: 0
@@ -993,7 +994,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1887852939}
+  m_Father: {fileID: 1075383578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2297,6 +2298,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000403370}
   m_CullTransparentMesh: 1
+--- !u!1 &1075383577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075383578}
+  - component: {fileID: 1075383579}
+  m_Layer: 5
+  m_Name: MapOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1075383578
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075383577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 363625691}
+  m_Father: {fileID: 1887852939}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1075383579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075383577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9261f353ecbdf904fa0fe4e889e69faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectType: 1
+  testOpen: 0
+  duration: 0.8
+  ease: 27
 --- !u!1 &1075431882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2536,7 @@ MonoBehaviour:
   CurrentActor: {fileID: 0}
   SelectedSkill: 0
   SpeedIncrementPerTurn: 1
-  OpenMapButton: {fileID: 363625690}
+  OpenMapButton: {fileID: 1075383577}
   SpawnPoint:
   - {fileID: 442782984}
   - {fileID: 784264067}
@@ -2657,6 +2711,16 @@ MonoBehaviour:
   CharacterName: 
   Skills: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
   animator: {fileID: 0}
 --- !u!1 &1163765044
@@ -2923,6 +2987,16 @@ MonoBehaviour:
   CharacterName: 
   Skills: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
   animator: {fileID: 0}
 --- !u!1 &1215724746
@@ -3542,6 +3616,16 @@ MonoBehaviour:
   CharacterName: 
   Skills: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
   animator: {fileID: 0}
 --- !u!1 &1590285143
@@ -4202,7 +4286,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 185537499}
-  - {fileID: 363625691}
+  - {fileID: 1075383578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
