@@ -167,7 +167,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
-		if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
+		_cost -= Skills[(int)slot].SkillCost;
+        CombatManager.Instance.UIBattle.RefreshStatText(this);
+
+        if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
 		{
 			transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
 			{
@@ -265,7 +268,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public void TakeDamage(Damage damage)
 	{
 		_health -= damage.Value;
-		if (_health <= 0)
+        _health = Mathf.Max(_health, 0);
+        CombatManager.Instance.UIBattle.RefreshStatText(this);
+
+        if (_health <= 0)
 		{
 			Death(damage.Type);
         }
