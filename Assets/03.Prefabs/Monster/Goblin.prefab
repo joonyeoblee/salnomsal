@@ -52,14 +52,14 @@ MonoBehaviour:
   DamageType: 0
   MaxHealth: 10
   MaxMana: 4
-  AttackPower: 1
+  AttackPower: 100
   CriticalChance: 1
   CriticalDamage: 1
   Resistance: 1
   HasBuff: 0
   IsDefending: 1
   _targetType: 1
-  _basicSpeed: 1
+  _basicSpeed: 3
   _animator: {fileID: 97022630043293041}
   IsMyTurn: 0
 --- !u!114 &2888882090915731190
