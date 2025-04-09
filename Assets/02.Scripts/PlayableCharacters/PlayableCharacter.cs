@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Equipment;
 using UnityEngine;
-using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 public enum SkillSlot
 {
@@ -175,15 +174,18 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         CombatManager.Instance.UIBattle.RefreshStatText(this);
 
         if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
-		{
+        {
+	        Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
+			
 			Sequence sequence = DOTween.Sequence();
 			sequence.Append(transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.InOutQuad));
 			sequence.AppendInterval(0.5f);
 			sequence.Append(Camera.main.DOOrthoSize(4f, 1f)).SetEase(Ease.OutCubic);
-			sequence.Join(Camera.main.transform.DOMove(new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2f , CombatManager.Instance.PlayerAttackPosition.position.y, -10f), 1f).SetEase(Ease.OutQuad));
+			sequence.Join(Camera.main.transform.DOMove(vecc, 1f).SetEase(Ease.OutQuad));
 			sequence.OnComplete((
 				) =>
-				{
+			{
+				Debug.Log($"{vecc}: vecc ");
 					StartCoroutine(DoActionCoroutine(slot, targets));
 				});
 
@@ -243,24 +245,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		yield return StartCoroutine(WaitAnimationEnd(animName));
 
 		// 다시 원래 위치로 이동한 다음, EndTurn 
-
-		// transform.DOMove(OriginPosition, moveDuration)
-		// 	.SetEase(Ease.InOutQuad)
-		// 	.OnComplete(() => { EndTurn(); });
-		// 다시 원래 위치로 이동 + 카메라 복귀
-		// Sequence seq = DOTween.Sequence();
-		// seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
-		// seq.Join(Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCubic));
-		// seq.Join(Camera.main.transform.DOMove(new Vector3(0,0,-10f), 0.5f).OnComplete((() =>
-		// {
-		// 	Camera.main.transform.position = new Vector3(0, 0, -10f);
-		// })));
-		// seq.AppendInterval(0.5f);
-		// seq.OnComplete(() => { EndTurn(); });
+		
 		Sequence seq = DOTween.Sequence();
 		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
 		seq.Join(Camera.main.DOOrthoSize(cameraOriginSize, 0.5f).SetEase(Ease.OutCubic));
+
 		seq.Join(Camera.main.transform.DOMove(cameraOriginPosition, 0.5f).SetEase(Ease.OutCubic));
+
 		seq.AppendCallback(() =>
 		{
 			// 확실하게 고정
