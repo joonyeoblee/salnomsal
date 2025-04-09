@@ -27,7 +27,7 @@ namespace Jun.Map
         void OnEnable()
         {
             OnMapNodeChanged += SetRandomBackground;
-            OnMapNodeChanged += MiniGameScenesManager.instance.Transition.BasicTranstition;
+            OnMapNodeChanged += MiniGameScenesManager.instance.Transition.MapTransition;
         }
 
         void OnDisable()
