@@ -384,7 +384,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Boat ride Sprite_0: 5234531834650837425
+      Boat ride Sprite_1: -8292419019671500170
+      Boat ride Sprite_10: -5294234116272896353
+      Boat ride Sprite_2: -2258800630444514510
+      Boat ride Sprite_3: 5314189477344210138
+      Boat ride Sprite_4: -8320176147922856858
+      Boat ride Sprite_5: 8048824423549996474
+      Boat ride Sprite_6: -4258202178286534318
+      Boat ride Sprite_7: -8356697905972980971
+      Boat ride Sprite_8: -8985526687379524795
+      Boat ride Sprite_9: -2585859197857793743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

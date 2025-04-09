@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rewind_0: -7433077732861927298
+      Rewind_1: -4101259654049623492
+      Rewind_2: 6254381888005854143
+      Rewind_3: -5391891453112360519
+      Rewind_4: 8259835852494553852
+      Rewind_5: 6045840444116756672
+      Rewind_6: 5091097711178122648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
