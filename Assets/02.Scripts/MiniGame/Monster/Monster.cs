@@ -119,10 +119,8 @@ namespace Jun.Monster
 
             if (anyWillDie)
             {
-                
-                StartCoroutine(MiniGameScenesManager.instance.Transition.MiniGameTransition()); // 수정
                 Time.timeScale = 0.2f;
-                yield return new WaitForSecondsRealtime(1f); // 수정
+                yield return new WaitForSecondsRealtime(0.2f);
                 Time.timeScale = 1f;
 
                 // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
