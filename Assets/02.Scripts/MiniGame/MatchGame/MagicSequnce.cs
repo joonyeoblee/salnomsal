@@ -28,7 +28,7 @@ namespace SeongIl
            // EnemyRenderer = new SpriteRenderer()
            
            Enemy.GetComponent<SpriteRenderer>().sprite = EnemyRenderer;
-           Transition.DOColor(new Color(0, 0, 0, 0), 2f).OnComplete(() =>
+           Transition.DOColor(new Color(0, 0, 0, 0), 1f).OnComplete(() =>
            {
                GamePlay();
            });
