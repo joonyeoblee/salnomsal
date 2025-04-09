@@ -10,7 +10,7 @@ namespace Jun.Monster
     {
         Damage _damage;
         List<PlayableCharacter> targets;
-        Transform OriginTransform;
+        Vector3 OriginPosition;
         public float moveDuration = 0.5f;
         public override void EndTurn()
         {
@@ -48,7 +48,7 @@ namespace Jun.Monster
             _health = MaxHealth;
             _mana = MaxMana;
 
-            OriginTransform = gameObject.transform;
+            OriginPosition = transform.position;
             
             List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
             {
@@ -126,7 +126,7 @@ namespace Jun.Monster
                 {
                     target.TakeDamage(_damage);
                 }
-                transform.DOMove(OriginTransform.position, moveDuration).SetEase(Ease.OutQuad);
+                transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad);
 
                 EndTurn();
             }

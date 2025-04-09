@@ -171,6 +171,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		{
 			transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
 			{
+				// 카메라 줌인 + 따라가기
+				Camera.main.DOOrthoSize(3f, 0.5f).SetEase(Ease.OutCubic);
+
+				// Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, -10f), 0.5f).SetEase(Ease.OutCubic);
+
 				// 이동이 끝난 다음에 코루틴 시작
 				StartCoroutine(DoActionCoroutine(slot, targets));
 			});
@@ -221,9 +226,16 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 		// 다시 원래 위치로 이동한 다음, EndTurn 
 
-		transform.DOMove(OriginPosition, moveDuration)
-			.SetEase(Ease.InOutQuad)
-			.OnComplete(() => { EndTurn(); });
+		// transform.DOMove(OriginPosition, moveDuration)
+		// 	.SetEase(Ease.InOutQuad)
+		// 	.OnComplete(() => { EndTurn(); });
+
+		// 다시 원래 위치로 이동 + 카메라 복귀
+		Sequence seq = DOTween.Sequence();
+		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
+		seq.Join(Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCubic));
+		seq.Join(Camera.main.transform.DOMove(new Vector3(0f, 0f, -10f), 0.5f).SetEase(Ease.OutCubic));
+		seq.OnComplete(() => { EndTurn(); });
 	}
 
 	IEnumerator WaitAnimationEnd(string animName)
