@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &210559417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1111,7 +1111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1727227999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   Parry: {fileID: 1829688941}
   camera: {fileID: 0}
   ParryZone: {fileID: 1829688944}
-  EnemySprite: {fileID: 0}
+  EnemySprite: {fileID: 5696992288708269042, guid: 8f6b2153d2bca4dd9ad01f61995a7a1e, type: 3}
 --- !u!114 &1829688947
 MonoBehaviour:
   m_ObjectHideFlags: 0
