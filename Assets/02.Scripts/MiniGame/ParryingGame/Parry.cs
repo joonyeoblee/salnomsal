@@ -79,11 +79,12 @@ namespace SeongIl
         {
             Vector2 currentPosition = slash.transform.position; 
             Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
+            float Interval = slash.GetComponent<SlashChecker>().StartTime + 1 ;
             Sequence sequence = DOTween.Sequence();
             sequence.Append(slash.transform.DOMove(oppositePosition, 0.1f).SetEase(Ease.OutCubic));
      
             
-            sequence.AppendInterval(      + 1);
+            sequence.AppendInterval( Interval + 1);
             
             sequence.Append(slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic).OnStart(() =>
             {
@@ -102,7 +103,7 @@ namespace SeongIl
         {
             for (int i = 0; i < _count; i++) // 예시 값
             {
-                float spawnTime = Random.Range(0.2f, 1.2f); 
+                float spawnTime = Random.Range(0.2f, 0.8f); 
                 // 위치 정하기
                 float angle = Random.Range(0f, Mathf.PI *2);
                 Vector2 pos =  new Vector2( centerPosition.x + distance * Mathf.Cos(angle), centerPosition.y + distance * Mathf.Sin(angle));
@@ -111,9 +112,10 @@ namespace SeongIl
                 slashCheck.StartTime = spawnTime;
                 slashCheck.OnMissed = Fail;
                 // 움직임 시작
-                SlashMovement(slash);
+
                 GameStart = false;
                 yield return new WaitForSeconds(spawnTime);
+                SlashMovement(slash);
             }
 
         }

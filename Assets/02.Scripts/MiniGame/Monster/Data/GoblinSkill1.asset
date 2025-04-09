@@ -18,7 +18,7 @@ MonoBehaviour:
   SkillMultiplier: 20
   Duration: 0
   Priority: 12
-  DamageType: 1
+  DamageType: 0
   SkillType: 0
   SkillRange: 0
   SkillTarget: 0
