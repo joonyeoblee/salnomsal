@@ -117,7 +117,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -139,7 +139,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -161,7 +161,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -183,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -205,7 +205,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -227,7 +227,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -249,7 +249,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -271,7 +271,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -293,7 +293,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -315,7 +315,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -337,7 +337,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -350,6 +350,28 @@ TextureImporter:
       bones: []
       spriteID: b1228850173b5d64eba023977979f11b
       internalID: -298066977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350554aa07aee5344959feadce9c5038
+      internalID: -195090513
       vertices: []
       indices: 
       edges: []
@@ -371,6 +393,7 @@ TextureImporter:
       Goblin_0: -257535748
       Goblin_1: 902509500
       Goblin_10: -298066977
+      Goblin_11: -195090513
       Goblin_2: 140905840
       Goblin_3: 767273637
       Goblin_4: -1232157208

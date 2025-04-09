@@ -8,9 +8,13 @@ public class CombatManager : MonoBehaviour
     public List<EnemyCharacter> Monsters;
     public List<PlayableCharacter> PlayableCharacter;
     public PlayableCharacter CurrentActor;
+
+    public Transform PlayerAttackPosition;
+    public Transform EnemyAttackPosition;
+    
     public SkillSlot SelectedSkill;
     public int SpeedIncrementPerTurn;
-
+    
     public GameObject OpenMapButton;
 
     public Transform[] SpawnPoint;

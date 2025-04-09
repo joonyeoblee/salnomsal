@@ -802,7 +802,7 @@ Transform:
   m_GameObject: {fileID: 334466473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -3, z: 0}
+  m_LocalPosition: {x: -2.5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1171,7 +1171,7 @@ Transform:
   m_GameObject: {fileID: 442782983}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -3, z: 0}
+  m_LocalPosition: {x: -7.5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1854,7 +1854,7 @@ Transform:
   m_GameObject: {fileID: 784264066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: -3, z: 0}
+  m_LocalPosition: {x: -5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2804,6 +2804,8 @@ MonoBehaviour:
   Monsters: []
   PlayableCharacter: []
   CurrentActor: {fileID: 0}
+  PlayerAttackPosition: {fileID: 2057430430}
+  EnemyAttackPosition: {fileID: 1988561122}
   SelectedSkill: 0
   SpeedIncrementPerTurn: 1
   OpenMapButton: {fileID: 1075383577}
@@ -2994,6 +2996,7 @@ MonoBehaviour:
     BaseStats: []
     AppliedPassives: []
   _basicSpeed: 0
+  moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!1 &1163765044
 GameObject:
@@ -3272,6 +3275,7 @@ MonoBehaviour:
     BaseStats: []
     AppliedPassives: []
   _basicSpeed: 0
+  moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!1 &1215724746
 GameObject:
@@ -3903,6 +3907,7 @@ MonoBehaviour:
     BaseStats: []
     AppliedPassives: []
   _basicSpeed: 0
+  moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!1 &1590285143
 GameObject:
@@ -3929,7 +3934,7 @@ Transform:
   m_GameObject: {fileID: 1590285143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.32, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4602,6 +4607,37 @@ Transform:
   - {fileID: 1558468328}
   m_Father: {fileID: 442782984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1988561121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988561122}
+  m_Layer: 0
+  m_Name: EnemyAttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988561122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988561121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1995785629
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,6 +4669,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1215724747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2057430429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057430430}
+  m_Layer: 0
+  m_Name: PlayerAttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2057430430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057430429}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4650,3 +4717,5 @@ SceneRoots:
   - {fileID: 166551909}
   - {fileID: 1887852939}
   - {fileID: 239334839}
+  - {fileID: 1988561122}
+  - {fileID: 2057430430}
