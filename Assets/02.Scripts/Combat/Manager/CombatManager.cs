@@ -10,7 +10,7 @@ public class CombatManager : MonoBehaviour
     public PlayableCharacter CurrentActor;
 
     public Transform PlayerAttackPosition;
-    public Transform EnemyAttackPosition;
+    public Transform EneSmyAttackPosition;
     
     public SkillSlot SelectedSkill;
     public int SpeedIncrementPerTurn;
@@ -20,7 +20,6 @@ public class CombatManager : MonoBehaviour
     public Transform[] SpawnPoint;
 
     private List<ITargetable> _target = new List<ITargetable>();
-
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
     [Header("UI Elements")]
