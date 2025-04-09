@@ -47,8 +47,12 @@ namespace SeongIl
         private void Start()
         {
             _successPosition = transform.position;
-            AlreadyFail = false;
-
+            AlreadyFail = false; 
+            Flash.DOColor(new Color(0, 0, 0, 0), 2f).OnComplete(() =>
+            {
+                GetComponent<ParrySequence>().GamePlay();
+            });
+   
         }
 
         private void Update()
