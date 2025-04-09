@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Equipment;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 public enum SkillSlot
@@ -48,11 +49,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	Vector3 OriginPosition;
 	public float moveDuration = 0.5f;
-	
+
+	private MMF_Player _mmfPlayer;
 	
 
 	[SerializeField] Animator _animator;
 	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
+
     private void Start()
     {
         _health = MaxHealth;
@@ -63,9 +66,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         OriginPosition = transform.position;
         
         _animator = GetComponentInChildren<Animator>();
+        _mmfPlayer = GetComponentInChildren<MMF_Player>();
 
         ApplyItems();
     }
+
     void ApplyItems()
     {
 
@@ -270,6 +275,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		_health -= damage.Value;
         _health = Mathf.Max(_health, 0);
         CombatManager.Instance.UIBattle.RefreshStatText(this);
+		
+		if (_mmfPlayer != null)
+		{
+			_mmfPlayer.PlayFeedbacks(transform.position, damage.Value);
+		}
 
         if (_health <= 0)
 		{
@@ -281,6 +291,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			_animator.SetTrigger("Hit");
 		}
 	}
+
 	public bool WouldDieFromAttack(Damage damage)
 	{
 		float _copyCurrentHealth = _health;
