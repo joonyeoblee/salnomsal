@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Warrior_Attack
+  m_Name: Meteor
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -8514873485471245128, guid: c5f138fb7a7032d4789429b4f1dc06d9, type: 3}
+      value: {fileID: 435386535, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
     - time: 0.083333336
-      value: {fileID: 1715872067, guid: c5f138fb7a7032d4789429b4f1dc06d9, type: 3}
+      value: {fileID: -2004091129, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
+    - time: 0.16666667
+      value: {fileID: 742437392, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
+    - time: 0.25
+      value: {fileID: 1400032596, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,14 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -8514873485471245128, guid: c5f138fb7a7032d4789429b4f1dc06d9, type: 3}
-    - {fileID: 1715872067, guid: c5f138fb7a7032d4789429b4f1dc06d9, type: 3}
+    - {fileID: 435386535, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
+    - {fileID: -2004091129, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
+    - {fileID: 742437392, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
+    - {fileID: 1400032596, guid: 70f9eced7ef9d0247a17ba890b6ceb54, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -72,4 +78,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.25
+    functionName: DeleteThis
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
