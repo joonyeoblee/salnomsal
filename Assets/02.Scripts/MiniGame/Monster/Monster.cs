@@ -10,7 +10,7 @@ namespace Jun.Monster
     {
         Damage _damage;
         List<PlayableCharacter> targets;
-        Transform OriginTransform;
+        Vector3 OriginPosition;
         public float moveDuration = 0.5f;
         public override void EndTurn()
         {
@@ -22,7 +22,7 @@ namespace Jun.Monster
         void OnSuccess()
         {
             if (!IsMyTurn) return;
-            EndTurn();
+            ReturnToOrigin(() => EndTurn());
             
         }
 
@@ -33,22 +33,29 @@ namespace Jun.Monster
             {
                 target.TakeDamage(_damage);
             }
-            EndTurn();
+            ReturnToOrigin(() => EndTurn());
         }
 
         void OnParrying()
         {
             if (!IsMyTurn) return;
             TakeDamage(_damage);
-            EndTurn();
+            ReturnToOrigin(() => EndTurn());
         }
+        void ReturnToOrigin(Action onComplete = null)
+        {
+            transform.DOMove(OriginPosition, moveDuration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => { onComplete?.Invoke(); });
+        }
+        
         protected override void Start()
         {
             base.Start();
             _health = MaxHealth;
             _mana = MaxMana;
 
-            OriginTransform = gameObject.transform;
+            OriginPosition = transform.position;
             
             List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
             {
@@ -126,9 +133,7 @@ namespace Jun.Monster
                 {
                     target.TakeDamage(_damage);
                 }
-                transform.DOMove(OriginTransform.position, moveDuration).SetEase(Ease.OutQuad);
-
-                EndTurn();
+                transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
         IEnumerator WaitForAnimation(string animName)

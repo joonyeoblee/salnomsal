@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 176875157276849638}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0cbea4bd29f9bba4589a47b57d26d239, type: 2}
+  m_Controller: {fileID: 22100000, guid: 43ec3a6b13bd4b041a40afe5958b766b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -188,8 +188,22 @@ MonoBehaviour:
   - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
   - {fileID: 4649674558581916710, guid: 671af462eac9b38428283371cd39c504, type: 3}
   - {fileID: 7221374992292175630, guid: ae96a37a7e9458f4fa8180dc2ebc7fb2, type: 3}
+  SkillEffects: []
+  HitEffects: []
   _targetType: 0
+  Weapon:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
+  Armor:
+    Id: 
+    Rarity: 0
+    BaseStats: []
+    AppliedPassives: []
   _basicSpeed: 0
+  moveDuration: 0.5
+  _animator: {fileID: 0}
 --- !u!114 &5442923140440288708
 MonoBehaviour:
   m_ObjectHideFlags: 0
