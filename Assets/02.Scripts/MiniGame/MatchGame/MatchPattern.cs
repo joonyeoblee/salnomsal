@@ -19,7 +19,9 @@ namespace SeongIl
         public Animator MagicEffect;
         
         public Image MagicCircle;
-        public Image test;
+        
+        
+        
         [Header("시간 설정")]
         public float TimeLimit = 0;
         public float BonusDecline;
@@ -55,8 +57,6 @@ namespace SeongIl
 
             if (Input.anyKeyDown)
             {
-                
-                StartCoroutine(ShakeObjetct(test));
                 if (Input.GetKeyDown(_keyQueue.Peek().ToLower()))
                 {
                     _keyQueue.Dequeue();
@@ -65,8 +65,8 @@ namespace SeongIl
                         DisplayKeys();
 
                         MagicCircle.fillAmount -= DeclineTime;
+                        DecreaseFill(DeclineTime, 0.1f);
                         StartCoroutine(ShakeObjetct(MagicCircle));
-
                     }
                     else
                     {
@@ -150,6 +150,18 @@ namespace SeongIl
             }
             
             circle.rectTransform.anchoredPosition = origin;
+        }
+        
+        private Tween _currentTween;
+        private void DecreaseFill(float amount, float duration)
+        {
+            float target = Mathf.Clamp(MagicCircle.fillAmount - amount, 0, 1);
+            if (_currentTween != null && _currentTween.IsActive())
+            {
+                _currentTween.Kill();
+            }
+            
+            _currentTween = DOTween.To(()=> MagicCircle.fillAmount, x => MagicCircle.fillAmount = x, target, duration).SetEase(Ease.OutCubic);
         }
     }
 }
