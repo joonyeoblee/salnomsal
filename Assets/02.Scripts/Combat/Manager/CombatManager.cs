@@ -289,12 +289,13 @@ public class CombatManager : MonoBehaviour
 
         for (int i = 0; i < TurnOrder.Count; ++i)
         {
-            TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
             if (TurnOrder[i] == null || TurnOrder[i].IsAlive == false)
             {
                 TurnOrder.RemoveAt(i);
                 --i;
+                continue;
             }
+            TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
         }
 
         TurnOrder.Add(unit);
