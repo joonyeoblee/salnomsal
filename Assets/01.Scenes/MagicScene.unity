@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ef594adaca17a4ea858b7fc9bdc0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Book: {fileID: 193980137}
   Text: {fileID: 1992361285}
   MagicEffect: {fileID: 1202996962}
   MagicCircle: {fileID: 1888079056}

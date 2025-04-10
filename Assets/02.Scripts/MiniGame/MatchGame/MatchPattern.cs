@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Jun;
+using Mono.Cecil.Cil;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ namespace SeongIl
 {
     public class MatchPattern : MonoBehaviour
     {
+        public Image Book; 
         public TextMeshProUGUI Text;
         private string _currentkey;
         // 이펙트
@@ -66,7 +68,8 @@ namespace SeongIl
 
                         MagicCircle.fillAmount -= DeclineTime;
                         DecreaseFill(DeclineTime, 0.1f);
-                        StartCoroutine(ShakeObjetct(MagicCircle));
+                        StartCoroutine(ShakeObjetct(MagicCircle, 3, -0.05f,0.05f,0.1f));
+                        StartCoroutine(ShakeObjetct(Book, 3, 0.05f,0.05f, 0.1f));
                     }
                     else
                     {
@@ -137,15 +140,20 @@ namespace SeongIl
             _isGameActive = true;
         }
 
-        private IEnumerator ShakeObjetct(Image circle)
+        private IEnumerator ShakeObjetct(Image circle, int count, float min, float max, float duration)
         {
             Vector2 origin = circle.rectTransform.anchoredPosition;
-            for (int i = 0; i < 3; i++)
+            Debug.Log(origin);
+            Vector2 f = circle.rectTransform.position;
+            Debug.Log(f);
+            Vector2 p = circle.rectTransform.localPosition;
+            Debug.Log(p);
+            for (int i = 0; i < count; i++)
             {
-                float randX = Random.Range(-0.05f ,0.05f);
-                float randY = Random.Range(-0.05f, 0.05f);
-                circle.rectTransform.DOMove(new Vector3(randX,randY, 0), 0.1f);
-                yield return new WaitForSeconds(0.1f);
+                float randX = Random.Range(min , max);
+                float randY = Random.Range(min, max);
+                circle.rectTransform.DOMove(new Vector3(origin.x + randX ,origin.y +randY, 0), duration);
+                yield return new WaitForSeconds(duration);
                 
             }
             

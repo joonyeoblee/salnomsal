@@ -44,11 +44,14 @@ namespace Son
         {
             for (int i = 0; i < DifficultPortal.Count; i++)
             {
+                int distanceFromCenter = Mathf.Abs(i - CurrentIndex);
+                
                 float targetX = (i - CurrentIndex) * moveDistance;
                 DifficultPortal[i].DOAnchorPosX(targetX, moveDuration).SetEase(Ease.OutBack);
 
-                float targetScale = (i == CurrentIndex) ? 1.0f : 0.6f;
-                DifficultPortal[i].DOScale(Vector3.one * targetScale, moveDuration).SetEase(Ease.OutBack);
+                // float targetScale = (i == CurrentIndex) ? 1.0f : 0.6f;
+                float scale = Mathf.Lerp(1.0f, 0.6f, distanceFromCenter / 2f);
+                DifficultPortal[i].DOScale(Vector3.one * scale, moveDuration).SetEase(Ease.OutBack);
 
                 // 선택된 포탈만 버튼 활성화
                 Button btn = DifficultPortal[i].GetComponent<Button>();
