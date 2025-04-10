@@ -166,8 +166,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		gameObject.transform.DOScale(1.2f, 0.5f);
 		Debug.Log($"{CharacterName}: Playable Turn Start");
 		CombatManager.Instance.CurrentActor = this;
-		// UI로 캐릭터 정보 전송
-		UI_Battle.Instance.RefreshStatText(this);
+		CostGain();
+        // UI로 캐릭터 정보 전송
+        UI_Battle.Instance.RefreshStatText(this);
 		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
 		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
 		OnTurnStart?.Invoke();
