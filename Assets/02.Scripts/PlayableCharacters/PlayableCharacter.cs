@@ -183,10 +183,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	        Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
 			
 			Sequence sequence = DOTween.Sequence();
-			sequence.Append(transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.InOutQuad));
-			sequence.AppendInterval(0.5f);
 			sequence.Append(Camera.main.DOOrthoSize(4f, 1f)).SetEase(Ease.OutCubic);
 			sequence.Join(Camera.main.transform.DOMove(vecc, 1f).SetEase(Ease.OutQuad));
+			sequence.Join(transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.InOutQuad));
+			
 			sequence.OnComplete((
 				) =>
 			{
@@ -244,7 +244,6 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		Sequence seq = DOTween.Sequence();
 		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
 		seq.Join(Camera.main.DOOrthoSize(cameraOriginSize, 0.5f).SetEase(Ease.OutCubic));
-
 		seq.Join(Camera.main.transform.DOMove(cameraOriginPosition, 0.5f).SetEase(Ease.OutCubic));
 		seq.OnComplete(() =>
 		{
