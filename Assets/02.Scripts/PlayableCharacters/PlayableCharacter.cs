@@ -18,32 +18,32 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
 
-    public List<Skill> Skills;
-    public List<AnimationClip> SkillEffects;
-    public List<GameObject> HitEffects;
-    public TargetType _targetType;
-    public TargetType TargetType
-    {
-        get => _targetType;
-        set => _targetType = value;
-    }
+	public List<Skill> Skills;
+	public List<AnimationClip> SkillEffects;
+	public List<GameObject> HitEffects;
+	public TargetType _targetType;
+	public TargetType TargetType
+	{
+		get => _targetType;
+		set => _targetType = value;
+	}
 
 	[SerializeField] private GameObject _model;
-    public GameObject Model { get => _model.gameObject; }
+	public GameObject Model { get => _model.gameObject; }
 
-    private Vector3 cameraOriginPosition;
-    float cameraOriginSize = 5f;
-    public EquipmentSaveData Weapon;
-    public EquipmentSaveData Armor;
-    
-    private bool _isAlive;
-    public bool IsAlive => _isAlive;
+	private Vector3 cameraOriginPosition;
+	float cameraOriginSize = 5f;
+	public EquipmentSaveData Weapon;
+	public EquipmentSaveData Armor;
+
+	private bool _isAlive;
+	public bool IsAlive => _isAlive;
 
 	[SerializeField] private int _basicSpeed;
-    public int BasicSpeed
-	{ 
+	public int BasicSpeed
+	{
 		get => _basicSpeed;
-		set => _basicSpeed = value; 
+		set => _basicSpeed = value;
 	}
 
 	private int _currentSpeed;
@@ -57,150 +57,152 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public float moveDuration = 0.5f;
 
 	private MMF_Player _mmfPlayer;
-	
+
 
 	[SerializeField] Animator _animator;
 	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
 
-    private void Start()
-    {
-        _health = MaxHealth;
-        _cost = MaxCost;
-        _isAlive = true;
-        _currentSpeed = BasicSpeed;
+	private void Start()
+	{
+		_health = MaxHealth;
+		_cost = MaxCost;
+		_isAlive = true;
+		_currentSpeed = BasicSpeed;
 
-        OriginPosition = transform.position;
-        
-        _animator = GetComponentInChildren<Animator>();
-        _mmfPlayer = GetComponentInChildren<MMF_Player>();
+		OriginPosition = transform.position;
 
-        ApplyItems();
-        cameraOriginPosition = Camera.main.transform.position;
-    }
+		_animator = GetComponentInChildren<Animator>();
+		_mmfPlayer = GetComponentInChildren<MMF_Player>();
 
-    void ApplyItems()
-    {
+		ApplyItems();
+		cameraOriginPosition = Camera.main.transform.position;
+	}
 
-	    if (Weapon != null)
-	    {
-		    foreach (StatModifier stat in Weapon.BaseStats)
-		    {
-			    if (!finalStats.ContainsKey(stat.StatType))
-				    finalStats[stat.StatType] = 0;
+	void ApplyItems()
+	{
 
-			    finalStats[stat.StatType] += stat.Value;
+		if (Weapon != null)
+		{
+			foreach (StatModifier stat in Weapon.BaseStats)
+			{
+				if (!finalStats.ContainsKey(stat.StatType))
+					finalStats[stat.StatType] = 0;
 
-		    }
-	    }
+				finalStats[stat.StatType] += stat.Value;
 
-	    if (Armor != null)
-	    {
-		    foreach (StatModifier stat in Armor.BaseStats)
-		    {
-			    if (!finalStats.ContainsKey(stat.StatType))
-				    finalStats[stat.StatType] = 0;
+			}
+		}
 
-			    finalStats[stat.StatType] += stat.Value;
-		    }
-	    }
-	    ApplyStats(finalStats);
-    }
-    void ApplyStats(Dictionary<StatType, float> finalStats)
-    {
-	    foreach (KeyValuePair<StatType, float> stat in finalStats)
-	    {
-		    switch (stat.Key)
-		    {
-		    case StatType.Attack:
-			    AttackPower += stat.Value;
-			    break;
+		if (Armor != null)
+		{
+			foreach (StatModifier stat in Armor.BaseStats)
+			{
+				if (!finalStats.ContainsKey(stat.StatType))
+					finalStats[stat.StatType] = 0;
 
-		    case StatType.MaxHealth:
-			    MaxHealth += stat.Value;
-			    break;
+				finalStats[stat.StatType] += stat.Value;
+			}
+		}
+		ApplyStats(finalStats);
+	}
+	void ApplyStats(Dictionary<StatType, float> finalStats)
+	{
+		foreach (KeyValuePair<StatType, float> stat in finalStats)
+		{
+			switch (stat.Key)
+			{
+				case StatType.Attack:
+					AttackPower += stat.Value;
+					break;
 
-		    case StatType.MaxMana:
-			    MaxCost += stat.Value;
-			    break;
+				case StatType.MaxHealth:
+					MaxHealth += stat.Value;
+					break;
 
-		    case StatType.Speed:
-			    BasicSpeed += (int)stat.Value;
-			    break;
-		    }
-	    }
-    }
-    public void ApplyStat(float health, float cost, float attack, int speed)
-    {
-        MaxHealth = health;
-        MaxCost = cost;
-        AttackPower = attack;
-        BasicSpeed = speed;
-    }
+				case StatType.MaxMana:
+					MaxCost += stat.Value;
+					break;
 
-    public void ResetAfterBattle()
-    {
-        int loopSafeCount = 20; // 매직넘버
+				case StatType.Speed:
+					BasicSpeed += (int)stat.Value;
+					break;
+			}
+		}
+	}
+	public void ApplyStat(float health, float cost, float attack, int speed)
+	{
+		MaxHealth = health;
+		MaxCost = cost;
+		AttackPower = attack;
+		BasicSpeed = speed;
+	}
 
-        gameObject.transform.DOScale(1f, 0.5f);
-        _cost = MaxCost;
-        _currentSpeed = BasicSpeed;
+	public void ResetAfterBattle()
+	{
+		int loopSafeCount = 20; // 매직넘버
 
-        while (OnTurnEnd != null && loopSafeCount > 0)
-        {
-            OnTurnStart?.Invoke();
-            OnTurnEnd?.Invoke();
-            --loopSafeCount;
-        }
-    }
+		gameObject.transform.DOScale(1f, 0.5f);
+		_cost = MaxCost;
+		_currentSpeed = BasicSpeed;
 
-    public void CostGain()
-    {
-        _cost += CostRegen;
-        _cost = Mathf.Min(_cost, MaxCost);
-    }
+		while (OnTurnEnd != null && loopSafeCount > 0)
+		{
+			OnTurnStart?.Invoke();
+			OnTurnEnd?.Invoke();
+			--loopSafeCount;
+		}
+	}
+
+	public void CostGain()
+	{
+		_cost += CostRegen;
+		_cost = Mathf.Min(_cost, MaxCost);
+	}
 
 	public void StartTurn()
 	{
-        gameObject.transform.DOScale(1.2f, 0.5f);
-        Debug.Log($"{CharacterName}: Playable Turn Start");
-        CombatManager.Instance.CurrentActor = this;
-        // UI로 캐릭터 정보 전송
-        UI_Battle.Instance.RefreshStatText(this);
+		gameObject.transform.DOScale(1.2f, 0.5f);
+		Debug.Log($"{CharacterName}: Playable Turn Start");
+		CombatManager.Instance.CurrentActor = this;
+		// UI로 캐릭터 정보 전송
+		UI_Battle.Instance.RefreshStatText(this);
 		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
 		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
-        OnTurnStart?.Invoke();
+		OnTurnStart?.Invoke();
 	}
 
 	public void EndTurn()
 	{
-        gameObject.transform.DOScale(1f, 0.5f);
-        Debug.Log($"{CharacterName}: Playable Turn End");
-        OnTurnEnd?.Invoke();
+		gameObject.transform.DOScale(1f, 0.5f);
+		Debug.Log($"{CharacterName}: Playable Turn End");
+		OnTurnEnd?.Invoke();
 		CombatManager.Instance.EndTurn(this);
-    }
+	}
 
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
 		_cost -= Skills[(int)slot].SkillCost;
-        UI_Battle.Instance.RefreshStatText(this);
+		UI_Battle.Instance.RefreshStatText(this);
 		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
 
-        if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
-        {
-	        Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
-			
+		PlayableSkillSO currentSkillData = Skills[(int)slot].SkillData;
+		if (currentSkillData.SkillType == SkillType.Attack)
+		{
+			Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
+
 			Sequence sequence = DOTween.Sequence();
 			sequence.Append(Camera.main.DOOrthoSize(4f, 1f)).SetEase(Ease.OutCubic);
 			sequence.Join(Camera.main.transform.DOMove(vecc, 1f).SetEase(Ease.OutQuad));
 			sequence.Join(transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.InOutQuad));
-			
+
 			sequence.OnComplete((
 				) =>
 			{
 				Debug.Log($"{vecc}: vecc ");
-					StartCoroutine(DoActionCoroutine(slot, targets));
-				});
-		} else
+				StartCoroutine(DoActionCoroutine(slot, targets));
+			});
+		}
+		else
 		{
 			// 이동이 끝난 다음에 코루틴 시작
 			StartCoroutine(DoActionCoroutine(slot, targets));
@@ -213,20 +215,20 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 		switch (slot)
 		{
-		case SkillSlot.DefaultAttack:
-			animName = "Attack";
+			case SkillSlot.DefaultAttack:
+				animName = "Attack";
 
-			_animator.SetTrigger(animName);
-			break;
-		case SkillSlot.Skill1:
-			animName = "Skill1";
-			_animator.SetTrigger(animName);
-			break;
-		case SkillSlot.Skill2:
-			animName = "Skill2";
+				_animator.SetTrigger(animName);
+				break;
+			case SkillSlot.Skill1:
+				animName = "Skill1";
+				_animator.SetTrigger(animName);
+				break;
+			case SkillSlot.Skill2:
+				animName = "Skill2";
 
-			_animator.SetTrigger(animName);
-			break;
+				_animator.SetTrigger(animName);
+				break;
 		}
 
 		// 애니메이션 끝날 때까지 대기
@@ -240,14 +242,14 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			if (HitEffects.Count > 0)
 			{
 				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
-				
+
 			}
 
 			Skills[(int)slot].UseSkill(this, target);
 		}
 
 		// 다시 원래 위치로 이동한 다음, EndTurn 
-		
+
 		Sequence seq = DOTween.Sequence();
 		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
 		seq.Join(Camera.main.DOOrthoSize(cameraOriginSize, 0.5f).SetEase(Ease.OutCubic));
@@ -278,26 +280,26 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void Death(DamageType type)
 	{
-        _isAlive = false;
-        Debug.Log("Death");
+		_isAlive = false;
+		Debug.Log("Death");
 	}
 
 	public void TakeDamage(Damage damage)
 	{
 		_health -= damage.Value;
-        _health = Mathf.Max(_health, 0);
-        UI_Battle.Instance.RefreshStatText(this);
-        UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-		
+		_health = Mathf.Max(_health, 0);
+		UI_Battle.Instance.RefreshStatText(this);
+		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
+
 		if (_mmfPlayer != null)
 		{
 			_mmfPlayer.PlayFeedbacks(transform.position, damage.Value);
 		}
 
-        if (_health <= 0)
+		if (_health <= 0)
 		{
 			Death(damage.Type);
-        }
+		}
 		else
 		{
 			Debug.Log($"{gameObject.name} Took {damage.Value} damage from {damage.DamageFrom.name}. Remaining health: {_health}");
@@ -316,72 +318,72 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		return false;
 	}
 
-    public void GetBuff(Buff buff)
-    {
-        Debug.Log($"버프 사용. {buff.BuffStatType} : {buff.BuffMultiplier}");
-        switch (buff.BuffStatType)
-        {
-            case BuffStatType.AttackPower:
-                AttackPower *= buff.BuffMultiplier;
-                break;
-            case BuffStatType.CriticalChance:
-                CriticalChance += buff.BuffMultiplier;
-                break;
-            case BuffStatType.CriticalDamage:
-                CriticalDamage += buff.BuffMultiplier;
-                break;
-            case BuffStatType.Taunt:
-                Taunt = true;
-                break;
-        }
+	public void GetBuff(Buff buff)
+	{
+		Debug.Log($"버프 사용. {buff.BuffStatType} : {buff.BuffMultiplier}");
+		switch (buff.BuffStatType)
+		{
+			case BuffStatType.AttackPower:
+				AttackPower *= buff.BuffMultiplier;
+				break;
+			case BuffStatType.CriticalChance:
+				CriticalChance += buff.BuffMultiplier;
+				break;
+			case BuffStatType.CriticalDamage:
+				CriticalDamage += buff.BuffMultiplier;
+				break;
+			case BuffStatType.Taunt:
+				Taunt = true;
+				break;
+		}
 
-        HasBuff = true;
+		HasBuff = true;
 
 		UI_Battle.Instance.RefreshStatText(this);
-        UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-        UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
+		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
+		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
 
-        OnTurnStart += buff.TickBuff;
-        OnTurnEnd += buff.RemoveBuff;
-    }
+		OnTurnStart += buff.TickBuff;
+		OnTurnEnd += buff.RemoveBuff;
+	}
 
 	public void RemoveBuff(Buff buff)
 	{
-        Debug.Log($"버프 해제. {buff.BuffStatType} : {buff.BuffMultiplier}");
-        switch (buff.BuffStatType)
-        {
-            case BuffStatType.AttackPower:
-                AttackPower /= buff.BuffMultiplier;
-                break;
-            case BuffStatType.CriticalChance:
-                CriticalChance -= buff.BuffMultiplier;
-                break;
-            case BuffStatType.CriticalDamage:
-                CriticalDamage -= buff.BuffMultiplier;
-                break;
-            case BuffStatType.Taunt:
-                Taunt = false;
-                break;
-        }
+		Debug.Log($"버프 해제. {buff.BuffStatType} : {buff.BuffMultiplier}");
+		switch (buff.BuffStatType)
+		{
+			case BuffStatType.AttackPower:
+				AttackPower /= buff.BuffMultiplier;
+				break;
+			case BuffStatType.CriticalChance:
+				CriticalChance -= buff.BuffMultiplier;
+				break;
+			case BuffStatType.CriticalDamage:
+				CriticalDamage -= buff.BuffMultiplier;
+				break;
+			case BuffStatType.Taunt:
+				Taunt = false;
+				break;
+		}
 
-        OnTurnStart -= buff.TickBuff;
-        OnTurnEnd -= buff.RemoveBuff;
+		OnTurnStart -= buff.TickBuff;
+		OnTurnEnd -= buff.RemoveBuff;
 
 		UI_Battle.Instance.RefreshStatText(this);
-        UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-        UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
+		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
+		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
 
-        if (OnTurnEnd == null)
-        {
-            HasBuff = false;
-        }
-    }
+		if (OnTurnEnd == null)
+		{
+			HasBuff = false;
+		}
+	}
 
-    public void GetHeal(float amount)
-    {
+	public void GetHeal(float amount)
+	{
 		Debug.Log($"체력회복. {amount}");
-        _health += amount;
+		_health += amount;
 		_health = Mathf.Min(_health, MaxHealth);
-        UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-    }
+		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
+	}
 }
