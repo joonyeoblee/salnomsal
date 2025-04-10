@@ -1,6 +1,7 @@
 
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace SeongIl
@@ -18,10 +19,12 @@ namespace SeongIl
             {
                 return;
             }
-            
-            if (_hitCount > 3)
+            Destroy(other.gameObject);
+            if (_hitCount > 4)
             {
+                Debug.Log("콜리전 충돌 넘 많아 실패");
                 Avoid.Fail();
+                
             }
             else
             {

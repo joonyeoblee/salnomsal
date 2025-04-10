@@ -1,4 +1,5 @@
 using System.Collections;
+using Com.LuisPedroFonseca.ProCamera2D.TopDownShooter;
 using DG.Tweening;
 using Jun;
 using UnityEngine;
@@ -6,23 +7,24 @@ using UnityEngine.SceneManagement;
 
 namespace SeongIl
 {
-
-
     public class Avoid : MonoBehaviour
     {
         //  parrying 사운드
         public AudioSource ParrySound;
-        // 패링 시간 
-        [SerializeField]
-        private float _parryTime = 0.5f;
-        // 패링시스템 (패링 치기)
-        public bool Parrying = false;
+
         // 화살 다 피함? 카운트 세기
-        public int ArrowCount = 10;
+        public int ArrowCount;
+
+        // 스폰 속도
+        public float MinTime;
+
+        public float MaxTime;
+
         // 게임 시작
         public bool IsGameOver = false;
         public int SuccessCount = 0;
-        
+
+
         // 피하기 시작하기
         private void Update()
         {
@@ -30,37 +32,28 @@ namespace SeongIl
             {
                 return;
             }
+
             // 게임 끝내기
             if (SuccessCount >= ArrowCount)
             {
                 Success();
             }
-            if (Input.GetKeyDown(KeyCode.Space) && !Parrying)
-            {
-                StartCoroutine(ParryingTiming());
-            }
 
-        }
-
-        //판정 구하기
-        private IEnumerator ParryingTiming()
-        {
-            Parrying = true;
-            yield return new WaitForSeconds(_parryTime);
-            Parrying = false;
         }
 
         // 실패   
         public void Fail()
         {
             Debug.Log("Fail");
+            GameStop();
             IsGameOver = true;
             DOTween.KillAll();
             MiniGameScenesManager.instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
-            
+
         }
+
         // 성공
         public void Success()
         {
@@ -78,10 +71,19 @@ namespace SeongIl
             ParrySound.PlayOneShot(ParrySound.clip);
             Debug.Log("ParryingSuccess");
             IsGameOver = true;
+            
             DOTween.KillAll();
+            Debug.Log("다 죽임 : 어보이드");
             MiniGameScenesManager.instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
+        }
+
+        // 게임 종료하기
+        private void GameStop()
+        {
+            AvoidSpawner spawner = GetComponent<AvoidSpawner>();
+            spawner?.StopAllCoroutines();
         }
     }
 }
