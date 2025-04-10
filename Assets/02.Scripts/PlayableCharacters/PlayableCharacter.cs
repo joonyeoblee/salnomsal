@@ -233,6 +233,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			if (HitEffects.Count > 0)
 			{
 				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+				
 			}
 
 			Skills[(int)slot].UseSkill(this, target);
