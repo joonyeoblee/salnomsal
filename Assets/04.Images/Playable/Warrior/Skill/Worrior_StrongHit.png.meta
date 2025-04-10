@@ -1,19 +1,43 @@
 fileFormatVersion: 2
-guid: 91f070c1165a8c847b5f5dc311b8ff2a
+guid: 7899674dddc212743847024023a53188
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7285536552108959064
-    second: NormalHit_0
+      213: 2101730475970199555
+    second: Worrior_StrongHit_0
   - first:
-      213: -587579237364597142
-    second: NormalHit_1
+      213: -1328605368464671808
+    second: Worrior_StrongHit_1
   - first:
-      213: -4545462817723570209
-    second: NormalHit_2
+      213: 4411205521125539025
+    second: Worrior_StrongHit_2
   - first:
-      213: 7804373833006415093
-    second: NormalHit_3
+      213: 246719795960471369
+    second: Worrior_StrongHit_3
+  - first:
+      213: -3672225301916670817
+    second: Worrior_StrongHit_4
+  - first:
+      213: -3471923977129460442
+    second: Worrior_StrongHit_5
+  - first:
+      213: -6354241909700927161
+    second: Worrior_StrongHit_6
+  - first:
+      213: -1495355115400039745
+    second: Worrior_StrongHit_7
+  - first:
+      213: 7427733551289289338
+    second: Worrior_StrongHit_8
+  - first:
+      213: -4805632454534387875
+    second: Worrior_StrongHit_9
+  - first:
+      213: -2610709373523548985
+    second: Worrior_StrongHit_10
+  - first:
+      213: 263512696270025747
+    second: Worrior_StrongHit_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,133 +159,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NormalHit_0
+      name: Worrior_StrongHit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a56bf9a4a7db5664fb2d13b3a8cb8bc8
-      internalID: 1414611201
+      spriteID: 30001d18bb8da2d10800000000000000
+      internalID: 2101730475970199555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NormalHit_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e6fc7c128e8e9943abaee7cb681096b
-      internalID: 1402787601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NormalHit_2
+      name: Worrior_StrongHit_1
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 48
-        height: 48
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9f7df9d90dbfd9647b6c05b364184619
-      internalID: -232636728
+      spriteID: 0cb7cf5e478df8de0800000000000000
+      internalID: -1328605368464671808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NormalHit_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d40ed9e7bd9c2dc42986c3232639903e
-      internalID: 340567770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NormalHit_4
+      name: Worrior_StrongHit_2
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 48
-        height: 48
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 798d92a393872284a9444d9be392f3be
-      internalID: -2144212082
+      spriteID: 1dcfde5cc00c73d30800000000000000
+      internalID: 4411205521125539025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NormalHit_5
+      name: Worrior_StrongHit_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 288
         y: 0
-        width: 48
-        height: 48
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 03951890b59c0cc409473b447b8a6f74
-      internalID: 1257626884
+      spriteID: 94fd745e8568c6300800000000000000
+      internalID: 246719795960471369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Worrior_StrongHit_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f942e005b82a90dc0800000000000000
+      internalID: -3672225301916670817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Worrior_StrongHit_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d7900b98f31dfc0800000000000000
+      internalID: -3471923977129460442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Worrior_StrongHit_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741606b36a231d7a0800000000000000
+      internalID: -6354241909700927161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Worrior_StrongHit_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2748df17e6f3be0800000000000000
+      internalID: -1495355115400039745
       vertices: []
       indices: 
       edges: []
@@ -270,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 687e9c4ccb575bf49ae4ab5257b0414b
+    spriteID: d3a6e8db76497484bbe54cb8ce4c782c
     internalID: 0
     vertices: []
     indices: 
@@ -280,12 +348,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      NormalHit_0: 1414611201
-      NormalHit_1: 1402787601
-      NormalHit_2: -232636728
-      NormalHit_3: 340567770
-      NormalHit_4: -2144212082
-      NormalHit_5: 1257626884
+      Worrior_StrongHit_0: 2101730475970199555
+      Worrior_StrongHit_1: -1328605368464671808
+      Worrior_StrongHit_2: 4411205521125539025
+      Worrior_StrongHit_3: 246719795960471369
+      Worrior_StrongHit_4: -3672225301916670817
+      Worrior_StrongHit_5: -3471923977129460442
+      Worrior_StrongHit_6: -6354241909700927161
+      Worrior_StrongHit_7: -1495355115400039745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
