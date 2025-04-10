@@ -62,7 +62,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: Warrior
   Skills:
-  - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
+  - {fileID: 731159558023248803, guid: eea51eac19427b64388f5f1b13441408, type: 3}
   - {fileID: 731159558023248803, guid: 9d6a213308343284a95091cc0c87270b, type: 3}
   - {fileID: 1052691500520007469, guid: 921c6c31c6c0e77458d8e0c3cd6c5f1b, type: 3}
   SkillEffects: []

@@ -185,7 +185,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: Character1
   Skills:
-  - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
+  - {fileID: 731159558023248803, guid: eea51eac19427b64388f5f1b13441408, type: 3}
   - {fileID: 2749973978265188498, guid: 1f89ee5acf5d9e4458c0e27fad5681f9, type: 3}
   - {fileID: 6416434181037239145, guid: 48a722173c59fb7418124565169817f8, type: 3}
   SkillEffects: []
