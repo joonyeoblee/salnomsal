@@ -29,7 +29,7 @@ namespace Jun.Monster
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        void OnFail()
+        void OnFail() 
         {
             if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)

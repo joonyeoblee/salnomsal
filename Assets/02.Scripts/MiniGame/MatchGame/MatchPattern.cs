@@ -141,6 +141,10 @@ namespace SeongIl
         {
             Debug.Log("Fail");
             _isGameActive = false;
+
+            // DOTween 트윈 정리
+            DOTween.KillAll(); // 또는 특정 타겟만 Kill할 수도 있음
+
             
             MiniGameScenesManager.instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
@@ -153,6 +157,9 @@ namespace SeongIl
             Debug.Log("성공");
             _isGameActive = false;
 
+            // DOTween 트윈 정리
+            DOTween.KillAll(); // 또는 특정 타겟만 Kill할 수도 있음
+            
             MiniGameScenesManager.instance.Success?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
