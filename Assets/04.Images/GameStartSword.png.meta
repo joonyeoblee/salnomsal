@@ -509,7 +509,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GameStartSword_0: 2116638904851366734
+      GameStartSword_1: -4252014786892295534
+      GameStartSword_10: 2741195723864225777
+      GameStartSword_11: 4658008519697902568
+      GameStartSword_12: 5417191210835132428
+      GameStartSword_13: 5892346385878418959
+      GameStartSword_14: 4544472228988630781
+      GameStartSword_15: 8858712070290153595
+      GameStartSword_2: -7620215930253162546
+      GameStartSword_3: -2590256900759943227
+      GameStartSword_4: -4133582036787193460
+      GameStartSword_5: 3212986126411148098
+      GameStartSword_6: 3746117643888161765
+      GameStartSword_7: 8339839810993218878
+      GameStartSword_8: -2866997082717027865
+      GameStartSword_9: -6349814378931326953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

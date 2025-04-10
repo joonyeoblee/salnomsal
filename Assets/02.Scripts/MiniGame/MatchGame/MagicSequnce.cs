@@ -10,6 +10,7 @@ namespace SeongIl
 
     public class MagicSequence : MonoBehaviour
     {
+        public GameObject CircleVFX; 
         // 에너미 스프라이트 렌더러 받아오기
         public Sprite EnemyRenderer;
         public Image Transition;
@@ -52,8 +53,16 @@ namespace SeongIl
             sequence.AppendInterval(0.2f);
             
             sequence.Append(Camera.DOOrthoSize(5f, ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(SubMagicCircle.rectTransform.DOScale(10f, ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(MainMagicCircle.rectTransform.DOScale(10f, ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(SubMagicCircle.rectTransform.DOMoveY( 1f, ScaleValue).SetEase(Ease.OutCubic));
+            sequence.Join(MainMagicCircle.rectTransform.DOMoveY( 1f, ScaleValue).SetEase(Ease.OutCubic));
             sequence.Join(Camera.transform.DOMove(new Vector3(0, 0f, -10f), ScaleValue).SetEase(Ease.OutCubic));
             sequence.Join(Book.rectTransform.DOMove(new Vector3(0, -5f, 0) ,1f));
+            sequence.OnComplete((() =>
+            {
+                CircleVFX.SetActive(true);
+            }));
 
         }
         private void Update()

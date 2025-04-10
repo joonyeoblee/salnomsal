@@ -44,9 +44,11 @@ namespace Son
         {
             for (int i = 0; i < DifficultPortal.Count; i++)
             {
-                int distanceFromCenter = Mathf.Abs(i - CurrentIndex);
+                float baseDistance = moveDistance;
+                float distanceFromCenter = Mathf.Abs(i - CurrentIndex);
+                float distanceFactor = Mathf.Pow(0.8f, distanceFromCenter); // 점점 작아짐
                 
-                float targetX = (i - CurrentIndex) * moveDistance;
+                float targetX = (i - CurrentIndex) * baseDistance * distanceFactor;
                 DifficultPortal[i].DOAnchorPosX(targetX, moveDuration).SetEase(Ease.OutBack);
 
                 // float targetScale = (i == CurrentIndex) ? 1.0f : 0.6f;
