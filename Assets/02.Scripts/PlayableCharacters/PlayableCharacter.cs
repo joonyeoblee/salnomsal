@@ -333,7 +333,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				CriticalDamage += buff.BuffMultiplier;
 				break;
 			case BuffStatType.Taunt:
-				Taunt = true;
+				Taunt += 1;
 				break;
 		}
 
@@ -362,7 +362,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				CriticalDamage -= buff.BuffMultiplier;
 				break;
 			case BuffStatType.Taunt:
-				Taunt = false;
+				Taunt -= 1;
 				break;
 		}
 

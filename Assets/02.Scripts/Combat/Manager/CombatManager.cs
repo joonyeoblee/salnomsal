@@ -111,6 +111,15 @@ public class CombatManager : MonoBehaviour
 
     public void SetOrder()
     {
+        for (int i = 0; i < TurnOrder.Count; i++)
+        {
+            if (TurnOrder[i] == null || TurnOrder[i].IsAlive == false)
+            {
+                TurnOrder.RemoveAt(i);
+                --i;
+            }
+        }
+
         TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
     }
 
@@ -313,6 +322,13 @@ public class CombatManager : MonoBehaviour
         _isInputBlocked = false;
         SelectedSkill = SkillSlot.None;
         _target.Clear();
+        for (int i = 0; i < Monsters.Count; ++i)
+        {
+            if (Monsters[i] == null || Monsters[i].IsAlive == false)
+            {
+                Monsters.RemoveAt(i);
+            }
+        }
     }
 
     public bool IsBattleEnd()
