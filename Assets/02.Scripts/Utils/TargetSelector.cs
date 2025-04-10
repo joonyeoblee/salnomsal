@@ -11,19 +11,29 @@ public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnter
         _outlinable = GetComponent<Outlinable>();
         _outlinable.enabled = false;
     }
+
+    public void ActivateOutlinable()
+    {
+        _outlinable.enabled = true;
+    }
+
+    public void DeactivateOutlinable()
+    {
+        _outlinable.enabled = false;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("clicked");
         CombatManager.Instance.SetTarget(GetComponent<ITargetable>());
     }
-    public void OnPointerEnter(PointerEventData eventData)
+    public void ChangeOutlineColor(Color color)
     {
-        _outlinable.enabled = true;
+        _outlinable.OutlineParameters.Color = color;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _outlinable.enabled = false;
+        CombatManager.Instance.ExitTarget();
     }
     void Reset()
     {
@@ -32,5 +42,9 @@ public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnter
             gameObject.AddComponent<CapsuleCollider2D>();
             gameObject.AddComponent<Outlinable>();
         }
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        CombatManager.Instance.EnterTarget(this);
     }
 }

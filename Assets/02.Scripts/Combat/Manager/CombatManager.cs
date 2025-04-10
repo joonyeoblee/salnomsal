@@ -116,6 +116,7 @@ public class CombatManager : MonoBehaviour
 
     public void SetSelectedSkill(SkillSlot slot)
     {
+        DeActiveteAllOutline();
         Debug.Log((int)slot);
         if (CurrentActor == null)
         {
@@ -137,8 +138,82 @@ public class CombatManager : MonoBehaviour
             return;
         }
         SelectedSkill = slot;
+
+        if (CurrentActor.Skills[(int)slot].SkillData.SkillTarget == TargetType.Enemy)
+        {
+            foreach (EnemyCharacter monster in Monsters)
+            {
+                monster.gameObject.GetComponent<TargetSelector>().ActivateOutlinable();
+            }
+        } else
+        {
+            if (CurrentActor.Skills[(int)slot].SkillData.SkillTarget == TargetType.Ally)
+            {
+                foreach (PlayableCharacter character in PlayableCharacter)
+                {
+                    character.gameObject.GetComponent<TargetSelector>().ActivateOutlinable();
+                }
+            }
+        }
+    }
+    void DeActiveteAllOutline()
+    {
+
+        // 이미 켜져있는거 전부 끄기;
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            monster.gameObject.GetComponent<TargetSelector>().ChangeOutlineColor(Color.yellow);
+            monster.gameObject.GetComponent<TargetSelector>().DeactivateOutlinable();
+        }
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            character.gameObject.GetComponent<TargetSelector>().ChangeOutlineColor(Color.yellow);
+            character.gameObject.GetComponent<TargetSelector>().DeactivateOutlinable();
+        }
     }
 
+    public void EnterTarget(TargetSelector targetSelector)
+    {
+        if (CurrentActor == null) return;
+        if (SelectedSkill == SkillSlot.None) return;
+        PlayableSkillSO selectedSkillData = CurrentActor.Skills[(int)SelectedSkill].SkillData;
+
+        bool isEnemyTarget = selectedSkillData.SkillTarget == TargetType.Enemy;
+        Color outlineColor = isEnemyTarget ? Color.red : Color.green;
+
+        if (selectedSkillData.SkillRange == SkillRange.Single)
+        {
+            targetSelector.ChangeOutlineColor(outlineColor);
+            Debug.Log("단일 타겟 스킬");
+        } else if (selectedSkillData.SkillRange == SkillRange.Global)
+        {
+            if (isEnemyTarget)
+            {
+                foreach (EnemyCharacter monster in Monsters)
+                    monster.GetComponent<TargetSelector>().ChangeOutlineColor(outlineColor);
+            } else
+            {
+                foreach (PlayableCharacter character in PlayableCharacter)
+                    character.GetComponent<TargetSelector>().ChangeOutlineColor(outlineColor);
+            }
+        }
+
+    }
+
+    public void ExitTarget()
+    {
+        if (CurrentActor == null) return;
+        foreach (EnemyCharacter monster in Monsters)
+        {
+            monster.gameObject.GetComponent<TargetSelector>().ChangeOutlineColor(Color.yellow);
+        }
+
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            character.gameObject.GetComponent<TargetSelector>().ChangeOutlineColor(Color.yellow);
+        }
+
+    }
     public void SetTarget(ITargetable clicked)
     {
         if (SelectedSkill == SkillSlot.None)
@@ -179,6 +254,9 @@ public class CombatManager : MonoBehaviour
                 }
             }   
         }
+
+        DeActiveteAllOutline();
+        
         CurrentActor.DoAction(SelectedSkill, _target);
     }
 
@@ -193,6 +271,7 @@ public class CombatManager : MonoBehaviour
 
     public void EndTurn(ITurnActor unit)
     {
+        DeActiveteAllOutline();
         unit.CurrentSpeed = unit.BasicSpeed;
 
         for (int i = 0; i < TurnOrder.Count; ++i)

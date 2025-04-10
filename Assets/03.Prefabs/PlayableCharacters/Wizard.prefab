@@ -85,7 +85,7 @@ MonoBehaviour:
     Rarity: 0
     BaseStats: []
     AppliedPassives: []
-  _basicSpeed: 5
+  _basicSpeed: 4
   moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!114 &3678347721519980572
@@ -152,7 +152,18 @@ MonoBehaviour:
   complexMaskingMode: 0
   drawingMode: 1
   outlineLayer: 0
-  outlineTargets: []
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 1409614990178564070}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    CutoutThreshold: 0.5
+    CullMode: 0
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
   renderStyle: 1
   outlineParameters:
     enabled: 1
