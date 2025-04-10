@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     public List<TeamSlot> TeamSlots = new List<TeamSlot>(3);
     public List<string> Teams = new List<string>();
     public List<GameObject> Characters = new List<GameObject>(3);
-
-    public List<string> datas;
     
     private bool _bossKill = false;
     public bool BossKill => _bossKill; 
@@ -30,14 +28,10 @@ public class GameManager : MonoBehaviour
     public void Expedition()
     {
         Characters.Clear(); // 기존 캐릭터 리스트 초기화
-
-        foreach (TeamSlot c in TeamSlots)
-        {
-            Teams.Add(c.SaveKey);
-        }
         
         foreach (TeamSlot slot in TeamSlots)
         {
+            Teams.Add(slot.SaveKey);
             if (slot.currentCharacterPortrait != null)
             {
                 PortraitItem _portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
