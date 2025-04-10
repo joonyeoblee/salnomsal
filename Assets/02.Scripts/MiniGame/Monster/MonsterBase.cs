@@ -163,7 +163,8 @@ namespace Jun.Monster
         }
         public void OnDeath()
         {
-            
+            CombatManager.Instance.Monsters.Remove(this);
+            Destroy(gameObject);
         }
     }
 
