@@ -189,7 +189,10 @@ MonoBehaviour:
   - {fileID: 4649674558581916710, guid: 671af462eac9b38428283371cd39c504, type: 3}
   - {fileID: 7221374992292175630, guid: ae96a37a7e9458f4fa8180dc2ebc7fb2, type: 3}
   SkillEffects: []
-  HitEffects: []
+  HitEffects:
+  - {fileID: 0}
+  - {fileID: 6532806453279725562, guid: 839c1f5fa199dee48ad1f353e385c058, type: 3}
+  - {fileID: 6532806453279725562, guid: 839c1f5fa199dee48ad1f353e385c058, type: 3}
   _targetType: 0
   Weapon:
     Id: 
