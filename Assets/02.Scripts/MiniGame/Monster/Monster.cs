@@ -99,23 +99,37 @@ namespace Jun.Monster
 
         void ExecuteAttack(SkillRange range, string animName)
         {
+                  
             transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
-            
+
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
+
+            Debug.Log("🎯 타겟 개수: " + targets.Count);
+
             List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
 
             foreach (PlayableCharacter target in targets)
             {
+                if (target == null)
+                {
+                    Debug.LogError("❌ target is null!");
+                    continue;
+                }
+
                 if (target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
                 }
             }
 
+            Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
+
             bool anyWillDie = dyingTargets.Count > 0;
 
+            Debug.Log("▶ PerformSkillRoutine 실행");
             StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
         }
+
 
         IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
         {

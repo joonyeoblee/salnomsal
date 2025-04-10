@@ -19,7 +19,6 @@ namespace SeongIl
         public Image MainMagicCircle;
         public Image SubMagicCircle;
         public float ScaleValue;
-        public Canvas UICanvas;
         private void Start()
         {
 
