@@ -1,0 +1,599 @@
+fileFormatVersion: 2
+guid: b03d204d24732ec4197213943c800eab
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8965675266635609813
+    second: TauntParticle_0
+  - first:
+      213: 1671105618417393031
+    second: TauntParticle_1
+  - first:
+      213: 3946804754275414938
+    second: TauntParticle_2
+  - first:
+      213: 8690836771302661168
+    second: TauntParticle_3
+  - first:
+      213: 3896777608168998187
+    second: TauntParticle_4
+  - first:
+      213: 1881217231024354597
+    second: TauntParticle_5
+  - first:
+      213: 3473659119286721670
+    second: TauntParticle_6
+  - first:
+      213: -5379175126244593368
+    second: TauntParticle_7
+  - first:
+      213: 140383438477900346
+    second: TauntParticle_8
+  - first:
+      213: -8843038025288282621
+    second: TauntParticle_9
+  - first:
+      213: 4701957345604984302
+    second: TauntParticle_10
+  - first:
+      213: -8329567477245692081
+    second: TauntParticle_11
+  - first:
+      213: -265792740182297530
+    second: TauntParticle_12
+  - first:
+      213: -4666007028460056030
+    second: TauntParticle_13
+  - first:
+      213: 1013198866708155874
+    second: TauntParticle_14
+  - first:
+      213: 7702793266227804074
+    second: TauntParticle_15
+  - first:
+      213: -5360110681444219750
+    second: TauntParticle_16
+  - first:
+      213: -7919732575302051062
+    second: TauntParticle_17
+  - first:
+      213: -3617271820933453278
+    second: TauntParticle_18
+  - first:
+      213: 425106084843165582
+    second: TauntParticle_19
+  - first:
+      213: -7504985882513795679
+    second: TauntParticle_20
+  - first:
+      213: 6179185855481940117
+    second: TauntParticle_21
+  - first:
+      213: -1670808017020532999
+    second: TauntParticle_22
+  - first:
+      213: -7066897621011760831
+    second: TauntParticle_23
+  - first:
+      213: 2711679904445147427
+    second: TauntParticle_24
+  - first:
+      213: -3968079926469750108
+    second: TauntParticle_25
+  - first:
+      213: 5952181732208903242
+    second: TauntParticle_26
+  - first:
+      213: -5651199300169110127
+    second: TauntParticle_27
+  - first:
+      213: -6003404974969328065
+    second: TauntParticle_28
+  - first:
+      213: -8564508325816084724
+    second: TauntParticle_29
+  - first:
+      213: 7264485971388285219
+    second: TauntParticle_30
+  - first:
+      213: -4271133094273813480
+    second: TauntParticle_31
+  - first:
+      213: 1562054325169722010
+    second: TauntParticle_32
+  - first:
+      213: 7149447193539074794
+    second: TauntParticle_33
+  - first:
+      213: -6913013647920807218
+    second: TauntParticle_34
+  - first:
+      213: -1534075263908600656
+    second: TauntParticle_35
+  - first:
+      213: -9220451223419335508
+    second: TauntParticle_36
+  - first:
+      213: -5542975574044327096
+    second: TauntParticle_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TauntParticle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf49647c7c6fe7746ba52cc0a3c05496
+      internalID: -1510443553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f138755bac4d148ac3c7556121d153
+      internalID: -1035292803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4fdc1a6e1c6864494b69deaf9f5d03
+      internalID: -1996227552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac6ca2eacaffc2744937282e9f67544b
+      internalID: -1450291869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e8a818bdd39c849899a459ee1a6723
+      internalID: -296890744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14793401ceb56a544a224120b10a4e86
+      internalID: -318601874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d613e85a3e078e41b6f76c3cc48d558
+      internalID: 130058427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfbf00b5bb9d704992b2342a930ccda
+      internalID: 706014617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ba484c12e4deb4e8304899071a8c8b
+      internalID: -748402455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd41d4afc40c30e4394c7d9ed1504120
+      internalID: 1829875274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a3d26f245e6f1449a619cc39694c4ae
+      internalID: -1560585553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea89a4234afc25e4197826f712ccd85b
+      internalID: -1808600514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f372a68b0ae72d42bd2e3d8f359bca6
+      internalID: -1180616360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fa01e6fbbc2974c973e2e8a5f658e2
+      internalID: -1899488538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95c90c0e7a35334c9b449a21f25603b
+      internalID: 1182396394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TauntParticle_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de318adf817678f448bbc1627ab3471d
+      internalID: 967758754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 78679656b7a0bde44aa9ab4ddc849fbd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TauntParticle_0: -1510443553
+      TauntParticle_1: -1035292803
+      TauntParticle_10: -1560585553
+      TauntParticle_11: -1808600514
+      TauntParticle_12: -1180616360
+      TauntParticle_13: -1899488538
+      TauntParticle_14: 1182396394
+      TauntParticle_15: 967758754
+      TauntParticle_2: -1996227552
+      TauntParticle_3: -1450291869
+      TauntParticle_4: -296890744
+      TauntParticle_5: -318601874
+      TauntParticle_6: 130058427
+      TauntParticle_7: 706014617
+      TauntParticle_8: -748402455
+      TauntParticle_9: 1829875274
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

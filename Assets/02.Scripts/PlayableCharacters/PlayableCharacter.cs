@@ -181,8 +181,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		_cost -= Skills[(int)slot].SkillCost;
         CombatManager.Instance.UIBattle.RefreshStatText(this);
-       
-        if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
+        PlayableSkillSO currentSkillData = Skills[(int)slot].SkillData;
+        if (currentSkillData.SkillType == SkillType.Attack)
         {
 	        Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
 			
