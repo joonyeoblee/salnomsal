@@ -62,6 +62,7 @@ MonoBehaviour:
   _basicSpeed: 3
   _animator: {fileID: 97022630043293041}
   IsMyTurn: 0
+  moveDuration: 0.5
 --- !u!114 &2888882090915731190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7040579665520616671}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -141,11 +142,22 @@ MonoBehaviour:
   complexMaskingMode: 0
   drawingMode: 1
   outlineLayer: 0
-  outlineTargets: []
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 271560952790505504}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    CutoutThreshold: 0.5
+    CullMode: 0
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
   renderStyle: 1
   outlineParameters:
     enabled: 1
-    color: {r: 0.8018868, g: 0.46449187, b: 0.45768067, a: 1}
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

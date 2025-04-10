@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 5442923140440288708}
   - component: {fileID: 5845231671154464234}
   - component: {fileID: 5738657665535006400}
-  - component: {fileID: 1321034420527183514}
   m_Layer: 0
   m_Name: Priest
   m_TagString: Untagged
@@ -174,10 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 7
-  MaxCost: 6
+  MaxHealth: 107
+  MaxCost: 11
   CostRegen: 0
-  AttackPower: 9
+  AttackPower: 15
   CriticalChance: 1.2
   CriticalDamage: 1.5
   Resistance: 0
@@ -202,7 +201,7 @@ MonoBehaviour:
     Rarity: 0
     BaseStats: []
     AppliedPassives: []
-  _basicSpeed: 0
+  _basicSpeed: 3
   moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!114 &5442923140440288708
@@ -255,58 +254,6 @@ CapsuleCollider2D:
   m_Size: {x: 2.0150146, y: 3.5613556}
   m_Direction: 0
 --- !u!114 &5738657665535006400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392775077024926136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  complexMaskingMode: 0
-  drawingMode: 1
-  outlineLayer: 0
-  outlineTargets:
-  - CutoutMask: 8
-    renderer: {fileID: 2840847484084598184}
-    SubmeshIndex: 0
-    BoundsMode: 0
-    Bounds:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
-    CutoutThreshold: 0.5
-    CullMode: 0
-    cutoutTextureName: 
-    cutoutTextureIndex: 0
-  renderStyle: 1
-  outlineParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  backParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  frontParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
---- !u!114 &1321034420527183514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
