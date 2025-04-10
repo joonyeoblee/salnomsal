@@ -185,8 +185,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		UI_Battle.Instance.RefreshStatText(this);
 		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
 
-		PlayableSkillSO currentSkillData = Skills[(int)slot].SkillData;
-		if (currentSkillData.SkillType == SkillType.Attack)
+		Skill currentSkill = Skills[(int)slot];
+		if (currentSkill.SkillData.SkillType == SkillType.Attack && currentSkill.IsMelee)
 		{
 			Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
 

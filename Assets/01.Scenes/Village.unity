@@ -20316,10 +20316,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1929611691384091662, guid: 61f5209631916c148a8f81a67ca434c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5786807454334013827, guid: 61f5209631916c148a8f81a67ca434c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -20363,14 +20359,6 @@ PrefabInstance:
     - target: {fileID: 7060134327277715648, guid: 61f5209631916c148a8f81a67ca434c8, type: 3}
       propertyPath: m_Name
       value: TauntEffeact
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787080047007739721, guid: 61f5209631916c148a8f81a67ca434c8, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787080047007739721, guid: 61f5209631916c148a8f81a67ca434c8, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1295182793
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
