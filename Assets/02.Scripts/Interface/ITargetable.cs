@@ -9,4 +9,5 @@ public interface ITargetable
 
     public bool IsAlive { get; }
     public TargetType TargetType { get; set; }
+
 }
