@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Jun;
@@ -146,7 +146,7 @@ namespace SeongIl
             DOTween.KillAll(); // 또는 특정 타겟만 Kill할 수도 있음
 
             
-            MiniGameScenesManager.instance.Fail?.Invoke();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
             
@@ -160,7 +160,7 @@ namespace SeongIl
             // DOTween 트윈 정리
             DOTween.KillAll(); // 또는 특정 타겟만 Kill할 수도 있음
             
-            MiniGameScenesManager.instance.Success?.Invoke();
+            MiniGameScenesManager.Instance.Success?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }

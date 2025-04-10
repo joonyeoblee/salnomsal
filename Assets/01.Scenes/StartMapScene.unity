@@ -4051,7 +4051,7 @@ MonoBehaviour:
   HitEffects: []
   _targetType: 0
   _model: {fileID: 0}
-  _muggle: {fileID: 0}
+  _muzzle: {fileID: 0}
   Projectile: {fileID: 0}
   Weapon:
     Id: 
@@ -4258,7 +4258,7 @@ MonoBehaviour:
   HitEffects: []
   _targetType: 0
   _model: {fileID: 0}
-  _muggle: {fileID: 0}
+  _muzzle: {fileID: 0}
   Projectile: {fileID: 0}
   Weapon:
     Id: 
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   HitEffects: []
   _targetType: 0
   _model: {fileID: 0}
-  _muggle: {fileID: 0}
+  _muzzle: {fileID: 0}
   Projectile: {fileID: 0}
   Weapon:
     Id: 
