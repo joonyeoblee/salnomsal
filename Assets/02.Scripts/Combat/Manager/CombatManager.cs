@@ -299,8 +299,8 @@ public class CombatManager : MonoBehaviour
         }
 
         TurnOrder.Add(unit);
-        SetOrder();
         SetNewTurn();
+        SetOrder();
 
         Debug.Log(TurnOrder.Count);
         if (IsBattleEnd() || IsGameOver())
@@ -317,22 +317,6 @@ public class CombatManager : MonoBehaviour
         _isInputBlocked = false;
         SelectedSkill = SkillSlot.None;
         _target.Clear();
-        for (int i = 0; i < Monsters.Count; ++i)
-        {
-            if (Monsters[i] == null || Monsters[i].IsAlive == false)
-            {
-                Monsters.RemoveAt(i);
-                --i;
-            }
-        }
-        for (int i = 0; i < PlayableCharacter.Count; ++i)
-        {
-            if (PlayableCharacter[i] == null || PlayableCharacter[i].IsAlive == false)
-            {
-                PlayableCharacter.RemoveAt(i);
-                --i;
-            }
-        }
     }
 
     public bool IsBattleEnd()
