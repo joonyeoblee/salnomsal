@@ -1107,9 +1107,9 @@ MonoBehaviour:
   SpawnOffsetMin: {x: 0, y: 0, z: 0}
   SpawnOffsetMax: {x: 0, y: 0, z: 0}
   AnimateMovement: 1
-  AnimateX: 0
-  RemapXZero: {x: 0, y: 0}
-  RemapXOne: {x: 1, y: 1}
+  AnimateX: 1
+  RemapXZero: {x: -1.76, y: 1.46}
+  RemapXOne: {x: -3.35, y: 3.22}
   AnimateXCurve:
     serializedVersion: 2
     m_Curve:
@@ -1122,6 +1122,15 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.8989534
+      value: 0.9714322
+      inSlope: 0.54501724
+      outSlope: 0.54501724
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
