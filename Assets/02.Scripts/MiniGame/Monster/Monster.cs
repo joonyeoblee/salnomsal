@@ -90,7 +90,9 @@ namespace Jun.Monster
 
         protected override void Skill2()
         {
-            base.Skill2();
+            transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill2(); });
+
+      
             SkillDataSO skill2 = _skillComponent.skillDataList[1];
             float damageAmount = AttackPower * skill2.SkillMultiplier;
             _damage = new Damage(skill2.DamageType, damageAmount, gameObject);
@@ -100,8 +102,7 @@ namespace Jun.Monster
         void ExecuteAttack(SkillRange range, string animName)
         {
                   
-            transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad);
-
+       
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
 
             Debug.Log("🎯 타겟 개수: " + targets.Count);
@@ -152,6 +153,8 @@ namespace Jun.Monster
                 foreach (PlayableCharacter target in targets)
                 {
                     target.TakeDamage(_damage);
+                    Vector3 position = target.Model.transform.position;
+                    FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
                 }
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }

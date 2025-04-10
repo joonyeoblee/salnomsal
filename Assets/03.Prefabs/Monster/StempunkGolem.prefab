@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5d43bdd644feaba1f8f14229b8536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _model: {fileID: 8535726500394494406}
   DamageType: 0
   MaxHealth: 0
   MaxMana: 0
@@ -62,6 +63,7 @@ MonoBehaviour:
   _basicSpeed: 0
   _animator: {fileID: 0}
   IsMyTurn: 0
+  moveDuration: 0.5
 --- !u!114 &3336465585777921378
 MonoBehaviour:
   m_ObjectHideFlags: 0

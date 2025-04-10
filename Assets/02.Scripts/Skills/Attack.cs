@@ -8,10 +8,8 @@ public class Attack : Skill
 
     public override void UseSkill(PlayableCharacter caster, ITargetable target)
     {
-        MonoBehaviour monoBehaviour = target as MonoBehaviour;
-        Vector3 position = monoBehaviour.transform.Find("Model").transform.position;
-        Debug.Log(position);
         Damage damage = new Damage(caster.DamageType, caster.AttackPower * Multiplier, caster.gameObject);
+        Vector3 position = target.Model.transform.position;
 
         if (UnityEngine.Random.value < caster.CriticalChance)
         {
@@ -30,11 +28,11 @@ public class Attack : Skill
         string text = string.Empty;
         if (type == FloatingTextType.Damage)
         {
-            text = string.Format($"{Convert.ToInt32(amount)}");
+            text = $"{Convert.ToInt32(amount)}";
         }
         else if (type == FloatingTextType.CriticalDamage)
         {
-            text = string.Format($"Critical!\n{Convert.ToInt32(amount)}");
+            text = $"Critical!\n{Convert.ToInt32(amount)}";
         }
 
         FloatingTextDisplay.Instance.ShowFloatingText(position, text, type);

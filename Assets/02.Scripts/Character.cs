@@ -13,7 +13,7 @@ public abstract class Character : MonoBehaviour
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
-	public bool Taunt;
+	public int Taunt;
 
 	protected float _health;
 	public float CurrentHealth => _health;

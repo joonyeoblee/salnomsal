@@ -22,8 +22,7 @@ public class CombatManager : MonoBehaviour
     private List<ITargetable> _target = new List<ITargetable>();
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
-    [Header("UI Elements")]
-    public UI_Battle UIBattle;
+    private bool _isInputBlocked;
 
     void Awake()
     {
@@ -85,7 +84,8 @@ public class CombatManager : MonoBehaviour
         //     .ToList(); // test
         OpenMapButton.SetActive(false);
         TurnOrder.Clear();
-     
+        _isInputBlocked = false;
+
         foreach (PlayableCharacter character in PlayableCharacter)
         {
             if (character.IsAlive == false)
@@ -111,11 +111,25 @@ public class CombatManager : MonoBehaviour
 
     public void SetOrder()
     {
+        for (int i = 0; i < TurnOrder.Count; i++)
+        {
+            if (TurnOrder[i] == null || TurnOrder[i].IsAlive == false)
+            {
+                TurnOrder.RemoveAt(i);
+                --i;
+            }
+        }
+
         TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
     }
 
     public void SetSelectedSkill(SkillSlot slot)
     {
+        if (_isInputBlocked)
+        {
+            return;
+        }
+
         DeActiveteAllOutline();
         Debug.Log((int)slot);
         if (CurrentActor == null)
@@ -216,6 +230,11 @@ public class CombatManager : MonoBehaviour
     }
     public void SetTarget(ITargetable clicked)
     {
+        if (_isInputBlocked)
+        {
+            return;
+        }
+
         if (SelectedSkill == SkillSlot.None)
         {
             Debug.Log("선택된 적 정보 출력");
@@ -230,6 +249,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
+        _isInputBlocked = true;
         if (selectedSkillData.SkillRange == SkillRange.Single)
         {
             _target.Add(clicked);
@@ -265,6 +285,7 @@ public class CombatManager : MonoBehaviour
         ITurnActor unit = TurnOrder[0];
         //GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
         TurnOrder.RemoveAt(0);
+
         unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가
     }
@@ -298,8 +319,16 @@ public class CombatManager : MonoBehaviour
     public void SetNewTurn()
     {
         CurrentActor = null;
+        _isInputBlocked = false;
         SelectedSkill = SkillSlot.None;
         _target.Clear();
+        for (int i = 0; i < Monsters.Count; ++i)
+        {
+            if (Monsters[i] == null || Monsters[i].IsAlive == false)
+            {
+                Monsters.RemoveAt(i);
+            }
+        }
     }
 
     public bool IsBattleEnd()

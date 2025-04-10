@@ -49,6 +49,5 @@ MonoBehaviour:
   SkillDescription: "\uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825 50% \uAD11\uC5ED
     \uB370\uBBF8\uC9C0\uB97C \uC785\uD799\uB2C8\uB2E4."
   SkillCost: 4
-  SkillEffect: {fileID: 7400000, guid: 1c5f9b7a70f600b4dad1c9384d1da913, type: 2}
-  HitEffect: {fileID: 7400000, guid: 8e6c3e1235cf5bd439449450807c7c27, type: 2}
+  DamageType: 2
   Multiplier: 0.5

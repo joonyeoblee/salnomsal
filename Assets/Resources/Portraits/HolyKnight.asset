@@ -17,4 +17,4 @@ MonoBehaviour:
   AttackPower: 20
   Speed: 3
   Character: {fileID: 425806411070870425, guid: 7972a3f24c732d941b291697d1c58a2b, type: 3}
-  Icon: {fileID: -3244605403560332564, guid: 67d85d84c387e4742991b6fe2e99d80f, type: 3}
+  Icon: {fileID: 158128056705396212, guid: 1a416bb4fcea656479bed60a57f88633, type: 3}
