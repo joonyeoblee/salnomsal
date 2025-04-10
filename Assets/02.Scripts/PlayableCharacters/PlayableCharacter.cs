@@ -325,6 +325,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		_isAlive = false;
 		Debug.Log("Death");
+		Destroy(gameObject);
 	}
 
 	public void TakeDamage(Damage damage)
