@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f1cc100e361944f8be012fc67fb78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _model: {fileID: 2520551835464827708}
   DamageType: 0
   MaxHealth: 100
   MaxMana: 0

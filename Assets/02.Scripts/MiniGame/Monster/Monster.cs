@@ -152,6 +152,8 @@ namespace Jun.Monster
                 foreach (PlayableCharacter target in targets)
                 {
                     target.TakeDamage(_damage);
+                    Vector3 position = target.Model.transform.position;
+                    FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
                 }
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }

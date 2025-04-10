@@ -17,6 +17,7 @@ public enum SkillSlot
 public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
+
     public List<Skill> Skills;
     public List<AnimationClip> SkillEffects;
     public List<GameObject> HitEffects;
@@ -26,6 +27,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         get => _targetType;
         set => _targetType = value;
     }
+
+	[SerializeField] private GameObject _model;
+    public GameObject Model { get => _model.gameObject; }
 
     private Vector3 cameraOriginPosition;
     float cameraOriginSize = 5f;
