@@ -16,7 +16,6 @@ public class ResultHandler : MonoBehaviour
             Portal.GetComponent<SpawnPlayer>().Spawn();
             GameManager.Instance.ResetBossKill();
         }
-
-        _gameManager.RemoveDeathCharacter();
+        
     }
 }

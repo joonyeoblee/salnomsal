@@ -24,8 +24,7 @@ public class CombatManager : MonoBehaviour
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
     private bool _isInputBlocked;
-    
-    private Dictionary<PlayableCharacter, int> _initialIndex = new Dictionary<PlayableCharacter, int>();
+
 
     void Awake()
     {
@@ -72,8 +71,9 @@ public class CombatManager : MonoBehaviour
             GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
             PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
 
+            player.Index = i;
             PlayableCharacter.Add(player);
-            _initialIndex.Add(player, i);
+            
         }
     }
 
@@ -315,7 +315,6 @@ public class CombatManager : MonoBehaviour
             if (PlayableCharacter[i].IsAlive == false)
             {
                 PlayableCharacter dead = PlayableCharacter[i];
-                GameManager.Instance.DeathCharacter[_initialIndex[dead]] = true;
                 PlayableCharacter.Remove(dead);
                 Destroy(dead.gameObject);
                 --i;
