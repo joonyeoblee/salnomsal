@@ -224,25 +224,23 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 		// 애니메이션 끝날 때까지 대기
 		yield return StartCoroutine(WaitAnimationEnd(animName));
-		
+
+		// 스킬 사용 처리
+		foreach (ITargetable target in targets)
+		{
+			MonoBehaviour mb = target as MonoBehaviour;
+
+			if (HitEffects.Count > 0)
+			{
+				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+			}
+
+			Skills[(int)slot].UseSkill(this, target);
+		}
 
 		// 다시 원래 위치로 이동한 다음, EndTurn 
 		
 		Sequence seq = DOTween.Sequence();
-		seq.AppendCallback(() =>
-		{ // 스킬 사용 처리
-			foreach (ITargetable target in targets)
-			{
-				MonoBehaviour mb = target as MonoBehaviour;
-
-				if (HitEffects.Count > 0)
-				{
-					Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
-				}
-
-				Skills[(int)slot].UseSkill(this, target);
-			}
-		});
 		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
 		seq.Join(Camera.main.DOOrthoSize(cameraOriginSize, 0.5f).SetEase(Ease.OutCubic));
 

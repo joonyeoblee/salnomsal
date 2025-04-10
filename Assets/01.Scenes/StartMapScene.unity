@@ -3082,7 +3082,7 @@ MonoBehaviour:
   PlayableCharacter: []
   CurrentActor: {fileID: 0}
   PlayerAttackPosition: {fileID: 2057430430}
-  EnemyAttackPosition: {fileID: 0}
+  EnemyAttackPosition: {fileID: 1988561122}
   SelectedSkill: 0
   SpeedIncrementPerTurn: 1
   OpenMapButton: {fileID: 1075383577}
