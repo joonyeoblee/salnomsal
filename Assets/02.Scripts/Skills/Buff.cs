@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-
+﻿using UnityEngine;
 public enum BuffStatType
 {
     AttackPower,
@@ -39,6 +37,7 @@ public class Buff : Skill
         if (RemainingTurns == 0)
         {
             _target.RemoveBuff(this);
+            Destroy(gameObject);
         }
     }
 }

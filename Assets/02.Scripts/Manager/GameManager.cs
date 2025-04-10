@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public List<TeamSlot> TeamSlots = new List<TeamSlot>(3);
+    
     public List<GameObject> Characters = new List<GameObject>(3);
 
     private bool _bossKill = false;
