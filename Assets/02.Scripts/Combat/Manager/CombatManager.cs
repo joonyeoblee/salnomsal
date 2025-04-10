@@ -323,6 +323,13 @@ public class CombatManager : MonoBehaviour
                 Monsters.RemoveAt(i);
             }
         }
+        for (int i = 0; i < PlayableCharacter.Count; ++i)
+        {
+            if (PlayableCharacter[i] == null || PlayableCharacter[i].IsAlive == false)
+            {
+                PlayableCharacter.RemoveAt(i);
+            }
+        }
     }
 
     public bool IsBattleEnd()
@@ -341,7 +348,6 @@ public class CombatManager : MonoBehaviour
             character.ResetAfterBattle();
         }
 
-        RemoveDeadCharacter();
         ResetManager();
         OpenMapButton.SetActive(true);
 
@@ -358,7 +364,6 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        RemoveDeadCharacter();
         ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
@@ -366,6 +371,7 @@ public class CombatManager : MonoBehaviour
         return true;
     }
 
+    /*
     public void RemoveDeadCharacter()
     {
         for (int i = 0; i < PlayableCharacter.Count; i++)
@@ -378,4 +384,5 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+    */
 }
