@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Jun;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -22,6 +24,7 @@ public class CombatManager : MonoBehaviour
     public List<ITurnActor> TurnOrder = new List<ITurnActor>();
 
     private bool _isInputBlocked;
+
 
     void Awake()
     {
@@ -66,7 +69,11 @@ public class CombatManager : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
-            PlayableCharacter.Add(ch.GetComponent<PlayableCharacter>());
+            PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
+
+            player.Index = i;
+            PlayableCharacter.Add(player);
+            
         }
     }
 
@@ -284,7 +291,6 @@ public class CombatManager : MonoBehaviour
 
     public void EndTurn(ITurnActor unit)
     {
-        DeActiveteAllOutline();
         unit.CurrentSpeed = unit.BasicSpeed;
 
         for (int i = 0; i < TurnOrder.Count; ++i)
@@ -298,9 +304,22 @@ public class CombatManager : MonoBehaviour
             TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
         }
 
+        for (int i = 0; i < PlayableCharacter.Count; ++i)
+        {
+            if (PlayableCharacter[i].IsAlive == false)
+            {
+                PlayableCharacter dead = PlayableCharacter[i];
+                PlayableCharacter.Remove(dead);
+                Destroy(dead.gameObject);
+                --i;
+            }
+        }
+
         TurnOrder.Add(unit);
         SetNewTurn();
         SetOrder();
+
+        DeActiveteAllOutline();
 
         Debug.Log(TurnOrder.Count);
         if (IsBattleEnd() || IsGameOver())
@@ -354,6 +373,7 @@ public class CombatManager : MonoBehaviour
         ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
+        MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;
     }

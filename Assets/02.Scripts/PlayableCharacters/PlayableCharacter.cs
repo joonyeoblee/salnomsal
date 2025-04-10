@@ -19,7 +19,7 @@ public enum SkillSlot
 public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
-
+	public int Index;
 	public List<Skill> Skills;
 	public List<AnimationClip> SkillEffects;
 	public List<GameObject> HitEffects;
@@ -324,10 +324,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void Death(DamageType type)
 	{
-		_isAlive = false;
-		Debug.Log("Death");
-		CombatManager.Instance.PlayableCharacter.Remove(this);
-        Destroy(gameObject);
+        _isAlive = false;
+
+        PlayerPrefs.DeleteKey(GameManager.Instance.Teams[Index]);
+        PlayerPrefs.Save();
 	}
 
 	public void TakeDamage(Damage damage)

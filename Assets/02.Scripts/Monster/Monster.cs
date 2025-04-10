@@ -17,9 +17,9 @@ namespace Jun.Monster
         public override void EndTurn()
         {
             base.EndTurn();
-            MiniGameScenesManager.instance.Success -= OnSuccess;
-            MiniGameScenesManager.instance.Fail -= OnFail;
-            MiniGameScenesManager.instance.Parring -= OnParrying;
+            MiniGameScenesManager.Instance.Success -= OnSuccess;
+            MiniGameScenesManager.Instance.Fail -= OnFail;
+            MiniGameScenesManager.Instance.Parring -= OnParrying;
         }
         void OnSuccess()
         {
@@ -29,7 +29,7 @@ namespace Jun.Monster
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        void OnFail()
+        void OnFail() 
         {
             if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
@@ -159,15 +159,15 @@ namespace Jun.Monster
             if (anyWillDie)
             {
                 Time.timeScale = 0.2f;
-                yield return StartCoroutine(MiniGameScenesManager.instance.Transition.MiniGameTransition());
+                yield return StartCoroutine(MiniGameScenesManager.Instance.Transition.MiniGameTransition());
                 yield return new WaitForSecondsRealtime(1f);
                 Time.timeScale = 1f;
                 yield return new WaitForSeconds(0.3f);
 
-                MiniGameScenesManager.instance.StartMiniGame(_damage.Type);
-                MiniGameScenesManager.instance.Success += OnSuccess;
-                MiniGameScenesManager.instance.Fail += OnFail;
-                MiniGameScenesManager.instance.Parring += OnParrying;
+                MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
+                MiniGameScenesManager.Instance.Success += OnSuccess;
+                MiniGameScenesManager.Instance.Fail += OnFail;
+                MiniGameScenesManager.Instance.Parring += OnParrying;
             } else
             {
                 foreach (PlayableCharacter target in targets)

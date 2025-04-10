@@ -69,7 +69,7 @@ namespace Son
 
         public void OnMapSelected()
         {
-            MiniGameScenesManager.instance.ChangeScene(SceneIndex.StartMapScene);
+            MiniGameScenesManager.Instance.ChangeScene(SceneIndex.StartMapScene);
         }
 
     }

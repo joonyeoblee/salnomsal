@@ -19,7 +19,7 @@ namespace Jun
 {
     public class MiniGameScenesManager : MonoBehaviour
     {
-        public static MiniGameScenesManager instance;
+        public static MiniGameScenesManager Instance;
         public Camera BattleSceneCamera;
         public GameObject player;
         public SceneTransition Transition;
@@ -83,9 +83,9 @@ namespace Jun
         void Awake()
         {
             // Singleton 패턴
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
             } else
             {

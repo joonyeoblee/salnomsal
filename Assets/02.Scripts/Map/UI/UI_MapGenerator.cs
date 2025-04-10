@@ -110,7 +110,7 @@ namespace Jun.Map
 
         public void ReturnVillage()
         {
-            MiniGameScenesManager.instance.ChangeScene(SceneIndex.Village);
+            MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
         }
     }
 }

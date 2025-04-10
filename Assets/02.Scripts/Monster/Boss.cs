@@ -11,16 +11,16 @@ namespace Jun.Monster
         List<PlayableCharacter> targets;
         void OnEnable()
         {
-            MiniGameScenesManager.instance.Success += OnSuccess;
-            MiniGameScenesManager.instance.Fail += OnFail;
-            MiniGameScenesManager.instance.Parring += OnParrying;
+            MiniGameScenesManager.Instance.Success += OnSuccess;
+            MiniGameScenesManager.Instance.Fail += OnFail;
+            MiniGameScenesManager.Instance.Parring += OnParrying;
         }
 
         void OnDisable()
         {
-            MiniGameScenesManager.instance.Success -= OnSuccess;
-            MiniGameScenesManager.instance.Fail -= OnFail;
-            MiniGameScenesManager.instance.Parring -= OnParrying;
+            MiniGameScenesManager.Instance.Success -= OnSuccess;
+            MiniGameScenesManager.Instance.Fail -= OnFail;
+            MiniGameScenesManager.Instance.Parring -= OnParrying;
         }
 
         void OnSuccess()
@@ -143,8 +143,8 @@ namespace Jun.Monster
                 Time.timeScale = 1f;
 
                 // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
-                MiniGameScenesManager.instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
-                MiniGameScenesManager.instance.StartMiniGame(_damage.Type);
+                MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
+                MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
                 
             } else
             {

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using Jun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -117,7 +117,7 @@ namespace SeongIl
         {
             Debug.Log("Fail");
             IsGameOver = true;
-            MiniGameScenesManager.instance.Fail?.Invoke();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
             
@@ -128,7 +128,7 @@ namespace SeongIl
             Debug.Log("Success");
             IsGameOver = true;
 
-            MiniGameScenesManager.instance.Success?.Invoke();
+            MiniGameScenesManager.Instance.Success?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }
@@ -138,7 +138,7 @@ namespace SeongIl
             ParrySound.PlayOneShot(ParrySound.clip);
             Debug.Log("ParryingSuccess");
             IsGameOver = true;
-            MiniGameScenesManager.instance.Parring?.Invoke();
+            MiniGameScenesManager.Instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }

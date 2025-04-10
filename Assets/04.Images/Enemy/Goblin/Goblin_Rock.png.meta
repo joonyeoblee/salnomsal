@@ -267,7 +267,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Goblin_Rock_0: -764305488546894057
+      Goblin_Rock_1: 8167714332973639760
+      Goblin_Rock_2: -8550883279305837415
+      Goblin_Rock_3: 6911333705146056382
+      Goblin_Rock_4: -3873344193818190176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
