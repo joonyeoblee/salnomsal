@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/ProCamera2D/Runtime/Timeline/Timeline.unitypackage.meta
-guid: dd8c09ec8450bb4409c9eba06d6c2eba
-========
+<<<<<<<< HEAD:Assets/Microlight.meta
 guid: c1bc088d13bd5ed4cb47f4a08e103c03
 folderAsset: yes
->>>>>>>> dev-jinhyeok:Assets/Microlight.meta
+========
+guid: dd8c09ec8450bb4409c9eba06d6c2eba
+>>>>>>>> JunY:Assets/ProCamera2D/Runtime/Timeline/Timeline.unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
