@@ -323,10 +323,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public override void Death(DamageType type)
 	{
-		_isAlive = false;
-		Debug.Log("Death");
-		// CombatManager.Instance.PlayableCharacter.Remove(this);
-        Destroy(gameObject);
+        _isAlive = false;
 	}
 
 	public void TakeDamage(Damage damage)
