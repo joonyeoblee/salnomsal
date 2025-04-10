@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Hovl Studio/Magic effects pack.meta
+guid: 74d6c0a92038a7340bad7cd7c06915ad
+========
 guid: 0b31d124a34f94241b3b5fbaa8745367
+>>>>>>>> JunY:Assets/Hovl Studio.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

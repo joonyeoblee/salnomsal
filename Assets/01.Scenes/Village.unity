@@ -9134,7 +9134,7 @@ MonoBehaviour:
   - {fileID: 2054683528}
   - {fileID: 1075095623}
   CurrentIndex: 0
-  moveDistance: 300
+  moveDistance: 370
   moveDuration: 0.3
   LeftButton: {fileID: 122621897}
   RightButton: {fileID: 1706919077}
