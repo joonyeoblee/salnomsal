@@ -1153,9 +1153,9 @@ MonoBehaviour:
   SpawnOffsetMin: {x: 0, y: 0, z: 0}
   SpawnOffsetMax: {x: 0, y: 0, z: 0}
   AnimateMovement: 1
-  AnimateX: 0
+  AnimateX: 1
   RemapXZero: {x: 0, y: 0}
-  RemapXOne: {x: 1, y: 1}
+  RemapXOne: {x: -1, y: 1}
   AnimateXCurve:
     serializedVersion: 2
     m_Curve:
@@ -1182,7 +1182,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   AnimateY: 1
   RemapYZero: {x: 0, y: 0}
-  RemapYOne: {x: 5, y: 5}
+  RemapYOne: {x: 3, y: 3}
   AnimateYCurve:
     serializedVersion: 2
     m_Curve:
@@ -2431,12 +2431,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7953574740361549860, guid: 624058c081c21054889da8ab56385041, type: 3}
+      propertyPath: managedReferences[8139518758454820990].Lifetime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953574740361549860, guid: 624058c081c21054889da8ab56385041, type: 3}
       propertyPath: managedReferences[8139518758454820990].Intensity
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953574740361549860, guid: 624058c081c21054889da8ab56385041, type: 3}
       propertyPath: managedReferences[8139518758454820990].PositionMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953574740361549860, guid: 624058c081c21054889da8ab56385041, type: 3}
+      propertyPath: managedReferences[8139518758454820990].ForceLifetime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953574740361549860, guid: 624058c081c21054889da8ab56385041, type: 3}
       propertyPath: managedReferences[8139518758454820990].UseIntensityAsValue
