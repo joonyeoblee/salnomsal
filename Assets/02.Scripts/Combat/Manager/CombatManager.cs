@@ -104,6 +104,7 @@ public class CombatManager : MonoBehaviour
         }
 
         SetOrder();
+
         Debug.Log(TurnOrder.Count);
         SelectedSkill = SkillSlot.None;
         StartTurn();
@@ -111,15 +112,6 @@ public class CombatManager : MonoBehaviour
 
     public void SetOrder()
     {
-        for (int i = 0; i < TurnOrder.Count; i++)
-        {
-            if (TurnOrder[i] == null || TurnOrder[i].IsAlive == false)
-            {
-                TurnOrder.RemoveAt(i);
-                --i;
-            }
-        }
-
         TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
     }
 
@@ -298,7 +290,7 @@ public class CombatManager : MonoBehaviour
         for (int i = 0; i < TurnOrder.Count; ++i)
         {
             TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
-            if (TurnOrder[i].IsAlive == false)
+            if (TurnOrder[i] == null || TurnOrder[i].IsAlive == false)
             {
                 TurnOrder.RemoveAt(i);
                 --i;
@@ -308,6 +300,8 @@ public class CombatManager : MonoBehaviour
         TurnOrder.Add(unit);
         SetOrder();
         SetNewTurn();
+
+        Debug.Log(TurnOrder.Count);
         if (IsBattleEnd() || IsGameOver())
         {
             return;

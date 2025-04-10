@@ -121,7 +121,7 @@ namespace Jun.Monster
             int priority = 0;
 
             // 도발 무조건 때림
-            if (Character.Taunt) priority += 200;
+            if (Character.Taunt > 0) priority += 200;
             
             if (Character.CurrentHealth < Character.MaxHealth * 0.3f) priority += 10;
             if (Character.DamageType == DamageType.Magic) priority += 7;
