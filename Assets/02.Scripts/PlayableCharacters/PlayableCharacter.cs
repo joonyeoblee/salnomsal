@@ -325,7 +325,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		_isAlive = false;
 		Debug.Log("Death");
-		CombatManager.Instance.PlayableCharacter.Remove(this);
+		// CombatManager.Instance.PlayableCharacter.Remove(this);
         Destroy(gameObject);
 	}
 

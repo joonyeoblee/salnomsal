@@ -284,7 +284,6 @@ public class CombatManager : MonoBehaviour
 
     public void EndTurn(ITurnActor unit)
     {
-        DeActiveteAllOutline();
         unit.CurrentSpeed = unit.BasicSpeed;
 
         for (int i = 0; i < TurnOrder.Count; ++i)
@@ -298,9 +297,21 @@ public class CombatManager : MonoBehaviour
             TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
         }
 
+        for (int i = 0; i < PlayableCharacter.Count; ++i)
+        {
+            if (PlayableCharacter[i] == null || PlayableCharacter[i].IsAlive == false)
+            {
+                PlayableCharacter.RemoveAt(i);
+                GameManager.Instance.DeathCharacter[i] = true;
+                --i;
+            }
+        }
+
         TurnOrder.Add(unit);
         SetNewTurn();
         SetOrder();
+
+        DeActiveteAllOutline();
 
         Debug.Log(TurnOrder.Count);
         if (IsBattleEnd() || IsGameOver())

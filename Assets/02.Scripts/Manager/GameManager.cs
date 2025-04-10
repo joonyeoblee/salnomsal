@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public List<TeamSlot> TeamSlots = new List<TeamSlot>(3);
     public List<GameObject> Characters = new List<GameObject>(3);
 
+    public List<bool> DeathCharacter = new List<bool>(3) { false, false, false };
+
     private bool _bossKill = false;
     public bool BossKill => _bossKill; 
 
@@ -58,5 +60,17 @@ public class GameManager : MonoBehaviour
     public void ResetBossKill()
     {
         _bossKill = false;
+    }
+
+    public void RemoveDeathCharacter()
+    {
+        for (int i = 0; i < DeathCharacter.Count; ++i)
+        {
+            if (DeathCharacter[i])
+            {
+                TeamSlots[i].DeleteItem();
+                DeathCharacter[i] = false;
+            }
+        }
     }
 }

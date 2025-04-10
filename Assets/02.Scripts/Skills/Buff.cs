@@ -39,6 +39,7 @@ public class Buff : Skill
         if (RemainingTurns == 0)
         {
             _target.RemoveBuff(this);
+            Destroy(gameObject);
         }
     }
 }

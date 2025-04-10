@@ -9817,6 +9817,7 @@ MonoBehaviour:
   - {fileID: 1622257415}
   - {fileID: 2122432061}
   Characters: []
+  DeathCharacter: 
 --- !u!1 &1043455044
 GameObject:
   m_ObjectHideFlags: 0
@@ -10661,7 +10662,7 @@ GameObject:
   - component: {fileID: 1122756422}
   - component: {fileID: 1122756423}
   m_Layer: 0
-  m_Name: RewardHandler
+  m_Name: ResultHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
