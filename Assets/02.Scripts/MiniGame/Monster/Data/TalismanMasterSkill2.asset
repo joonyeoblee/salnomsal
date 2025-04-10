@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: 
   SkillDescription: 
-  SkillCost: 0
-  SkillMultiplier: 0
+  SkillCost: 2
+  SkillMultiplier: 1.2
   Duration: 0
-  Priority: 0
-  DamageType: 0
-  SkillType: 0
-  SkillRange: 0
-  SkillTarget: 0
+  Priority: 5
+  DamageType: 2
+  SkillType: 3
+  SkillRange: 1
+  SkillTarget: 1
   IsMelee: 0
   HasProjectile: 0
+  ProjectilePrefab: {fileID: 0}

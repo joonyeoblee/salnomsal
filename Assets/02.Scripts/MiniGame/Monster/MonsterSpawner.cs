@@ -52,7 +52,7 @@ namespace Jun.Spawner
 
 
             GameObject spawnedMonster = Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
-            spawnedMonster.name = "Goblin" + spawnPoint.name;
+            spawnedMonster.name = spawnPrefab.name + spawnPoint.name;
 
             CombatManager.Instance.SpawnEnemy(spawnedMonster.GetComponent<EnemyCharacter>());
         }

@@ -51,16 +51,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 0}
   DamageType: 0
-  MaxHealth: 0
-  MaxMana: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  MaxHealth: 100
+  MaxMana: 10
+  AttackPower: 10
+  CriticalChance: 0.4
+  CriticalDamage: 1.2
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
-  _targetType: 0
-  _basicSpeed: 0
+  _targetType: 1
+  _basicSpeed: 4
   _animator: {fileID: 0}
   IsMyTurn: 0
   moveDuration: 0.5
@@ -76,7 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e8f8329067851418d2bede571d27fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDataList: []
+  skillDataList:
+  - {fileID: 11400000, guid: c189df9d798d90e4ab33408bb3099345, type: 2}
+  - {fileID: 11400000, guid: 62091483757d57e44a1d0c65c97ca0ff, type: 2}
 --- !u!114 &4380396917914656911
 MonoBehaviour:
   m_ObjectHideFlags: 0

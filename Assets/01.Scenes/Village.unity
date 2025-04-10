@@ -20316,18 +20316,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1297638667908671680, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
-      propertyPath: skillDataList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297638667908671680, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
-      propertyPath: 'skillDataList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: c189df9d798d90e4ab33408bb3099345, type: 2}
-    - target: {fileID: 1297638667908671680, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
-      propertyPath: 'skillDataList.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 62091483757d57e44a1d0c65c97ca0ff, type: 2}
     - target: {fileID: 1504712145329594525, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
       propertyPath: m_Name
       value: Talisman_Master
