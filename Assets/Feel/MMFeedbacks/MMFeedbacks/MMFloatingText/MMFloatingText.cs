@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using MoreMountains.Tools;
+using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
@@ -20,7 +21,7 @@ namespace MoreMountains.Feedbacks
 		public Transform Billboard;
 		/// the TextMesh used to display the value
 		[Tooltip("the TextMesh used to display the value")]
-		public TextMesh TargetTextMesh;
+		public TextMeshPro TargetTextMesh;
 		/// the MMFollowTarget component associated to this floating text
 		public MMFollowTarget FollowTarget;
         

@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public enum FloatingTextType
 {
@@ -17,6 +18,9 @@ public enum FloatingTextType
 public class FloatingTextDisplay : MonoBehaviour
 {
     public static FloatingTextDisplay Instance;
+
+    public TMP_FontAsset Font;
+    public int FontSize = 24;
 
     private MMF_Player _mmfPlayer;
     private List<Color> _textColors = new List<Color>((int)FloatingTextType.Count);
@@ -73,6 +77,8 @@ public class FloatingTextDisplay : MonoBehaviour
 
         floatingText.ForceColor = true;
         floatingText.AnimateColorGradient = _gradient;
+
+
 
         _mmfPlayer.PlayFeedbacks(position);
     }
