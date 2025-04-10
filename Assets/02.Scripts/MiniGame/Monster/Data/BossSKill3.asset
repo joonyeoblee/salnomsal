@@ -22,3 +22,7 @@ MonoBehaviour:
   SkillType: 0
   SkillRange: 1
   SkillTarget: 0
+  IsMelee: 0
+  HasProjectile: 0
+  SkillPrefab: {fileID: 1224984621166208373, guid: c38e274dc4a0022488a1fcf688df8368, type: 3}
+  ProjectilePrefab: {fileID: 0}

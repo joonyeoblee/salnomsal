@@ -13,6 +13,7 @@ namespace Jun.Monster
     
     public class MonsterBase : EnemyCharacter
     {
+        protected SkillDecision decision;
         public Animator _animator;
         protected MonsterSkill _skillComponent;
         protected List<PlayableCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
@@ -37,7 +38,7 @@ namespace Jun.Monster
                 return;
             }
 
-            SkillDecision decision = _skillComponent.ChooseSkillWithIndex(_target);
+            decision = _skillComponent.ChooseSkillWithIndex(_target);
 
             if (decision == null || decision.Skill == null)
             {

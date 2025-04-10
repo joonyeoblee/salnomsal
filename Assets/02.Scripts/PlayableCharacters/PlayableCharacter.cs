@@ -31,7 +31,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	}
 
 	[SerializeField] private GameObject _model;
-	[SerializeField] Transform _muggle;
+	[SerializeField] GameObject _muzzle;
 	[SerializeField] GameObject Projectile;
 	public GameObject Model { get => _model.gameObject; }
 
@@ -294,7 +294,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			foreach (ITargetable target in targets)
 			{
 
-				GameObject _projectile = Instantiate(Projectile, _muggle.transform);
+				GameObject _projectile = Instantiate(Projectile);
+				_projectile.transform.position = _muzzle.transform.position;
 				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
 			}
 

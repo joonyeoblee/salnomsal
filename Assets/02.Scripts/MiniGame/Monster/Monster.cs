@@ -74,15 +74,26 @@ namespace Jun.Monster
         // ReSharper disable Unity.PerformanceAnalysis
         protected override void Attack()
         {
-            base.Attack();
-            _damage = new Damage(DamageType.Melee, AttackPower, gameObject);
+            if (DamageType == DamageType.Melee)
+            {
+                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Attack(); });
+            }
+            _damage = new Damage(DamageType, AttackPower, gameObject);
             ExecuteAttack(SkillRange.Single, "Attack");
         }
 
         protected override void Skill1()
         {
-            base.Skill1();
+            
             SkillDataSO skill1 = _skillComponent.skillDataList[0];
+
+            if (skill1.SkillType == SkillType.Attack && skill1.IsMelee)
+            {
+                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill1(); });
+            } else
+            {
+                base.Skill1();
+            }
             float damageAmount = AttackPower * skill1.SkillMultiplier;
             _damage = new Damage(skill1.DamageType, damageAmount, gameObject);
             ExecuteAttack(skill1.SkillRange, "Skill1");
@@ -90,20 +101,33 @@ namespace Jun.Monster
 
         protected override void Skill2()
         {
-            transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill2(); });
-
-      
             SkillDataSO skill2 = _skillComponent.skillDataList[1];
+
+            if (skill2.SkillType == SkillType.Attack && skill2.IsMelee)
+            {
+                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill2(); });
+            } else
+            {
+                base.Skill2();
+            }
+            
             float damageAmount = AttackPower * skill2.SkillMultiplier;
             _damage = new Damage(skill2.DamageType, damageAmount, gameObject);
             ExecuteAttack(skill2.SkillRange, "Skill2");
         }
-
         void ExecuteAttack(SkillRange range, string animName)
         {
+            Debug.Log("🟡 ExecuteAttack 진입");
+
+            if (_target == null)
+                Debug.LogWarning("⚠ _target이 null입니다");
+
+            if (_playableCharacters == null)
+                Debug.LogWarning("⚠ _playableCharacters가 null입니다");
+
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
 
-            Debug.Log("🎯 타겟 개수: " + targets.Count);
+            Debug.Log("🎯 타겟 개수: " + (targets != null ? targets.Count.ToString() : "targets is null"));
 
             List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
 
@@ -128,8 +152,6 @@ namespace Jun.Monster
             Debug.Log("▶ PerformSkillRoutine 실행");
             StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
         }
-
-
         IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
         {
             yield return StartCoroutine(WaitForAnimation(animName));
@@ -152,6 +174,7 @@ namespace Jun.Monster
                 {
                     target.TakeDamage(_damage);
                     Vector3 position = target.Model.transform.position;
+                    Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
                     FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
                 }
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });

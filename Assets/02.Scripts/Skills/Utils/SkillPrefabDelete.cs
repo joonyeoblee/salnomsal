@@ -11,6 +11,13 @@ public class SkillPrefabDelete : MonoBehaviour
     
     public void DeleteThis()
     {
-        Destroy(gameObject);
+        GameObject parent = transform.parent != null ? transform.parent.gameObject : null;
+
+        Destroy(gameObject); // 자식 먼저
+        if (parent != null)
+        {
+            Destroy(parent); // 그다음 부모
+        }
+        
     }
 }

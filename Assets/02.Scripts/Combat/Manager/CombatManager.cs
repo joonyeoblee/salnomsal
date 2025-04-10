@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Jun.Map;
 using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
@@ -54,13 +53,14 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         SpawnPlayer();
-        MapManager.Instance.OnMapNodeChanged += InitializeCombat;
+
+        // MapManager.Instance.OnMapNodeChanged += InitializeCombat;
         Debug.Log("Battle Scene Start");
     }
 
     void OnDisable()
     {
-        MapManager.Instance.OnMapNodeChanged -= InitializeCombat;
+        // MapManager.Instance.OnMapNodeChanged -= InitializeCombat;
     }
     public void SpawnPlayer()
     {
