@@ -142,6 +142,7 @@ namespace SeongIl
             AlreadyFail = true;
             
             Debug.Log("Fail");
+            DOTween.KillAll();
             MiniGameScenesManager.instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
@@ -159,6 +160,7 @@ namespace SeongIl
             if (_parriedCount >= _count)
             {
                 AlreadySuccess = true;
+                DOTween.KillAll();
                 Debug.Log("Success");
                 MiniGameScenesManager.instance.Success?.Invoke();
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));

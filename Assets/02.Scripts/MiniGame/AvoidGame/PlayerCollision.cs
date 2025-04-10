@@ -10,28 +10,25 @@ namespace SeongIl
     {
         // 판정 전달
         public Avoid Avoid;
-        // 스포너 끄고싶어
-        public GameObject Spawner;
-        
+        private int _hitCount = 0;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Avoid"))
+            if (!other.CompareTag("Avoid"))
             {
-                if (Avoid.Parrying)
-                {
-                    Avoid.ParryingSuccess();
-                    Spawner.SetActive(false);
-                    this.enabled = false;
-                }
-                else
-                {
-                    
-                    Avoid.Fail();
-                    Spawner.SetActive(false);
-                    this.enabled = false;
-                }
+                return;
+            }
+            
+            if (_hitCount > 3)
+            {
+                Avoid.Fail();
+            }
+            else
+            {
+                _hitCount += 1;
+                Avoid.SuccessCount += 1;
             }
         }
-        
     }
+        
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace SeongIl
@@ -10,7 +11,17 @@ namespace SeongIl
         private float _shieldRadius = 2f;
         [SerializeField]
         private float _moveSpeed = 1f;
+        [SerializeField]
+        private float _parryingTiming = 2f;
+        [SerializeField]
+        private int SuccessCount = 0;
+        private bool _isParrying = false;   
+        
+        public Avoid Avoid;
+        
 
+        public int ParryingCount;
+        
         private void Start()
         {
             _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
@@ -19,7 +30,10 @@ namespace SeongIl
         private void Update()
         {
             ShieldMovement();
-            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(Parrying());
+            }
         }
 
         private void ShieldMovement()
@@ -36,6 +50,36 @@ namespace SeongIl
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
             
         }
-        
+
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.CompareTag("Avoid"))
+            {
+                return;
+            }
+            
+            Destroy(other.gameObject);
+            Avoid.SuccessCount += 1;
+            
+
+            if (_isParrying)
+            {
+                Destroy(other.gameObject);
+                ParryingCount += 1;
+                Debug.Log($"패링 카운트 : {ParryingCount}");
+                if (ParryingCount > SuccessCount)
+                {
+                    Avoid.ParryingSuccess();
+                }
+            }
+        }
+
+        private IEnumerator Parrying()
+        {   
+            _isParrying = true;
+            yield return new WaitForSeconds(_parryingTiming);
+            _isParrying = false;
+        }
     }
 }

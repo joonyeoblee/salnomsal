@@ -9,14 +9,11 @@ namespace SeongIl
     {
         
         // public Camera MyCamera;
-        public Canvas MyCanvas;
         public Image Enemy;
         public Image BackGround;
 
         public GameObject[] Effect;
         // public GameObject Player;
-
-        public GameObject Spawner;
         
         private void Start()
         {
@@ -52,7 +49,7 @@ namespace SeongIl
 
         private void GameStart()
         {
-            Spawner.SetActive(true);
+            
         }
     }
 }

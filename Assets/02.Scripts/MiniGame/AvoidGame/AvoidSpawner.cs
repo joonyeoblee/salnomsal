@@ -8,12 +8,12 @@ namespace SeongIl
 public class AvoidSpawner : MonoBehaviour
 {
     public int SpawnCount;
-    public float SpawnTime = 2f;
     public float Distance = 4f;
     public float MinTime;
     public float MaxTime;
     public Vector3 SpawnPos;
     public GameObject Bullet;
+    public GameObject Warning;
 
     private void Start()
     {   
@@ -30,14 +30,17 @@ public class AvoidSpawner : MonoBehaviour
             
             int randomPosition = UnityEngine.Random.Range(0, 18);
 
-            float angle = randomPosition * 20f  * Mathf.Deg2Rad;
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f);
+            float angle = randomPosition * 20f;
+            float degAngle = angle *  Mathf.Deg2Rad;
+            Vector3 direction = new Vector3(Mathf.Cos(degAngle), Mathf.Sin(degAngle), 0f);
             Vector3 spawn = SpawnPos + direction * Distance;
             
-            Instantiate(Bullet, spawn, Quaternion.identity);
-            
+            Instantiate( Warning, spawn , Quaternion.Euler(0f, 0f, angle));
             
             yield return new WaitForSeconds(randomSpawn);
+            
+            Instantiate(Bullet, spawn, Quaternion.identity);
+
         }
         
     }
