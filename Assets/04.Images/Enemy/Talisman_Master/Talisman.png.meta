@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Talisman_0: -5918660992592920703
+      Talisman_1: -4382023909471864958
+      Talisman_2: -1393611036333750496
+      Talisman_3: -6014443446193114215
+      Talisman_4: -7264357053097005778
+      Talisman_5: 7788227754281474086
+      Talisman_6: -5832226701732176099
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
