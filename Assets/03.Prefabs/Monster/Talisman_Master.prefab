@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9109516102447634299}
   m_Layer: 0
   m_Name: Talisman_Master
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5d43bdd644feaba1f8f14229b8536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _model: {fileID: 0}
+  _model: {fileID: 3110495076317941771}
   DamageType: 0
   MaxHealth: 100
   MaxMana: 10
@@ -61,7 +61,7 @@ MonoBehaviour:
   IsDefending: 0
   _targetType: 1
   _basicSpeed: 4
-  _animator: {fileID: 0}
+  _animator: {fileID: 1450153352839994815}
   IsMyTurn: 0
   moveDuration: 0.5
 --- !u!114 &1297638667908671680
@@ -125,8 +125,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: 1.5}
+  m_Size: {x: 2, y: 3}
   m_Direction: 0
 --- !u!114 &9109516102447634299
 MonoBehaviour:

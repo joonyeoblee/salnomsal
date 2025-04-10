@@ -51,9 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 8583637697979894963}
   DamageType: 0
-  MaxHealth: 10
+  MaxHealth: 60
   MaxMana: 4
-  AttackPower: 1
+  AttackPower: 11
   CriticalChance: 1
   CriticalDamage: 1
   Resistance: 1

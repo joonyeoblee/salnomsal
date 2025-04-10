@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Equipment;
@@ -14,6 +15,7 @@ public enum SkillSlot
 	None
 }
 
+[Serializable]
 public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
