@@ -9,7 +9,8 @@ public class Attack : Skill
     public override void UseSkill(PlayableCharacter caster, ITargetable target)
     {
         MonoBehaviour monoBehaviour = target as MonoBehaviour;
-        Vector3 position = monoBehaviour.transform.position;
+        Vector3 position = monoBehaviour.transform.Find("Model").transform.position;
+        Debug.Log(position);
         Damage damage = new Damage(caster.DamageType, caster.AttackPower * Multiplier, caster.gameObject);
 
         if (UnityEngine.Random.value < caster.CriticalChance)

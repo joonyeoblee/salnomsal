@@ -2430,6 +2430,10 @@ PrefabInstance:
       propertyPath: KeepPlayModeChanges
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7953574740361549860, guid: 624058c081c21054889da8ab56385041, type: 3}
+      propertyPath: managedReferences[8139518758454820990].PositionMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4086,7 +4090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -805, y: -385}
+  m_AnchoredPosition: {x: -804.99994, y: -385}
   m_SizeDelta: {x: -1670.0001, y: -830}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1524360147
