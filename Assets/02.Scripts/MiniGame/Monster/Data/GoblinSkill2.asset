@@ -22,3 +22,5 @@ MonoBehaviour:
   SkillType: 2
   SkillRange: 0
   SkillTarget: 0
+  IsMelee: 0
+  HasProjectile: 1

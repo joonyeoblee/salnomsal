@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public abstract class Skill : MonoBehaviour
 {
     public PlayableSkillSO SkillData;
@@ -7,6 +6,7 @@ public abstract class Skill : MonoBehaviour
     public string SkillDescription;
     public int SkillCost;
     public bool IsMelee;
-
+    public bool HasProjectile;
+  
     public abstract void UseSkill(PlayableCharacter user, ITargetable target);
 }

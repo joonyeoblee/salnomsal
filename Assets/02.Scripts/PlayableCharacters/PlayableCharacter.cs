@@ -29,6 +29,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	}
 
 	[SerializeField] private GameObject _model;
+	[SerializeField] Transform _muggle;
+	[SerializeField] GameObject Projectile;
 	public GameObject Model { get => _model.gameObject; }
 
 	private Vector3 cameraOriginPosition;
@@ -201,6 +203,32 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				Debug.Log($"{vecc}: vecc ");
 				StartCoroutine(DoActionCoroutine(slot, targets));
 			});
+		} else if (currentSkill.SkillData.SkillType == SkillType.Attack && !currentSkill.IsMelee)
+		{
+			Vector3 vecc = new Vector3(1, -0.5f, -10);
+
+			Sequence sequence = DOTween.Sequence();
+			sequence.Append(Camera.main.DOOrthoSize(4.5f, 1f)).SetEase(Ease.OutCubic);
+			sequence.Join(Camera.main.transform.DOMove(vecc, 1f).SetEase(Ease.OutQuad));
+			sequence.OnComplete((
+			) =>
+			{
+				Debug.Log($"{vecc}: vecc ");
+				StartCoroutine(DoActionCoroutine(slot, targets));
+			});
+		} else if (currentSkill.SkillData.SkillType == SkillType.Heal)
+		{
+			Vector3 vecc = new Vector3(-3, -1, -10);
+
+			Sequence sequence = DOTween.Sequence();
+			sequence.Append(Camera.main.DOOrthoSize(4f, 1f)).SetEase(Ease.OutCubic);
+			sequence.Join(Camera.main.transform.DOMove(vecc, 1f).SetEase(Ease.OutQuad));
+			sequence.OnComplete((
+			) =>
+			{
+				Debug.Log($"{vecc}: vecc ");
+				StartCoroutine(DoActionCoroutine(slot, targets));
+			});
 		}
 		else
 		{
@@ -231,26 +259,15 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				break;
 		}
 
+	
 		// 애니메이션 끝날 때까지 대기
-		yield return StartCoroutine(WaitAnimationEnd(animName));
+		yield return StartCoroutine(WaitAnimationEnd(animName, slot, targets));
 
-		// 스킬 사용 처리
-		foreach (ITargetable target in targets)
-		{
-			MonoBehaviour mb = target as MonoBehaviour;
-
-			if (HitEffects.Count > 0)
-			{
-				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
-
-			}
-
-			Skills[(int)slot].UseSkill(this, target);
-		}
 
 		// 다시 원래 위치로 이동한 다음, EndTurn 
 
 		Sequence seq = DOTween.Sequence();
+		seq.AppendInterval(0.2f);
 		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
 		seq.Join(Camera.main.DOOrthoSize(cameraOriginSize, 0.5f).SetEase(Ease.OutCubic));
 		seq.Join(Camera.main.transform.DOMove(cameraOriginPosition, 0.5f).SetEase(Ease.OutCubic));
@@ -260,7 +277,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		});
 	}
 
-	IEnumerator WaitAnimationEnd(string animName)
+	IEnumerator WaitAnimationEnd(string animName, SkillSlot slot, List<ITargetable> targets)
 	{
 		// 트리거 입력 후, 해당 애니메이션 시작될 때까지 대기
 		AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
@@ -269,12 +286,35 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			yield return null;
 			info = _animator.GetCurrentAnimatorStateInfo(0);
 		}
+		if (Projectile != null && Skills[(int)slot].HasProjectile)
+		{
+			foreach (ITargetable target in targets)
+			{
 
+				GameObject _projectile = Instantiate(Projectile, _muggle.transform);
+				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
+			}
+
+		}
+		
 		// 애니메이션 재생 끝날 때까지 대기
 		while (info.normalizedTime < 1f)
 		{
 			yield return null;
 			info = _animator.GetCurrentAnimatorStateInfo(0);
+		}
+
+		// 스킬 사용 처리
+		foreach (ITargetable target in targets)
+		{
+			MonoBehaviour mb = target as MonoBehaviour;
+
+			if (HitEffects.Count > 0)
+			{
+				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+			}
+
+			Skills[(int)slot].UseSkill(this, target);
 		}
 	}
 
