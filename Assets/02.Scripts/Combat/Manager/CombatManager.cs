@@ -321,6 +321,7 @@ public class CombatManager : MonoBehaviour
             if (Monsters[i] == null || Monsters[i].IsAlive == false)
             {
                 Monsters.RemoveAt(i);
+                --i;
             }
         }
         for (int i = 0; i < PlayableCharacter.Count; ++i)
@@ -328,6 +329,7 @@ public class CombatManager : MonoBehaviour
             if (PlayableCharacter[i] == null || PlayableCharacter[i].IsAlive == false)
             {
                 PlayableCharacter.RemoveAt(i);
+                --i;
             }
         }
     }
