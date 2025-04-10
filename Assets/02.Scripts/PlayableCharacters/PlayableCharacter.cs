@@ -326,7 +326,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
         _isAlive = false;
 
-        PlayerPrefs.DeleteKey(GameManager.Instance.datas[Index]);
+        PlayerPrefs.DeleteKey(GameManager.Instance.Teams[Index]);
         PlayerPrefs.Save();
 	}
 
