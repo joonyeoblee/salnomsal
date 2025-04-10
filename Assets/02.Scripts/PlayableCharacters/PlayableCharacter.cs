@@ -177,33 +177,22 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		_cost -= Skills[(int)slot].SkillCost;
         CombatManager.Instance.UIBattle.RefreshStatText(this);
-
+       
         if (Skills[(int)slot].SkillData.SkillType == SkillType.Attack)
         {
 	        Vector3 vecc = new Vector3(CombatManager.Instance.PlayerAttackPosition.position.x + 2, CombatManager.Instance.PlayerAttackPosition.position.y + 2, -10);
 			
 			Sequence sequence = DOTween.Sequence();
-			sequence.Append(transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.InOutQuad));
-			sequence.AppendInterval(0.5f);
 			sequence.Append(Camera.main.DOOrthoSize(4f, 1f)).SetEase(Ease.OutCubic);
 			sequence.Join(Camera.main.transform.DOMove(vecc, 1f).SetEase(Ease.OutQuad));
+			sequence.Join(transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.InOutQuad));
+			
 			sequence.OnComplete((
 				) =>
 			{
 				Debug.Log($"{vecc}: vecc ");
 					StartCoroutine(DoActionCoroutine(slot, targets));
 				});
-
-			// transform.DOMove(CombatManager.Instance.PlayerAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
-			// {
-			// 	// 카메라 줌인 + 따라가기
-			// 	Camera.main.DOOrthoSize(3.5f, 0.5f).SetEase(Ease.OutCubic);
-			//
-			// 	Camera.main.transform.DOMove(new Vector3(transform.position.x + 10f , transform.position.y - 10f, -10f), 0.5f).SetEase(Ease.OutCubic);
-			//
-			// 	// 이동이 끝난 다음에 코루틴 시작
-			// 	StartCoroutine(DoActionCoroutine(slot, targets));
-			// });
 		} else
 		{
 			// 이동이 끝난 다음에 코루틴 시작
@@ -233,6 +222,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			break;
 		}
 
+		// 애니메이션 끝날 때까지 대기
+		yield return StartCoroutine(WaitAnimationEnd(animName));
+
 		// 스킬 사용 처리
 		foreach (ITargetable target in targets)
 		{
@@ -241,28 +233,18 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			if (HitEffects.Count > 0)
 			{
 				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+				
 			}
-			
+
 			Skills[(int)slot].UseSkill(this, target);
 		}
-
-		// 애니메이션 끝날 때까지 대기
-		yield return StartCoroutine(WaitAnimationEnd(animName));
 
 		// 다시 원래 위치로 이동한 다음, EndTurn 
 		
 		Sequence seq = DOTween.Sequence();
 		seq.Append(transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.InOutQuad));
 		seq.Join(Camera.main.DOOrthoSize(cameraOriginSize, 0.5f).SetEase(Ease.OutCubic));
-
 		seq.Join(Camera.main.transform.DOMove(cameraOriginPosition, 0.5f).SetEase(Ease.OutCubic));
-
-		seq.AppendCallback(() =>
-		{
-			// 확실하게 고정
-			Camera.main.transform.position = cameraOriginPosition;
-			Camera.main.orthographicSize = cameraOriginSize;
-		});
 		seq.OnComplete(() =>
 		{
 			EndTurn();

@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: f1cf61e753229d845a4898bbc0725161
+guid: d4f1bcfb62cf8d64ba1d7c5b9027ee22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8779681549725420321
-    second: ogre_0
+      213: 7034660610512690298
+    second: Boom_0
   - first:
-      213: -4168365034886982111
-    second: ogre_1
+      213: -8874246152023096229
+    second: Boom_1
   - first:
-      213: -202875197712387220
-    second: ogre_2
-  - first:
-      213: 5207758074290773884
-    second: ogre_3
+      213: 4221536321085816454
+    second: Boom_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 135
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,106 +102,71 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ogre_0
+      name: Boom_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 500
-        width: 547
-        height: 499
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 30
+        y: 33
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 45b782ba6e17ab24888b8550e28f176d
-      internalID: 937800484
+      spriteID: a7c9a05dd8220a160800000000000000
+      internalID: 7034660610512690298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_1
+      name: Boom_1
       rect:
         serializedVersion: 2
-        x: 578
-        y: 500
-        width: 547
-        height: 499
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 157
+        y: 27
+        width: 76
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0efb884fa2267674abab97d98440a1ca
-      internalID: 1941994064
+      spriteID: b54494b742858d480800000000000000
+      internalID: -8874246152023096229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ogre_2
+      name: Boom_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 13
-        width: 529
-        height: 481
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
+        x: 259
+        y: 2
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b70f28e7b027b2246a2fb21117888d23
-      internalID: 1957760747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ogre_3
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 13
-        width: 565
-        height: 481
-      alignment: 9
-      pivot: {x: 0.35, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 021c7c5214add93428f05ca9b2484c6d
-      internalID: -2096932088
+      spriteID: 68ebab8dae8e59a30800000000000000
+      internalID: 4221536321085816454
       vertices: []
       indices: 
       edges: []
@@ -213,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 618a4b44709ea7b45ae161f047066414
+    spriteID: c57b6216e966c21409ba91ec3137593b
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ogre_0: 937800484
-      ogre_1: 1941994064
-      ogre_2: 1957760747
-      ogre_3: -2096932088
+      Boom_0: 7034660610512690298
+      Boom_1: -8874246152023096229
+      Boom_2: 4221536321085816454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

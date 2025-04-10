@@ -53,7 +53,7 @@ namespace Jun.Monster
                 
             if (index >= 0 && index < skillActions.Count)
             {
-                Debug.Log($"{index}스킬 실행됌");
+                Debug.Log($"{index +1 }스킬 실행됌");
                 skillActions[index].Invoke();
             } else
             {

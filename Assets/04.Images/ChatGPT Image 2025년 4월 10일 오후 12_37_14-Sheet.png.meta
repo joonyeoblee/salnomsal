@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 85697b767d8179b4585cf0c655d3dd6b
+guid: 2fbeb994446d2d348bfb8088f23e402e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 158128056705396212
-    second: HolyKnight_0
+      213: 3790508553996604118
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_0"
   - first:
-      213: 1277252226963874588
-    second: HolyKnight_1
+      213: -8427779083065797764
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_1"
   - first:
-      213: -6133074410022274475
-    second: HolyKnight_2
+      213: 7348252381453981655
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_2"
   - first:
-      213: -5346983845043457247
-    second: HolyKnight_3
+      213: -319189042376888765
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_3"
   - first:
-      213: -4265451773785413538
-    second: HolyKnight_4
+      213: 8261493314793392632
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_4"
   - first:
-      213: -6515202275966557367
-    second: HolyKnight_5
+      213: -8865321773375536103
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_5"
+  - first:
+      213: 2283632590686872131
+    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_6"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,35 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HolyKnight_0
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_0"
       rect:
         serializedVersion: 2
-        x: 3
-        y: 448
-        width: 483
-        height: 571
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4fda2f831a8c13200800000000000000
-      internalID: 158128056705396212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HolyKnight_1
-      rect:
-        serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 491
-        height: 435
+        width: 501
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1322cc1226b9b110800000000000000
-      internalID: 1277252226963874588
+      spriteID: 6d21c0762779a9430800000000000000
+      internalID: 3790508553996604118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight_2
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_1"
       rect:
         serializedVersion: 2
-        x: 491
-        y: 464
-        width: 403
-        height: 523
+        x: 354
+        y: 491
+        width: 11
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +155,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55a75998151f2eaa0800000000000000
-      internalID: -6133074410022274475
+      spriteID: c73556483938a0b80800000000000000
+      internalID: -8427779083065797764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight_3
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_2"
       rect:
         serializedVersion: 2
-        x: 507
+        x: 361
+        y: 489
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d79b74bb9c3af560800000000000000
+      internalID: 7348252381453981655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_3"
+      rect:
+        serializedVersion: 2
+        x: 500
         y: 0
-        width: 507
-        height: 419
+        width: 500
+        height: 496
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 123be60c582bbc5b0800000000000000
-      internalID: -5346983845043457247
+      spriteID: 34eade0d143029bf0800000000000000
+      internalID: -319189042376888765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight_4
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_4"
       rect:
         serializedVersion: 2
-        x: 635
-        y: 400
-        width: 387
-        height: 611
+        x: 566
+        y: 486
+        width: 18
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e58e5f806321ec4c0800000000000000
-      internalID: -4265451773785413538
+      spriteID: 8f946860668b6a270800000000000000
+      internalID: 8261493314793392632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HolyKnight_5
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_5"
       rect:
         serializedVersion: 2
-        x: 679
-        y: 287
-        width: 232
-        height: 194
+        x: 626
+        y: 462
+        width: 14
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,8 +243,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 943623d8c0a5595a0800000000000000
-      internalID: -6515202275966557367
+      spriteID: 9144a6e41dc08f480800000000000000
+      internalID: -8865321773375536103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_6"
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 0
+        width: 1001
+        height: 497
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3426565fdb711bf10800000000000000
+      internalID: 2283632590686872131
       vertices: []
       indices: 
       edges: []
@@ -259,13 +284,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      HolyKnight_0: 158128056705396212
-      HolyKnight_1: 1277252226963874588
-      HolyKnight_2: -6133074410022274475
-      HolyKnight_3: -5346983845043457247
-      HolyKnight_4: -4265451773785413538
-      HolyKnight_5: -6515202275966557367
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -71,7 +71,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 1c5f9b7a70f600b4dad1c9384d1da913, type: 2}
   - {fileID: 7400000, guid: 1c5f9b7a70f600b4dad1c9384d1da913, type: 2}
   HitEffects:
-  - {fileID: 4395552996863364194, guid: c5d0b2df8d553fd4aa95c35aa52161b3, type: 3}
+  - {fileID: 1214733586436350074, guid: eb669994b3d6e2240ad50274670cee04, type: 3}
   - {fileID: 6413378914445668929, guid: ea947074c949ee441a66b8cf78658616, type: 3}
   - {fileID: 4395552996863364194, guid: c5d0b2df8d553fd4aa95c35aa52161b3, type: 3}
   _targetType: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
     Rarity: 0
     BaseStats: []
     AppliedPassives: []
-  _basicSpeed: 5
+  _basicSpeed: 4
   moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!114 &3678347721519980572
@@ -152,7 +152,18 @@ MonoBehaviour:
   complexMaskingMode: 0
   drawingMode: 1
   outlineLayer: 0
-  outlineTargets: []
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 1409614990178564070}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    CutoutThreshold: 0.5
+    CullMode: 0
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
   renderStyle: 1
   outlineParameters:
     enabled: 1
@@ -201,6 +212,7 @@ GameObject:
   - component: {fileID: 8343924902735763993}
   - component: {fileID: 1409614990178564070}
   - component: {fileID: 9131553604410047993}
+  - component: {fileID: 5849318201450485290}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -300,6 +312,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5849318201450485290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958749837745241896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2673836380159206749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 3653391944406760869, guid: 624058c081c21054889da8ab56385041, type: 3}
       propertyPath: m_Name
       value: FloatingText
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653391944406760869, guid: 624058c081c21054889da8ab56385041, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
