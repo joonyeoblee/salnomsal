@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public List<TeamSlot> TeamSlots = new List<TeamSlot>(3);
-    
+    public List<string> Teams = new List<string>();
     public List<GameObject> Characters = new List<GameObject>(3);
 
-    public List<bool> DeathCharacter = new List<bool>(3) { false, false, false };
-
+    public List<string> datas;
+    
     private bool _bossKill = false;
     public bool BossKill => _bossKill; 
 
@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
     {
         Characters.Clear(); // 기존 캐릭터 리스트 초기화
 
+        foreach (TeamSlot c in TeamSlots)
+        {
+            Teams.Add(c.SaveKey);
+        }
+        
         foreach (TeamSlot slot in TeamSlots)
         {
             if (slot.currentCharacterPortrait != null)
@@ -63,15 +68,5 @@ public class GameManager : MonoBehaviour
         _bossKill = false;
     }
 
-    public void RemoveDeathCharacter()
-    {
-        for (int i = 0; i < DeathCharacter.Count; ++i)
-        {
-            if (DeathCharacter[i])
-            {
-                TeamSlots[i].DeleteItem();
-                DeathCharacter[i] = false;
-            }
-        }
-    }
+
 }
