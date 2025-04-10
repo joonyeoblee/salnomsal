@@ -23,7 +23,6 @@ public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("clicked");
         CombatManager.Instance.SetTarget(GetComponent<ITargetable>());
     }
     public void ChangeOutlineColor(Color color)

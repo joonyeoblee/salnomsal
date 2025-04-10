@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Jun;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -372,6 +374,7 @@ public class CombatManager : MonoBehaviour
         ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
+        MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;
     }
