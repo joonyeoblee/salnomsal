@@ -10,19 +10,18 @@ namespace Jun.Skill
     {
         public Skill Skill;
         public int Index;
+        public Character Target;
     }
 
     public class Skill
     {
         public SkillDataSO SkillData;
-
-        public Func<Character, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
+        public Func<Character, int> conditionalBonusPriority;
     }
 
     public class MonsterSkill : MonoBehaviour
     {
         public List<Skill> skills;
-
         public List<SkillDataSO> skillDataList;
 
         public void SetConditionalPriorities(List<Func<Character, int>> conditionalFuncs)
@@ -42,88 +41,96 @@ namespace Jun.Skill
 
         public List<Skill> GetAvailableSkills(MonsterBase caster)
         {
-            var available = skills
+            return skills
                 .Where(skill => caster.Mana >= skill.SkillData.SkillCost)
                 .ToList();
-
-            Debug.Log($"[{name}] 사용 가능한 스킬 개수: {available.Count}");
-            foreach (Skill skill in available)
-            {
-                Debug.Log($"[{name}] 사용 가능 스킬: {skill.SkillData.name}, 코스트: {skill.SkillData.SkillCost}, 현재 마나: {caster.Mana}");
-            }
-
-            return available;
         }
 
         void Awake()
         {
             skills = new List<Skill>();
-
             if (skillDataList == null)
             {
                 Debug.LogError($"[{name}] skillDataList null입니다.");
                 return;
             }
-            
 
-            for (int i = 0; i < skillDataList.Count; i++)
+            foreach (SkillDataSO skillData in skillDataList)
             {
-                skills.Add(new Skill
-                {
-                    SkillData = skillDataList[i],
-                    
-                });
-
-                //Debug.Log($"[{name}] 스킬 초기화됨: {skillDataList[i].name}, 우선도: {basePriorities[i]}");
+                skills.Add(new Skill { SkillData = skillData });
             }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
-        public SkillDecision ChooseSkillWithIndex(Character target)
+        public SkillDecision ChooseSkillWithTarget(List<PlayableCharacter> players, List<PlayableCharacter> allies = null)
         {
             MonsterBase caster = GetComponent<MonsterBase>();
             List<Skill> availableSkills = GetAvailableSkills(caster);
 
             Skill bestSkill = null;
+            Character bestTarget = null;
             int bestPriority = int.MinValue;
             int bestIndex = -1;
 
             for (int i = 0; i < availableSkills.Count; i++)
             {
                 Skill skill = availableSkills[i];
-                int priority = skill.SkillData.Priority;
+                List<PlayableCharacter> potentialTargets = new List<PlayableCharacter>();
 
-                if (skill.conditionalBonusPriority != null)
+                switch (skill.SkillData.SkillTarget)
                 {
-                    int bonus = skill.conditionalBonusPriority.Invoke(target);
-                    priority += bonus;
-                    Debug.Log($"[{name}] {skill.SkillData.name}: base {skill.SkillData.Priority}, bonus {bonus} → total {priority}");
-                } else
-                {
-                    Debug.Log($"[{name}] {skill.SkillData.name}: base {priority} (조건 함수 없음)");
+                case TargetType.Enemy:
+                    potentialTargets = players;
+                    break;
+                case TargetType.Ally:
+                    potentialTargets = allies ?? new List<PlayableCharacter>();
+                    break;
+                case TargetType.None:
+                    potentialTargets = new List<PlayableCharacter> { null };
+                    break;
                 }
 
-                if (priority > bestPriority)
+                foreach (PlayableCharacter target in potentialTargets)
                 {
-                    bestPriority = priority;
-                    bestSkill = skill;
-                    bestIndex = i;
-                }
-            }
+                    if (target != null && !target.IsAlive) continue;
 
-            if (bestSkill != null)
-            {
-                Debug.Log($"[{name}] 최종 선택 스킬: {bestSkill.SkillData.name}, 우선도: {bestPriority}");
-            } else
-            {
-                Debug.LogWarning($"[{name}] 선택된 스킬이 없음 (null)");
+                    int priority = skill.SkillData.Priority;
+
+                    if (skill.conditionalBonusPriority != null && target != null)
+                    {
+                        priority += skill.conditionalBonusPriority(target);
+                    }
+
+                    priority += EvaluateTargetBonus(target);
+
+                    if (priority > bestPriority)
+                    {
+                        bestPriority = priority;
+                        bestSkill = skill;
+                        bestTarget = target;
+                        bestIndex = i;
+                    }
+                }
             }
 
             return new SkillDecision
             {
                 Skill = bestSkill,
-                Index = bestIndex
+                Index = bestIndex,
+                Target = bestTarget
             };
+        }
+
+        int EvaluateTargetBonus(PlayableCharacter character)
+        {
+            if (character == null) return 0;
+
+            int priority = 0;
+            if (character.Taunt > 0) priority += 200;
+            if (character.CurrentHealth < character.MaxHealth * 0.3f) priority += 10;
+            if (character.DamageType == DamageType.Magic) priority += 7;
+            if (character.HasBuff) priority += 5;
+            if (character.IsDefending) priority -= 5;
+            return priority;
         }
     }
 }

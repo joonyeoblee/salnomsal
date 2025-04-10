@@ -101,8 +101,6 @@ namespace Jun.Monster
 
         void ExecuteAttack(SkillRange range, string animName)
         {
-                  
-       
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
 
             Debug.Log("🎯 타겟 개수: " + targets.Count);

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Talisman_Master
+  m_Controller: {fileID: 9100000, guid: 9609d9025dd36d64e85a7e695516ef3b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 4bbb008eeb3787c41b47e46a67d4478a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bcb069ed7a8c242449458109c8fac20e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b0c8d2f4d85324648be5e79ded39580e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4b66ef0045f696148bc7fd806ac66667, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fc217f72c314149488c8d40edd468233, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9edecd3217822684da8f19ab76f16a15, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9c91399608038ce4d97aec9213ad9acc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1fab89f276c88a541bc60bb673f0b731, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 86cf118bddc5c6a4bbfe85fceccbf94b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4d4abac680636794e889bb6085f5a932, type: 2}

@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8343924902735763993}
+  - {fileID: 4701530528157992156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7985849593931513237
@@ -50,10 +51,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 119
-  MaxCost: 10
+  MaxHealth: 101
+  MaxCost: 11
   CostRegen: 0
-  AttackPower: 18
+  AttackPower: 17
   CriticalChance: 1.2
   CriticalDamage: 1.5
   Resistance: 0
@@ -75,6 +76,8 @@ MonoBehaviour:
   - {fileID: 4395552996863364194, guid: c5d0b2df8d553fd4aa95c35aa52161b3, type: 3}
   _targetType: 0
   _model: {fileID: 6958749837745241896}
+  _muggle: {fileID: 4701530528157992156}
+  Projectile: {fileID: 3172708441086452080, guid: 1d2e990a0e923e949aee05fc464ac20e, type: 3}
   Weapon:
     Id: 
     Rarity: 0
@@ -201,6 +204,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1437377496613144637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4701530528157992156}
+  m_Layer: 0
+  m_Name: Muggle
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4701530528157992156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437377496613144637}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 2.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6971625979600643383}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6958749837745241896
 GameObject:
   m_ObjectHideFlags: 0

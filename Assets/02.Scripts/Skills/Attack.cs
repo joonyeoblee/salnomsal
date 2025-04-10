@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UIElements;
-
+using Random = UnityEngine.Random;
 public class Attack : Skill
 {
     public float Multiplier;
@@ -11,7 +10,7 @@ public class Attack : Skill
         Damage damage = new Damage(caster.DamageType, caster.AttackPower * Multiplier, caster.gameObject);
         Vector3 position = target.Model.transform.position;
 
-        if (UnityEngine.Random.value < caster.CriticalChance)
+        if (Random.value < caster.CriticalChance)
         {
             damage.Value *= caster.CriticalDamage;
             DisplayText(position, damage.Value, FloatingTextType.CriticalDamage);

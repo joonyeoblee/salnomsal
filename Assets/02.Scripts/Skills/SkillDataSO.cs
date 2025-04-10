@@ -36,5 +36,8 @@ namespace Jun
         public SkillType SkillType;
         public SkillRange SkillRange;
         public TargetType SkillTarget;
+        public bool IsMelee;
+        public bool HasProjectile;
+        public GameObject ProjectilePrefab;
     }
 }

@@ -6,4 +6,5 @@ public class PlayableSkillSO : ScriptableObject
     public SkillType SkillType;
     public SkillRange SkillRange;
     public TargetType SkillTarget;
+    
 }

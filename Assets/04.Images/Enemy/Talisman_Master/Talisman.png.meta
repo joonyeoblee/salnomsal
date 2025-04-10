@@ -1,49 +1,28 @@
 fileFormatVersion: 2
-guid: e8b3ffd0195c7e14ea3fd5e117a96bee
+guid: 84c733c0ea692494180c08f4dd616cab
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7242113624083656407
-    second: ThunderBolt_0
+      213: -5918660992592920703
+    second: Talisman_0
   - first:
-      213: -5330900368080755127
-    second: ThunderBolt_1
+      213: -4382023909471864958
+    second: Talisman_1
   - first:
-      213: -6831048605346690762
-    second: ThunderBolt_2
+      213: -1393611036333750496
+    second: Talisman_2
   - first:
-      213: -6107841176183263753
-    second: ThunderBolt_3
+      213: -6014443446193114215
+    second: Talisman_3
   - first:
-      213: -5228894357179144789
-    second: ThunderBolt_4
+      213: -7264357053097005778
+    second: Talisman_4
   - first:
-      213: -1859213069223493922
-    second: ThunderBolt_5
+      213: 7788227754281474086
+    second: Talisman_5
   - first:
-      213: 8303953484556355737
-    second: ThunderBolt_6
-  - first:
-      213: 3199248565246898317
-    second: ThunderBolt_7
-  - first:
-      213: -8087884713224851577
-    second: ThunderBolt_8
-  - first:
-      213: 1468889137478804217
-    second: ThunderBolt_9
-  - first:
-      213: 2711342776684312671
-    second: ThunderBolt_10
-  - first:
-      213: 5918485434982049672
-    second: ThunderBolt_11
-  - first:
-      213: -952063219485818530
-    second: ThunderBolt_12
-  - first:
-      213: -9001476337228682053
-    second: ThunderBolt_13
+      213: -5832226701732176099
+    second: Talisman_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -76,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -114,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,89 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThunderBolt_0
+      name: Talisman_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 39
+        y: 53
+        width: 47
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e12fd9ca70299ca41a58172ded37dce4
-      internalID: 809213538
+      spriteID: 18fb9868f21bcdda0800000000000000
+      internalID: -5918660992592920703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_1
+      name: Talisman_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 167
+        y: 52
+        width: 47
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 08a5d668fa9ee524296bf360ad74e7cc
-      internalID: 1988575719
+      spriteID: 28739a6a87cef23c0800000000000000
+      internalID: -4382023909471864958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_2
+      name: Talisman_2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 295
+        y: 51
+        width: 47
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f6e7f7577d0c5c84fa0d11a768f7ea0b
-      internalID: 1272308041
+      spriteID: 02743486526e8ace0800000000000000
+      internalID: -1393611036333750496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_3
+      name: Talisman_3
       rect:
         serializedVersion: 2
-        x: 900
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 423
+        y: 49
+        width: 47
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f36fb309360cd36429938225406075cf
-      internalID: 626161950
+      spriteID: 993bbf33d87688ca0800000000000000
+      internalID: -6014443446193114215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Talisman_4
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 51
+        width: 47
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2dac889fb1df2b90800000000000000
+      internalID: -7264357053097005778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Talisman_5
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 52
+        width: 47
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62819c3f0e7551c60800000000000000
+      internalID: 7788227754281474086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Talisman_6
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 53
+        width: 47
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1f94b917b4cf0fa0800000000000000
+      internalID: -5832226701732176099
       vertices: []
       indices: 
       edges: []
@@ -230,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2bc492b8901432244a3ea528d2d52830
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -239,11 +284,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ThunderBolt_0: 809213538
-      ThunderBolt_1: 1988575719
-      ThunderBolt_2: 1272308041
-      ThunderBolt_3: 626161950
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

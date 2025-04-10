@@ -1,49 +1,28 @@
 fileFormatVersion: 2
-guid: e8b3ffd0195c7e14ea3fd5e117a96bee
+guid: 4177f0f881a14b14eb06b25ce696105b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7242113624083656407
-    second: ThunderBolt_0
+      213: -6607481912129624618
+    second: Fireball_0
   - first:
-      213: -5330900368080755127
-    second: ThunderBolt_1
+      213: -7250195882505504687
+    second: Fireball_1
   - first:
-      213: -6831048605346690762
-    second: ThunderBolt_2
+      213: 4403933487624526528
+    second: Fireball_2
   - first:
-      213: -6107841176183263753
-    second: ThunderBolt_3
+      213: 8927358698389672400
+    second: Fireball_3
   - first:
-      213: -5228894357179144789
-    second: ThunderBolt_4
+      213: 2250600637640065238
+    second: Fireball_4
   - first:
-      213: -1859213069223493922
-    second: ThunderBolt_5
+      213: -4701697456131926120
+    second: Fireball_5
   - first:
-      213: 8303953484556355737
-    second: ThunderBolt_6
-  - first:
-      213: 3199248565246898317
-    second: ThunderBolt_7
-  - first:
-      213: -8087884713224851577
-    second: ThunderBolt_8
-  - first:
-      213: 1468889137478804217
-    second: ThunderBolt_9
-  - first:
-      213: 2711342776684312671
-    second: ThunderBolt_10
-  - first:
-      213: 5918485434982049672
-    second: ThunderBolt_11
-  - first:
-      213: -952063219485818530
-    second: ThunderBolt_12
-  - first:
-      213: -9001476337228682053
-    second: ThunderBolt_13
+      213: -1711208824211276139
+    second: Fireball_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -76,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -90,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 55
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,89 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThunderBolt_0
+      name: Fireball_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 13
+        y: 35
+        width: 89
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e12fd9ca70299ca41a58172ded37dce4
-      internalID: 809213538
+      spriteID: 6d5e1b775328d44a0800000000000000
+      internalID: -6607481912129624618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_1
+      name: Fireball_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 141
+        y: 37
+        width: 89
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 08a5d668fa9ee524296bf360ad74e7cc
-      internalID: 1988575719
+      spriteID: 158724f0241226b90800000000000000
+      internalID: -7250195882505504687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_2
+      name: Fireball_2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 268
+        y: 38
+        width: 89
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f6e7f7577d0c5c84fa0d11a768f7ea0b
-      internalID: 1272308041
+      spriteID: 0ca9e488c2aed1d30800000000000000
+      internalID: 4403933487624526528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ThunderBolt_3
+      name: Fireball_3
       rect:
         serializedVersion: 2
-        x: 900
-        y: 20
-        width: 300
-        height: 880
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 401
+        y: 38
+        width: 83
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f36fb309360cd36429938225406075cf
-      internalID: 626161950
+      spriteID: 0d19200ef6954eb70800000000000000
+      internalID: 8927358698389672400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball_4
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 38
+        width: 87
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d0cdc11b5dbb3f10800000000000000
+      internalID: 2250600637640065238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball_5
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 37
+        width: 88
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89716e5031730ceb0800000000000000
+      internalID: -4701697456131926120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball_6
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 39
+        width: 88
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59e7f5804a09048e0800000000000000
+      internalID: -1711208824211276139
       vertices: []
       indices: 
       edges: []
@@ -230,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2bc492b8901432244a3ea528d2d52830
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -240,10 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ThunderBolt_0: 809213538
-      ThunderBolt_1: 1988575719
-      ThunderBolt_2: 1272308041
-      ThunderBolt_3: 626161950
+      Fireball_0: -6607481912129624618
+      Fireball_1: -7250195882505504687
+      Fireball_2: 4403933487624526528
+      Fireball_3: 8927358698389672400
+      Fireball_4: 2250600637640065238
+      Fireball_5: -4701697456131926120
+      Fireball_6: -1711208824211276139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

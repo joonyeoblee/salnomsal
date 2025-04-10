@@ -17,8 +17,11 @@ MonoBehaviour:
   SkillCost: 2
   SkillMultiplier: 11
   Duration: 0
-  Priority: 123
-  DamageType: 2
-  SkillType: 2
+  Priority: 5
+  DamageType: 1
+  SkillType: 0
   SkillRange: 0
   SkillTarget: 0
+  IsMelee: 0
+  HasProjectile: 1
+  ProjectilePrefab: {fileID: 0}
