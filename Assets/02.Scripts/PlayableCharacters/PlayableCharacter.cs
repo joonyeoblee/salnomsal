@@ -173,10 +173,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		Debug.Log($"{CharacterName}: Playable Turn Start");
 		CombatManager.Instance.CurrentActor = this;
 		CostGain();
+		OnTurnStart?.Invoke();
 		// UI로 캐릭터 정보 전송
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 		UI_Battle.Instance.SwitchUI(Index);
-		OnTurnStart?.Invoke();
 	}
 
 	public void EndTurn()

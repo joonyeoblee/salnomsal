@@ -10,6 +10,8 @@ public class Heal : Skill
         Vector3 position = target.Model.transform.position;
 
         DisplayText(position, HealAmount, FloatingTextType.Heal);
+
+        target.GetHeal(HealAmount);
     }
 
     public void DisplayText(Vector3 position, float amount, FloatingTextType type)
