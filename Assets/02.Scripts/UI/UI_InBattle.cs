@@ -18,7 +18,7 @@ public class UI_InBattle : MonoBehaviour
 
     public void Initialize(PlayableCharacter character)
     {
-        Icons icons = character.GetComponent<Icons>();
+        PlayableIcons icons = character.GetComponent<PlayableIcons>();
 
         if (icons != null)
         {

@@ -55,6 +55,7 @@ public class CombatManager : MonoBehaviour
     {
         SpawnPlayer();
         UI_Battle.Instance.HideBattleUI();
+        UI_Battle.Instance.HideEnemyHealthIndicator();
 
         // MapManager.Instance.OnMapNodeChanged += InitializeCombat;
         Debug.Log("Battle Scene Start");
@@ -74,7 +75,7 @@ public class CombatManager : MonoBehaviour
 
             player.Index = i;
             PlayableCharacter.Add(player);
-            
+            UI_Battle.Instance.PartyHealthIndicator.Initialize(player);
         }
     }
 
@@ -90,14 +91,11 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
-        foreach (PlayableCharacter character in PlayableCharacter)
-        {
-            UI_Battle.Instance.BattleUI[character.Index].Initialize(character);
-        }
         OpenMapButton.SetActive(false);
         TurnOrder.Clear();
         _isInputBlocked = false;
 
+        UI_Battle.Instance.ShowPartyHealthIndicator();
         foreach (PlayableCharacter character in PlayableCharacter)
         {
             if (character.IsAlive == false)
@@ -106,12 +104,19 @@ public class CombatManager : MonoBehaviour
                 continue;
             }
             character.CurrentSpeed = character.BasicSpeed;
+            UI_Battle.Instance.BattleUI[character.Index].Initialize(character);
+            UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(character);
             TurnOrder.Add(character);
         }
 
+        UI_Battle.Instance.ShowEnemyHealthIndicator();
         foreach (EnemyCharacter monster in Monsters)
         {
             monster.CurrentSpeed = monster.BasicSpeed;
+            monster.Index = Monsters.IndexOf(monster);
+            Debug.Log("Indicator 초기화");
+            UI_Battle.Instance.EnemyHealthIndicator.Initialize(monster);
+            UI_Battle.Instance.EnemyHealthIndicator.RefreshHealth(monster);
             TurnOrder.Add(monster);
         }
 
@@ -368,6 +373,7 @@ public class CombatManager : MonoBehaviour
         ResetManager();
         OpenMapButton.SetActive(true);
         UI_Battle.Instance.HideBattleUI();
+        UI_Battle.Instance.HideEnemyHealthIndicator();
 
         return true;
     }
@@ -382,10 +388,14 @@ public class CombatManager : MonoBehaviour
             }
         }
 
+
+
         ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
         UI_Battle.Instance.HideBattleUI();
+        UI_Battle.Instance.HidePartyHealthIndicator();
+        UI_Battle.Instance.HideEnemyHealthIndicator();
         MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;

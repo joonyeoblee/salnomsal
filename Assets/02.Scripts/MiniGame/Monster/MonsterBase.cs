@@ -110,6 +110,8 @@ namespace Jun.Monster
         {
             _animator.Play("Hit");
             _health -= damage.Value;
+            _health = Mathf.Max(_health, 0);
+            UI_Battle.Instance.EnemyHealthIndicator.RefreshHealth(this);
             if (_health <= 0)
             {
                 Death(damage.Type);

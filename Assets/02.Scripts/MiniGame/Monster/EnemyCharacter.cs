@@ -5,6 +5,7 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	[SerializeField] private GameObject _model;
     public GameObject Model { get => _model.gameObject; }
 	public DamageType DamageType;
+	public int Index;
 	public float MaxHealth;
 	public float MaxMana;
 	public float AttackPower;
