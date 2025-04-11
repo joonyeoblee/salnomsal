@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a9d9ce66c70ad43aeb294c603cf94f, type: 3}
   m_Name: BossSKill3
   m_EditorClassIdentifier: 
-  SkillName: "\uBC94\uC704 \uACF5\uACA9"
-  SkillDescription: "\uBCF4\uC2A4\uC758 3\uBC88\uCA30 \uACF5"
-  SkillCost: 0
-  SkillMultiplier: 2
+  SkillName: "\uD790"
+  SkillDescription: "\uD790"
+  SkillCost: 3
+  SkillMultiplier: 1.5
   Duration: 0
-  Priority: 123
-  DamageType: 0
-  SkillType: 0
-  SkillRange: 1
-  SkillTarget: 0
+  Priority: 0
+  DamageType: 2
+  SkillType: 3
+  SkillRange: 0
+  SkillTarget: 1
   IsMelee: 0
   HasProjectile: 0
   SkillPrefab: {fileID: 1224984621166208373, guid: 396989f31f92a2c4da3b0efea022ed40, type: 3}

@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: "\uBCF4\uC2A4 \uACF5\uACA91"
   SkillDescription: "\uBCF4\uC2A4 \uACF5\uACA91"
-  SkillCost: 0
-  SkillMultiplier: 0
+  SkillCost: 2
+  SkillMultiplier: 1.2
   Duration: 0
   Priority: 0
   DamageType: 0
   SkillType: 0
   SkillRange: 0
   SkillTarget: 0
-  IsMelee: 0
+  IsMelee: 1
   HasProjectile: 0
-  SkillPrefab: {fileID: 1224984621166208373, guid: 396989f31f92a2c4da3b0efea022ed40, type: 3}
+  SkillPrefab: {fileID: 1737952119991151647, guid: 039cc9723a34c7b4cb1bf84822707e98, type: 3}
   ProjectilePrefab: {fileID: 0}

@@ -4046,12 +4046,13 @@ MonoBehaviour:
   IsDefending: 0
   Taunt: 0
   CharacterName: 
+  Index: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
   _targetType: 0
   _model: {fileID: 0}
-  _muggle: {fileID: 0}
+  _muzzle: {fileID: 0}
   Projectile: {fileID: 0}
   Weapon:
     Id: 
@@ -4253,12 +4254,13 @@ MonoBehaviour:
   IsDefending: 0
   Taunt: 0
   CharacterName: 
+  Index: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
   _targetType: 0
   _model: {fileID: 0}
-  _muggle: {fileID: 0}
+  _muzzle: {fileID: 0}
   Projectile: {fileID: 0}
   Weapon:
     Id: 
@@ -4325,8 +4327,7 @@ MonoBehaviour:
   - {fileID: 228517798}
   - {fileID: 1995785630}
   monsterPrefabs:
-  - {fileID: 7040579665520616671, guid: 95756ca80ef40cb429c29c6522427d25, type: 3}
-  - {fileID: 1504712145329594525, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
+  - {fileID: 8714047611190015271, guid: cf97e2b7968c6d749b51ebf5ef03a3cf, type: 3}
   EliteMonster: {fileID: 5088683969083430609, guid: 3e487aff18f35f347a6882703250921d, type: 3}
   BossMonster: {fileID: 6915706932143878481, guid: 11c61a65147538c43889748341b54333, type: 3}
 --- !u!1 &1252682099
@@ -4947,12 +4948,13 @@ MonoBehaviour:
   IsDefending: 0
   Taunt: 0
   CharacterName: 
+  Index: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
   _targetType: 0
   _model: {fileID: 0}
-  _muggle: {fileID: 0}
+  _muzzle: {fileID: 0}
   Projectile: {fileID: 0}
   Weapon:
     Id: 

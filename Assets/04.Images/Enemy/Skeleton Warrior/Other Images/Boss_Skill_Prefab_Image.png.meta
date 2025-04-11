@@ -1,28 +1,52 @@
 fileFormatVersion: 2
-guid: 0f2ac8b32853e29468526dd59c971b77
+guid: fffdfd6dce487b544a1b67485a3bedef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3781910019033479378
-    second: Idle1_0
+      213: 665771976567528246
+    second: Boss_Skill_Prefab_Image_0
   - first:
-      213: -1461846728506201224
-    second: Idle1_1
+      213: 8716828338749603785
+    second: Boss_Skill_Prefab_Image_1
   - first:
-      213: 2274338124900576597
-    second: Idle1_2
+      213: -4355186632294857956
+    second: Boss_Skill_Prefab_Image_2
   - first:
-      213: 5965835319419519687
-    second: Idle1_3
+      213: -1969687376673180694
+    second: Boss_Skill_Prefab_Image_3
   - first:
-      213: 1112028525058818275
-    second: Idle1_4
+      213: -7278283467124341191
+    second: Boss_Skill_Prefab_Image_4
   - first:
-      213: 6573097036275413300
-    second: Idle1_5
+      213: 983505575169945912
+    second: Boss_Skill_Prefab_Image_5
   - first:
-      213: -2401832720206012727
-    second: Idle1_6
+      213: 4748773615682370277
+    second: Boss_Skill_Prefab_Image_6
+  - first:
+      213: -2574337832516895875
+    second: Boss_Skill_Prefab_Image_7
+  - first:
+      213: -4280786607541180434
+    second: Boss_Skill_Prefab_Image_8
+  - first:
+      213: -8102555373840950614
+    second: Boss_Skill_Prefab_Image_9
+  - first:
+      213: 3759089418552281199
+    second: Boss_Skill_Prefab_Image_10
+  - first:
+      213: 7366218840146051826
+    second: Boss_Skill_Prefab_Image_11
+  - first:
+      213: -4948689308837587109
+    second: Boss_Skill_Prefab_Image_12
+  - first:
+      213: -7577430721818440821
+    second: Boss_Skill_Prefab_Image_13
+  - first:
+      213: -9128862971651455588
+    second: Boss_Skill_Prefab_Image_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -69,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -144,155 +168,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle1_0
+      name: Boss_Skill_Prefab_Image_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 1024
-        width: 648
-        height: 739
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e27c40700e4f38bc0800000000000000
-      internalID: -3781910019033479378
+      spriteID: 63b97b4d51c4d3900800000000000000
+      internalID: 665771976567528246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_1
+      name: Boss_Skill_Prefab_Image_1
       rect:
         serializedVersion: 2
-        x: 1013
-        y: 1022
-        width: 680
-        height: 745
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87b2257452a76bbe0800000000000000
-      internalID: -1461846728506201224
+      spriteID: 9cf7a3bb03568f870800000000000000
+      internalID: 8716828338749603785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_2
+      name: Boss_Skill_Prefab_Image_2
       rect:
         serializedVersion: 2
-        x: 1903
-        y: 1022
-        width: 708
-        height: 747
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55da3d18972109f10800000000000000
-      internalID: 2274338124900576597
+      spriteID: c13098b25d44f83c0800000000000000
+      internalID: -4355186632294857956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_3
+      name: Boss_Skill_Prefab_Image_3
       rect:
         serializedVersion: 2
-        x: 2792
-        y: 1024
-        width: 734
-        height: 748
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c2ca7a5d97eac250800000000000000
-      internalID: 5965835319419519687
+      spriteID: ae3f2da44c34aa4e0800000000000000
+      internalID: -1969687376673180694
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_4
+      name: Boss_Skill_Prefab_Image_4
       rect:
         serializedVersion: 2
-        x: 105
-        y: 91
-        width: 708
-        height: 747
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e08b304d08be6f00800000000000000
-      internalID: 1112028525058818275
+      spriteID: 9368477afb75efa90800000000000000
+      internalID: -7278283467124341191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_5
+      name: Boss_Skill_Prefab_Image_5
       rect:
         serializedVersion: 2
-        x: 1013
-        y: 93
-        width: 680
-        height: 743
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4317e51cde4583b50800000000000000
-      internalID: 6573097036275413300
+      spriteID: 831fe9a1c1d16ad00800000000000000
+      internalID: 983505575169945912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle1_6
+      name: Boss_Skill_Prefab_Image_6
       rect:
         serializedVersion: 2
-        x: 1923
-        y: 95
-        width: 648
-        height: 739
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ced53ecdd9faaed0800000000000000
-      internalID: -2401832720206012727
+      spriteID: 5eabe71817807e140800000000000000
+      internalID: 4748773615682370277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Skill_Prefab_Image_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b3bf8716d164cd0800000000000000
+      internalID: -2574337832516895875
       vertices: []
       indices: 
       edges: []
@@ -301,7 +347,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 86672a0eaede59043b47826abc0d6a35
+    spriteID: d7918f2e041871c4eb1451bbd9327377
     internalID: 0
     vertices: []
     indices: 
@@ -311,13 +357,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idle1_0: -3781910019033479378
-      Idle1_1: -1461846728506201224
-      Idle1_2: 2274338124900576597
-      Idle1_3: 5965835319419519687
-      Idle1_4: 1112028525058818275
-      Idle1_5: 6573097036275413300
-      Idle1_6: -2401832720206012727
+      Boss_Skill_Prefab_Image_0: 665771976567528246
+      Boss_Skill_Prefab_Image_1: 8716828338749603785
+      Boss_Skill_Prefab_Image_2: -4355186632294857956
+      Boss_Skill_Prefab_Image_3: -1969687376673180694
+      Boss_Skill_Prefab_Image_4: -7278283467124341191
+      Boss_Skill_Prefab_Image_5: 983505575169945912
+      Boss_Skill_Prefab_Image_6: 4748773615682370277
+      Boss_Skill_Prefab_Image_7: -2574337832516895875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

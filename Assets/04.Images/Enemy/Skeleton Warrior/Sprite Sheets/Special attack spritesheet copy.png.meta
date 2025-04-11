@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,6 +126,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -133,12 +159,12 @@ TextureImporter:
       name: Special attack spritesheet copy_0
       rect:
         serializedVersion: 2
-        x: 87
+        x: 88
         y: 1978
-        width: 574
-        height: 652
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 573
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,10 +183,10 @@ TextureImporter:
         serializedVersion: 2
         x: 970
         y: 1987
-        width: 636
-        height: 648
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 637
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -177,12 +203,12 @@ TextureImporter:
       name: Special attack spritesheet copy_2
       rect:
         serializedVersion: 2
-        x: 1854
+        x: 1852
         y: 1987
-        width: 690
-        height: 652
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 692
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,12 +225,12 @@ TextureImporter:
       name: Special attack spritesheet copy_3
       rect:
         serializedVersion: 2
-        x: 2738
+        x: 2737
         y: 1987
-        width: 677
-        height: 727
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 678
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,12 +247,12 @@ TextureImporter:
       name: Special attack spritesheet copy_4
       rect:
         serializedVersion: 2
-        x: 3623
+        x: 3624
         y: 1987
         width: 610
-        height: 760
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,12 +269,12 @@ TextureImporter:
       name: Special attack spritesheet copy_5
       rect:
         serializedVersion: 2
-        x: 27
-        y: 1057
-        width: 610
-        height: 760
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 26
+        y: 1056
+        width: 613
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,11 +292,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 926
-        y: 1057
+        y: 1056
         width: 610
-        height: 760
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,12 +313,12 @@ TextureImporter:
       name: Special attack spritesheet copy_7
       rect:
         serializedVersion: 2
-        x: 1825
-        y: 1057
+        x: 1826
+        y: 1056
         width: 610
-        height: 760
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -310,11 +336,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2724
-        y: 1057
+        y: 1056
         width: 610
-        height: 760
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -332,11 +358,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3652
-        y: 1057
+        y: 1056
         width: 663
-        height: 724
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -353,12 +379,12 @@ TextureImporter:
       name: Special attack spritesheet copy_10
       rect:
         serializedVersion: 2
-        x: 87
+        x: 88
         y: 127
         width: 636
-        height: 649
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 761
+      alignment: 9
+      pivot: {x: 0, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,7 +401,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: de74b1eb18ef944488b1c4fb70a3e30a
     internalID: 0
     vertices: []
     indices: 
