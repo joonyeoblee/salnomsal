@@ -234,6 +234,12 @@ public class CombatManager : MonoBehaviour
             return;
         }
 
+        if (CurrentActor == null)
+        {
+            Debug.Log("상대턴 입니다.");
+            return;
+        }
+
         if (SelectedSkill == SkillSlot.None)
         {
             Debug.Log("선택된 적 정보 출력");

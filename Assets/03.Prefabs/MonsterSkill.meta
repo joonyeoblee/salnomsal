@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/03.Prefabs/MonsterSkill.meta
 guid: e4c22e44c0c187145b28f9e6d720dfbc
+========
+guid: d40dd0e5cd7d2b54697b02975f11811a
+>>>>>>>> origin/JunY:Assets/Travis Game Assets/Hit Impact Effects.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

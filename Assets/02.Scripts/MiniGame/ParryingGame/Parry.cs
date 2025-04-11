@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using Jun;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ namespace SeongIl
     {
         // flash효과
         public Image Flash;
-        
+        public GameObject ParryParticles;
         [Header("난이도 설정")]
         // 패링 타이밍 시간
         [SerializeField]
@@ -37,9 +38,18 @@ namespace SeongIl
         public Animator ParryingAnimation;
         // 패링 판단 여부 위치
         private Vector2 _successPosition;
+
+        public bool LastParry;
+        public MMF_Player CameraFeedback;
+        public MMF_Player ButtonFeedback;
+
+        public int Life;
         
         // 판정 갯수세기 성공 여부 확인 위함
         private int _parriedCount = 0;
+        int _lastParryCount = 0;
+
+        bool _isChecked;
         
         private void Start()
         {
@@ -51,7 +61,6 @@ namespace SeongIl
             });
    
         }
-
         private void Update()
         {
             
@@ -59,70 +68,114 @@ namespace SeongIl
             {
                 
                 StartCoroutine(Parrying());
-                
+                if (LastParry)
+                {
+                    ButtonFeedback.PlayFeedbacks();
+                    Instantiate(ParryParticles);
+                }
             }
-            if (!GameStart)
-            {
-                return;
-            }
-            
+        }
+
+        public void StartGame()
+        {
             StartCoroutine(ParryCount(_successPosition, _distance));
-
-
         }
 
-        // 슬래시 움직임 버전 2
-        private void SlashMovement(GameObject slash)
-        {
-            Vector2 currentPosition = slash.transform.position; 
-            Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
-            float Interval = slash.GetComponent<SlashChecker>().StartTime + 1 ;
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(slash.transform.DOMove(oppositePosition, 0.1f).SetEase(Ease.OutCubic));
-     
-            
-            sequence.AppendInterval( Interval + 1);
-            
-            sequence.Append(slash.transform.DOMove(currentPosition, _parrySpeed).SetEase(Ease.OutCubic).OnStart(() =>
-            {
-                StartCoroutine(FlashBackGround());
-            }).OnComplete(() =>
-            {
-                
-                slash.GetComponent<SlashChecker>()?.MissedCheck();
-            }));        
-
-            
-        }
-        
         // 슬래시 소환 위치 정하기 && 갯수 정하기 
-        private IEnumerator ParryCount(Vector2 centerPosition, float distance)
+        IEnumerator ParryCount(Vector2 centerPosition, float distance)
         {
-            for (int i = 0; i < _count; i++) // 예시 값
-            {
-                float spawnTime = Random.Range(0.2f, 0.8f); 
-                // 위치 정하기
-                float angle = Random.Range(0f, Mathf.PI *2);
-                Vector2 pos =  new Vector2( centerPosition.x + distance * Mathf.Cos(angle), centerPosition.y + distance * Mathf.Sin(angle));
-                GameObject slash = Instantiate(SlashEffect,pos, Quaternion.identity); 
-                SlashChecker slashCheck = slash.AddComponent<SlashChecker>();
-                slashCheck.StartTime = spawnTime;
-                slashCheck.OnMissed = Fail;
-                // 움직임 시작
+            float currentTime = 0f;
 
+            for (int i = 0; i < _count; i++)
+            {
+                float spawnDelay = Random.Range(0.2f, 0.8f); // 최소 0.2f 보장
+                currentTime += spawnDelay;
+
+                // 위치 정하기
+                float angle = Random.Range(0f, Mathf.PI * 2);
+                Vector2 pos = new Vector2(centerPosition.x + distance * Mathf.Cos(angle), centerPosition.y + distance * Mathf.Sin(angle));
+                GameObject slash = Instantiate(SlashEffect, pos, Quaternion.identity);
+
+                SlashChecker slashCheck = slash.AddComponent<SlashChecker>();
+                slashCheck.Parry = this;
+                if (i == _count - 1)
+                {
+                    slashCheck.IsLastParry = true;
+                }
+
+                slashCheck.StartTime = spawnDelay;
+
+                // 일정 시간 후에 슬래시 작동
                 GameStart = false;
-                yield return new WaitForSeconds(spawnTime);
+                yield return new WaitForSeconds(spawnDelay);
+
                 SlashMovement(slash);
             }
-
         }
-        
+
+        void SlashMovement(GameObject slash)
+        {
+            Vector2 currentPosition = slash.transform.position;
+            Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
+            float Interval = slash.GetComponent<SlashChecker>().StartTime + 1;
+
+            Sequence sequence = DOTween.Sequence();
+
+            // 뒤로 빠짐 (반짝 없음)
+            Tween backTween = slash.transform.DOMove(oppositePosition, 0.1f).SetEase(Ease.OutCubic);
+            sequence.Append(backTween);
+
+            // 대기 시간
+            sequence.AppendInterval(Interval);
+
+            // 반짝 & 이동 시작 (돌아오기)
+            sequence.AppendCallback(() => { StartCoroutine(MoveWithParticle(slash, currentPosition)); });
+        }
+
+
+        IEnumerator MoveWithParticle(GameObject slash, Vector2 targetPosition)
+        {
+            // 자식 파티클 가져오기
+            ParticleSystem ps = slash.GetComponentInChildren<ParticleSystem>();
+            if (ps != null)
+            {
+                ps.Play(); // 파티클 재생
+                yield return new WaitForSeconds(ps.main.duration); // 파티클 길이만큼 대기
+            }
+
+            Tween moveTween = slash.transform.DOMove(targetPosition, _parrySpeed)
+                .SetEase(Ease.OutCubic)
+                .OnComplete(() => { slash.GetComponent<SlashChecker>()?.MissedCheck(); });
+
+            moveTween.OnUpdate(() =>
+            {
+                if (_isChecked)
+                {
+                    moveTween.Kill();
+                    slash.transform.position = _successPosition;
+                    LastParry = true;
+                    CameraFeedback.PlayFeedbacks();
+                }
+            });
+        }
+
+       
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("Avoid") && IsParried)
             {
-              Success();   
-              Destroy(other.gameObject);
+                if (other.TryGetComponent(out SlashChecker parry))
+                {
+                    if (parry.IsLastParry)
+                    {
+                        _isChecked = true;
+                    } else
+                    {
+                        Success();
+                        Destroy(other.gameObject);
+                    }
+                }
+             
               for (int i = 0; i < ParryAnimation.Length; i++)
               {
                   ParryAnimation[i].SetTrigger("Parry");
@@ -142,6 +195,7 @@ namespace SeongIl
             AlreadyFail = true;
             
             Debug.Log("Fail");
+            DOTween.KillAll();
             MiniGameScenesManager.Instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
@@ -160,19 +214,12 @@ namespace SeongIl
             {
                 AlreadySuccess = true;
                 Debug.Log("Success");
+                DOTween.KillAll();
                 MiniGameScenesManager.Instance.Success?.Invoke();
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
             }
         }
-        private IEnumerator FlashBackGround()
-        {
-            yield return new WaitForSeconds(0.25f);
-            Flash.DOColor(new Color(1, 1, 1, 0.2f), 0.2f).OnComplete(() =>
-            {
-                Flash.DOColor(new Color(1, 1, 1, 0f), 0.2f);
-            });
-        }
-  
+
         private IEnumerator Parrying()
         {
             IsParried = true;

@@ -12,12 +12,17 @@ namespace Jun.Monster
         List<PlayableCharacter> targets;
         Vector3 OriginPosition;
         public float moveDuration = 0.5f;
-
+        List<PlayableCharacter> dyingTargets;
+        
         // ReSharper disable Unity.PerformanceAnalysis
         public override void EndTurn()
         {
             base.EndTurn();
             MiniGameScenesManager.Instance.Success -= OnSuccess;
+            foreach (PlayableCharacter target in dyingTargets)
+            {
+                MiniGameScenesManager.Instance.Success -= target.GetImmune;
+            }
             MiniGameScenesManager.Instance.Fail -= OnFail;
             MiniGameScenesManager.Instance.Parring -= OnParrying;
         }
@@ -129,7 +134,7 @@ namespace Jun.Monster
 
             Debug.Log("🎯 타겟 개수: " + (targets != null ? targets.Count.ToString() : "targets is null"));
 
-            List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
+            dyingTargets = new List<PlayableCharacter>();
 
             foreach (PlayableCharacter target in targets)
             {
@@ -143,8 +148,13 @@ namespace Jun.Monster
                 {
                     dyingTargets.Add(target);
                 }
+               
             }
 
+            foreach (PlayableCharacter dyingTarget in dyingTargets)
+            {
+                MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
+            }
             Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
             bool anyWillDie = dyingTargets.Count > 0;
@@ -163,6 +173,8 @@ namespace Jun.Monster
                 yield return new WaitForSecondsRealtime(1f);
                 Time.timeScale = 1f;
                 yield return new WaitForSeconds(0.3f);
+
+                MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
 
                 MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
                 MiniGameScenesManager.Instance.Success += OnSuccess;
