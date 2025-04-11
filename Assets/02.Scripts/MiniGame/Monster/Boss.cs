@@ -144,6 +144,7 @@ namespace Jun.Monster
 
                 // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
                 MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
+                
                 MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
                 
             } else

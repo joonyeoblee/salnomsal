@@ -164,6 +164,8 @@ namespace Jun.Monster
                 Time.timeScale = 1f;
                 yield return new WaitForSeconds(0.3f);
 
+                MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
+
                 MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
                 MiniGameScenesManager.Instance.Success += OnSuccess;
                 MiniGameScenesManager.Instance.Fail += OnFail;

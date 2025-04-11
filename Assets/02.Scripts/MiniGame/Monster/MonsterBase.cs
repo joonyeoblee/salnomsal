@@ -131,8 +131,8 @@ namespace Jun.Monster
             if (Character.DamageType == DamageType.Magic) priority += 7;
             if (Character.HasBuff) priority += 5;
             if (Character.IsDefending) priority -= 5;
-            if (Character == _lastTarget) priority += 3;
-            
+            if (Character == _lastTarget) priority -= 10;
+          
             
             return new TargetCandidate { Character = Character, priority = priority };
         }
