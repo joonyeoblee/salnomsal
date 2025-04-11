@@ -9,7 +9,7 @@ public enum FloatingTextType
     Damage,
     CriticalDamage,
     Heal,
-    Buff,
+    Immune,
     Debuff,
 
     Count
@@ -51,7 +51,7 @@ public class FloatingTextDisplay : MonoBehaviour
         _textColors[(int)FloatingTextType.Damage] = Color.yellow;
         _textColors[(int)FloatingTextType.CriticalDamage] = Color.red;
         _textColors[(int)FloatingTextType.Heal] = Color.green;
-        _textColors[(int)FloatingTextType.Buff] = Color.blue;
+        _textColors[(int)FloatingTextType.Immune] = Color.blue;
         _textColors[(int)FloatingTextType.Debuff] = Color.magenta;
     }
 

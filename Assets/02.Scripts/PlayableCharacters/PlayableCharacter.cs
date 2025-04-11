@@ -20,6 +20,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
 	public int Index;
+	public int Immune;
 	public List<Skill> Skills;
 	public List<AnimationClip> SkillEffects;
 	public List<GameObject> HitEffects;
@@ -60,9 +61,6 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	Vector3 OriginPosition;
 	public float moveDuration = 0.5f;
 
-	private MMF_Player _mmfPlayer;
-
-
 	[SerializeField] Animator _animator;
 	readonly Dictionary<StatType, float> finalStats = new Dictionary<StatType, float>();
 
@@ -76,7 +74,6 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OriginPosition = transform.position;
 
 		_animator = GetComponentInChildren<Animator>();
-		_mmfPlayer = GetComponentInChildren<MMF_Player>();
 
 		ApplyItems();
 		cameraOriginPosition = Camera.main.transform.position;
@@ -109,6 +106,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		}
 		ApplyStats(finalStats);
 	}
+
 	void ApplyStats(Dictionary<StatType, float> finalStats)
 	{
 		foreach (KeyValuePair<StatType, float> stat in finalStats)
@@ -133,12 +131,18 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			}
 		}
 	}
+
 	public void ApplyStat(float health, float cost, float attack, int speed)
 	{
 		MaxHealth = health;
 		MaxCost = cost;
 		AttackPower = attack;
 		BasicSpeed = speed;
+	}
+
+	public void GetImmune()
+	{
+		Immune += 2;
 	}
 
 	public void ResetAfterBattle()
@@ -332,15 +336,16 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void TakeDamage(Damage damage)
 	{
+		if (Immune > 0)
+		{
+			Immune -= 1;
+			damage.Value = 0f;
+			FloatingTextDisplay.Instance.ShowFloatingText(Model.transform.position, "Immune", FloatingTextType.Immune);
+        }
 		_health -= damage.Value;
 		_health = Mathf.Max(_health, 0);
 		UI_Battle.Instance.RefreshStatText(this);
 		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-
-		if (_mmfPlayer != null)
-		{
-			_mmfPlayer.PlayFeedbacks(transform.position, damage.Value);
-		}
 
 		if (_health <= 0)
 		{
