@@ -109,13 +109,12 @@ public class CombatManager : MonoBehaviour
             TurnOrder.Add(character);
         }
 
+        UI_Battle.Instance.EnemyHealthIndicator.Initialize(Monsters);
         UI_Battle.Instance.ShowEnemyHealthIndicator();
         foreach (EnemyCharacter monster in Monsters)
         {
             monster.CurrentSpeed = monster.BasicSpeed;
             monster.Index = Monsters.IndexOf(monster);
-            Debug.Log("Indicator 초기화");
-            UI_Battle.Instance.EnemyHealthIndicator.Initialize(monster);
             UI_Battle.Instance.EnemyHealthIndicator.RefreshHealth(monster);
             TurnOrder.Add(monster);
         }
