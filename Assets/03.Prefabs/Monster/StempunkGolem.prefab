@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdf442ce792a50498e079f34430bf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 4591140052969847277, guid: b77342e1883ccd94983f6bd49ddd47a5, type: 3}
+  Portrait: {fileID: -3003315116612859483, guid: 7ce1af1df1b75bb42bd1ffc725477900, type: 3}
 --- !u!114 &3336465585777921378
 MonoBehaviour:
   m_ObjectHideFlags: 0
