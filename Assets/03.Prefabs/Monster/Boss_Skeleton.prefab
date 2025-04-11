@@ -183,9 +183,10 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 3
+  _basicSpeed: 6
   _animator: {fileID: 0}
   IsMyTurn: 0
+  moveDuration: 0.5
 --- !u!114 &4833578260173776624
 MonoBehaviour:
   m_ObjectHideFlags: 0

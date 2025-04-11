@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Jun.Monster
@@ -9,9 +10,14 @@ namespace Jun.Monster
     {
         Damage _damage;
         List<PlayableCharacter> targets;
+        private Vector3 OriginPosition;
+        public float moveDuration = 0.5f;
+        private List<PlayableCharacter> dyingTargets;
         void OnEnable()
         {
             MiniGameScenesManager.Instance.Success += OnSuccess;
+            foreach (PlayableCharacter target in dyingTargets)
+                MiniGameScenesManager.Instance.Success -= target.GetImmune;
             MiniGameScenesManager.Instance.Fail += OnFail;
             MiniGameScenesManager.Instance.Parring += OnParrying;
         }
@@ -47,7 +53,7 @@ namespace Jun.Monster
             base.Start();
             _health = MaxHealth;
             _mana = MaxMana;
-
+            OriginPosition = transform.position;
             List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
             {
                 target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0,
@@ -102,24 +108,74 @@ namespace Jun.Monster
 
         void ExecuteAttack(SkillRange range, string animName)
         {
+            Debug.Log("🟡 ExecuteAttack 진입");
+
+            if (_target == null)
+            {
+                Debug.LogWarning("⚠ _target이 null입니다");
+            }
+
+            if (_playableCharacters == null)
+            {
+                Debug.LogWarning("⚠ _playableCharacters가 null입니다");
+            }
+
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
-            List<PlayableCharacter> dyingTargets = new List<PlayableCharacter>();
+
+            Debug.Log("🎯 타겟 개수: " + (targets != null ? targets.Count.ToString() : "targets is null"));
+
+            dyingTargets = new List<PlayableCharacter>();
 
             foreach (PlayableCharacter target in targets)
             {
+                if (target == null)
+                {
+                    Debug.LogError("❌ target is null!");
+                    continue;
+                }
+
                 if (target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
                 }
+               
             }
+
+            foreach (PlayableCharacter dyingTarget in dyingTargets)
+                MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
+            Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
             bool anyWillDie = dyingTargets.Count > 0;
 
-            StartCoroutine(PlayAnimationAndProcessTargets(animName, targets, anyWillDie));
+            Debug.Log("▶ PerformSkillRoutine 실행");
+            StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
         }
 
+        private IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+        {
+            yield return StartCoroutine(WaitForAnimation(animName));
 
-        IEnumerator PlayAnimationAndProcessTargets(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+            if (anyWillDie)
+            {
+                Time.timeScale = 0.2f;
+                yield return StartCoroutine(MiniGameScenesManager.Instance.Transition.MiniGameTransition());
+                yield return new WaitForSecondsRealtime(1f);
+                Time.timeScale = 1f;
+                yield return new WaitForSeconds(0.3f);
+
+                MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
+
+                MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
+                MiniGameScenesManager.Instance.Success += OnSuccess;
+                MiniGameScenesManager.Instance.Fail += OnFail;
+                MiniGameScenesManager.Instance.Parring += OnParrying;
+            } else
+            {
+                transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
+            }
+        }
+
+        private IEnumerator WaitForAnimation(string animName)
         {
             yield return null;
 
@@ -130,33 +186,22 @@ namespace Jun.Monster
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
 
+            foreach (PlayableCharacter target in targets)
+            {
+                target.TakeDamage(_damage);
+                Vector3 position = target.Model.transform.position;
+                Debug.Log("이팩트 생성");
+                Instantiate(decision.Skill.SkillData.SkillPrefab, target.Model.transform.position,
+                    Quaternion.identity);
+                FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(),
+                    FloatingTextType.Damage);
+            }
+
             while (info.normalizedTime < 1f)
             {
                 yield return null;
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
-
-            if (anyWillDie)
-            {
-                Time.timeScale = 0.2f;
-                yield return new WaitForSecondsRealtime(0.2f);
-                Time.timeScale = 1f;
-
-                // 가장 먼저 죽을 타겟만 지정 (또는 목록 저장해도 OK)
-                MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
-                
-                MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
-                
-            } else
-            {
-                Debug.Log("아무도 죽지 않음");
-                foreach (PlayableCharacter target in targets)
-                {
-                    target.TakeDamage(_damage);
-                }
-                EndTurn();
-            }
-        
         }
 
         protected override void Death(DamageType type)

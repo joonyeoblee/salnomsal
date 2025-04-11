@@ -8127,6 +8127,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -8448,6 +8449,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -10380,6 +10382,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -11909,7 +11912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1887852936
 MonoBehaviour:
   m_ObjectHideFlags: 0
