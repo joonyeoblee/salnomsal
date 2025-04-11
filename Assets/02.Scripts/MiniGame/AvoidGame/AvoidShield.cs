@@ -125,8 +125,7 @@ namespace SeongIl
 
             Flash.DOColor(new UnityEngine.Color(1f, 1f, 1f, 1f), 2f).SetEase(Ease.OutCirc).OnComplete(() =>
             {
-                // DOTween.KillAll();
-                // Debug.Log("다 죽임: 쉴드");
+  
             });
             
             yield return null;
