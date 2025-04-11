@@ -425,9 +425,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void GetHeal(float amount)
 	{
-		Debug.Log($"체력회복. {amount}");
+		Debug.Log($"Before: {_health} + {amount}");
 		_health += amount;
-		_health = Mathf.Min(_health, MaxHealth);
+		Debug.Log($"After: {_health}");
+        _health = Mathf.Min(_health, MaxHealth);
         UI_Battle.Instance.BattleUI[Index].Refresh(this);
     }
 }

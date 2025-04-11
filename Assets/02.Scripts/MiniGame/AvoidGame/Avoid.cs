@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using Com.LuisPedroFonseca.ProCamera2D.TopDownShooter;
 using DG.Tweening;
 using Jun;
@@ -48,7 +48,7 @@ namespace SeongIl
             GameStop();
             IsGameOver = true;
             DOTween.KillAll();
-            MiniGameScenesManager.instance.Fail?.Invoke();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
 
@@ -60,7 +60,7 @@ namespace SeongIl
             Debug.Log("Success");
             IsGameOver = true;
             DOTween.KillAll();
-            MiniGameScenesManager.instance.Success?.Invoke();
+            MiniGameScenesManager.Instance.Success?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }
@@ -74,7 +74,7 @@ namespace SeongIl
             
             DOTween.KillAll();
             Debug.Log("다 죽임 : 어보이드");
-            MiniGameScenesManager.instance.Parring?.Invoke();
+            MiniGameScenesManager.Instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }
