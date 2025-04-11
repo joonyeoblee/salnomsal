@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8884638592128934679}
-  - component: {fileID: 6416434181037239145}
+  - component: {fileID: 3609737591417569855}
   m_Layer: 0
-  m_Name: TickHeal
+  m_Name: HolyHammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6416434181037239145
+--- !u!114 &3609737591417569855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8148203228411521325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c5a7cc2a3e12f4b921c6065697896e, type: 3}
+  m_Script: {fileID: 11500000, guid: cce823ad9dfa7a84abcd37a7d24387be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillData: {fileID: 11400000, guid: ee263e53f47219e40828ef3a43405ecd, type: 2}
-  SkillName: "\uC0C1\uCC98 \uCE58\uB8CC"
-  SkillDescription: "\uC544\uAD70 \uD55C\uBA85\uC758 \uCCB4\uB825\uC744 10\uB9CC\uD07C
-    \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
-  SkillCost: 1
-  HealAmount: 10
+  SkillData: {fileID: 11400000, guid: bb43d43743d13df40912708674367c79, type: 2}
+  SkillName: "\uC2E0\uC131\uD55C \uB9DD\uCE58"
+  SkillDescription: "\uC801 \uC804\uCCB4\uB97C \uAE30\uC808\uC2DC\uD0B5\uB2C8\uB2E4"
+  SkillCost: 3
+  IsMelee: 1
+  HasProjectile: 0
+  Multiplier: 0.4
+  StunTurn: 1

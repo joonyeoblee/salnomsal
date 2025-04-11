@@ -14,7 +14,7 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
 	public int Resistance;
 	public bool HasBuff;
 	public bool IsDefending;
-	public bool IsStun;
+	public int IsStun { get; set; }
 	public TargetType _targetType;
 	public TargetType TargetType {
 		get => _targetType;

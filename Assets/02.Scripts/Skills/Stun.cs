@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 using Random = UnityEngine.Random;
-public class Attack : Skill
+
+public class Stun : Skill
 {
     public float Multiplier;
-
+    public int StunTurn;
     public override void UseSkill(PlayableCharacter caster, ITargetable target)
     {
         Damage damage = new Damage(caster.DamageType, caster.AttackPower * Multiplier, caster.gameObject);
@@ -25,14 +26,14 @@ public class Attack : Skill
 
             _cameraShake.CameraShakeProperties.Duration = 1;
             player.Initialization();
-            
+
             DisplayText(position, damage.Value, FloatingTextType.CriticalDamage);
-        }
-        else
+        } else
         {
             DisplayText(position, damage.Value, FloatingTextType.Damage);
         }
         target.TakeDamage(damage);
+        target.IsStun = StunTurn;
     }
 
     public void DisplayText(Vector3 position, float amount, FloatingTextType type)
@@ -41,8 +42,7 @@ public class Attack : Skill
         if (type == FloatingTextType.Damage)
         {
             text = $"{Convert.ToInt32(amount)}";
-        }
-        else if (type == FloatingTextType.CriticalDamage)
+        } else if (type == FloatingTextType.CriticalDamage)
         {
             text = $"Critical!\n{Convert.ToInt32(amount)}";
         }
