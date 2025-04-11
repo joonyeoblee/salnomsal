@@ -1856,6 +1856,7 @@ MonoBehaviour:
   - {fileID: 435613880}
   Flash: {fileID: 628944465}
   Avoid: {fileID: 457283990}
+  PerfectShield: 0
   ParryingCount: 0
 --- !u!61 &1864336239
 BoxCollider2D:

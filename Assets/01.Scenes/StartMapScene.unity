@@ -8127,6 +8127,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -8448,6 +8449,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -10049,7 +10051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -804.99994, y: -385}
+  m_AnchoredPosition: {x: -805, y: -385}
   m_SizeDelta: {x: -1670.0001, y: -830}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1524360147
@@ -10381,6 +10383,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -11910,7 +11913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1887852936
 MonoBehaviour:
   m_ObjectHideFlags: 0

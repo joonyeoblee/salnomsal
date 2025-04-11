@@ -66,7 +66,7 @@ namespace SeongIl
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
+                FinalAttack();
                 StartCoroutine(Parrying());
                 if (LastParry)
                 {
@@ -174,12 +174,11 @@ namespace SeongIl
                         Success();
                         Destroy(other.gameObject);
                     }
-                }
-             
-              for (int i = 0; i < ParryAnimation.Length; i++)
-              {
+                } 
+                for (int i = 0; i < ParryAnimation.Length; i++) 
+                {
                   ParryAnimation[i].SetTrigger("Parry");
-              }
+                }
               
             }
         }
@@ -227,6 +226,24 @@ namespace SeongIl
             yield return new WaitForSeconds(0.1f);
             IsParried = false;
             
+        }
+
+        private void FinalAttack()
+        {
+            if (!LastParry)
+            {
+                return;
+            }
+            if (_lastParryCount >= 20)
+            {
+                Success();   
+            }
+            else
+            {
+                _lastParryCount += 1;
+                Flash.DOColor(new Color(1f, 1f, 1f, (float)_lastParryCount / 20f), 0.1f);
+                
+            }
         }
     }
 }
