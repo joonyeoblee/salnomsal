@@ -166,12 +166,15 @@ namespace Jun.Monster
         }
         IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
         {
-            foreach (PlayableCharacter target in targets)
+            if (decision.Skill.SkillData.ProjectilePrefab != null)
             {
-                Vector3 position = target.Model.transform.position;
-                GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab, position, Quaternion.identity);
-                _gameObject.transform.DOMove(position, moveDuration).SetEase(Ease.OutQuad);
+                foreach (PlayableCharacter target in targets)
+                {
+                    Vector3 position = target.Model.transform.position;
+                    GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab, position, Quaternion.identity);
+                    _gameObject.transform.DOMove(position, moveDuration).SetEase(Ease.OutQuad);
 
+                }
             }
             
             yield return StartCoroutine(WaitForAnimation(animName));
