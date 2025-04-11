@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,9 +149,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
+        y: 0
         width: 128
-        height: 104
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,10 +170,10 @@ TextureImporter:
       name: GameStartSword_1
       rect:
         serializedVersion: 2
-        x: 135
-        y: 6
-        width: 54
-        height: 111
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: GameStartSword_2
       rect:
         serializedVersion: 2
-        x: 195
-        y: 6
-        width: 54
-        height: 111
+        x: 256
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,10 +214,10 @@ TextureImporter:
       name: GameStartSword_3
       rect:
         serializedVersion: 2
-        x: 271
-        y: 4
-        width: 44
-        height: 118
+        x: 384
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +236,10 @@ TextureImporter:
       name: GameStartSword_4
       rect:
         serializedVersion: 2
-        x: 325
-        y: 4
-        width: 44
-        height: 118
+        x: 512
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: GameStartSword_5
       rect:
         serializedVersion: 2
-        x: 393
-        y: 6
-        width: 55
-        height: 112
+        x: 640
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,10 +280,10 @@ TextureImporter:
       name: GameStartSword_6
       rect:
         serializedVersion: 2
-        x: 448
-        y: 6
-        width: 55
-        height: 112
+        x: 768
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +302,10 @@ TextureImporter:
       name: GameStartSword_7
       rect:
         serializedVersion: 2
-        x: 526
-        y: 5
-        width: 100
-        height: 102
+        x: 896
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,10 +324,10 @@ TextureImporter:
       name: GameStartSword_8
       rect:
         serializedVersion: 2
-        x: 655
-        y: 7
-        width: 98
-        height: 94
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,10 +346,10 @@ TextureImporter:
       name: GameStartSword_9
       rect:
         serializedVersion: 2
-        x: 782
-        y: 7
-        width: 100
-        height: 87
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,10 +368,10 @@ TextureImporter:
       name: GameStartSword_10
       rect:
         serializedVersion: 2
-        x: 909
-        y: 9
-        width: 102
-        height: 78
+        x: 1280
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -390,10 +390,10 @@ TextureImporter:
       name: GameStartSword_11
       rect:
         serializedVersion: 2
-        x: 1036
-        y: 11
-        width: 104
-        height: 70
+        x: 1408
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,10 +412,10 @@ TextureImporter:
       name: GameStartSword_12
       rect:
         serializedVersion: 2
-        x: 1165
-        y: 9
-        width: 102
-        height: 78
+        x: 1536
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,77 +430,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: GameStartSword_13
-      rect:
-        serializedVersion: 2
-        x: 1294
-        y: 7
-        width: 100
-        height: 87
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0607d7a1d1d5c150800000000000000
-      internalID: 5892346385878418959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_14
-      rect:
-        serializedVersion: 2
-        x: 1422
-        y: 7
-        width: 100
-        height: 87
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df6be742a65311f30800000000000000
-      internalID: 4544472228988630781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_15
-      rect:
-        serializedVersion: 2
-        x: 1550
-        y: 7
-        width: 100
-        height: 87
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b702c1541b770fa70800000000000000
-      internalID: 8858712070290153595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5a227d69d5a7c6249985fe5d01f324e3
     internalID: 0
     vertices: []
     indices: 
@@ -515,9 +449,6 @@ TextureImporter:
       GameStartSword_10: 2741195723864225777
       GameStartSword_11: 4658008519697902568
       GameStartSword_12: 5417191210835132428
-      GameStartSword_13: 5892346385878418959
-      GameStartSword_14: 4544472228988630781
-      GameStartSword_15: 8858712070290153595
       GameStartSword_2: -7620215930253162546
       GameStartSword_3: -2590256900759943227
       GameStartSword_4: -4133582036787193460

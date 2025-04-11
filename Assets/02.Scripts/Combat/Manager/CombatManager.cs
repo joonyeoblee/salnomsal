@@ -3,7 +3,6 @@ using System.Linq;
 using Jun;
 using MoreMountains.Feedbacks;
 using UnityEngine;
-
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -297,7 +296,6 @@ public class CombatManager : MonoBehaviour
         ITurnActor unit = TurnOrder[0];
         //GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
         TurnOrder.RemoveAt(0);
-
         unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가
     }

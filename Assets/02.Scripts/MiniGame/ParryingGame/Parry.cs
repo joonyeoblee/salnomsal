@@ -74,6 +74,11 @@ namespace SeongIl
                     Instantiate(ParryParticles);
                 }
             }
+
+            if (Life < 0)
+            {
+                Fail();
+            }
         }
 
         public void StartGame()

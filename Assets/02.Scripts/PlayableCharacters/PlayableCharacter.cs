@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Equipment;
-using MoreMountains.Feedbacks;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 public enum SkillSlot
@@ -76,7 +75,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		_animator = GetComponentInChildren<Animator>();
 
 		ApplyItems();
-		cameraOriginPosition = Camera.main.transform.position;
+		cameraOriginPosition = new Vector3(0, 0, -10);
 	}
 
 	void ApplyItems()

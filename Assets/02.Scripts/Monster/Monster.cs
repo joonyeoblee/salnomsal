@@ -144,7 +144,9 @@ namespace Jun.Monster
                     continue;
                 }
 
-                if (target.WouldDieFromAttack(_damage))
+
+                // 죽을 피이면서 미니게임나온 이뮨없을 때
+                if (target.WouldDieFromAttack(_damage) && target.Immune <= 0)
                 {
                     dyingTargets.Add(target);
                 }

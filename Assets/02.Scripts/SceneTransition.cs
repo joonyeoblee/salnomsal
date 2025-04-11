@@ -14,6 +14,8 @@ namespace SeongIl
         public Image Fade;
         public Image Loading;
         public Image Hit;
+
+        public GameObject StartBattle;
         private void Start()
         {
             IsTransition += BasicTranstition;
@@ -44,7 +46,7 @@ namespace SeongIl
 
             // sequence.AppendInterval(f);
             sequence.Append(Fade.DOColor(new Color(0f, 0f, 0f, 0f), 0.7f).SetEase(Ease.InCubic));
-            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.2f).SetEase(Ease.InCubic)).OnComplete(() => { CombatManager.Instance.InitializeCombat(); });
+            sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.2f).SetEase(Ease.InCubic)).OnComplete(() => { ActiveBattle(); });
 
             Debug.Log("씬 전환");
         }
@@ -61,6 +63,16 @@ namespace SeongIl
 
         }
 
+        void ActiveBattle()
+        {
+            StartBattle.SetActive(true);
+
+        }
+
+        public void DeActiveBattle()
+        {
+            StartBattle.SetActive(false);
+        }
         
     }
 }

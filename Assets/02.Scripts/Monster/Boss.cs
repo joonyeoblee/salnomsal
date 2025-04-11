@@ -16,8 +16,13 @@ namespace Jun.Monster
         void OnEnable()
         {
             MiniGameScenesManager.Instance.Success += OnSuccess;
-            foreach (PlayableCharacter target in dyingTargets)
-                MiniGameScenesManager.Instance.Success -= target.GetImmune;
+            if (dyingTargets != null)
+            {
+                foreach (PlayableCharacter target in dyingTargets)
+                {
+                    MiniGameScenesManager.Instance.Success -= target.GetImmune;
+                }
+            }
             MiniGameScenesManager.Instance.Fail += OnFail;
             MiniGameScenesManager.Instance.Parring += OnParrying;
         }
