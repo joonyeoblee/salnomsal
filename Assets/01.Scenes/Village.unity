@@ -21108,6 +21108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleStartChing
       objectReference: {fileID: 0}
+    - target: {fileID: 3965437476379023291, guid: d2775a06761e4844d912cb6a4dca1579, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8459376467262184195, guid: d2775a06761e4844d912cb6a4dca1579, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -22200,6 +22204,10 @@ PrefabInstance:
     - target: {fileID: 1757546908168051619, guid: a25fcde1eca94f143af163e96d4559fb, type: 3}
       propertyPath: m_Name
       value: HolyKnight_HolyHammor_Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757546908168051619, guid: a25fcde1eca94f143af163e96d4559fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7719276359674442760, guid: a25fcde1eca94f143af163e96d4559fb, type: 3}
       propertyPath: m_LocalPosition.x

@@ -27,12 +27,7 @@ namespace Jun.Monster
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
 
-            if (IsStun > 0)
-            {
-                IsStun--;
-                Debug.Log("Stun");
-                EndTurn();
-            }
+        
             
         }
         protected void ChoiceSkill()
@@ -72,6 +67,12 @@ namespace Jun.Monster
         public override void StartTurn()
         {
             IsMyTurn = true;
+            if (IsStun > 0)
+            {
+                IsStun--;
+                Debug.Log("Stun");
+                EndTurn();
+            }
             _target = GetTarget();
             _lastTarget = _target; // 다음 타겟 우선도 계산용
             Debug.Log(gameObject.name);
