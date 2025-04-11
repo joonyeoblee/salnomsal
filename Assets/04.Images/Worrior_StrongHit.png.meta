@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Worrior_StrongHit_0: 2101730475970199555
+      Worrior_StrongHit_1: -1328605368464671808
+      Worrior_StrongHit_10: -2610709373523548985
+      Worrior_StrongHit_11: 263512696270025747
+      Worrior_StrongHit_2: 4411205521125539025
+      Worrior_StrongHit_3: 246719795960471369
+      Worrior_StrongHit_4: -3672225301916670817
+      Worrior_StrongHit_5: -3471923977129460442
+      Worrior_StrongHit_6: -6354241909700927161
+      Worrior_StrongHit_7: -1495355115400039745
+      Worrior_StrongHit_8: 7427733551289289338
+      Worrior_StrongHit_9: -4805632454534387875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
