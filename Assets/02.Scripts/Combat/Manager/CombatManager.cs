@@ -115,7 +115,6 @@ public class CombatManager : MonoBehaviour
         foreach (EnemyCharacter monster in Monsters)
         {
             monster.CurrentSpeed = monster.BasicSpeed;
-            monster.Index = Monsters.IndexOf(monster);
             UI_Battle.Instance.EnemyHealthIndicator.RefreshHealth(monster);
             TurnOrder.Add(monster);
         }

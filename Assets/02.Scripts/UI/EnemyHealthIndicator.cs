@@ -44,7 +44,6 @@ public class EnemyHealthIndicator : MonoBehaviour
 
     public void RefreshHealth(EnemyCharacter enemy)
     {
-        Debug.Log("Refresh Enemy Indicator");
         HealthBars[enemy.Index].SetNewMaxHP(enemy.MaxHealth);
         HealthBars[enemy.Index].UpdateBar(enemy.CurrentHealth);
     }
