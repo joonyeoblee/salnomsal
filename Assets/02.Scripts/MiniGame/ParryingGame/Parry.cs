@@ -59,7 +59,7 @@ namespace SeongIl
             {
                 GetComponent<ParrySequence>().GamePlay();
             });
-   
+  
         }
         private void Update()
         {

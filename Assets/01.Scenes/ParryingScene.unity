@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &36537398
 Transform:
   m_ObjectHideFlags: 0
@@ -2330,7 +2330,7 @@ MonoBehaviour:
   LastParry: 0
   CameraFeedback: {fileID: 2110140007}
   ButtonFeedback: {fileID: 572804986}
-  Life: 0
+  Life: 1
 --- !u!50 &1829688942
 Rigidbody2D:
   serializedVersion: 5
@@ -2577,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1955358031
 MonoBehaviour:
   m_ObjectHideFlags: 0
