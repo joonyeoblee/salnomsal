@@ -26,10 +26,10 @@ namespace Jun.Monster
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
-            
-            if (IsStun)
+
+            if (IsStun > 0)
             {
-                IsStun = false;
+                IsStun--;
                 Debug.Log("Stun");
                 EndTurn();
             }

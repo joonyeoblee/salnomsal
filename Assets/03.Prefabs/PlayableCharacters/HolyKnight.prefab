@@ -174,10 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 0
-  MaxCost: 0
+  MaxHealth: 117
+  MaxCost: 11
   CostRegen: 1
-  AttackPower: 0
+  AttackPower: 27
   CriticalChance: 1.2
   CriticalDamage: 1.5
   Resistance: 0
@@ -190,12 +190,15 @@ MonoBehaviour:
   Skills:
   - {fileID: 731159558023248803, guid: eea51eac19427b64388f5f1b13441408, type: 3}
   - {fileID: 2749973978265188498, guid: 1f89ee5acf5d9e4458c0e27fad5681f9, type: 3}
-  - {fileID: 6416434181037239145, guid: 48a722173c59fb7418124565169817f8, type: 3}
-  SkillEffects: []
+  - {fileID: 3609737591417569855, guid: 48a722173c59fb7418124565169817f8, type: 3}
+  SkillEffects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HitEffects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1224984621166208373, guid: c38e274dc4a0022488a1fcf688df8368, type: 3}
+  - {fileID: 3965437476379023291, guid: d2775a06761e4844d912cb6a4dca1579, type: 3}
+  - {fileID: 5225353739838878277, guid: f47775a78d76bda478b67e8a8f13514c, type: 3}
   _targetType: 0
   _model: {fileID: 94002621548751766}
   _muzzle: {fileID: 0}
@@ -210,7 +213,7 @@ MonoBehaviour:
     Rarity: 0
     BaseStats: []
     AppliedPassives: []
-  _basicSpeed: 3
+  _basicSpeed: 12
   moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!114 &7518978465051662930

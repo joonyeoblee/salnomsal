@@ -42,6 +42,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	private bool _isAlive;
 	public bool IsAlive => _isAlive;
+	public int IsStun { get; set; }
 
 	[SerializeField] private int _basicSpeed;
 	public int BasicSpeed
