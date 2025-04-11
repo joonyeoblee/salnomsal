@@ -1118,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &589257321
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1573,7 +1573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270717913}
   - component: {fileID: 1270717912}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bounce
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -1692,7 +1692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545481433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VFXZone
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -2278,8 +2278,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3604937448219221585, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3604937448219221585, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121051741279033588, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7121051741279033588, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
       propertyPath: m_IsActive
@@ -2288,6 +2296,10 @@ PrefabInstance:
     - target: {fileID: 7246938583933279689, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
       propertyPath: m_Name
       value: Holy hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246938583933279689, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7246938583933279689, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
       propertyPath: m_IsActive
