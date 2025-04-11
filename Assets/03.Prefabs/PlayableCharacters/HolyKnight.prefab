@@ -134,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6187505525791015360}
   - component: {fileID: 4403158113849703131}
+  - component: {fileID: 7518978465051662930}
   - component: {fileID: 991894845591855249}
   - component: {fileID: 3617400169959032822}
   - component: {fileID: 6816511522540664011}
@@ -184,6 +185,8 @@ MonoBehaviour:
   IsDefending: 0
   Taunt: 0
   CharacterName: Character1
+  Index: 0
+  Immune: 0
   Skills:
   - {fileID: 731159558023248803, guid: eea51eac19427b64388f5f1b13441408, type: 3}
   - {fileID: 2749973978265188498, guid: 1f89ee5acf5d9e4458c0e27fad5681f9, type: 3}
@@ -195,6 +198,8 @@ MonoBehaviour:
   - {fileID: 0}
   _targetType: 0
   _model: {fileID: 94002621548751766}
+  _muzzle: {fileID: 0}
+  Projectile: {fileID: 0}
   Weapon:
     Id: 
     Rarity: 0
@@ -208,6 +213,22 @@ MonoBehaviour:
   _basicSpeed: 3
   moveDuration: 0.5
   _animator: {fileID: 0}
+--- !u!114 &7518978465051662930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425806411070870425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4dc63f27ff794c4d87637423fcdaee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 158128056705396212, guid: 1a416bb4fcea656479bed60a57f88633, type: 3}
+  DefaultAttackIcon: {fileID: 464870021753258039, guid: 48b414cdd312d944491f6eb8900366f5, type: 3}
+  Skill1Icon: {fileID: -4295039307428948894, guid: 5def8b7b94157fb4fb406fd9556ea88b, type: 3}
+  Skill2Icon: {fileID: 8530889235992783434, guid: 7b6ca7683fb323a47957b2e32a13f81b, type: 3}
 --- !u!114 &991894845591855249
 MonoBehaviour:
   m_ObjectHideFlags: 0

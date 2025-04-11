@@ -54,6 +54,7 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         SpawnPlayer();
+        UI_Battle.Instance.HideBattleUI();
 
         // MapManager.Instance.OnMapNodeChanged += InitializeCombat;
         Debug.Log("Battle Scene Start");
@@ -89,6 +90,10 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
+        foreach (PlayableCharacter character in PlayableCharacter)
+        {
+            UI_Battle.Instance.BattleUI[character.Index].Initialize(character);
+        }
         OpenMapButton.SetActive(false);
         TurnOrder.Clear();
         _isInputBlocked = false;
@@ -362,6 +367,7 @@ public class CombatManager : MonoBehaviour
 
         ResetManager();
         OpenMapButton.SetActive(true);
+        UI_Battle.Instance.HideBattleUI();
 
         return true;
     }
@@ -379,6 +385,7 @@ public class CombatManager : MonoBehaviour
         ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
+        UI_Battle.Instance.HideBattleUI();
         MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;
