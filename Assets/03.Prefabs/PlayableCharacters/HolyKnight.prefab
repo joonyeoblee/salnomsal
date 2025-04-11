@@ -178,7 +178,7 @@ MonoBehaviour:
   MaxCost: 11
   CostRegen: 1
   AttackPower: 27
-  CriticalChance: 1.2
+  CriticalChance: 0.2
   CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
