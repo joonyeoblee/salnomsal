@@ -18,10 +18,14 @@ namespace SeongIl
 
         private void Animation()
         {
-            this.transform.DOScaleY(0f, ShootingTime).SetEase(Ease.OutCirc).OnComplete(() =>
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOScaleY(0f, ShootingTime).SetEase(Ease.OutCirc));
+            sequence.Join(this.transform.DOScaleX(20f, ShootingTime).SetEase(Ease.InCirc));
+            sequence.OnComplete(() =>
             {
                 Destroy(this.gameObject);
             });
+            
         }
 
     }
