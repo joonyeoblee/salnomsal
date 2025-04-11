@@ -6657,6 +6657,7 @@ MonoBehaviour:
   - {fileID: 442782984}
   - {fileID: 784264067}
   - {fileID: 334466474}
+  Feel: {fileID: 0}
 --- !u!1 &1097008834
 GameObject:
   m_ObjectHideFlags: 0
@@ -7811,7 +7812,7 @@ MonoBehaviour:
   - {fileID: 7040579665520616671, guid: 95756ca80ef40cb429c29c6522427d25, type: 3}
   - {fileID: 1504712145329594525, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
   EliteMonster: {fileID: 5088683969083430609, guid: 3e487aff18f35f347a6882703250921d, type: 3}
-  BossMonster: {fileID: 6915706932143878481, guid: 11c61a65147538c43889748341b54333, type: 3}
+  BossMonster: {fileID: 8714047611190015271, guid: cf97e2b7968c6d749b51ebf5ef03a3cf, type: 3}
 --- !u!1 &1221638541
 GameObject:
   m_ObjectHideFlags: 0
