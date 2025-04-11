@@ -1,13 +1,14 @@
-using System;
 using UnityEngine;
 
 namespace SeongIl
 {
 public class SlashChecker : MonoBehaviour
 {
-    public Action OnMissed;
+    public Parry Parry;
     private bool _isParried = false;
     public float StartTime;
+
+    public bool IsLastParry;
     public void ParriedCheck()
     {
         _isParried = true;
@@ -20,7 +21,7 @@ public class SlashChecker : MonoBehaviour
         if (!_isParried)
         {
             Debug.Log("실패 처리됨");
-            OnMissed?.Invoke();
+            Parry.Life--;
             Destroy(gameObject);
 
         }

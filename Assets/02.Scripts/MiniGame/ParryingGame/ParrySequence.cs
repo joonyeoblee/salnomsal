@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace SeongIl
 {
     public class ParrySequence : MonoBehaviour
@@ -42,7 +42,7 @@ namespace SeongIl
             GameStart = false;
             ParryZone.enabled = true;
             yield return new WaitForSeconds(2f);
-            Parry.GameStart = true;
+            Parry.StartGame();
         }
 
         public void Refresh()
