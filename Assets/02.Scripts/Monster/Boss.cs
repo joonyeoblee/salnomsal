@@ -177,32 +177,36 @@ namespace Jun.Monster
 
         private IEnumerator WaitForAnimation(string animName)
         {
-            yield return null;
-
-            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
-            while (!info.IsName(animName))
+            // Skill 애니메이션이 시작될 때까지 기다림
+            while (!_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
             {
                 yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
             }
 
+            // Skill 애니메이션이 재생 중일 때 타격 처리
             foreach (PlayableCharacter target in targets)
             {
                 target.TakeDamage(_damage);
                 Vector3 position = target.Model.transform.position;
                 Debug.Log("이팩트 생성");
-                Instantiate(decision.Skill.SkillData.SkillPrefab, target.Model.transform.position,
-                    Quaternion.identity);
+                Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
+                if (decision.Skill.SkillData.CameraShake)
+                {
+                    CombatManager.Instance.Feel.PlayFeedbacks();
+                }
                 FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(),
                     FloatingTextType.Damage);
             }
 
-            while (info.normalizedTime < 1f)
+            // Skill 애니메이션이 끝날 때까지 대기 (중간에 상태가 바뀌면 종료되므로 상태도 체크)
+            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
+            while (info.IsName(animName) && info.normalizedTime < 1f)
             {
                 yield return null;
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
         }
+
 
         protected override void Death(DamageType type)
         {

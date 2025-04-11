@@ -21001,6 +21001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Skeleton_MagicStorm
       objectReference: {fileID: 0}
+    - target: {fileID: 2952730717663998372, guid: 1b0eca00f996a0b418272f0dc5c91de0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8693821008409035340, guid: 1b0eca00f996a0b418272f0dc5c91de0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -22247,6 +22251,10 @@ PrefabInstance:
     - target: {fileID: 8714047611190015271, guid: cf97e2b7968c6d749b51ebf5ef03a3cf, type: 3}
       propertyPath: m_Name
       value: Boss_Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714047611190015271, guid: cf97e2b7968c6d749b51ebf5ef03a3cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
