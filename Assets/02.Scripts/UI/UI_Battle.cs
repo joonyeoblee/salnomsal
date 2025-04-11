@@ -6,10 +6,7 @@ public class UI_Battle : MonoBehaviour
 {
     public static UI_Battle Instance;
 
-    public TextMeshProUGUI StatTMP;
-    public SpriteRenderer Portrait;
-    public MicroBar HealthBar;
-    public MicroBar CostBar;
+    public UI_InBattle[] BattleUI;
 
     private void Awake()
     {
@@ -23,52 +20,17 @@ public class UI_Battle : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void SwitchUI(int index)
     {
-        HealthBar.Initialize(0f);
-        CostBar.Initialize(0f);
+        HideBattleUI();
+        BattleUI[index].gameObject.SetActive(true);
     }
 
-    public void OnClickBattleStart()
+    public void HideBattleUI()
     {
-        CombatManager.Instance.InitializeCombat();
-    }
-    
-    public void OnClickDefaultAttack()
-    {
-        CombatManager.Instance.SetSelectedSkill(SkillSlot.DefaultAttack);
-    }
-
-    public void OnClickSkill1()
-    {
-        CombatManager.Instance.SetSelectedSkill(SkillSlot.Skill1);
-    }
-
-    public void OnClickSkill2()
-    {
-        CombatManager.Instance.SetSelectedSkill(SkillSlot.Skill2);
-    }
-
-    public void RefreshStatText(PlayableCharacter character)
-    {
-        StatTMP.text = $"HP :  {character.CurrentHealth} / {character.MaxHealth}\nCost : {character.Cost} / {character.MaxCost}\n공격력  {character.AttackPower}\n속도  {character.CurrentSpeed}\n저항력  {character.Resistance}";
-    }
-
-    public void RefreshPortrait(Sprite portrait)
-    {
-        Portrait.sprite = portrait;
-    }
-
-    public void RefreshHealthBar(float current, float max)
-    {
-        HealthBar.SetNewMaxHP(max);
-        HealthBar.UpdateBar(current);
-    }
-
-    public void RefreshCostBar(float current, float max)
-    {
-        Debug.Log("CostBar Refresh");
-        CostBar.SetNewMaxHP(max);
-        CostBar.UpdateBar(current);
+        foreach (UI_InBattle ui in BattleUI)
+        {
+            ui.gameObject.SetActive(false);
+        }
     }
 }

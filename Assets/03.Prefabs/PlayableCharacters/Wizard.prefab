@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6971625979600643383}
   - component: {fileID: 7985849593931513237}
+  - component: {fileID: 2380964366189138245}
   - component: {fileID: 3678347721519980572}
   - component: {fileID: 6938104240584491013}
   - component: {fileID: 4727202457339882937}
@@ -62,6 +63,8 @@ MonoBehaviour:
   IsDefending: 0
   Taunt: 0
   CharacterName: Wizard
+  Index: 0
+  Immune: 0
   Skills:
   - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
   - {fileID: 3253124159677751141, guid: ec62e956d5d5bdc4cb2a0bca6380131e, type: 3}
@@ -91,6 +94,22 @@ MonoBehaviour:
   _basicSpeed: 4
   moveDuration: 0.5
   _animator: {fileID: 0}
+--- !u!114 &2380964366189138245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328670811569993804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4dc63f27ff794c4d87637423fcdaee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 1457491203435894738, guid: be3c00ae30c3a804ea96ee695a111c56, type: 3}
+  DefaultAttackIcon: {fileID: 464870021753258039, guid: 6c19f5c4120d7a04ebaa3c62a62e50f4, type: 3}
+  Skill1Icon: {fileID: -4295039307428948894, guid: 4144e19cd4e5da744a8475f3ebd045f0, type: 3}
+  Skill2Icon: {fileID: 8530889235992783434, guid: c67a4e960d2e39648b9e44dfbe92ad4c, type: 3}
 --- !u!114 &3678347721519980572
 MonoBehaviour:
   m_ObjectHideFlags: 0

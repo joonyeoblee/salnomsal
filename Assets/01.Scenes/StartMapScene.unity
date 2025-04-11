@@ -372,7 +372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 25813802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1526345602}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickSkill1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &34357303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1142,10 +1154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075147f2bdc4d264c8d15bce7314379d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StatTMP: {fileID: 1719953518}
-  Portrait: {fileID: 0}
-  HealthBar: {fileID: 8611201057854120205}
-  CostBar: {fileID: 8611201056465007715}
+  BattleUI:
+  - {fileID: 1526345602}
+  - {fileID: 956810744}
+  - {fileID: 182190520}
 --- !u!114 &166551906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,6 +1421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 182190519}
+  - component: {fileID: 182190520}
   m_Layer: 5
   m_Name: InBattle_Character3
   m_TagString: Untagged
@@ -1439,6 +1452,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &182190520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182190518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbccc13e683dc8a4597d0e006cea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 1075499678}
+  Info: {fileID: 429996821}
+  HealthBar: {fileID: 166770386}
+  CostBar: {fileID: 446088202}
+  DefaultAttack: {fileID: 1739046137}
+  Skill1: {fileID: 1823468397}
+  Skill2: {fileID: 210890769}
 --- !u!1 &185537498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,7 +1650,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 210890767}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182190520}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickSkill2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &221063538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2066,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 326358340}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 956810744}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickDefaultAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &334466473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,7 +3098,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 428623982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1526345602}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickSkill2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &429996819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3830,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 479858644}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 956810744}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickSkill2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &534035613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6366,6 +6446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 956810743}
+  - component: {fileID: 956810744}
   m_Layer: 5
   m_Name: InBattle_Character2
   m_TagString: Untagged
@@ -6396,6 +6477,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &956810744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956810742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbccc13e683dc8a4597d0e006cea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 575791087}
+  Info: {fileID: 1917438930}
+  HealthBar: {fileID: 1187849812}
+  CostBar: {fileID: 1103741564}
+  DefaultAttack: {fileID: 326358342}
+  Skill1: {fileID: 1113741001}
+  Skill2: {fileID: 479858646}
 --- !u!1 &963779078
 GameObject:
   m_ObjectHideFlags: 0
@@ -7981,7 +8081,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1113740999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 956810744}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickSkill1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1127531420
 GameObject:
   m_ObjectHideFlags: 0
@@ -8127,6 +8239,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -8448,6 +8561,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -10099,6 +10213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1526345601}
+  - component: {fileID: 1526345602}
   m_Layer: 5
   m_Name: InBattle_Character1
   m_TagString: Untagged
@@ -10129,6 +10244,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1526345602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526345600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbccc13e683dc8a4597d0e006cea389a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 2060304714}
+  Info: {fileID: 1719953518}
+  HealthBar: {fileID: 8611201057854120205}
+  CostBar: {fileID: 8611201056465007715}
+  DefaultAttack: {fileID: 1575872586}
+  Skill1: {fileID: 25813804}
+  Skill2: {fileID: 428623984}
 --- !u!1001 &1535133448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10381,6 +10515,7 @@ MonoBehaviour:
   Taunt: 0
   CharacterName: 
   Index: 0
+  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -10521,7 +10656,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1575872584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1526345602}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickDefaultAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1590285143
 GameObject:
   m_ObjectHideFlags: 0
@@ -11238,7 +11385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1739046135}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182190520}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickDefaultAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1743442207
 GameObject:
   m_ObjectHideFlags: 0
@@ -11741,7 +11900,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1823468395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182190520}
+        m_TargetAssemblyTypeName: UI_InBattle, Assembly-CSharp
+        m_MethodName: OnClickSkill1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1866261959
 GameObject:
   m_ObjectHideFlags: 0
@@ -11910,7 +12081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1887852936
 MonoBehaviour:
   m_ObjectHideFlags: 0

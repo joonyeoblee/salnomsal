@@ -173,10 +173,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		Debug.Log($"{CharacterName}: Playable Turn Start");
 		CombatManager.Instance.CurrentActor = this;
 		CostGain();
-        // UI로 캐릭터 정보 전송
-        UI_Battle.Instance.RefreshStatText(this);
-		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
+		// UI로 캐릭터 정보 전송
+		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+		UI_Battle.Instance.SwitchUI(Index);
 		OnTurnStart?.Invoke();
 	}
 
@@ -191,8 +190,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public override void DoAction(SkillSlot slot, List<ITargetable> targets)
 	{
 		_cost -= Skills[(int)slot].SkillCost;
-		UI_Battle.Instance.RefreshStatText(this);
-		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
+		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 
 		Skill currentSkill = Skills[(int)slot];
 		if (currentSkill.SkillData.SkillType == SkillType.Attack && currentSkill.IsMelee)
@@ -344,8 +342,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
         }
 		_health -= damage.Value;
 		_health = Mathf.Max(_health, 0);
-		UI_Battle.Instance.RefreshStatText(this);
-		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
+		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 
 		if (_health <= 0)
 		{
@@ -390,11 +387,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 		HasBuff = true;
 
-		UI_Battle.Instance.RefreshStatText(this);
-		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
+		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 
-		OnTurnStart += buff.TickBuff;
+        OnTurnStart += buff.TickBuff;
 		OnTurnEnd += buff.RemoveBuff;
 	}
 
@@ -420,11 +415,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OnTurnStart -= buff.TickBuff;
 		OnTurnEnd -= buff.RemoveBuff;
 
-		UI_Battle.Instance.RefreshStatText(this);
-		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-		UI_Battle.Instance.RefreshCostBar(_cost, MaxCost);
+		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 
-		if (OnTurnEnd == null)
+        if (OnTurnEnd == null)
 		{
 			HasBuff = false;
 		}
@@ -435,6 +428,6 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		Debug.Log($"체력회복. {amount}");
 		_health += amount;
 		_health = Mathf.Min(_health, MaxHealth);
-		UI_Battle.Instance.RefreshHealthBar(_health, MaxHealth);
-	}
+        UI_Battle.Instance.BattleUI[Index].Refresh(this);
+    }
 }
