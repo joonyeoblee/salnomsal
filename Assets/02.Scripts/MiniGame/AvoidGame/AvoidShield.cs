@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.UI;
-using Color = System.Drawing.Color;
 
 namespace SeongIl
 {
@@ -20,9 +17,10 @@ namespace SeongIl
         private int SuccessCount = 2;
         private bool _isParrying = false;
         public Animator ParryingVFX;
-        public GameObject ParryingVFXPrefab;
+        public GameObject[] ParryingVFXPrefab;
         public Image Flash;
         
+        private SpriteRenderer _spriteRenderer;
         
         public Avoid Avoid;
         
@@ -32,6 +30,7 @@ namespace SeongIl
         private void Start()
         {
             _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Update()
@@ -51,11 +50,18 @@ namespace SeongIl
             direction.Normalize();
             Vector3 targetPos = _playerPosition.position + direction * _shieldRadius;
 
+            Vector3 movePos = _playerPosition.position + direction * (_shieldRadius + 0.5f);
             transform.position = Vector3.Lerp(transform.position, targetPos, _moveSpeed);
             
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
-            
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                transform.position = Vector3.Lerp(transform.position, movePos, _moveSpeed);
+            }
+
+            FlipShield();
         }
 
 
@@ -66,6 +72,7 @@ namespace SeongIl
                 return;
             }
             
+            ParryingVFXPrefab[1].SetActive(true);
             Destroy(other.gameObject);
             Avoid.SuccessCount += 1;
             Debug.Log($"shield 히트 +1 {Avoid.SuccessCount}");
@@ -75,7 +82,11 @@ namespace SeongIl
                 Destroy(other.gameObject);
                 ParryingCount += 1;
                 Debug.Log($"패링 카운트 : {ParryingCount}");
-                ParryingVFXPrefab.SetActive(true);
+                Camera.main.DOOrthoSize(4.5f, 0.2f).SetEase(Ease.OutCirc).OnComplete((() =>
+                {
+                    Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCirc);
+                }));
+                ParryingVFXPrefab[0].SetActive(true);
                 if (ParryingCount > SuccessCount)
                 {
                     StartCoroutine(FinishParrying());
@@ -92,9 +103,9 @@ namespace SeongIl
 
         private IEnumerator FinishParrying()
         {
-            Camera.main.DOOrthoSize(3f, 0.2f).OnComplete((() =>
+            Camera.main.DOOrthoSize(2.5f, 0.2f).OnComplete((() =>
             {
-                Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCirc);
+                Camera.main.DOOrthoSize(4f, 0.3f).SetEase(Ease.OutCirc);
             }));
             ParryingVFX.SetTrigger("Shock");
                 
@@ -114,6 +125,19 @@ namespace SeongIl
             
             yield return null;
             Avoid.ParryingSuccess();
+        }
+
+
+        private void FlipShield()   
+        {
+            if (transform.position.x < 0)
+            {
+                _spriteRenderer.flipY = true;
+            }
+            else
+            {
+                _spriteRenderer.flipY = false;
+            }
         }
         //
         // private void FlashBang()
