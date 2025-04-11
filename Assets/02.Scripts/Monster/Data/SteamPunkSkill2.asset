@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32a9d9ce66c70ad43aeb294c603cf94f, type: 3}
-  m_Name: TalismanMasterSkill1
+  m_Name: SteamPunkSkill2
   m_EditorClassIdentifier: 
   SkillName: 
   SkillDescription: 
-  SkillCost: 2
-  SkillMultiplier: 1.2
+  SkillCost: 0
+  SkillMultiplier: 0
   Duration: 0
   Priority: 0
-  DamageType: 2
+  DamageType: 0
   SkillType: 0
-  SkillRange: 1
+  SkillRange: 0
   SkillTarget: 0
   IsMelee: 0
   HasProjectile: 0
-  SkillPrefab: {fileID: 1049595317781394725, guid: bfd859e3f5437894fa548213ce5bac91, type: 3}
-  ProjectilePrefab: {fileID: 5001659780865638305, guid: 626cf78a5a71c864da79e41f524f93d1, type: 3}
+  SkillPrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 1524457815483248156, guid: 63ede83415584e34a96ad55d48cee49a, type: 3}
   CameraShake: 0

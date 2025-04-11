@@ -210,7 +210,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			});
 		} else if (currentSkill.SkillData.SkillType == SkillType.Attack && !currentSkill.IsMelee)
 		{
-			Vector3 vecc = new Vector3(1, -0.5f, -10);
+			MonoBehaviour target = targets[0] as MonoBehaviour;
+			Vector3 vecc = new Vector3((transform.position.x + target.gameObject.transform.position.x) / 2, -0.5f, -10);
 
 			Sequence sequence = DOTween.Sequence();
 			sequence.Append(Camera.main.DOOrthoSize(4.5f, 1f)).SetEase(Ease.OutCubic);
@@ -221,7 +222,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				Debug.Log($"{vecc}: vecc ");
 				StartCoroutine(DoActionCoroutine(slot, targets));
 			});
-		} else if (currentSkill.SkillData.SkillType == SkillType.Heal)
+		} else if (currentSkill.SkillData.SkillType == SkillType.Heal || currentSkill.SkillData.SkillType == SkillType.Buff)
 		{
 			Vector3 vecc = new Vector3(-3, -1, -10);
 
