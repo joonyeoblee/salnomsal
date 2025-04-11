@@ -1,6 +1,5 @@
 ﻿using System;
 using SeongIl;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
@@ -8,7 +7,7 @@ using Debug = UnityEngine.Debug;
 public enum SceneIndex
 {
     Village,
-    BattleScene,
+    TitleScene,
     StartMapScene,
     MiniGameMagic,
     MiniGameRanged,
