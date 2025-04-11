@@ -172,10 +172,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		Debug.Log($"{CharacterName}: Playable Turn Start");
 		CombatManager.Instance.CurrentActor = this;
 		CostGain();
+		OnTurnStart?.Invoke();
 		// UI로 캐릭터 정보 전송
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 		UI_Battle.Instance.SwitchUI(Index);
-		OnTurnStart?.Invoke();
 	}
 
 	public void EndTurn()
@@ -342,8 +342,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		_health -= damage.Value;
 		_health = Mathf.Max(_health, 0);
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+        UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
 
-		if (_health <= 0)
+        if (_health <= 0)
 		{
 			Death(damage.Type);
 		}
@@ -387,6 +388,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		HasBuff = true;
 
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+		UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
 
         OnTurnStart += buff.TickBuff;
 		OnTurnEnd += buff.RemoveBuff;
@@ -415,6 +417,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OnTurnEnd -= buff.RemoveBuff;
 
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+        UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
 
         if (OnTurnEnd == null)
 		{
@@ -424,9 +427,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void GetHeal(float amount)
 	{
-		Debug.Log($"체력회복. {amount}");
+		Debug.Log($"Before: {_health} + {amount}");
 		_health += amount;
-		_health = Mathf.Min(_health, MaxHealth);
+		Debug.Log($"After: {_health}");
+        _health = Mathf.Min(_health, MaxHealth);
         UI_Battle.Instance.BattleUI[Index].Refresh(this);
+		UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
     }
 }

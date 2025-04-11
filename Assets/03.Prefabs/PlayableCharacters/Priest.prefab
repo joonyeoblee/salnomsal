@@ -176,7 +176,7 @@ MonoBehaviour:
   DamageType: 2
   MaxHealth: 107
   MaxCost: 11
-  CostRegen: 0
+  CostRegen: 1
   AttackPower: 15
   CriticalChance: 1.2
   CriticalDamage: 1.5

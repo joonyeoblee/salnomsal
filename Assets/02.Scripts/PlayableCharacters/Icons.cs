@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Icons : MonoBehaviour
+public class PlayableIcons : MonoBehaviour
 {
     public Sprite Portrait;
     public Sprite DefaultAttackIcon;

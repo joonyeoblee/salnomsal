@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243825306457148383}
   - component: {fileID: 8155913606733846817}
+  - component: {fileID: 244337981957532165}
   - component: {fileID: 3336465585777921378}
   - component: {fileID: 4624663440339902101}
   - component: {fileID: -7958442424486452054}
@@ -51,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 8535726500394494406}
   DamageType: 0
+  Index: 0
   MaxHealth: 0
   MaxMana: 0
   AttackPower: 0
@@ -64,6 +66,19 @@ MonoBehaviour:
   _animator: {fileID: 0}
   IsMyTurn: 0
   moveDuration: 0.5
+--- !u!114 &244337981957532165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5088683969083430609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdf442ce792a50498e079f34430bf77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 4591140052969847277, guid: b77342e1883ccd94983f6bd49ddd47a5, type: 3}
 --- !u!114 &3336465585777921378
 MonoBehaviour:
   m_ObjectHideFlags: 0

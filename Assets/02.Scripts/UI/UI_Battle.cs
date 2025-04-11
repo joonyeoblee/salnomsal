@@ -7,6 +7,8 @@ public class UI_Battle : MonoBehaviour
     public static UI_Battle Instance;
 
     public UI_InBattle[] BattleUI;
+    public PartyHealthIndicator PartyHealthIndicator;
+    public EnemyHealthIndicator EnemyHealthIndicator;
 
     private void Awake()
     {
@@ -32,5 +34,25 @@ public class UI_Battle : MonoBehaviour
         {
             ui.gameObject.SetActive(false);
         }
+    }
+
+    public void ShowPartyHealthIndicator()
+    {
+        PartyHealthIndicator.gameObject.SetActive(true);
+    }
+
+    public void HidePartyHealthIndicator()
+    {
+        PartyHealthIndicator.gameObject.SetActive(false);
+    }
+
+    public void ShowEnemyHealthIndicator()
+    {
+        EnemyHealthIndicator.gameObject.SetActive(true);
+    }
+
+    public void HideEnemyHealthIndicator()
+    {
+        EnemyHealthIndicator.gameObject.SetActive(false);
     }
 }
