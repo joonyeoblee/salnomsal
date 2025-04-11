@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &36537398
 Transform:
   m_ObjectHideFlags: 0
@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Flash: {fileID: 676192853}
-  ParryParticles: {fileID: 2561201182310668073, guid: f7efda5413c3d9345aad006ab4a404b3, type: 3}
+  ParryParticles: {fileID: 0}
   _parrySpeed: 2
   _parryInstatiateTime: 0.3
   _count: 4
@@ -2330,7 +2330,7 @@ MonoBehaviour:
   LastParry: 0
   CameraFeedback: {fileID: 2110140007}
   ButtonFeedback: {fileID: 572804986}
-  Life: 1
+  Life: 0
 --- !u!50 &1829688942
 Rigidbody2D:
   serializedVersion: 5
@@ -2577,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1955358031
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -695,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &328911377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1818,14 +1818,16 @@ MonoBehaviour:
   MagicVFX:
   - {fileID: 1598406797}
   - {fileID: 752602694}
+  - {fileID: 1643576351}
   MagicCircle:
   - {fileID: 1888079056}
   - {fileID: 2129928995}
   - {fileID: 339817783}
+  - {fileID: 2088918765}
   TimeLimit: 0.2
   BonusDecline: 0.1
   IncreaseTime: 0.02
-  DeclineTime: 0.02
+  DeclineTime: 0.05
   _isGameActive: 0
   KeyCount: 5
 --- !u!1 &1598406797 stripped
@@ -2074,7 +2076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1777757760
 AudioListener:
   m_ObjectHideFlags: 0

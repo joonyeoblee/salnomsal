@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -141,10 +142,7 @@ namespace SeongIl
             Debug.Log("Fail");
             _isGameActive = false;
             DOTween.KillAll();
-            MiniGameScenesManager.Instance.Fail?.Invoke();
-            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-            SceneManager.UnloadSceneAsync(sceneToUnload);
-            
+            FailSequence();
         }
 
         public void Success()
@@ -152,9 +150,7 @@ namespace SeongIl
             Debug.Log("성공");
             _isGameActive = false;
             DOTween.KillAll();
-            MiniGameScenesManager.Instance.Success?.Invoke();
-            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-            SceneManager.UnloadSceneAsync(sceneToUnload);
+            SuccessSequence();
         }
         
         // 겜시작
@@ -223,6 +219,31 @@ namespace SeongIl
             }
             
             _currentTween = DOTween.To(()=> MagicCircle[0].fillAmount, x => MagicCircle[0].fillAmount = x, target, duration).SetEase(Ease.OutCubic);
+        }
+
+        private void FailSequence()
+        {
+            Flash.DOColor(new Color(1, 1, 1, 1f), 1f).OnComplete((() =>
+            {
+                MiniGameScenesManager.Instance.Fail?.Invoke();
+                Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+                SceneManager.UnloadSceneAsync(sceneToUnload);
+            }));
+        }
+
+        private void SuccessSequence()
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(MagicCircle[1].rectTransform.DOScale(0,0.7f).SetEase(Ease.InCirc));
+            sequence.Join(MagicCircle[3].rectTransform.DOScale(0,0.7f).SetEase(Ease.InCirc).OnComplete(()=>
+            {
+                MagicVFX[2].SetActive(false);
+                MiniGameScenesManager.Instance.Success?.Invoke();
+                Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+                SceneManager.UnloadSceneAsync(sceneToUnload);
+                
+            }));
+            
         }
     }
 }

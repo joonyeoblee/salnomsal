@@ -1,3 +1,5 @@
+using System.Collections;
+using Com.LuisPedroFonseca.ProCamera2D.TopDownShooter;
 using DG.Tweening;
 using Jun;
 using UnityEngine;
@@ -67,11 +69,9 @@ namespace SeongIl
         public void ParryingSuccess()
         {
             ParrySound.PlayOneShot(ParrySound.clip);
-            Debug.Log("ParryingSuccess");
             IsGameOver = true;
             
             DOTween.KillAll();
-            Debug.Log("다 죽임 : 어보이드");
             MiniGameScenesManager.Instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
