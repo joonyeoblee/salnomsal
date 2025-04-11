@@ -26,6 +26,14 @@ namespace Jun.Monster
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
+            
+            if (IsStun)
+            {
+                IsStun = false;
+                Debug.Log("Stun");
+                EndTurn();
+            }
+            
         }
         protected void ChoiceSkill()
         {
