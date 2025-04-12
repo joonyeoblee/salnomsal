@@ -5,7 +5,7 @@ namespace SeongIl
     public class SlashChecker : MonoBehaviour
     {
         public Parry Parry;
-        bool _isParried;
+       public  bool _isParried;
         public float StartTime;
 
         public bool IsLastParry;

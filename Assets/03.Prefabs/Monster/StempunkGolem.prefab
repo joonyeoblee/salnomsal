@@ -85,21 +85,27 @@ MonoBehaviour:
   _model: {fileID: 8535726500394494406}
   DamageType: 0
   Index: 0
-  MaxHealth: 0
-  MaxMana: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  MaxHealth: 100
+  MaxMana: 5
+  AttackPower: 25
+  CriticalChance: 1.2
+  CriticalDamage: 2
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 0
+  _basicSpeed: 4
   _animator: {fileID: 0}
   IsMyTurn: 0
   moveDuration: 0.5
   Muzzle: {fileID: 7489951492550986259}
-  conditionGroups: []
+  conditionGroups:
+  - conditions:
+    - conditionType: 1
+      threshold: 0
+      bonusScore: 2
+  - conditions: []
+  - conditions: []
 --- !u!114 &244337981957532165
 MonoBehaviour:
   m_ObjectHideFlags: 0
