@@ -111,24 +111,26 @@ namespace SeongIl
         {
             Camera.main.DOOrthoSize(2.5f, 0.2f).OnComplete((() =>
             {
-                Camera.main.DOOrthoSize(4f, 0.3f).SetEase(Ease.OutCirc);
+                Camera.main.DOOrthoSize(5f, 0.3f).SetEase(Ease.OutCirc);
             }));
             ParryingVFX.SetTrigger("Shock");
                 
-            while (Time.timeScale >= 1)
+            while (Time.timeScale < 1)
             {
                 
                 Time.timeScale = 0.1f;
-                yield return null;
-                Time.timeScale += 0.3f;
+                yield return new WaitForSeconds(0.1f);
+                Time.timeScale += 0.1f;
             }
 
             Flash.DOColor(new UnityEngine.Color(1f, 1f, 1f, 1f), 2f).SetEase(Ease.OutCirc).OnComplete(() =>
             {
-  
+                
             });
             
-            yield return null;
+            Avoid.GameStop();
+            yield return new WaitForSeconds(1f);
+            
             Avoid.ParryingSuccess();
         }
 

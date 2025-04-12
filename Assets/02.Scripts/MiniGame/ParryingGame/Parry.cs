@@ -13,29 +13,34 @@ namespace SeongIl
         // flash효과
         public Image Flash;
         public GameObject ParryParticles;
+
         [Header("난이도 설정")]
         // 패링 타이밍 시간
         [SerializeField]
         private float _parrySpeed = 0;
-        [SerializeField]
-        private float _parryInstatiateTime = 0;
-        [SerializeField]
-        private int _count = 3;
-        [SerializeField]
-        private int _distance = 11;
+
+        [SerializeField] private float _parryInstatiateTime = 0;
+        [SerializeField] private int _count = 3;
+
+        [SerializeField] private int _distance = 11;
+
         // 미니게임 시작 여부
-        [SerializeField]
-        public bool GameStart = false;
+        [SerializeField] public bool GameStart = false;
+
         // 패링 중임? 
         public bool IsParried = false;
+
         // 실패함?
         public bool AlreadyFail = false;
-        
+
         // 미니게임 이펙트
         public GameObject SlashEffect;
+
         // 애니메이션
         public Animator[] ParryAnimation;
+
         public Animator ParryingAnimation;
+
         // 패링 판단 여부 위치
         private Vector2 _successPosition;
 
@@ -44,30 +49,29 @@ namespace SeongIl
         public MMF_Player ButtonFeedback;
 
         public int Life;
-        
+
         // 판정 갯수세기 성공 여부 확인 위함
         private int _parriedCount = 0;
         int _lastParryCount = 0;
 
         bool _isChecked;
-        
+
         private void Start()
         {
             _successPosition = transform.position;
-            AlreadyFail = false; 
-            Flash.DOColor(new Color(0, 0, 0, 0), 2f).OnComplete(() =>
-            {
-                GetComponent<ParrySequence>().GamePlay();
-            });
-  
+            AlreadyFail = false;
+            Flash.DOColor(new Color(0, 0, 0, 0), 2f).OnComplete(() => { GetComponent<ParrySequence>().GamePlay(); });
+
         }
+
         private void Update()
         {
-            
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 FinalAttack();
                 StartCoroutine(Parrying());
+
                 if (LastParry)
                 {
                     ButtonFeedback.PlayFeedbacks();
@@ -98,7 +102,8 @@ namespace SeongIl
 
                 // 위치 정하기
                 float angle = Random.Range(0f, Mathf.PI * 2);
-                Vector2 pos = new Vector2(centerPosition.x + distance * Mathf.Cos(angle), centerPosition.y + distance * Mathf.Sin(angle));
+                Vector2 pos = new Vector2(centerPosition.x + distance * Mathf.Cos(angle),
+                    centerPosition.y + distance * Mathf.Sin(angle));
                 GameObject slash = Instantiate(SlashEffect, pos, Quaternion.identity);
 
                 SlashChecker slashCheck = slash.AddComponent<SlashChecker>();
@@ -164,7 +169,7 @@ namespace SeongIl
             });
         }
 
-       
+
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("Avoid") && IsParried)
@@ -174,17 +179,19 @@ namespace SeongIl
                     if (parry.IsLastParry)
                     {
                         _isChecked = true;
-                    } else
+                    }
+                    else
                     {
                         Success();
                         Destroy(other.gameObject);
                     }
-                } 
-                for (int i = 0; i < ParryAnimation.Length; i++) 
-                {
-                  ParryAnimation[i].SetTrigger("Parry");
                 }
-              
+
+                for (int i = 0; i < ParryAnimation.Length; i++)
+                {
+                    ParryAnimation[i].SetTrigger("Parry");
+                }
+
             }
         }
 
@@ -195,14 +202,13 @@ namespace SeongIl
             {
                 return;
             }
-            
+
+            Destroy(GameObject.FindGameObjectWithTag("Avoid"));
             AlreadyFail = true;
-            
+
             Debug.Log("Fail");
             DOTween.KillAll();
-            MiniGameScenesManager.Instance.Fail?.Invoke();
-            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-            SceneManager.UnloadSceneAsync(sceneToUnload);
+            StartCoroutine(LoadScene());
         }
 
         bool AlreadySuccess;
@@ -216,11 +222,12 @@ namespace SeongIl
 
             if (_parriedCount >= _count)
             {
+                Destroy(GameObject.FindGameObjectWithTag("Avoid"));
+
                 AlreadySuccess = true;
                 Debug.Log("Success");
                 DOTween.KillAll();
-                MiniGameScenesManager.Instance.Success?.Invoke();
-                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
+                StartCoroutine(LoadScene());
             }
         }
 
@@ -230,25 +237,37 @@ namespace SeongIl
             ParryingAnimation.SetTrigger("Parry");
             yield return new WaitForSeconds(0.1f);
             IsParried = false;
-            
+
         }
 
+        private IEnumerator LoadScene()
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            MiniGameScenesManager.Instance.Success?.Invoke();
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
+
+        }
         private void FinalAttack()
         {
             if (!LastParry)
             {
                 return;
             }
+
             if (_lastParryCount >= 20)
             {
-                Success();   
+                Success();
             }
             else
             {
                 _lastParryCount += 1;
                 Flash.DOColor(new Color(1f, 1f, 1f, (float)_lastParryCount / 20f), 0.1f);
-                
+
             }
+
         }
+        
+        
     }
 }
