@@ -210,7 +210,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			});
 		} else if (currentSkill.SkillData.SkillType == SkillType.Attack && !currentSkill.IsMelee)
 		{
-			MonoBehaviour target = targets[0] as MonoBehaviour;
+			MonoBehaviour target = targets[targets.Count - 1] as MonoBehaviour;
 			Vector3 vecc = new Vector3((transform.position.x + target.gameObject.transform.position.x) / 2, -0.5f, -10);
 
 			Sequence sequence = DOTween.Sequence();
