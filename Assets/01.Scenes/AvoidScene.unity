@@ -972,9 +972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParrySound: {fileID: 457283989}
-  ArrowCount: 123
-  MinTime: 0.3
-  MaxTime: 0.4
+  ArrowCount: 30
+  MinTime: 0.5
+  MaxTime: 0.6
   IsGameOver: 1
   SuccessCount: 0
 --- !u!114 &457283991

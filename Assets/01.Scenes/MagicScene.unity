@@ -1937,11 +1937,11 @@ MonoBehaviour:
   - {fileID: 339817783}
   - {fileID: 2088918765}
   TimeLimit: 0.2
-  BonusDecline: 0.1
-  IncreaseTime: 0.02
-  DeclineTime: 0.05
+  BonusDecline: 0.25
+  IncreaseTime: 0.04
+  DeclineTime: 0.02
   _isGameActive: 0
-  KeyCount: 5
+  KeyCount: 20
 --- !u!1 &1598406797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6127548983563009364, guid: c3245ffbbb7bb614687bd7209fbd8c12, type: 3}

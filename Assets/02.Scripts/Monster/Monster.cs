@@ -86,6 +86,7 @@ namespace Jun.Monster
         void OnParrying()
         {
             if (!IsMyTurn) return;
+            EndTurn();
             TakeDamage(_damage);
             ReturnToOrigin(() => EndTurn());
         }

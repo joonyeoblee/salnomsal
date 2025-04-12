@@ -30,7 +30,6 @@ namespace SeongIl
             sequence.AppendInterval(0.5f);
             sequence.Append(Fade.DOColor(new Color(0f, 0f, 0f, 0f), 1f).SetEase(Ease.InCubic));
             sequence.Join(Loading.GetComponent<SpriteRenderer>().DOFade(0f, 0.7f).SetEase(Ease.InCubic)).OnComplete(() => { MapManager.Instance.OnMapNodeChanged += NodeTranstition; });
-            
             Debug.Log("씬 전환");
         }
 
