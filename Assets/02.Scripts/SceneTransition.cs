@@ -19,9 +19,6 @@ namespace SeongIl
         private void Start()
         {
             IsTransition += BasicTranstition;
-
-            
-            
         }
 
         public void BasicTranstition()

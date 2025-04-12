@@ -99,6 +99,7 @@ MonoBehaviour:
   IsMyTurn: 0
   moveDuration: 0.5
   Muzzle: {fileID: 7489951492550986259}
+  conditionGroups: []
 --- !u!114 &244337981957532165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,8 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillDataList:
-  - {fileID: 11400000, guid: faa51cae092ede746bea9dfd1a9b4578, type: 2}
-  - {fileID: 11400000, guid: 25ffe1f910be15744b86e19d86b7d24b, type: 2}
+  - {fileID: 11400000, guid: 1f1ec8cc89468be4caa98a9d0e4f17f1, type: 2}
+  - {fileID: 11400000, guid: 6d0e7e10bc1935b4588cf129ddae089b, type: 2}
+  - {fileID: 11400000, guid: a8b248e7817bd4d9ca061f3225fd4a59, type: 2}
 --- !u!114 &4624663440339902101
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public int Index;
 	public int Immune;
 	public List<Skill> Skills;
-	public List<AnimationClip> SkillEffects;
+	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
 	public TargetType _targetType;
 	public TargetType TargetType
@@ -191,7 +191,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		_cost -= Skills[(int)slot].SkillCost;
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
-
+		
 		Skill currentSkill = Skills[(int)slot];
 		if (currentSkill.SkillData.SkillType == SkillType.Attack && currentSkill.IsMelee)
 		{
@@ -296,14 +296,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		{
 			foreach (ITargetable target in targets)
 			{
-
 				GameObject _projectile = Instantiate(Projectile);
 				_projectile.transform.position = _muzzle.transform.position;
 				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
 			}
 
 		}
-		
+		// Instantiate(SkillEffects[(int)slot], transform.position, Quaternion.identity);
 		// 애니메이션 재생 끝날 때까지 대기
 		while (info.normalizedTime < 1f)
 		{
@@ -311,6 +310,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			info = _animator.GetCurrentAnimatorStateInfo(0);
 		}
 
+
+		
+		
 		// 스킬 사용 처리
 		foreach (ITargetable target in targets)
 		{
