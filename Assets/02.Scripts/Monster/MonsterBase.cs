@@ -111,6 +111,7 @@ namespace Jun.Monster
             Debug.Log("Death");
             IsAlive = false;
             CombatManager.Instance.Monsters.Remove(this);
+            
             Destroy(gameObject);
             
         }
