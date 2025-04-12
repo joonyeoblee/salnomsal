@@ -10022,9 +10022,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TeamSlots:
-  - {fileID: 406083580}
-  - {fileID: 1622257415}
-  - {fileID: 2122432061}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Teams: []
   Characters: []
   CharacterStats: []

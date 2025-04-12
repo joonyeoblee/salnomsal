@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public List<TeamSlot> TeamSlots = new List<TeamSlot>();
+    public TeamSlot[] TeamSlots = new TeamSlot[3];
     public List<string> Teams = new List<string>();
     public List<GameObject> Characters = new List<GameObject>();
 // GameManager 내부
