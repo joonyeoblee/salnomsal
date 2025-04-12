@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdf442ce792a50498e079f34430bf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 21300000, guid: ed6174cfc03074afa9523d9500a2c7c0, type: 3}
+  Portrait: {fileID: 4354231566380549168, guid: 333fcf384a8db044db52da0fe4902015, type: 3}
 --- !u!114 &4833578260173776624
 MonoBehaviour:
   m_ObjectHideFlags: 0
