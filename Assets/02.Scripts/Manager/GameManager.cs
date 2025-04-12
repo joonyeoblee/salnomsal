@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
     public List<TeamSlot> TeamSlots = new List<TeamSlot>();
     public List<string> Teams = new List<string>();
     public List<GameObject> Characters = new List<GameObject>();
-    
-    private bool _bossKill = false;
-    public bool BossKill => _bossKill; 
+// GameManager 내부
+    public List<CharacterStat> CharacterStats = new List<CharacterStat>();
+
+    public bool BossKill { get; private set; }
 
     void Awake()
     {
@@ -19,48 +20,48 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        } else if (Instance != this)
+        }
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
     }
-
     public void Expedition()
     {
-        Characters.Clear(); // 기존 캐릭터 리스트 초기화
-        
+        Characters.Clear();
+        CharacterStats.Clear(); // ★ 스탯도 초기화
+
         foreach (TeamSlot slot in TeamSlots)
         {
             Teams.Add(slot.SaveKey);
+
             if (slot.currentCharacterPortrait != null)
             {
                 PortraitItem _portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
-                GameObject character = slot.currentCharacterPortrait.GetComponent<PortraitItem>().portrait.Character;
-                PlayableCharacter a = character.GetComponent<PlayableCharacter>();
+                GameObject character = _portraitItem.portrait.Character;
 
-                a.ApplyStat(_portraitItem.MaxHealth, _portraitItem.MaxMana, _portraitItem.AttackPower, _portraitItem.Speed);
-
+    
                 Characters.Add(character);
-                Debug.Log($"출정 캐릭터 추가됨: {slot.currentCharacterPortrait.name}");
-            } else
+                CharacterStats.Add(_portraitItem.SaveData.CharacterStat);
+            }
+            else
             {
-                Characters.Add(null); // 슬롯이 비어있으면 null로 채움
-                Debug.Log("출정 슬롯이 비어 있음");
+                Characters.Add(null);
+                CharacterStats.Add(null);
             }
         }
-        
-        Debug.Log($"총 출정 캐릭터 수: {Characters.Count}");
     }
-    
+
+
     public void SetBossKill()
     {
-        _bossKill = true;
+        BossKill = true;
     }
 
     public void ResetBossKill()
     {
-        _bossKill = false;
+        BossKill = false;
     }
 
-
+    
 }

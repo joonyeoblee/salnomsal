@@ -17,13 +17,13 @@ MonoBehaviour:
   SkillCost: 2
   SkillMultiplier: 1.2
   Duration: 0
-  Priority: 0
+  Priority: 6
   DamageType: 2
   SkillType: 0
   SkillRange: 1
   SkillTarget: 0
   IsMelee: 0
-  HasProjectile: 0
+  HasProjectile: 1
   SkillPrefab: {fileID: 1049595317781394725, guid: bfd859e3f5437894fa548213ce5bac91, type: 3}
   ProjectilePrefab: {fileID: 5001659780865638305, guid: 626cf78a5a71c864da79e41f524f93d1, type: 3}
   CameraShake: 0

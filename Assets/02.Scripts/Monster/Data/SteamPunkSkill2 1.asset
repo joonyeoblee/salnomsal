@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32a9d9ce66c70ad43aeb294c603cf94f, type: 3}
-  m_Name: GoblinSkill2
+  m_Name: SteamPunkSkill2 1
   m_EditorClassIdentifier: 
-  SkillName: "\uB358\uC9C0\uAE30"
-  SkillDescription: "\uC2AC\uB85C\uC6B0"
-  SkillCost: 2
-  SkillMultiplier: 1.2
+  SkillName: 
+  SkillDescription: 
+  SkillCost: 0
+  SkillMultiplier: 0
   Duration: 0
-  Priority: 11
-  DamageType: 1
+  Priority: 0
+  DamageType: 0
   SkillType: 0
   SkillRange: 0
   SkillTarget: 0
   IsMelee: 0
   HasProjectile: 1
-  SkillPrefab: {fileID: 1224984621166208373, guid: 396989f31f92a2c4da3b0efea022ed40, type: 3}
-  ProjectilePrefab: {fileID: 8641558406489116640, guid: 39885ab10ea63ce40816509e063e77fc, type: 3}
+  SkillPrefab: {fileID: 1224984621166208373, guid: c38e274dc4a0022488a1fcf688df8368, type: 3}
+  ProjectilePrefab: {fileID: 1524457815483248156, guid: 63ede83415584e34a96ad55d48cee49a, type: 3}
   CameraShake: 0

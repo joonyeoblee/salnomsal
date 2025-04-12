@@ -2,6 +2,7 @@
 using System.Linq;
 using Jun;
 using MoreMountains.Feedbacks;
+using Portrait;
 using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
@@ -69,11 +70,13 @@ public class CombatManager : MonoBehaviour
     public void SpawnPlayer()
     {
         List<GameObject> players = GameManager.Instance.Characters;
+        List<CharacterStat> characterStats = GameManager.Instance.CharacterStats;
         for (int i = 0; i < players.Count; i++)
         {
             GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
             PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
-
+            player.ApplyStat(characterStats[i].MaxHealth, characterStats[i].MaxMana, characterStats[i].AttackPower, characterStats[i].Speed);
+            
             player.Index = i;
             PlayableCharacter.Add(player);
             UI_Battle.Instance.PartyHealthIndicator.Initialize(player);

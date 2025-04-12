@@ -23,7 +23,7 @@ MonoBehaviour:
   SkillRange: 0
   SkillTarget: 0
   IsMelee: 0
-  HasProjectile: 0
-  SkillPrefab: {fileID: 0}
+  HasProjectile: 1
+  SkillPrefab: {fileID: 1224984621166208373, guid: c38e274dc4a0022488a1fcf688df8368, type: 3}
   ProjectilePrefab: {fileID: 1524457815483248156, guid: 63ede83415584e34a96ad55d48cee49a, type: 3}
   CameraShake: 0

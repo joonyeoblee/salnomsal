@@ -13,7 +13,7 @@ namespace Jun.Monster
         Vector3 OriginPosition;
         public float moveDuration = 0.5f;
         List<PlayableCharacter> dyingTargets;
-        
+        public Transform Muzzle;
         // ReSharper disable Unity.PerformanceAnalysis
         public override void EndTurn()
         {
@@ -166,13 +166,20 @@ namespace Jun.Monster
         }
         IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
         {
-            if (decision.Skill.SkillData.ProjectilePrefab != null)
+            if (decision.Skill.SkillData.HasProjectile)
             {
                 foreach (PlayableCharacter target in targets)
                 {
-                    Vector3 position = target.Model.transform.position;
-                    GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab, position, Quaternion.identity);
-                    _gameObject.transform.DOMove(position, moveDuration).SetEase(Ease.OutQuad);
+                    Vector3 targetPosition = target.Model.transform.position;
+                    GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
+                    if (Muzzle != null)
+                    {
+                        _gameObject.transform.position = Model.transform.position;
+                    }else
+                    {
+                        _gameObject.transform.position = Muzzle.position;
+                    }
+                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.OutQuad);
 
                 }
             }
