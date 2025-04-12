@@ -55,13 +55,13 @@ MonoBehaviour:
   DamageType: 0
   Index: 0
   MaxHealth: 100
-  MaxMana: 10
+  MaxMana: 6
   AttackPower: 10
   CriticalChance: 0.4
   CriticalDamage: 1.2
   Resistance: 0
   HasBuff: 0
-  IsDefending: 0
+  IsDefending: 1
   _targetType: 1
   _basicSpeed: 4
   _animator: {fileID: 1450153352839994815}

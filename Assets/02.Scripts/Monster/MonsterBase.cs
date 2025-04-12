@@ -168,6 +168,7 @@ namespace Jun.Monster
         public override void EndTurn()
         {
             IsMyTurn = false;
+            _mana = _mana > MaxMana ? MaxMana : ++_mana;
             CombatManager.Instance.EndTurn(this);
             Debug.Log($"{name} EndTurn");
         }
