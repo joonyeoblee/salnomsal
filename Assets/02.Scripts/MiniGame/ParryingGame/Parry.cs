@@ -44,6 +44,7 @@ namespace SeongIl
         public MMF_Player ButtonFeedback;
 
         public int Life;
+        public GameObject LastChecker;
         
         // 판정 갯수세기 성공 여부 확인 위함
         private int _parriedCount = 0;
@@ -105,6 +106,7 @@ namespace SeongIl
                 slashCheck.Parry = this;
                 if (i == _count - 1)
                 {
+                    LastChecker = slash;
                     slashCheck.IsLastParry = true;
                 }
 
@@ -191,6 +193,7 @@ namespace SeongIl
         // 판정
         private void Fail()
         {
+            
             if (AlreadyFail)
             {
                 return;
@@ -200,6 +203,7 @@ namespace SeongIl
             
             Debug.Log("Fail");
             DOTween.KillAll();
+            Destroy(LastChecker);
             MiniGameScenesManager.Instance.Fail?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
@@ -209,6 +213,7 @@ namespace SeongIl
 
         private void Success()
         {
+            Destroy(LastChecker);
             if (AlreadySuccess) return;
 
             _parriedCount += 1;
@@ -241,7 +246,7 @@ namespace SeongIl
             }
             if (_lastParryCount >= 20)
             {
-                Success();   
+                Success();
             }
             else
             {
