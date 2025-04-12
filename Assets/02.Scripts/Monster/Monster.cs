@@ -212,7 +212,7 @@ namespace Jun.Monster
                     {
                         _gameObject.transform.position = Muzzle.position;
                     }
-                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.OutQuad);
+                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine);
 
                 }
             }
