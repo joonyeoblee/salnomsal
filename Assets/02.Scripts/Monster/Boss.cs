@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Jun.Skill;
 using UnityEngine;
 
 namespace Jun.Monster
@@ -13,6 +14,44 @@ namespace Jun.Monster
         private Vector3 OriginPosition;
         public float moveDuration = 0.5f;
         private List<PlayableCharacter> dyingTargets;
+        public List<SkillConditionGroup> conditionGroups;
+
+        public List<List<Func<Character, int>>> BuildConditionFunctions()
+        {
+            var result = new List<List<Func<Character, int>>>();
+
+            foreach (SkillConditionGroup group in conditionGroups)
+            {
+                var funcGroup = new List<Func<Character, int>>();
+                foreach (SkillCondition cond in group.conditions)
+                {
+                    funcGroup.Add(CreateConditionFunction(cond));
+                }
+                result.Add(funcGroup);
+            }
+
+            return result;
+        }
+        Func<Character, int> CreateConditionFunction(SkillCondition condition)
+        {
+            return target =>
+            {
+                switch (condition.conditionType)
+                {
+                    case ConditionType.LowHealth:
+                        return target.CurrentHealth < target.MaxHealth * 0.3f ? condition.bonusScore : 0;
+                    case ConditionType.HasBuff:
+                        return target.HasBuff ? condition.bonusScore : 0;
+                    case ConditionType.IsDefending:
+                        return target.IsDefending ? condition.bonusScore : 0;
+                    case ConditionType.HealthBelowX:
+                        return target.CurrentHealth < condition.threshold ? condition.bonusScore : 0;
+                    default:
+                        return 0;
+                }
+            };
+        }
+
         void OnEnable()
         {
             MiniGameScenesManager.Instance.Success += OnSuccess;
@@ -58,15 +97,11 @@ namespace Jun.Monster
             base.Start();
             _health = MaxHealth;
             _mana = MaxMana;
-            OriginPosition = transform.position;
-            List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
-            {
-                target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0,
-                target => target.HasBuff ? 10 : 0,
-                target => target.IsDefending ? 10 : 0
-            };
 
-            _skillComponent.SetConditionalPriorities(conditionalList);
+            OriginPosition = transform.position;
+
+            List<List<Func<Character, int>>> funcGroups = BuildConditionFunctions();
+            _skillComponent.SetConditionalPriorities(funcGroups);
         }
 
         protected override void Attack()

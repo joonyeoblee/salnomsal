@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Jun.Skill;
 using UnityEngine;
 
 namespace Jun.Monster
@@ -14,7 +15,45 @@ namespace Jun.Monster
         public float moveDuration = 0.5f;
         List<PlayableCharacter> dyingTargets;
         public Transform Muzzle;
-        // ReSharper disable Unity.PerformanceAnalysis
+
+        public List<SkillConditionGroup> conditionGroups;
+
+        public List<List<Func<Character, int>>> BuildConditionFunctions()
+        {
+            var result = new List<List<Func<Character, int>>>();
+
+            foreach (SkillConditionGroup group in conditionGroups)
+            {
+                var funcGroup = new List<Func<Character, int>>();
+                foreach (SkillCondition cond in group.conditions)
+                {
+                    funcGroup.Add(CreateConditionFunction(cond));
+                }
+                result.Add(funcGroup);
+            }
+
+            return result;
+        }
+        Func<Character, int> CreateConditionFunction(SkillCondition condition)
+        {
+            return target =>
+            {
+                switch (condition.conditionType)
+                {
+                    case ConditionType.LowHealth:
+                        return target.CurrentHealth < target.MaxHealth * 0.3f ? condition.bonusScore : 0;
+                    case ConditionType.HasBuff:
+                        return target.HasBuff ? condition.bonusScore : 0;
+                    case ConditionType.IsDefending:
+                        return target.IsDefending ? condition.bonusScore : 0;
+                    case ConditionType.HealthBelowX:
+                        return target.CurrentHealth < condition.threshold ? condition.bonusScore : 0;
+                    default:
+                        return 0;
+                }
+            };
+        }
+        
         public override void EndTurn()
         {
             base.EndTurn();
@@ -66,17 +105,11 @@ namespace Jun.Monster
             _mana = MaxMana;
 
             OriginPosition = transform.position;
-            
-            List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
-            {
-                target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0,
-                target => target.HasBuff ? 10 : 0
-            };
 
-            _skillComponent.SetConditionalPriorities(conditionalList);
+            List<List<Func<Character, int>>> funcGroups = BuildConditionFunctions();
+            _skillComponent.SetConditionalPriorities(funcGroups);
         }
-
-        // ReSharper disable Unity.PerformanceAnalysis
+        
         protected override void Attack()
         {
             if (DamageType == DamageType.Melee)

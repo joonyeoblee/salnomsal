@@ -68,6 +68,15 @@ MonoBehaviour:
   IsMyTurn: 0
   moveDuration: 0.5
   Muzzle: {fileID: 3280172573202495969}
+  conditionGroups:
+  - conditions:
+    - conditionType: 3
+      threshold: 20
+      bonusScore: 0
+  - conditions:
+    - conditionType: 1
+      threshold: 0
+      bonusScore: 6
 --- !u!114 &1306635936002964765
 MonoBehaviour:
   m_ObjectHideFlags: 0

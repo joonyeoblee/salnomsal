@@ -184,12 +184,24 @@ MonoBehaviour:
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
-  IsStun: 0
   _targetType: 1
   _basicSpeed: 6
   _animator: {fileID: 0}
   IsMyTurn: 0
   moveDuration: 0.5
+  conditionGroups:
+  - conditions:
+    - conditionType: 3
+      threshold: 20
+      bonusScore: 5
+  - conditions:
+    - conditionType: 1
+      threshold: 4
+      bonusScore: 5
+  - conditions:
+    - conditionType: 0
+      threshold: 0
+      bonusScore: 5
 --- !u!114 &5804043370497695457
 MonoBehaviour:
   m_ObjectHideFlags: 0

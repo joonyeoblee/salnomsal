@@ -73,8 +73,10 @@ namespace Jun.Monster
                 Debug.Log("Stun");
                 EndTurn();
             }
+           
             _target = GetTarget();
             _lastTarget = _target; // 다음 타겟 우선도 계산용
+            
             Debug.Log(gameObject.name);
             ChoiceSkill();
         }
@@ -151,7 +153,8 @@ namespace Jun.Monster
         PlayableCharacter ChooseTarget(List<PlayableCharacter> playerCharacters)
         {
             List<TargetCandidate> candidates = new();
-            foreach (var Character in playerCharacters) {
+            foreach (PlayableCharacter Character in playerCharacters)
+            {
                 if (Character.IsAlive)
                 {
                     candidates.Add(EvaluateTarget(Character));
