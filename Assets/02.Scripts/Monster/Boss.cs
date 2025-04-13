@@ -76,6 +76,7 @@ namespace Jun.Monster
 
         void OnSuccess()
         {
+            CleanupDyingTargets();
             EndTurn();
         }
 
@@ -91,7 +92,22 @@ namespace Jun.Monster
         void OnParrying()
         {
             TakeDamage(_damage);
+            DOTween.Kill("targetTween");
             EndTurn();
+        }
+        
+        void CleanupDyingTargets()
+        {
+            if (dyingTargets == null) return;
+
+            foreach (var target in dyingTargets)
+            {
+                if (target != null)
+                {
+                    MiniGameScenesManager.Instance.Success -= target.GetImmune;
+                }
+            }
+            dyingTargets.Clear();
         }
         protected override void Start()
         {
@@ -201,7 +217,7 @@ namespace Jun.Monster
                     Vector3 targetPosition = target.Model.transform.position;
                     GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
                     _gameObject.transform.position = Muzzle != null ? Muzzle.position : Model.transform.position;
-                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine);
+                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine).SetId("targetTween");
                 }
             }
             if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
