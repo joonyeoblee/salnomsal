@@ -365,17 +365,12 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			_animator.SetTrigger("Hit");
 		}
 	}
-
 	public bool WouldDieFromAttack(Damage damage)
 	{
-		float _copyCurrentHealth = _health;
-		_copyCurrentHealth -= damage.Value;
-		if (_copyCurrentHealth <= 0)
-		{
-			return true;
-		}
-		return false;
+		if (Immune > 0) return false;
+		return (_health - damage.Value) <= 0;
 	}
+	
 
 	public void GetBuff(Buff buff)
 	{

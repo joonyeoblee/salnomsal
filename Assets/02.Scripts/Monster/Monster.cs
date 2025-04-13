@@ -68,6 +68,7 @@ namespace Jun.Monster
         void OnSuccess()
         {
             if (!IsMyTurn) return;
+            CleanupDyingTargets();
             ReturnToOrigin(() => EndTurn());
             
         }
@@ -90,7 +91,23 @@ namespace Jun.Monster
             DOTween.KillAll();
             TakeDamage(_damage);
             
+            if(!IsAlive) return;
             ReturnToOrigin(() => EndTurn());
+        }   
+     
+        
+        void CleanupDyingTargets()
+        {
+            if (dyingTargets == null) return;
+
+            foreach (var target in dyingTargets)
+            {
+                if (target != null)
+                {
+                    MiniGameScenesManager.Instance.Success -= target.GetImmune;
+                }
+            }
+            dyingTargets.Clear();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -180,7 +197,7 @@ namespace Jun.Monster
                     continue;
                 }
 
-                if (target.WouldDieFromAttack(_damage) && target.Immune <= 0)
+                if (target.Immune <= 0 && target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
                 }
