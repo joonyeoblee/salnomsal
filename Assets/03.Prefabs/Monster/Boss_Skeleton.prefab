@@ -226,7 +226,7 @@ MonoBehaviour:
   conditionGroups:
   - conditions:
     - conditionType: 0
-      threshold: 40
+      threshold: 100
       bonusScore: 20
     - conditionType: 1
       threshold: 1
@@ -235,6 +235,9 @@ MonoBehaviour:
     - conditionType: 1
       threshold: 1
       bonusScore: 30
+    - conditionType: 0
+      threshold: 500
+      bonusScore: 40
   - conditions: []
   Muzzle: {fileID: 3040629207008808342}
 --- !u!114 &5804043370497695457
