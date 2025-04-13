@@ -211,8 +211,24 @@ namespace Jun.Monster
                     _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine);
                 }
             }
-
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
+            {
+                _audioSource.clip = decision.Skill.SkillData.SkillSound;
+                _audioSource.Play();
+            }
+           
             yield return StartCoroutine(WaitForAnimation(animName));
+
+            if (!isBasicAttack && decision.Skill.SkillData.IsMelee)
+            {
+                _audioSource.clip = decision.Skill.SkillData.SkillSound;
+                _audioSource.Play();
+            }
+            else
+            {
+                _audioSource.clip = AttackSkillSound;
+                _audioSource.Play();
+            }
 
             if (anyWillDie && !isBasicAttack)
             {
