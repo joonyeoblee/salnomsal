@@ -26,6 +26,9 @@ namespace Jun.Monster
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
             IsAlive = true;
+
+        
+            
         }
         protected void ChoiceSkill()
         {
@@ -64,8 +67,16 @@ namespace Jun.Monster
         public override void StartTurn()
         {
             IsMyTurn = true;
+            if (IsStun > 0)
+            {
+                IsStun--;
+                Debug.Log("Stun");
+                EndTurn();
+            }
+           
             _target = GetTarget();
             _lastTarget = _target; // 다음 타겟 우선도 계산용
+            
             Debug.Log(gameObject.name);
             ChoiceSkill();
         }
@@ -102,6 +113,7 @@ namespace Jun.Monster
             Debug.Log("Death");
             IsAlive = false;
             CombatManager.Instance.Monsters.Remove(this);
+            
             Destroy(gameObject);
             
         }
@@ -110,6 +122,8 @@ namespace Jun.Monster
         {
             _animator.Play("Hit");
             _health -= damage.Value;
+            _health = Mathf.Max(_health, 0);
+            UI_Battle.Instance.EnemyHealthIndicator.RefreshHealth(this);
             if (_health <= 0)
             {
                 Death(damage.Type);
@@ -140,7 +154,8 @@ namespace Jun.Monster
         PlayableCharacter ChooseTarget(List<PlayableCharacter> playerCharacters)
         {
             List<TargetCandidate> candidates = new();
-            foreach (var Character in playerCharacters) {
+            foreach (PlayableCharacter Character in playerCharacters)
+            {
                 if (Character.IsAlive)
                 {
                     candidates.Add(EvaluateTarget(Character));

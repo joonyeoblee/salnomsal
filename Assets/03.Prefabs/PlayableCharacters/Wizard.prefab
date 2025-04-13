@@ -52,11 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 101
+  MaxHealth: 109
   MaxCost: 11
-  CostRegen: 0
-  AttackPower: 17
-  CriticalChance: 1.2
+  CostRegen: 2
+  AttackPower: 42.6
+  CriticalChance: 0.2
   CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
@@ -69,10 +69,7 @@ MonoBehaviour:
   - {fileID: 731159558023248803, guid: b574c5a6e126aec4abdb4ecc3752c438, type: 3}
   - {fileID: 3253124159677751141, guid: ec62e956d5d5bdc4cb2a0bca6380131e, type: 3}
   - {fileID: 6121310222754271668, guid: 278492f74e2bc444d9c03ba1f77c9adc, type: 3}
-  SkillEffects:
-  - {fileID: 7400000, guid: 1c5f9b7a70f600b4dad1c9384d1da913, type: 2}
-  - {fileID: 7400000, guid: 1c5f9b7a70f600b4dad1c9384d1da913, type: 2}
-  - {fileID: 7400000, guid: 1c5f9b7a70f600b4dad1c9384d1da913, type: 2}
+  SkillEffects: []
   HitEffects:
   - {fileID: 1214733586436350074, guid: eb669994b3d6e2240ad50274670cee04, type: 3}
   - {fileID: 8125278727803230993, guid: 206f6c4a5d282824385dde2df092de71, type: 3}

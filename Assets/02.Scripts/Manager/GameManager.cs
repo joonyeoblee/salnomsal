@@ -6,12 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public List<TeamSlot> TeamSlots = new List<TeamSlot>(3);
+    public TeamSlot[] TeamSlots = new TeamSlot[3];
     public List<string> Teams = new List<string>();
-    public List<GameObject> Characters = new List<GameObject>(3);
-    
-    private bool _bossKill = false;
-    public bool BossKill => _bossKill; 
+    public List<GameObject> Characters = new List<GameObject>();
+// GameManager 내부
+    public List<CharacterStat> CharacterStats = new List<CharacterStat>();
+    public List<PortraitItem> PortraitItems = new List<PortraitItem>();
+    public bool BossKill { get; private set; }
 
     void Awake()
     {
@@ -19,48 +20,58 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        } else if (Instance != this)
+            Debug.Log("🟢 GameManager 인스턴스 등록됨");
+        }
+        else if (Instance != this)
         {
+            Debug.LogWarning("⚠️ 중복 GameManager 감지됨. 파괴됨: " + gameObject.name);
             Destroy(gameObject);
         }
     }
 
     public void Expedition()
     {
-        Characters.Clear(); // 기존 캐릭터 리스트 초기화
-        
-        foreach (TeamSlot slot in TeamSlots)
+        CharacterStats.Clear();
+        Teams.Clear();
+
+        for (var i = 0; i < TeamSlots.Length; i++)
         {
+            TeamSlot slot = TeamSlots[i];
             Teams.Add(slot.SaveKey);
+
             if (slot.currentCharacterPortrait != null)
             {
-                PortraitItem _portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
-                GameObject character = slot.currentCharacterPortrait.GetComponent<PortraitItem>().portrait.Character;
-                PlayableCharacter a = character.GetComponent<PlayableCharacter>();
+                PortraitItem portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
+                if (PortraitItems.Count <= i)
+                {
+                    PortraitItems.Add(portraitItem);
+                }
+                else
+                {
+                    PortraitItems[i] = portraitItem;
+                }
 
-                a.ApplyStat(_portraitItem.MaxHealth, _portraitItem.MaxMana, _portraitItem.AttackPower, _portraitItem.Speed);
-
-                Characters.Add(character);
-                Debug.Log($"출정 캐릭터 추가됨: {slot.currentCharacterPortrait.name}");
-            } else
+                CharacterStats.Add(portraitItem.SaveData.CharacterStat);
+            }
+            else
             {
-                Characters.Add(null); // 슬롯이 비어있으면 null로 채움
-                Debug.Log("출정 슬롯이 비어 있음");
+                Characters.Add(null);
+                CharacterStats.Add(null);
             }
         }
-        
-        Debug.Log($"총 출정 캐릭터 수: {Characters.Count}");
     }
-    
+
+
+
     public void SetBossKill()
     {
-        _bossKill = true;
+        BossKill = true;
     }
 
     public void ResetBossKill()
     {
-        _bossKill = false;
+        BossKill = false;
     }
 
-
+    
 }

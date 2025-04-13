@@ -1,4 +1,5 @@
 using System.Collections;
+using Com.LuisPedroFonseca.ProCamera2D;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,8 +24,8 @@ namespace SeongIl
         private SpriteRenderer _spriteRenderer;
         
         public Avoid Avoid;
-        
 
+        public bool PerfectShield = false;
         public int ParryingCount;
         
         private void Start()
@@ -36,7 +37,7 @@ namespace SeongIl
         private void Update()
         {
             ShieldMovement();
-            if (Input.GetKeyDown(KeyCode.Space) && !_isParrying)
+            if (Input.GetKeyDown(KeyCode.Space) && PerfectShield)
             {
                 StartCoroutine(Parrying());
             }
@@ -56,7 +57,7 @@ namespace SeongIl
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && PerfectShield)
             {
                 transform.position = Vector3.Lerp(transform.position, movePos, _moveSpeed);
             }
@@ -75,22 +76,27 @@ namespace SeongIl
             ParryingVFXPrefab[1].SetActive(true);
             Destroy(other.gameObject);
             Avoid.SuccessCount += 1;
-            Debug.Log($"shield 히트 +1 {Avoid.SuccessCount}");
-
-            if (_isParrying)
+            
+            if (Avoid.SuccessCount > 10)
             {
-                Destroy(other.gameObject);
-                ParryingCount += 1;
-                Debug.Log($"패링 카운트 : {ParryingCount}");
-                Camera.main.DOOrthoSize(4.5f, 0.2f).SetEase(Ease.OutCirc).OnComplete((() =>
-                {
-                    Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCirc);
-                }));
-                ParryingVFXPrefab[0].SetActive(true);
-                if (ParryingCount > SuccessCount)
-                {
+                PerfectShield = true;
+                // ParryingVFXPrefab[2].SetActive(true);
+            }
+            
+            if (_isParrying && PerfectShield)
+            {
+                // Destroy(other.gameObject);
+                // ParryingCount += 1;
+                // Debug.Log($"패링 카운트 : {ParryingCount}");
+                // Camera.main.DOOrthoSize(4.5f, 0.2f).SetEase(Ease.OutCirc).OnComplete((() =>
+                // {
+                //     Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCirc);
+                // }));
+                // ParryingVFXPrefab[0].SetActive(true);
+                // if (ParryingCount > SuccessCount)
+                // {
                     StartCoroutine(FinishParrying());
-                }
+                // }
             }
         }
 
@@ -105,25 +111,26 @@ namespace SeongIl
         {
             Camera.main.DOOrthoSize(2.5f, 0.2f).OnComplete((() =>
             {
-                Camera.main.DOOrthoSize(4f, 0.3f).SetEase(Ease.OutCirc);
+                Camera.main.DOOrthoSize(5f, 0.3f).SetEase(Ease.OutCirc);
             }));
             ParryingVFX.SetTrigger("Shock");
                 
-            while (Time.timeScale >= 1)
+            while (Time.timeScale < 1)
             {
                 
                 Time.timeScale = 0.1f;
-                yield return null;
-                Time.timeScale += 0.3f;
+                yield return new WaitForSeconds(0.1f);
+                Time.timeScale += 0.1f;
             }
 
-            Flash.DOColor(new UnityEngine.Color(1f, 1f, 1f, 0.7f), 0.7f).SetEase(Ease.OutCirc).OnComplete(() =>
+            Flash.DOColor(new UnityEngine.Color(1f, 1f, 1f, 1f), 2f).SetEase(Ease.OutCirc).OnComplete(() =>
             {
-                DOTween.KillAll();
-                Debug.Log("다 죽임: 쉴드");
+                
             });
             
-            yield return null;
+            Avoid.GameStop();
+            yield return new WaitForSeconds(1f);
+            
             Avoid.ParryingSuccess();
         }
 

@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using DG.Tweening;
 using Jun;
 using UnityEngine;
@@ -46,9 +47,7 @@ namespace SeongIl
             GameStop();
             IsGameOver = true;
             DOTween.KillAll();
-            MiniGameScenesManager.Instance.Fail?.Invoke();
-            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-            SceneManager.UnloadSceneAsync(sceneToUnload);
+            StartCoroutine(LoadScene());
 
         }
 
@@ -58,30 +57,33 @@ namespace SeongIl
             Debug.Log("Success");
             IsGameOver = true;
             DOTween.KillAll();
-            MiniGameScenesManager.Instance.Success?.Invoke();
-            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-            SceneManager.UnloadSceneAsync(sceneToUnload);
+            StartCoroutine(LoadScene());
         }
 
         // 패링 성공
         public void ParryingSuccess()
         {
             ParrySound.PlayOneShot(ParrySound.clip);
-            Debug.Log("ParryingSuccess");
             IsGameOver = true;
             
             DOTween.KillAll();
             Debug.Log("다 죽임 : 어보이드");
-            MiniGameScenesManager.Instance.Parring?.Invoke();
-            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
-            SceneManager.UnloadSceneAsync(sceneToUnload);
+            StartCoroutine(LoadScene());
         }
 
         // 게임 종료하기
-        private void GameStop()
+        public void GameStop()
         {
             AvoidSpawner spawner = GetComponent<AvoidSpawner>();
             spawner?.StopAllCoroutines();
+        }
+
+        private IEnumerator LoadScene()
+        {
+            yield return new WaitForSeconds(0.2f);
+            MiniGameScenesManager.Instance.Parring?.Invoke();
+            Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
+            SceneManager.UnloadSceneAsync(sceneToUnload);
         }
     }
 }

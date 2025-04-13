@@ -45,8 +45,8 @@ namespace Portrait
         public float MaxMana;
         public float AttackPower;
         public int Speed;
-        
-        PortraitItemData _saveData;
+
+        public PortraitItemData SaveData;
 
         [SerializeField] Image _iconImage;
         public bool IsInSlot { get; set; }
@@ -77,7 +77,7 @@ namespace Portrait
                 AddRandom();
                 _iconImage.sprite = portrait != null ? portrait.Icon : null;
                 CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
-                _saveData = new PortraitItemData(CharacterId, portrait.name, _characterStat, ClearCount);
+                SaveData = new PortraitItemData(CharacterId, portrait.name, _characterStat, ClearCount);
                 Save();
             }
         }
@@ -140,14 +140,14 @@ namespace Portrait
 
         void Save()
         {
-            _saveData = new PortraitItemData(
+            SaveData = new PortraitItemData(
                 CharacterId,
                 portrait != null ? portrait.name : "",
                 new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed),
                 ClearCount
             );
 
-            string json = JsonUtility.ToJson(_saveData);
+            var json = JsonUtility.ToJson(SaveData);
             PlayerPrefs.SetString(key, json);
             PlayerPrefs.Save();
         }
@@ -157,23 +157,23 @@ namespace Portrait
             if (PlayerPrefs.HasKey(key))
             {
                 string data = PlayerPrefs.GetString(key);
-                _saveData = JsonUtility.FromJson<PortraitItemData>(data);
+                SaveData = JsonUtility.FromJson<PortraitItemData>(data);
 
                 // 템플릿 불러오기
-                portrait = Resources.Load<PortraitSO>("Portraits/" + _saveData.PortraitName);
+                portrait = Resources.Load<PortraitSO>("Portraits/" + SaveData.PortraitName);
 
                 if (portrait == null)
                 {
-                    Debug.LogWarning($"[PortraitItem] PortraitSO 로드 실패: {_saveData.PortraitName}");
+                    Debug.LogWarning($"[PortraitItem] PortraitSO 로드 실패: {SaveData.PortraitName}");
                     return;
                 }
 
                 _iconImage.sprite = portrait.Icon;
-                
-                MaxHealth = _saveData.CharacterStat.MaxHealth + _saveData.ClearCount;
-                MaxMana = _saveData.CharacterStat.MaxMana + _saveData.ClearCount;
-                AttackPower = _saveData.CharacterStat.AttackPower + _saveData.ClearCount;
-                Speed = _saveData.CharacterStat.Speed + _saveData.ClearCount; 
+
+                MaxHealth = SaveData.CharacterStat.MaxHealth + SaveData.ClearCount;
+                MaxMana = SaveData.CharacterStat.MaxMana + SaveData.ClearCount;
+                AttackPower = SaveData.CharacterStat.AttackPower + SaveData.ClearCount;
+                Speed = SaveData.CharacterStat.Speed + SaveData.ClearCount; 
             }
         }
     }

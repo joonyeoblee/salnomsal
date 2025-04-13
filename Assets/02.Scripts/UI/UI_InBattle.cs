@@ -18,7 +18,7 @@ public class UI_InBattle : MonoBehaviour
 
     public void Initialize(PlayableCharacter character)
     {
-        Icons icons = character.GetComponent<Icons>();
+        PlayableIcons icons = character.GetComponent<PlayableIcons>();
 
         if (icons != null)
         {
@@ -36,7 +36,7 @@ public class UI_InBattle : MonoBehaviour
 
     public void Refresh(PlayableCharacter character)
     {
-        Info.text = $"HP :  {character.CurrentHealth} / {character.MaxHealth}\nCost : {character.Cost} / {character.MaxCost}\n공격력 : {character.AttackPower}\n속도 : {character.CurrentSpeed}\n저항력 : {character.Resistance}";
+        Info.text = $"HP :  {(int)character.CurrentHealth} / {(int)character.MaxHealth}\nCost : {character.Cost} / {character.MaxCost}\n공격력 : {(int)character.AttackPower}\n속도 : {character.CurrentSpeed}\n저항력 : {character.Resistance}";
         HealthBar.SetNewMaxHP(character.MaxHealth);
         HealthBar.UpdateBar(character.CurrentHealth);
         CostBar.SetNewMaxHP(character.MaxCost);

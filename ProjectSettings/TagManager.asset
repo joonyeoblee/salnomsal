@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - DestroyZone
   - Avoid
+  - Warning
   layers:
   - Default
   - TransparentFX

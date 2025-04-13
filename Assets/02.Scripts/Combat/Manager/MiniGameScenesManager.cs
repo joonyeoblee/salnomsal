@@ -92,6 +92,10 @@ namespace Jun
             }
         }
 
+        public void ChangeToVillage()
+        {
+            SceneManager.LoadScene((int)SceneIndex.Village);
+        }
         public void ChangeScene(SceneIndex index)
         {
             SceneManager.LoadScene((int)index);

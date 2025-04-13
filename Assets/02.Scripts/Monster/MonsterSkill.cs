@@ -6,6 +6,29 @@ using UnityEngine;
 
 namespace Jun.Skill
 {
+    public enum ConditionType
+    {
+        LowHealth, // 체력이 낮을 때
+        HasBuff, // 버프 있을 때
+        IsDefending, // 방어 중일 때
+        HealthBelowX // 체력이 X 이하면
+    }
+
+
+    [Serializable]
+    public class SkillCondition
+    {
+        public ConditionType conditionType;
+        public int threshold; // 예: HealthBelowX일 때 사용
+        public int bonusScore;
+    }
+
+    [Serializable]
+    public class SkillConditionGroup
+    {
+        public List<SkillCondition> conditions;
+    }
+
     public class SkillDecision
     {
         public Skill Skill;
@@ -16,16 +39,17 @@ namespace Jun.Skill
     {
         public SkillDataSO SkillData;
 
-        public Func<Character, int> conditionalBonusPriority; // 타겟 기준 추가 우선도
+        // ✅ 조건 함수 리스트로 변경
+        public List<Func<Character, int>> conditionalBonusPriorities = new List<Func<Character, int>>();
     }
 
+    
     public class MonsterSkill : MonoBehaviour
     {
         public List<Skill> skills;
-
         public List<SkillDataSO> skillDataList;
-
-        public void SetConditionalPriorities(List<Func<Character, int>> conditionalFuncs)
+        
+        public void SetConditionalPriorities(List<List<Func<Character, int>>> conditionalFuncGroups)
         {
             if (skills == null || skills.Count == 0)
             {
@@ -33,10 +57,12 @@ namespace Jun.Skill
                 return;
             }
 
-            for (int i = 0; i < conditionalFuncs.Count && i < skills.Count; i++)
+            for (var i = 0; i < conditionalFuncGroups.Count && i < skills.Count; i++)
             {
-                skills[i].conditionalBonusPriority = conditionalFuncs[i];
-                Debug.Log($"[{name}] 조건 함수 등록: Skill[{i}] → {skills[i].SkillData?.name ?? "null"}");
+                skills[i].conditionalBonusPriorities = conditionalFuncGroups[i];
+
+                var skillName = skills[i].SkillData?.name ?? "null";
+                Debug.Log($"[{name}] 조건 함수 그룹 등록: Skill[{i}] → {skillName}, 조건 수: {conditionalFuncGroups[i].Count}");
             }
         }
 
@@ -65,20 +91,15 @@ namespace Jun.Skill
                 return;
             }
 
-
             for (int i = 0; i < skillDataList.Count; i++)
             {
                 skills.Add(new Skill
                 {
                     SkillData = skillDataList[i]
-
                 });
-
-                //Debug.Log($"[{name}] 스킬 초기화됨: {skillDataList[i].name}, 우선도: {basePriorities[i]}");
             }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
         public SkillDecision ChooseSkillWithIndex(Character target)
         {
             MonsterBase caster = GetComponent<MonsterBase>();
@@ -93,12 +114,14 @@ namespace Jun.Skill
                 Skill skill = availableSkills[i];
                 int priority = skill.SkillData.Priority;
 
-                if (skill.conditionalBonusPriority != null)
+                // ✅ 조건 함수들 모두 평가해서 합산
+                if (skill.conditionalBonusPriorities != null && skill.conditionalBonusPriorities.Count > 0)
                 {
-                    int bonus = skill.conditionalBonusPriority.Invoke(target);
+                    var bonus = skill.conditionalBonusPriorities.Sum(func => func(target));
                     priority += bonus;
                     Debug.Log($"[{name}] {skill.SkillData.name}: base {skill.SkillData.Priority}, bonus {bonus} → total {priority}");
-                } else
+                }
+                else
                 {
                     Debug.Log($"[{name}] {skill.SkillData.name}: base {priority} (조건 함수 없음)");
                 }
@@ -114,7 +137,8 @@ namespace Jun.Skill
             if (bestSkill != null)
             {
                 Debug.Log($"[{name}] 최종 선택 스킬: {bestSkill.SkillData.name}, 우선도: {bestPriority}");
-            } else
+            }
+            else
             {
                 Debug.LogWarning($"[{name}] 선택된 스킬이 없음 (null)");
             }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Equipment;
-using MoreMountains.Feedbacks;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 public enum SkillSlot
@@ -22,7 +21,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public int Index;
 	public int Immune;
 	public List<Skill> Skills;
-	public List<AnimationClip> SkillEffects;
+	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
 	public TargetType _targetType;
 	public TargetType TargetType
@@ -43,6 +42,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	private bool _isAlive;
 	public bool IsAlive => _isAlive;
+	public int IsStun { get; set; }
 
 	[SerializeField] private int _basicSpeed;
 	public int BasicSpeed
@@ -76,7 +76,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		_animator = GetComponentInChildren<Animator>();
 
 		ApplyItems();
-		cameraOriginPosition = Camera.main.transform.position;
+		cameraOriginPosition = new Vector3(0, 0, -10);
 	}
 
 	void ApplyItems()
@@ -173,10 +173,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		Debug.Log($"{CharacterName}: Playable Turn Start");
 		CombatManager.Instance.CurrentActor = this;
 		CostGain();
+		OnTurnStart?.Invoke();
 		// UI로 캐릭터 정보 전송
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 		UI_Battle.Instance.SwitchUI(Index);
-		OnTurnStart?.Invoke();
 	}
 
 	public void EndTurn()
@@ -191,7 +191,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
 		_cost -= Skills[(int)slot].SkillCost;
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
-
+		
 		Skill currentSkill = Skills[(int)slot];
 		if (currentSkill.SkillData.SkillType == SkillType.Attack && currentSkill.IsMelee)
 		{
@@ -210,7 +210,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			});
 		} else if (currentSkill.SkillData.SkillType == SkillType.Attack && !currentSkill.IsMelee)
 		{
-			Vector3 vecc = new Vector3(1, -0.5f, -10);
+			MonoBehaviour target = targets[targets.Count - 1] as MonoBehaviour;
+			Vector3 vecc = new Vector3((transform.position.x + target.gameObject.transform.position.x) / 2, -0.5f, -10);
 
 			Sequence sequence = DOTween.Sequence();
 			sequence.Append(Camera.main.DOOrthoSize(4.5f, 1f)).SetEase(Ease.OutCubic);
@@ -221,7 +222,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				Debug.Log($"{vecc}: vecc ");
 				StartCoroutine(DoActionCoroutine(slot, targets));
 			});
-		} else if (currentSkill.SkillData.SkillType == SkillType.Heal)
+		} else if (currentSkill.SkillData.SkillType == SkillType.Heal || currentSkill.SkillData.SkillType == SkillType.Buff)
 		{
 			Vector3 vecc = new Vector3(-3, -1, -10);
 
@@ -295,14 +296,13 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		{
 			foreach (ITargetable target in targets)
 			{
-
 				GameObject _projectile = Instantiate(Projectile);
 				_projectile.transform.position = _muzzle.transform.position;
 				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
 			}
 
 		}
-		
+		// Instantiate(SkillEffects[(int)slot], transform.position, Quaternion.identity);
 		// 애니메이션 재생 끝날 때까지 대기
 		while (info.normalizedTime < 1f)
 		{
@@ -310,6 +310,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			info = _animator.GetCurrentAnimatorStateInfo(0);
 		}
 
+
+		
+		
 		// 스킬 사용 처리
 		foreach (ITargetable target in targets)
 		{
@@ -343,8 +346,9 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		_health -= damage.Value;
 		_health = Mathf.Max(_health, 0);
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+        UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
 
-		if (_health <= 0)
+        if (_health <= 0)
 		{
 			Death(damage.Type);
 		}
@@ -388,6 +392,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		HasBuff = true;
 
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+		UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
 
         OnTurnStart += buff.TickBuff;
 		OnTurnEnd += buff.RemoveBuff;
@@ -416,6 +421,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OnTurnEnd -= buff.RemoveBuff;
 
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
+        UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
 
         if (OnTurnEnd == null)
 		{
@@ -425,9 +431,11 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 
 	public void GetHeal(float amount)
 	{
-		Debug.Log($"체력회복. {amount}");
+		Debug.Log($"Before: {_health} + {amount}");
 		_health += amount;
-		_health = Mathf.Min(_health, MaxHealth);
+		Debug.Log($"After: {_health}");
+        _health = Mathf.Min(_health, MaxHealth);
         UI_Battle.Instance.BattleUI[Index].Refresh(this);
+		UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(this);
     }
 }

@@ -22,6 +22,13 @@ namespace SeongIl
             Destroy(other.gameObject);
             if (_hitCount > 4)
             {
+                GameObject[] warning = GameObject.FindGameObjectsWithTag("Warning");
+                GameObject[] bullets = GameObject.FindGameObjectsWithTag("Avoid");
+                for (int i = 0; i < warning.Length; i++)
+                {
+                    Destroy(bullets[i]);
+                    Destroy(warning[i]);
+                }
                 Debug.Log("콜리전 충돌 넘 많아 실패");
                 Avoid.Fail();
                 

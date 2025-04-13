@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4076284129283445621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7489951492550986259}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7489951492550986259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4076284129283445621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.38, y: 2.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8243825306457148383}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5088683969083430609
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8243825306457148383}
   - component: {fileID: 8155913606733846817}
+  - component: {fileID: 244337981957532165}
   - component: {fileID: 3336465585777921378}
   - component: {fileID: 4624663440339902101}
   - component: {fileID: -7958442424486452054}
@@ -35,6 +67,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7950932214450291551}
+  - {fileID: 7489951492550986259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8155913606733846817
@@ -51,19 +84,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 8535726500394494406}
   DamageType: 0
-  MaxHealth: 0
-  MaxMana: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  Index: 0
+  MaxHealth: 100
+  MaxMana: 5
+  AttackPower: 25
+  CriticalChance: 1.2
+  CriticalDamage: 2
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 0
+  _basicSpeed: 5
   _animator: {fileID: 0}
   IsMyTurn: 0
   moveDuration: 0.5
+  Muzzle: {fileID: 7489951492550986259}
+  conditionGroups:
+  - conditions: []
+  - conditions: []
+--- !u!114 &244337981957532165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5088683969083430609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdf442ce792a50498e079f34430bf77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: -3003315116612859483, guid: 7ce1af1df1b75bb42bd1ffc725477900, type: 3}
 --- !u!114 &3336465585777921378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillDataList:
-  - {fileID: 11400000, guid: faa51cae092ede746bea9dfd1a9b4578, type: 2}
-  - {fileID: 11400000, guid: 25ffe1f910be15744b86e19d86b7d24b, type: 2}
+  - {fileID: 11400000, guid: 1f1ec8cc89468be4caa98a9d0e4f17f1, type: 2}
+  - {fileID: 11400000, guid: 6d0e7e10bc1935b4588cf129ddae089b, type: 2}
 --- !u!114 &4624663440339902101
 MonoBehaviour:
   m_ObjectHideFlags: 0

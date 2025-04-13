@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4248011907863060138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4723813357352226690}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4723813357352226690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248011907863060138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.93, y: 2.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4556047067435711708}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7040579665520616671
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4556047067435711708}
   - component: {fileID: 8234216622804813295}
+  - component: {fileID: 8392510487213373925}
   - component: {fileID: 2888882090915731190}
   - component: {fileID: 8423324994038433381}
   - component: {fileID: 7362837337926176436}
@@ -35,6 +67,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1066316470025016487}
+  - {fileID: 4723813357352226690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8234216622804813295
@@ -51,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 8583637697979894963}
   DamageType: 0
+  Index: 0
   MaxHealth: 60
   MaxMana: 4
   AttackPower: 11
@@ -64,6 +98,29 @@ MonoBehaviour:
   _animator: {fileID: 97022630043293041}
   IsMyTurn: 0
   moveDuration: 0.5
+  Muzzle: {fileID: 4723813357352226690}
+  conditionGroups:
+  - conditions:
+    - conditionType: 0
+      threshold: 0
+      bonusScore: 4
+  - conditions:
+    - conditionType: 2
+      threshold: 0
+      bonusScore: 4
+--- !u!114 &8392510487213373925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7040579665520616671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdf442ce792a50498e079f34430bf77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 8749302817991680212, guid: f2404d082330c5c45bdd42b30fb7c9e6, type: 3}
 --- !u!114 &2888882090915731190
 MonoBehaviour:
   m_ObjectHideFlags: 0

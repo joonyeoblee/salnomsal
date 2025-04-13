@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Jun.Skill;
 using UnityEngine;
 
 namespace Jun.Monster
@@ -13,8 +14,46 @@ namespace Jun.Monster
         Vector3 OriginPosition;
         public float moveDuration = 0.5f;
         List<PlayableCharacter> dyingTargets;
+        public Transform Muzzle;
+
+        public List<SkillConditionGroup> conditionGroups;
+
+        public List<List<Func<Character, int>>> BuildConditionFunctions()
+        {
+            var result = new List<List<Func<Character, int>>>();
+
+            foreach (SkillConditionGroup group in conditionGroups)
+            {
+                var funcGroup = new List<Func<Character, int>>();
+                foreach (SkillCondition cond in group.conditions)
+                {
+                    funcGroup.Add(CreateConditionFunction(cond));
+                }
+                result.Add(funcGroup);
+            }
+
+            return result;
+        }
+        Func<Character, int> CreateConditionFunction(SkillCondition condition)
+        {
+            return target =>
+            {
+                switch (condition.conditionType)
+                {
+                    case ConditionType.LowHealth:
+                        return target.CurrentHealth < target.MaxHealth * 0.3f ? condition.bonusScore : 0;
+                    case ConditionType.HasBuff:
+                        return target.HasBuff ? condition.bonusScore : 0;
+                    case ConditionType.IsDefending:
+                        return target.IsDefending ? condition.bonusScore : 0;
+                    case ConditionType.HealthBelowX:
+                        return target.CurrentHealth < condition.threshold ? condition.bonusScore : 0;
+                    default:
+                        return 0;
+                }
+            };
+        }
         
-        // ReSharper disable Unity.PerformanceAnalysis
         public override void EndTurn()
         {
             base.EndTurn();
@@ -47,6 +86,7 @@ namespace Jun.Monster
         void OnParrying()
         {
             if (!IsMyTurn) return;
+            EndTurn();
             TakeDamage(_damage);
             ReturnToOrigin(() => EndTurn());
         }
@@ -66,17 +106,11 @@ namespace Jun.Monster
             _mana = MaxMana;
 
             OriginPosition = transform.position;
-            
-            List<Func<Character, int>> conditionalList = new List<Func<Character, int>>
-            {
-                target => target.CurrentHealth < target.MaxHealth * 0.3f ? 5 : 0,
-                target => target.HasBuff ? 10 : 0
-            };
 
-            _skillComponent.SetConditionalPriorities(conditionalList);
+            List<List<Func<Character, int>>> funcGroups = BuildConditionFunctions();
+            _skillComponent.SetConditionalPriorities(funcGroups);
         }
-
-        // ReSharper disable Unity.PerformanceAnalysis
+        
         protected override void Attack()
         {
             if (DamageType == DamageType.Melee)
@@ -144,29 +178,43 @@ namespace Jun.Monster
                     continue;
                 }
 
-                if (target.WouldDieFromAttack(_damage))
+                if (target.WouldDieFromAttack(_damage) && target.Immune <= 0)
                 {
                     dyingTargets.Add(target);
                 }
-               
             }
 
             foreach (PlayableCharacter dyingTarget in dyingTargets)
             {
                 MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
             }
+
             Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
-            bool anyWillDie = dyingTargets.Count > 0;
+            if (animName != "Attack")
+            {
+                _mana -= decision.Skill.SkillData.SkillCost;
+            }
 
-            Debug.Log("▶ PerformSkillRoutine 실행");
-            StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
+            StartCoroutine(PerformSkillRoutine(animName, targets, dyingTargets.Count > 0, animName == "Attack"));
         }
-        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+
+        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie, bool isBasicAttack)
         {
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
+            {
+                foreach (PlayableCharacter target in targets)
+                {
+                    Vector3 targetPosition = target.Model.transform.position;
+                    GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
+                    _gameObject.transform.position = Muzzle != null ? Muzzle.position : Model.transform.position;
+                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine);
+                }
+            }
+
             yield return StartCoroutine(WaitForAnimation(animName));
 
-            if (anyWillDie)
+            if (anyWillDie && !isBasicAttack)
             {
                 Time.timeScale = 0.2f;
                 yield return StartCoroutine(MiniGameScenesManager.Instance.Transition.MiniGameTransition());
@@ -180,18 +228,32 @@ namespace Jun.Monster
                 MiniGameScenesManager.Instance.Success += OnSuccess;
                 MiniGameScenesManager.Instance.Fail += OnFail;
                 MiniGameScenesManager.Instance.Parring += OnParrying;
-            } else
+            }
+            else
             {
                 foreach (PlayableCharacter target in targets)
                 {
+                    if (target == null || target.Model == null)
+                        continue;
+
                     target.TakeDamage(_damage);
                     Vector3 position = target.Model.transform.position;
-                    Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
-                    FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+
+                    if (!isBasicAttack && decision?.Skill?.SkillData?.SkillPrefab != null)
+                    {
+                        Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
+                    }
+
+                    if (FloatingTextDisplay.Instance != null)
+                    {
+                        FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+                    }
                 }
+
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
+
         IEnumerator WaitForAnimation(string animName)
         {
             yield return null;

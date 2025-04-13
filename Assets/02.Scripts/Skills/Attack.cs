@@ -1,4 +1,5 @@
 ﻿using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class Attack : Skill
@@ -13,6 +14,18 @@ public class Attack : Skill
         if (Random.value < caster.CriticalChance)
         {
             damage.Value *= caster.CriticalDamage;
+
+            MMF_Player player = CombatManager.Instance.Feel;
+
+            MMF_CameraShake _cameraShake = player.GetFeedbackOfType<MMF_CameraShake>();
+            _cameraShake.CameraShakeProperties.Duration = 0.5f;
+
+            player.Initialization();
+            player.PlayFeedbacks();
+
+            _cameraShake.CameraShakeProperties.Duration = 1;
+            player.Initialization();
+            
             DisplayText(position, damage.Value, FloatingTextType.CriticalDamage);
         }
         else

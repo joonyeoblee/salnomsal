@@ -174,11 +174,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 107
-  MaxCost: 11
-  CostRegen: 0
-  AttackPower: 15
-  CriticalChance: 1.2
+  MaxHealth: 101
+  MaxCost: 10
+  CostRegen: 1
+  AttackPower: 24
+  CriticalChance: 0.2
   CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     Rarity: 0
     BaseStats: []
     AppliedPassives: []
-  _basicSpeed: 3
+  _basicSpeed: 4
   moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!114 &7871632384733674907

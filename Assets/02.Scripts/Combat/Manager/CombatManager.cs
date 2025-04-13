@@ -2,8 +2,8 @@
 using System.Linq;
 using Jun;
 using MoreMountains.Feedbacks;
+using Portrait;
 using UnityEngine;
-
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -57,6 +57,7 @@ public class CombatManager : MonoBehaviour
     {
         SpawnPlayer();
         UI_Battle.Instance.HideBattleUI();
+        UI_Battle.Instance.HideEnemyHealthIndicator();
 
         // MapManager.Instance.OnMapNodeChanged += InitializeCombat;
         Debug.Log("Battle Scene Start");
@@ -69,14 +70,16 @@ public class CombatManager : MonoBehaviour
     public void SpawnPlayer()
     {
         List<GameObject> players = GameManager.Instance.Characters;
+        List<CharacterStat> characterStats = GameManager.Instance.CharacterStats;
         for (int i = 0; i < players.Count; i++)
         {
             GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
             PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
-
+            player.ApplyStat(characterStats[i].MaxHealth, characterStats[i].MaxMana, characterStats[i].AttackPower, characterStats[i].Speed);
+            
             player.Index = i;
             PlayableCharacter.Add(player);
-            
+            UI_Battle.Instance.PartyHealthIndicator.Initialize(player);
         }
     }
 
@@ -92,14 +95,11 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
-        foreach (PlayableCharacter character in PlayableCharacter)
-        {
-            UI_Battle.Instance.BattleUI[character.Index].Initialize(character);
-        }
         OpenMapButton.SetActive(false);
         TurnOrder.Clear();
         _isInputBlocked = false;
 
+        UI_Battle.Instance.ShowPartyHealthIndicator();
         foreach (PlayableCharacter character in PlayableCharacter)
         {
             if (character.IsAlive == false)
@@ -108,12 +108,17 @@ public class CombatManager : MonoBehaviour
                 continue;
             }
             character.CurrentSpeed = character.BasicSpeed;
+            UI_Battle.Instance.BattleUI[character.Index].Initialize(character);
+            UI_Battle.Instance.PartyHealthIndicator.RefreshHealth(character);
             TurnOrder.Add(character);
         }
 
+        UI_Battle.Instance.EnemyHealthIndicator.Initialize(Monsters);
+        UI_Battle.Instance.ShowEnemyHealthIndicator();
         foreach (EnemyCharacter monster in Monsters)
         {
             monster.CurrentSpeed = monster.BasicSpeed;
+            UI_Battle.Instance.EnemyHealthIndicator.RefreshHealth(monster);
             TurnOrder.Add(monster);
         }
 
@@ -297,7 +302,6 @@ public class CombatManager : MonoBehaviour
         ITurnActor unit = TurnOrder[0];
         //GameObject gameObject = (unit as MonoBehaviour)?.gameObject;
         TurnOrder.RemoveAt(0);
-
         unit.StartTurn();
         // UI에 CurrentCharacter에 대한 정보 표시 추가
     }
@@ -370,6 +374,7 @@ public class CombatManager : MonoBehaviour
         ResetManager();
         OpenMapButton.SetActive(true);
         UI_Battle.Instance.HideBattleUI();
+        UI_Battle.Instance.HideEnemyHealthIndicator();
 
         return true;
     }
@@ -384,10 +389,14 @@ public class CombatManager : MonoBehaviour
             }
         }
 
+
+
         ResetManager();
         OpenMapButton.SetActive(true);
         Debug.Log("게임 오버");
         UI_Battle.Instance.HideBattleUI();
+        UI_Battle.Instance.HidePartyHealthIndicator();
+        UI_Battle.Instance.HideEnemyHealthIndicator();
         MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;

@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/01.Scenes/SalnomSalTitleMenu.unity.meta
 guid: 5d9a0566467379442b41834c309a8413
+========
+guid: ae9da2fc08c2d5e44b9e864f2efe2dcf
+folderAsset: yes
+>>>>>>>> dd:Assets/Dark_Brown_GUI_kit.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
