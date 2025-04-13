@@ -200,6 +200,7 @@ MonoBehaviour:
   - {fileID: 1224984621166208373, guid: c38e274dc4a0022488a1fcf688df8368, type: 3}
   - {fileID: 3965437476379023291, guid: d2775a06761e4844d912cb6a4dca1579, type: 3}
   - {fileID: 5225353739838878277, guid: f47775a78d76bda478b67e8a8f13514c, type: 3}
+  SkillSound: {fileID: 0}
   _targetType: 0
   _model: {fileID: 94002621548751766}
   _muzzle: {fileID: 0}
@@ -214,7 +215,7 @@ MonoBehaviour:
     Rarity: 0
     BaseStats: []
     AppliedPassives: []
-  _basicSpeed: 12
+  _basicSpeed: 3
   moveDuration: 0.5
   _animator: {fileID: 0}
 --- !u!114 &7518978465051662930

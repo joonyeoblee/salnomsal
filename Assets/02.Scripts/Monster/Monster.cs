@@ -87,7 +87,9 @@ namespace Jun.Monster
         {
             if (!IsMyTurn) return;
             EndTurn();
+            DOTween.KillAll();
             TakeDamage(_damage);
+            
             ReturnToOrigin(() => EndTurn());
         }
 
