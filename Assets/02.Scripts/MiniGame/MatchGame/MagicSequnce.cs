@@ -47,7 +47,10 @@ namespace SeongIl
 
             sequence.Append(Camera.transform.DOMove(new Vector3(0, 2f, -10f), ScaleValue).SetEase(Ease.OutCubic));
             
-            sequence.Append( SubMagicCircle.DOColor(new Color(1,1,1, 1), 0.2f));
+            sequence.Append( SubMagicCircle.DOColor(new Color(1,1,1, 1), 0.2f).OnComplete(() =>
+            {
+                CircleVFX.SetActive(true);
+            }));
             sequence.Append(MainMagicCircle.DOColor(new Color(1,1,1, 1), 0.2f));
             
             sequence.AppendInterval(0.2f);
