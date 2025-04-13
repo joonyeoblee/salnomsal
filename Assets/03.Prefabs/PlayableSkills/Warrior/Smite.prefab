@@ -51,5 +51,5 @@ MonoBehaviour:
   SkillCost: 3
   IsMelee: 1
   HasProjectile: 0
-  SkillSound: {fileID: 8300000, guid: b6c966b918f21c84ebf5c80f6c3386fc, type: 3}
+  SkillSound: {fileID: 8300000, guid: f2b9242b386f9ec448097e5f745a4879, type: 3}
   Multiplier: 1.5
