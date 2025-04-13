@@ -23,6 +23,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public List<Skill> Skills;
 	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
+	public AudioClip SkillSound;
+	private AudioSource _audioSource;
 	public TargetType _targetType;
 	public TargetType TargetType
 	{
@@ -74,6 +76,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OriginPosition = transform.position;
 
 		_animator = GetComponentInChildren<Animator>();
+		_audioSource = GetComponent<AudioSource>();
 
 		ApplyItems();
 		cameraOriginPosition = new Vector3(0, 0, -10);

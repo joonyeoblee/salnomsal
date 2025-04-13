@@ -10,6 +10,9 @@ namespace SeongIl
 {
     public class Parry : MonoBehaviour
     {
+        public AudioSource ParryingSound;
+        public AudioClip ParrySound;
+
         // flash효과
         public Image Flash;
         public GameObject ParryParticles;
@@ -178,6 +181,7 @@ namespace SeongIl
         {
             if (other.CompareTag("Avoid") && IsParried)
             {
+                ParryingSound.PlayOneShot(ParrySound);
                 if (other.TryGetComponent(out SlashChecker parry))
                 {
                     parry.ParriedCheck(); // 성공 체크 확정
