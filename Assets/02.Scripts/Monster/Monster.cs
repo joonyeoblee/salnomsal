@@ -178,55 +178,44 @@ namespace Jun.Monster
                     continue;
                 }
 
-
-                // 죽을 피이면서 미니게임나온 이뮨없을 때
                 if (target.WouldDieFromAttack(_damage) && target.Immune <= 0)
                 {
                     dyingTargets.Add(target);
                 }
-               
             }
 
             foreach (PlayableCharacter dyingTarget in dyingTargets)
             {
                 MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
             }
+
             Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
-            bool anyWillDie = dyingTargets.Count > 0;
+            if (animName != "Attack")
+            {
+                _mana -= decision.Skill.SkillData.SkillCost;
+            }
 
-            Debug.Log("▶ PerformSkillRoutine 실행");
-            Debug.Log(decision.Skill);
-            Debug.Log(decision.Skill.SkillData);
-            _mana -= decision.Skill.SkillData.SkillCost;
-            Debug.Log("🟡 스킬 사용 후 남은 마나: " + _mana);
-            StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
+            StartCoroutine(PerformSkillRoutine(animName, targets, dyingTargets.Count > 0, animName == "Attack"));
         }
-        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+
+        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie, bool isBasicAttack)
         {
-            Debug.Log("PerformSkillRoutine 진입");
-            if (decision.Skill.SkillData.HasProjectile)
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
             {
                 foreach (PlayableCharacter target in targets)
                 {
                     Debug.Log("Skill that has projectile");
                     Vector3 targetPosition = target.Model.transform.position;
                     GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
-                    if (Muzzle == null)
-                    {
-                        _gameObject.transform.position = Model.transform.position;
-                    }else
-                    {
-                        _gameObject.transform.position = Muzzle.position;
-                    }
+                    _gameObject.transform.position = Muzzle != null ? Muzzle.position : Model.transform.position;
                     _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine);
-
                 }
             }
-            
+
             yield return StartCoroutine(WaitForAnimation(animName));
 
-            if (anyWillDie)
+            if (anyWillDie && !isBasicAttack)
             {
                 Time.timeScale = 0.2f;
                 yield return StartCoroutine(MiniGameScenesManager.Instance.Transition.MiniGameTransition());
@@ -240,19 +229,31 @@ namespace Jun.Monster
                 MiniGameScenesManager.Instance.Success += OnSuccess;
                 MiniGameScenesManager.Instance.Fail += OnFail;
                 MiniGameScenesManager.Instance.Parring += OnParrying;
-            } else
+            }
+            else
             {
                 foreach (PlayableCharacter target in targets)
                 {
+                    if (target == null || target.Model == null)
+                        continue;
+
                     target.TakeDamage(_damage);
                     Vector3 position = target.Model.transform.position;
-                    Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
-                    FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+
+                    if (!isBasicAttack && decision?.Skill?.SkillData?.SkillPrefab != null)
+                    {
+                        Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
+                    }
+
+                    if (FloatingTextDisplay.Instance != null)
+                    {
+                        FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+                    }
                 }
-                Debug.Log("공격 완성, 코루틴 실행");
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
+
         IEnumerator WaitForAnimation(string animName)
         {
             yield return null;
