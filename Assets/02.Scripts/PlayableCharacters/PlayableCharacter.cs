@@ -23,7 +23,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public List<Skill> Skills;
 	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
-	public AudioClip SkillSound;
+
 	private AudioSource _audioSource;
 	public TargetType _targetType;
 	public TargetType TargetType
@@ -302,6 +302,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				GameObject _projectile = Instantiate(Projectile);
 				_projectile.transform.position = _muzzle.transform.position;
 				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
+				// _audioSource.clip = Skills[(int)slot].SkillSound;
+				// _audioSource.Play();
 			}
 
 		}
@@ -324,6 +326,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			if (HitEffects.Count > 0)
 			{
 				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+				_audioSource.clip = Skills[(int)slot].SkillSound;
+				_audioSource.Play();
 			}
 
 			Skills[(int)slot].UseSkill(this, target);
@@ -361,17 +365,12 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			_animator.SetTrigger("Hit");
 		}
 	}
-
 	public bool WouldDieFromAttack(Damage damage)
 	{
-		float _copyCurrentHealth = _health;
-		_copyCurrentHealth -= damage.Value;
-		if (_copyCurrentHealth <= 0)
-		{
-			return true;
-		}
-		return false;
+		if (Immune > 0) return false;
+		return (_health - damage.Value) <= 0;
 	}
+	
 
 	public void GetBuff(Buff buff)
 	{

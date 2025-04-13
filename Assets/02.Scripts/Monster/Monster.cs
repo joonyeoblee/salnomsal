@@ -67,7 +67,9 @@ namespace Jun.Monster
         }
         void OnSuccess()
         {
+            Debug.Log("Success");
             if (!IsMyTurn) return;
+            CleanupDyingTargets();
             ReturnToOrigin(() => EndTurn());
             
         }
@@ -75,6 +77,7 @@ namespace Jun.Monster
         // ReSharper disable Unity.PerformanceAnalysis
         void OnFail() 
         {
+            Debug.Log("Fail");
             if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
             {
@@ -85,10 +88,29 @@ namespace Jun.Monster
 
         void OnParrying()
         {
+            Debug.Log("Parrying");
             if (!IsMyTurn) return;
             EndTurn();
+            DOTween.Kill("targetTween");
             TakeDamage(_damage);
+            
+            if(!IsAlive) return;
             ReturnToOrigin(() => EndTurn());
+        }   
+     
+        
+        void CleanupDyingTargets()
+        {
+            if (dyingTargets == null) return;
+
+            foreach (var target in dyingTargets)
+            {
+                if (target != null)
+                {
+                    MiniGameScenesManager.Instance.Success -= target.GetImmune;
+                }
+            }
+            dyingTargets.Clear();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -178,7 +200,7 @@ namespace Jun.Monster
                     continue;
                 }
 
-                if (target.WouldDieFromAttack(_damage) && target.Immune <= 0)
+                if (target.Immune <= 0 && target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
                 }
@@ -230,7 +252,7 @@ namespace Jun.Monster
                 _audioSource.Play();
             }
 
-            if (anyWillDie && !isBasicAttack)
+            if (anyWillDie)
             {
                 Time.timeScale = 0.2f;
                 yield return StartCoroutine(MiniGameScenesManager.Instance.Transition.MiniGameTransition());

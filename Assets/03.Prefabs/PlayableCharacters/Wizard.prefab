@@ -75,7 +75,6 @@ MonoBehaviour:
   - {fileID: 1214733586436350074, guid: eb669994b3d6e2240ad50274670cee04, type: 3}
   - {fileID: 8125278727803230993, guid: 206f6c4a5d282824385dde2df092de71, type: 3}
   - {fileID: 4395552996863364194, guid: c5d0b2df8d553fd4aa95c35aa52161b3, type: 3}
-  SkillSound: {fileID: 0}
   _targetType: 0
   _model: {fileID: 6958749837745241896}
   _muzzle: {fileID: 1437377496613144637}
@@ -234,7 +233,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
