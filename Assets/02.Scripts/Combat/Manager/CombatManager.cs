@@ -153,6 +153,7 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("스킬 선택 취소");
             SelectedSkill = SkillSlot.None;
+            UI_Battle.Instance.BattleUI[CurrentActor.Index].ResetButton();
             return;
         }
 
