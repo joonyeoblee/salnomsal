@@ -20446,12 +20446,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portraits:
   - {fileID: 648504734}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1516275561}
+  - {fileID: 1722528172}
   Statas:
   - {fileID: 880365453}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1531840925}
+  - {fileID: 16691283}
 --- !u!114 &5858100610887780667
 MonoBehaviour:
   m_ObjectHideFlags: 0
