@@ -76,12 +76,14 @@ namespace Jun.Monster
 
         void OnSuccess()
         {
+            if (!IsMyTurn) return;
             CleanupDyingTargets();
             EndTurn();
         }
 
         void OnFail()
         {
+            if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
             {
                 target.TakeDamage(_damage);
@@ -91,6 +93,7 @@ namespace Jun.Monster
 
         void OnParrying()
         {
+            if (!IsMyTurn) return;
             TakeDamage(_damage);
             DOTween.Kill("targetTween");
             EndTurn();
@@ -106,7 +109,7 @@ namespace Jun.Monster
                 {
                     MiniGameScenesManager.Instance.Success -= target.GetImmune;
                 }
-            }
+            } 
             dyingTargets.Clear();
         }
         protected override void Start()
@@ -290,8 +293,7 @@ namespace Jun.Monster
             // Skill 애니메이션이 재생 중일 때 타격 처리
             foreach (PlayableCharacter target in targets)
             {
-                target.TakeDamage(_damage);
-                Vector3 position = target.Model.transform.position;
+              Vector3 position = target.Model.transform.position;
                 Debug.Log("이팩트 생성");
                 Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
                 if (decision.Skill.SkillData.CameraShake)
