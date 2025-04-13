@@ -26,4 +26,5 @@ MonoBehaviour:
   HasProjectile: 1
   SkillPrefab: {fileID: 1224984621166208373, guid: 396989f31f92a2c4da3b0efea022ed40, type: 3}
   ProjectilePrefab: {fileID: 8641558406489116640, guid: 39885ab10ea63ce40816509e063e77fc, type: 3}
+  SkillSound: {fileID: 8300000, guid: cda5bd7defe184574b24aa514add2fa3, type: 3}
   CameraShake: 0

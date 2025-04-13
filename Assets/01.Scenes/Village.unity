@@ -6056,7 +6056,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PortraitPanel: {fileID: 1286249155}
   SpawnPanel: {fileID: 1576804207}
-  ChestInventoryPanel: {fileID: 0}
   ChestImage: {fileID: 2063926389}
   OpenSprite: {fileID: -495438174975639113, guid: 9ebe1d86e56204c459fb23788bf81f92, type: 3}
   ClosedSprite: {fileID: -1027970746234798697, guid: 3e78cdb5b0f5a8041af1037325849f49, type: 3}
@@ -6449,9 +6448,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Teams: []
-  Characters: []
+  Characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   CharacterStats: []
-  PortraitItems: []
+  PortraitItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1043455044
 GameObject:
   m_ObjectHideFlags: 0

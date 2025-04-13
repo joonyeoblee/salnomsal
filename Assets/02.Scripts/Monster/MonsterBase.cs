@@ -21,10 +21,16 @@ namespace Jun.Monster
         protected PlayableCharacter _target;
         public bool IsMyTurn;
 
+        [Header("사운드")]
+        protected AudioSource _audioSource;
+        [SerializeField] protected AudioClip AttackSkillSound;
+        
         protected virtual void Start()
         {
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
+            _audioSource = GetComponent<AudioSource>();
+            
             IsAlive = true;
 
         
