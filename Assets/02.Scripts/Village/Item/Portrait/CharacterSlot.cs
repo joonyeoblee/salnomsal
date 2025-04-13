@@ -18,7 +18,7 @@ namespace Equipment
         [SerializeField] GameObject _itemPrefab;
         CharacterSlotItemData _slotItemData;
         public virtual string SaveKey => "CharacterSlot_" + transform.GetSiblingIndex();
-        void Start()
+        protected virtual void Start()
         {
             Load();
         }

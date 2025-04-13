@@ -155,7 +155,11 @@ namespace SeongIl
 
             Tween moveTween = slash.transform.DOMove(targetPosition, _parrySpeed)
                 .SetEase(Ease.OutCubic)
-                .OnComplete(() => { slash.GetComponent<SlashChecker>()?.MissedCheck(); });
+                .OnComplete(() => {
+                    if (!slash.GetComponent<SlashChecker>()._isParried) {
+                        slash.GetComponent<SlashChecker>()?.MissedCheck();
+                    }
+                });
 
             moveTween.OnUpdate(() =>
             {
@@ -176,6 +180,7 @@ namespace SeongIl
             {
                 if (other.TryGetComponent(out SlashChecker parry))
                 {
+                    parry.ParriedCheck(); // 성공 체크 확정
                     if (parry.IsLastParry)
                     {
                         _isChecked = true;
@@ -186,6 +191,7 @@ namespace SeongIl
                         Destroy(other.gameObject);
                     }
                 }
+
 
                 for (int i = 0; i < ParryAnimation.Length; i++)
                 {
@@ -257,8 +263,10 @@ namespace SeongIl
 
             if (_lastParryCount >= 20)
             {
+                Destroy(GameObject.FindGameObjectWithTag("Avoid")); // 슬래시 정리
                 Success();
             }
+
             else
             {
                 _lastParryCount += 1;

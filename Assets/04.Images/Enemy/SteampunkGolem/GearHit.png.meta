@@ -1,55 +1,94 @@
 fileFormatVersion: 2
-guid: b1a708b2c52674649ac098369b5c925b
+guid: 8f86380acfbcdca48a590df17d969db7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2116638904851366734
-    second: GameStartSword_0
+      213: -5714997647120743320
+    second: GearHit_0
   - first:
-      213: -4252014786892295534
-    second: GameStartSword_1
+      213: 8585403362621575750
+    second: GearHit_1
   - first:
-      213: -7620215930253162546
-    second: GameStartSword_2
+      213: -1609079294949456820
+    second: GearHit_2
   - first:
-      213: -2590256900759943227
-    second: GameStartSword_3
+      213: -3845078933114180832
+    second: GearHit_3
   - first:
-      213: -4133582036787193460
-    second: GameStartSword_4
+      213: 4516952825547405077
+    second: GearHit_4
   - first:
-      213: 3212986126411148098
-    second: GameStartSword_5
+      213: 9014237964562148083
+    second: GearHit_5
   - first:
-      213: 3746117643888161765
-    second: GameStartSword_6
+      213: 250628829369928192
+    second: GearHit_6
   - first:
-      213: 8339839810993218878
-    second: GameStartSword_7
+      213: -5303356839975791514
+    second: GearHit_7
   - first:
-      213: -2866997082717027865
-    second: GameStartSword_8
+      213: 5388387155427596574
+    second: GearHit_8
   - first:
-      213: -6349814378931326953
-    second: GameStartSword_9
+      213: -5620713441604089852
+    second: GearHit_9
   - first:
-      213: 2741195723864225777
-    second: GameStartSword_10
+      213: 5217385283170370990
+    second: GearHit_10
   - first:
-      213: 4658008519697902568
-    second: GameStartSword_11
+      213: -3339713859698670891
+    second: GearHit_11
   - first:
-      213: 5417191210835132428
-    second: GameStartSword_12
+      213: -2835430641836822639
+    second: GearHit_12
   - first:
-      213: 5892346385878418959
-    second: GameStartSword_13
+      213: -5368639099655285659
+    second: GearHit_13
   - first:
-      213: 4544472228988630781
-    second: GameStartSword_14
+      213: 509755183280229798
+    second: GearHit_14
   - first:
-      213: 8858712070290153595
-    second: GameStartSword_15
+      213: 2120340318586228590
+    second: GearHit_15
+  - first:
+      213: 5746395559530992333
+    second: GearHit_16
+  - first:
+      213: 1720713917274261290
+    second: GearHit_17
+  - first:
+      213: -6989100735088736221
+    second: GearHit_18
+  - first:
+      213: -7563310921138570047
+    second: GearHit_19
+  - first:
+      213: 628931155380455143
+    second: GearHit_20
+  - first:
+      213: -2919747724961049807
+    second: GearHit_21
+  - first:
+      213: 2826216231113157261
+    second: GearHit_22
+  - first:
+      213: -4998606500433002660
+    second: GearHit_23
+  - first:
+      213: -1000640427611772985
+    second: GearHit_24
+  - first:
+      213: -2585294170221760162
+    second: GearHit_25
+  - first:
+      213: -4805677296051930955
+    second: GearHit_26
+  - first:
+      213: 3392894075608866992
+    second: GearHit_27
+  - first:
+      213: -4234686756182725651
+    second: GearHit_28
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +135,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -146,7 +185,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -159,7 +198,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -171,13 +210,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameStartSword_0
+      name: GearHit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4300799edfcf5d10800000000000000
-      internalID: 2116638904851366734
+      spriteID: 864cc275bef30b0b0800000000000000
+      internalID: -5714997647120743320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameStartSword_1
+      name: GearHit_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2929397541fcdf4c0800000000000000
-      internalID: -4252014786892295534
+      spriteID: 642d082feda752770800000000000000
+      internalID: 8585403362621575750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameStartSword_2
+      name: GearHit_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 192
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,20 +269,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec7cc7d2cfd8f3690800000000000000
-      internalID: -7620215930253162546
+      spriteID: c440a1118e66ba9e0800000000000000
+      internalID: -1609079294949456820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameStartSword_3
+      name: GearHit_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b246a151983aac0800000000000000
+      internalID: -3845078933114180832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GearHit_4
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c70331921f8d0cd0800000000000000
-      internalID: -2590256900759943227
+      spriteID: 51733f9b9a07fae30800000000000000
+      internalID: 4516952825547405077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameStartSword_4
+      name: GearHit_5
       rect:
         serializedVersion: 2
-        x: 512
+        x: 480
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,20 +335,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c891d57c90192a6c0800000000000000
-      internalID: -4133582036787193460
+      spriteID: 3fa21965ba1091d70800000000000000
+      internalID: 9014237964562148083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameStartSword_5
+      name: GearHit_6
       rect:
         serializedVersion: 2
-        x: 640
+        x: 576
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,20 +357,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24baefcdbd1d69c20800000000000000
-      internalID: 3212986126411148098
+      spriteID: 00a0119a7996a7300800000000000000
+      internalID: 250628829369928192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameStartSword_6
+      name: GearHit_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664da1c6d01b666b0800000000000000
+      internalID: -5303356839975791514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GearHit_8
       rect:
         serializedVersion: 2
         x: 768
         y: 0
-        width: 128
-        height: 128
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,140 +401,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e3f6ca3622ecf330800000000000000
-      internalID: 3746117643888161765
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e3569e92f101db370800000000000000
-      internalID: 8339839810993218878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_8
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7e10290e7516638d0800000000000000
-      internalID: -2866997082717027865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_9
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7107122177de0e7a0800000000000000
-      internalID: -6349814378931326953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_10
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f73fb4ccfeaa0620800000000000000
-      internalID: 2741195723864225777
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_11
-      rect:
-        serializedVersion: 2
-        x: 1408
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8eb2659c11294a040800000000000000
-      internalID: 4658008519697902568
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GameStartSword_12
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c00423a64babd2b40800000000000000
-      internalID: 5417191210835132428
+      spriteID: e191a87a19567ca40800000000000000
+      internalID: 5388387155427596574
       vertices: []
       indices: 
       edges: []
@@ -460,7 +411,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5a227d69d5a7c6249985fe5d01f324e3
+    spriteID: 4f1afc581191ae24588ac8156f0e3f79
     internalID: 0
     vertices: []
     indices: 
@@ -470,19 +421,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GameStartSword_0: 2116638904851366734
-      GameStartSword_1: -4252014786892295534
-      GameStartSword_10: 2741195723864225777
-      GameStartSword_11: 4658008519697902568
-      GameStartSword_12: 5417191210835132428
-      GameStartSword_2: -7620215930253162546
-      GameStartSword_3: -2590256900759943227
-      GameStartSword_4: -4133582036787193460
-      GameStartSword_5: 3212986126411148098
-      GameStartSword_6: 3746117643888161765
-      GameStartSword_7: 8339839810993218878
-      GameStartSword_8: -2866997082717027865
-      GameStartSword_9: -6349814378931326953
+      GearHit_0: -5714997647120743320
+      GearHit_1: 8585403362621575750
+      GearHit_2: -1609079294949456820
+      GearHit_3: -3845078933114180832
+      GearHit_4: 4516952825547405077
+      GearHit_5: 9014237964562148083
+      GearHit_6: 250628829369928192
+      GearHit_7: -5303356839975791514
+      GearHit_8: 5388387155427596574
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

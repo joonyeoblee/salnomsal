@@ -196,6 +196,7 @@ namespace Jun.Monster
             bool anyWillDie = dyingTargets.Count > 0;
 
             Debug.Log("▶ PerformSkillRoutine 실행");
+            _mana -= decision.Skill.SkillData.SkillCost;
             StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
         }
         IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)

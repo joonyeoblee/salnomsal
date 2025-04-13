@@ -85,21 +85,23 @@ MonoBehaviour:
   _model: {fileID: 8535726500394494406}
   DamageType: 0
   Index: 0
-  MaxHealth: 0
-  MaxMana: 0
-  AttackPower: 0
-  CriticalChance: 0
-  CriticalDamage: 0
+  MaxHealth: 100
+  MaxMana: 5
+  AttackPower: 25
+  CriticalChance: 1.2
+  CriticalDamage: 2
   Resistance: 0
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 0
+  _basicSpeed: 5
   _animator: {fileID: 0}
   IsMyTurn: 0
   moveDuration: 0.5
   Muzzle: {fileID: 7489951492550986259}
-  conditionGroups: []
+  conditionGroups:
+  - conditions: []
+  - conditions: []
 --- !u!114 &244337981957532165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +130,6 @@ MonoBehaviour:
   skillDataList:
   - {fileID: 11400000, guid: 1f1ec8cc89468be4caa98a9d0e4f17f1, type: 2}
   - {fileID: 11400000, guid: 6d0e7e10bc1935b4588cf129ddae089b, type: 2}
-  - {fileID: 11400000, guid: a8b248e7817bd4d9ca061f3225fd4a59, type: 2}
 --- !u!114 &4624663440339902101
 MonoBehaviour:
   m_ObjectHideFlags: 0

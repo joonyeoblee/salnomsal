@@ -17,10 +17,10 @@ MonoBehaviour:
   SkillCost: 0
   SkillMultiplier: 0
   Duration: 0
-  Priority: 0
+  Priority: 4
   DamageType: 0
   SkillType: 0
-  SkillRange: 0
+  SkillRange: 1
   SkillTarget: 0
   IsMelee: 0
   HasProjectile: 1

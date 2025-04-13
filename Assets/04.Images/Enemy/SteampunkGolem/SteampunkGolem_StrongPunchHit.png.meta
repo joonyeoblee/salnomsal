@@ -1,28 +1,25 @@
 fileFormatVersion: 2
-guid: 2fbeb994446d2d348bfb8088f23e402e
+guid: 6a53905520bf86843809d473fa3d0486
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3790508553996604118
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_0"
+      213: 2027436504086764609
+    second: SteampunkGolem_StrongPunchHit_0
   - first:
-      213: -8427779083065797764
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_1"
+      213: -1993800519213174281
+    second: SteampunkGolem_StrongPunchHit_1
   - first:
-      213: 7348252381453981655
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_2"
+      213: 8544446152346844483
+    second: SteampunkGolem_StrongPunchHit_2
   - first:
-      213: -319189042376888765
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_3"
+      213: -4580008380387187766
+    second: SteampunkGolem_StrongPunchHit_3
   - first:
-      213: 8261493314793392632
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_4"
+      213: -246796328677096233
+    second: SteampunkGolem_StrongPunchHit_4
   - first:
-      213: -8865321773375536103
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_5"
-  - first:
-      213: 2283632590686872131
-    second: "ChatGPT Image 2025\uB144 4\uC6D4 10\uC77C \uC624\uD6C4 12_37_14-Sheet_6"
+      213: 8871550734628328961
+    second: SteampunkGolem_StrongPunchHit_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -69,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 85
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,7 +116,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,7 +129,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -144,79 +141,145 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StartFire_0
+      name: SteampunkGolem_StrongPunchHit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 500
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e5ef27c8bac5d854c9fa99c1ca570c2f
-      internalID: 349996989
+      spriteID: 14c50c632c6e22c10800000000000000
+      internalID: 2027436504086764609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StartFire_1
+      name: SteampunkGolem_StrongPunchHit_1
       rect:
         serializedVersion: 2
-        x: 500
+        x: 96
         y: 0
-        width: 500
-        height: 500
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0695c92d1a117304ca876f13976154f3
-      internalID: -1695929324
+      spriteID: 7f13f4bcdf89454e0800000000000000
+      internalID: -1993800519213174281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StartFire_2
+      name: SteampunkGolem_StrongPunchHit_2
       rect:
         serializedVersion: 2
-        x: 1000
+        x: 192
         y: 0
-        width: 500
-        height: 500
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 59ef9b3fbb4e9814fb7c11355d036016
-      internalID: 671513388
+      spriteID: 34d36115188f39670800000000000000
+      internalID: 8544446152346844483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StartFire_3
+      name: SteampunkGolem_StrongPunchHit_3
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 288
         y: 0
-        width: 500
-        height: 500
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac3a5bad4aa8070c0800000000000000
+      internalID: -4580008380387187766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SteampunkGolem_StrongPunchHit_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4c451fb04339cf0800000000000000
+      internalID: -246796328677096233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SteampunkGolem_StrongPunchHit_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1069060c3641e1b70800000000000000
+      internalID: 8871550734628328961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SteampunkGolem_StrongPunchHit_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,8 +288,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96172f034572b9b4bb09141498c74dee
-      internalID: -1313655113
+      spriteID: d9785d5d93b3d8d4fb3619abd286ccf9
+      internalID: -1717354914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SteampunkGolem_StrongPunchHit_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e193cc4d3ae7b4182e1e03ad681336
+      internalID: 1369848868
       vertices: []
       indices: 
       edges: []
@@ -235,7 +320,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1c5e9a88eee65824cb4bebc769098f1d
+    spriteID: d385dcea0a712164e889bb408883051b
     internalID: 0
     vertices: []
     indices: 
@@ -245,10 +330,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StartFire_0: 349996989
-      StartFire_1: -1695929324
-      StartFire_2: 671513388
-      StartFire_3: -1313655113
+      SteampunkGolem_StrongPunchHit_0: 2027436504086764609
+      SteampunkGolem_StrongPunchHit_1: -1993800519213174281
+      SteampunkGolem_StrongPunchHit_2: 8544446152346844483
+      SteampunkGolem_StrongPunchHit_3: -4580008380387187766
+      SteampunkGolem_StrongPunchHit_4: -246796328677096233
+      SteampunkGolem_StrongPunchHit_5: 8871550734628328961
+      SteampunkGolem_StrongPunchHit_6: -1717354914
+      SteampunkGolem_StrongPunchHit_7: 1369848868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
