@@ -48,7 +48,6 @@ namespace Jun.Skill
     {
         public List<Skill> skills;
         public List<SkillDataSO> skillDataList;
-        
         public void SetConditionalPriorities(List<List<Func<Character, int>>> conditionalFuncGroups)
         {
             if (skills == null || skills.Count == 0)

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public enum SkillType
 {
     Attack,
@@ -42,6 +41,8 @@ namespace Jun
         public GameObject SkillPrefab;
         public GameObject ProjectilePrefab;
 
+        public AudioClip SkillSound;
+        
         public bool CameraShake;
     }
 }
