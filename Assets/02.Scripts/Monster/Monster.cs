@@ -67,6 +67,7 @@ namespace Jun.Monster
         }
         void OnSuccess()
         {
+            Debug.Log("Success");
             if (!IsMyTurn) return;
             CleanupDyingTargets();
             ReturnToOrigin(() => EndTurn());
@@ -76,6 +77,7 @@ namespace Jun.Monster
         // ReSharper disable Unity.PerformanceAnalysis
         void OnFail() 
         {
+            Debug.Log("Fail");
             if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
             {
@@ -86,6 +88,7 @@ namespace Jun.Monster
 
         void OnParrying()
         {
+            Debug.Log("Parrying");
             if (!IsMyTurn) return;
             EndTurn();
             DOTween.Kill("targetTween");
