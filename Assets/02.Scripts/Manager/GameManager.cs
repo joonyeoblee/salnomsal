@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
 using Portrait;
 using Team;
 using UnityEngine;
@@ -21,30 +20,38 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("🟢 GameManager 인스턴스 등록됨");
         }
         else if (Instance != this)
         {
+            Debug.LogWarning("⚠️ 중복 GameManager 감지됨. 파괴됨: " + gameObject.name);
             Destroy(gameObject);
         }
     }
+
     public void Expedition()
     {
-        Characters.Clear();
-        CharacterStats.Clear(); 
+        CharacterStats.Clear();
+        Teams.Clear();
 
-        foreach (TeamSlot slot in TeamSlots)
+        for (var i = 0; i < TeamSlots.Length; i++)
         {
+            TeamSlot slot = TeamSlots[i];
             Teams.Add(slot.SaveKey);
 
             if (slot.currentCharacterPortrait != null)
             {
-                PortraitItem _portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
-                PortraitItems.Add(_portraitItem);
-                GameObject character = _portraitItem.portrait.Character;
+                PortraitItem portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
+                if (PortraitItems.Count <= i)
+                {
+                    PortraitItems.Add(portraitItem);
+                }
+                else
+                {
+                    PortraitItems[i] = portraitItem;
+                }
 
-    
-                Characters.Add(character);
-                CharacterStats.Add(_portraitItem.SaveData.CharacterStat);
+                CharacterStats.Add(portraitItem.SaveData.CharacterStat);
             }
             else
             {
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
 
 
     public void SetBossKill()

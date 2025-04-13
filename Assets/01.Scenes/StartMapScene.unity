@@ -10626,7 +10626,6 @@ GameObject:
   - component: {fileID: 1246968490}
   - component: {fileID: 1246968493}
   - component: {fileID: 1246968492}
-  - component: {fileID: 1246968491}
   m_Layer: 5
   m_Name: ItemSlot Weapon
   m_TagString: Untagged
@@ -10655,22 +10654,6 @@ RectTransform:
   m_AnchoredPosition: {x: -19, y: 30}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1246968491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246968489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DraggedSlot: {fileID: 352537811}
-  currentCharacterPortrait: {fileID: 0}
-  canvas: {fileID: 0}
-  _itemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
 --- !u!114 &1246968492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10904,7 +10887,6 @@ GameObject:
   - component: {fileID: 1305135658}
   - component: {fileID: 1305135661}
   - component: {fileID: 1305135660}
-  - component: {fileID: 1305135659}
   m_Layer: 5
   m_Name: ItemSlot Armor
   m_TagString: Untagged
@@ -10933,22 +10915,6 @@ RectTransform:
   m_AnchoredPosition: {x: 19, y: 30}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1305135659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305135657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DraggedSlot: {fileID: 1852943671}
-  currentCharacterPortrait: {fileID: 0}
-  canvas: {fileID: 0}
-  _itemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
 --- !u!114 &1305135660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14386,10 +14352,10 @@ RectTransform:
   - {fileID: 1246968490}
   m_Father: {fileID: 8359126292692203844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215, y: -330}
-  m_SizeDelta: {x: 170, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860290861
 MonoBehaviour:
@@ -15739,10 +15705,10 @@ RectTransform:
   - {fileID: 1670888809}
   m_Father: {fileID: 8359126292692203844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 615, y: -330}
-  m_SizeDelta: {x: 170, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2005302965
 MonoBehaviour:
@@ -16006,10 +15972,10 @@ RectTransform:
   - {fileID: 695067720}
   m_Father: {fileID: 8359126292692203844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1015, y: -330}
-  m_SizeDelta: {x: 170, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050703090
 MonoBehaviour:
@@ -19956,7 +19922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &4915670883880200864
 CanvasRenderer:
   m_ObjectHideFlags: 0
