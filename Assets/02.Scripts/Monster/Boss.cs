@@ -242,7 +242,7 @@ namespace Jun.Monster
                 _audioSource.Play();
             }
 
-            if (anyWillDie && !isBasicAttack)
+            if (anyWillDie)
             {
                 Time.timeScale = 0.2f;
                 yield return StartCoroutine(MiniGameScenesManager.Instance.Transition.MiniGameTransition());
