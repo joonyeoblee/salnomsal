@@ -12,7 +12,6 @@ namespace Son
         public GameObject PortraitPanel;
         public GameObject SpawnPanel;
         [Header("상자")]
-        public GameObject ChestInventoryPanel;
         public Image ChestImage;
         public Sprite OpenSprite;
         public Sprite ClosedSprite;
@@ -37,7 +36,6 @@ namespace Son
         public void OpenChest()
         {
             Tween.Restart();
-            ChestInventoryPanel.SetActive(true);
             ChestImage.sprite = OpenSprite;
             ExitStageSelectPanelButton.SetActive(true);
         }
@@ -45,7 +43,6 @@ namespace Son
         public void CloseChest()
         {
             Tween.Restart();
-            ChestInventoryPanel.SetActive(false);
             ChestImage.sprite = ClosedSprite;
             StageSelectButton.SetActive(true);
         }

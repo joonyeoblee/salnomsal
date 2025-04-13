@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NUnit.Framework;
 using Portrait;
 using Team;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Characters = new List<GameObject>();
 // GameManager 내부
     public List<CharacterStat> CharacterStats = new List<CharacterStat>();
-
+    public List<PortraitItem> PortraitItems = new List<PortraitItem>();
     public bool BossKill { get; private set; }
 
     void Awake()
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public void Expedition()
     {
         Characters.Clear();
-        CharacterStats.Clear(); // ★ 스탯도 초기화
+        CharacterStats.Clear(); 
 
         foreach (TeamSlot slot in TeamSlots)
         {
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
             if (slot.currentCharacterPortrait != null)
             {
                 PortraitItem _portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
+                PortraitItems.Add(_portraitItem);
                 GameObject character = _portraitItem.portrait.Character;
 
     
