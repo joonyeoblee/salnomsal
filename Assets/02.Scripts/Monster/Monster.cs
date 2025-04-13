@@ -196,18 +196,23 @@ namespace Jun.Monster
             bool anyWillDie = dyingTargets.Count > 0;
 
             Debug.Log("▶ PerformSkillRoutine 실행");
+            Debug.Log(decision.Skill);
+            Debug.Log(decision.Skill.SkillData);
             _mana -= decision.Skill.SkillData.SkillCost;
+            Debug.Log("🟡 스킬 사용 후 남은 마나: " + _mana);
             StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
         }
         IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
         {
+            Debug.Log("PerformSkillRoutine 진입");
             if (decision.Skill.SkillData.HasProjectile)
             {
                 foreach (PlayableCharacter target in targets)
                 {
+                    Debug.Log("Skill that has projectile");
                     Vector3 targetPosition = target.Model.transform.position;
                     GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
-                    if (Muzzle != null)
+                    if (Muzzle == null)
                     {
                         _gameObject.transform.position = Model.transform.position;
                     }else
@@ -244,6 +249,7 @@ namespace Jun.Monster
                     Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
                     FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
                 }
+                Debug.Log("공격 완성, 코루틴 실행");
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
@@ -251,6 +257,7 @@ namespace Jun.Monster
         {
             yield return null;
 
+            Debug.Log(WaitForAnimation(animName));
             AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
             while (!info.IsName(animName))
             {
@@ -258,11 +265,13 @@ namespace Jun.Monster
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
 
+            Debug.Log("애니메이션 시작");
             while (info.normalizedTime < 1f)
             {
                 yield return null;
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
+            Debug.Log("애니메이션 끝");
         }
     }
 }
