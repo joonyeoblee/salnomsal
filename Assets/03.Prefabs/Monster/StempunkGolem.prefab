@@ -102,8 +102,17 @@ MonoBehaviour:
   moveDuration: 0.5
   Muzzle: {fileID: 7489951492550986259}
   conditionGroups:
-  - conditions: []
-  - conditions: []
+  - conditions:
+    - conditionType: 0
+      threshold: 200
+      bonusScore: 20
+  - conditions:
+    - conditionType: 0
+      threshold: 30
+      bonusScore: 30
+    - conditionType: 1
+      threshold: 1
+      bonusScore: 20
 --- !u!114 &244337981957532165
 MonoBehaviour:
   m_ObjectHideFlags: 0
