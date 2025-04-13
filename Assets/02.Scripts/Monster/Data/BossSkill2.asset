@@ -17,7 +17,7 @@ MonoBehaviour:
   SkillCost: 5
   SkillMultiplier: 0.6
   Duration: 0
-  Priority: 1
+  Priority: 10
   DamageType: 0
   SkillType: 0
   SkillRange: 1
