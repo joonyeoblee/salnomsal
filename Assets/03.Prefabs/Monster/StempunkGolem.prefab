@@ -86,7 +86,7 @@ MonoBehaviour:
   _model: {fileID: 8535726500394494406}
   DamageType: 0
   Index: 0
-  MaxHealth: 500
+  MaxHealth: 300
   MaxMana: 10
   AttackPower: 35
   CriticalChance: 0.15

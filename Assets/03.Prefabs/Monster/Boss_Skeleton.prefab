@@ -177,7 +177,7 @@ MonoBehaviour:
   _model: {fileID: 825195105867037386}
   DamageType: 2
   Index: 0
-  MaxHealth: 600
+  MaxHealth: 400
   MaxMana: 15
   AttackPower: 45
   CriticalChance: 0.2
@@ -186,7 +186,7 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 6
+  _basicSpeed: 5
   _animator: {fileID: 0}
   IsMyTurn: 0
   AttackSkillSound: {fileID: 8300000, guid: 9a5498026f725418780d290a08179db2, type: 3}

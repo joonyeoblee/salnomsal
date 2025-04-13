@@ -15,7 +15,7 @@ MonoBehaviour:
   SkillName: "\uAD11\uC5ED\uAE30"
   SkillDescription: "\uAD11\uC5ED\uAE30"
   SkillCost: 5
-  SkillMultiplier: 0.8
+  SkillMultiplier: 0.6
   Duration: 0
   Priority: 1
   DamageType: 0
