@@ -48,8 +48,7 @@ namespace Jun.Skill
     {
         public List<Skill> skills;
         public List<SkillDataSO> skillDataList;
-
-        // ✅ 조건 함수 여러 개 설정하는 구조로 변경
+        
         public void SetConditionalPriorities(List<List<Func<Character, int>>> conditionalFuncGroups)
         {
             if (skills == null || skills.Count == 0)
