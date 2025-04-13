@@ -174,11 +174,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageType: 2
-  MaxHealth: 101
+  MaxHealth: 240
   MaxCost: 10
   CostRegen: 1
-  AttackPower: 24
-  CriticalChance: 0.2
+  AttackPower: 20
+  CriticalChance: 0.15
   CriticalDamage: 1.5
   Resistance: 0
   HasBuff: 0
