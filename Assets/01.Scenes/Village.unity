@@ -6448,7 +6448,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Teams: []
-  Characters: []
+  Characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   CharacterStats: []
   PortraitItems:
   - {fileID: 0}
