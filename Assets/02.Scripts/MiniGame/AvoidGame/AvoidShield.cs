@@ -92,7 +92,7 @@ namespace SeongIl
                 // {
                 //     Camera.main.DOOrthoSize(5f, 0.5f).SetEase(Ease.OutCirc);
                 // }));
-                // ParryingVFXPrefab[0].SetActive(true);
+                 ParryingVFXPrefab[0].SetActive(true);
                 // if (ParryingCount > SuccessCount)
                 // {
                     StartCoroutine(FinishParrying());
