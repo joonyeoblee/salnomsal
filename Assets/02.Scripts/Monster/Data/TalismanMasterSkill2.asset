@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: 
   SkillDescription: 
-  SkillCost: 2
-  SkillMultiplier: 1.2
+  SkillCost: 4
+  SkillMultiplier: 0.6
   Duration: 0
   Priority: 5
   DamageType: 2
