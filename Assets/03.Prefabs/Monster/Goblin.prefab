@@ -101,11 +101,11 @@ MonoBehaviour:
   Muzzle: {fileID: 4723813357352226690}
   conditionGroups:
   - conditions:
-    - conditionType: 3
-      threshold: 20
-      bonusScore: 5
+    - conditionType: 0
+      threshold: 0
+      bonusScore: 4
   - conditions:
-    - conditionType: 1
+    - conditionType: 2
       threshold: 0
       bonusScore: 4
 --- !u!114 &8392510487213373925

@@ -108,7 +108,7 @@ namespace Equipment
         }
 
 
-        void Save()
+        protected virtual void Save()
         {
             if (currentCharacterPortrait != null)
             {
