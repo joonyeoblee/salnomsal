@@ -49,5 +49,7 @@ MonoBehaviour:
   SkillDescription: "\uC801 \uD55C\uBA85\uC5D0\uAC8C \uACF5\uACA9\uB825 250% \uB370\uBBF8\uC9C0\uB97C
     \uC785\uD799\uB2C8\uB2E4."
   SkillCost: 5
-  DamageType: 2
-  Multiplier: 2.5
+  IsMelee: 0
+  HasProjectile: 0
+  SkillSound: {fileID: 8300000, guid: 737b6ac00974a7245affede0e8a89fd5, type: 3}
+  Multiplier: 1.2

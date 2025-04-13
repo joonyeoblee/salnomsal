@@ -23,6 +23,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	public List<Skill> Skills;
 	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
+
+	private AudioSource _audioSource;
 	public TargetType _targetType;
 	public TargetType TargetType
 	{
@@ -74,6 +76,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OriginPosition = transform.position;
 
 		_animator = GetComponentInChildren<Animator>();
+		_audioSource = GetComponent<AudioSource>();
 
 		ApplyItems();
 		cameraOriginPosition = new Vector3(0, 0, -10);
@@ -299,6 +302,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				GameObject _projectile = Instantiate(Projectile);
 				_projectile.transform.position = _muzzle.transform.position;
 				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
+				// _audioSource.clip = Skills[(int)slot].SkillSound;
+				// _audioSource.Play();
 			}
 
 		}
@@ -321,6 +326,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			if (HitEffects.Count > 0)
 			{
 				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+				_audioSource.clip = Skills[(int)slot].SkillSound;
+				_audioSource.Play();
 			}
 
 			Skills[(int)slot].UseSkill(this, target);

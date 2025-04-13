@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: Thrust
   SkillDescription: "\uCC0C\uB974\uAE30"
-  SkillCost: 1
+  SkillCost: 2
   SkillMultiplier: 1.2
   Duration: 0
   Priority: 6

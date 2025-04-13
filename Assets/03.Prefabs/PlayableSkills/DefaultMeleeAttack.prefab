@@ -50,4 +50,6 @@ MonoBehaviour:
     \uC785\uD799\uB2C8\uB2E4."
   SkillCost: 0
   IsMelee: 1
+  HasProjectile: 0
+  SkillSound: {fileID: 8300000, guid: 7fc44992336340f46a5a641936c684cf, type: 3}
   Multiplier: 0.8
