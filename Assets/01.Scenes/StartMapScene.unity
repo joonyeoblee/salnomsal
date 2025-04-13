@@ -1226,7 +1226,7 @@ MonoBehaviour:
   mapRoot: {fileID: 1738114707}
   mapNodePrefab: {fileID: 1645230808179328471, guid: a616e59355e31b94a91d9fac549990f2, type: 3}
   linePrefab: {fileID: 4467709746510553989, guid: b8bd70f13066ed64c901df67c27e950c, type: 3}
-  mapHeight: 3
+  mapHeight: 7
   mapWidth: 3
   nodeSpacingX: 120
   nodeSpacingY: 180
@@ -5330,7 +5330,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6561,6 +6561,14 @@ MonoBehaviour:
   - {fileID: -672569068813456947, guid: 7b04ad33082b60245b0e0013111333b1, type: 3}
   - {fileID: -4118689495681347844, guid: 12edb6a5c073f294594f2f3fabd02970, type: 3}
   BossBackGround: {fileID: 2009138418216532846, guid: b53a3d9a97d6fa84c826fb3db5c9afc0, type: 3}
+  AudioClips:
+  - {fileID: 8300000, guid: 0402a710b16e5dc42998e0e223b7af14, type: 3}
+  - {fileID: 8300000, guid: b78b6d525efad58499475ec6a61bccd5, type: 3}
+  - {fileID: 8300000, guid: ece95df1187550b44b79127c11da4baf, type: 3}
+  - {fileID: 8300000, guid: 30564d1e846ec31469d8e7126db16c2f, type: 3}
+  - {fileID: 8300000, guid: 7c20da22cb1f80e47801602d90e70fb9, type: 3}
+  - {fileID: 8300000, guid: 4af7257faad13204c80aafe4d374f69c, type: 3}
+  AudioSource: {fileID: 582446278}
 --- !u!1 &762520279
 GameObject:
   m_ObjectHideFlags: 0
@@ -23073,6 +23081,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 543938536}
   - {fileID: 640684806}
   - {fileID: 1077704676}
   - {fileID: 354994344}
@@ -23090,5 +23099,4 @@ SceneRoots:
   - {fileID: 404542565}
   - {fileID: 876266633}
   - {fileID: 350578136}
-  - {fileID: 543938536}
   - {fileID: 582446279}
