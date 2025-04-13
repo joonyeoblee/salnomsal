@@ -193,17 +193,17 @@ MonoBehaviour:
   moveDuration: 0.5
   conditionGroups:
   - conditions:
-    - conditionType: 3
-      threshold: 20
-      bonusScore: 5
+    - conditionType: 0
+      threshold: 40
+      bonusScore: 20
+    - conditionType: 1
+      threshold: 1
+      bonusScore: 20
   - conditions:
     - conditionType: 1
-      threshold: 4
-      bonusScore: 5
-  - conditions:
-    - conditionType: 0
-      threshold: 0
-      bonusScore: 5
+      threshold: 1
+      bonusScore: 30
+  - conditions: []
 --- !u!114 &5804043370497695457
 MonoBehaviour:
   m_ObjectHideFlags: 0
