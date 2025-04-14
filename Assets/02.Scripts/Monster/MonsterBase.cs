@@ -182,9 +182,12 @@ namespace Jun.Monster
         {
             return ChooseTarget(_playableCharacters);
         }
-        public void OnDamage()
+        public void OnDestroy()
         {
-            
+            if (IsMyTurn)
+            {
+                EndTurn();
+            }
         }
       
     }
