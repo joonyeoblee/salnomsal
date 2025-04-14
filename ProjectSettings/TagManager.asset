@@ -9,6 +9,7 @@ TagManager:
   - DestroyZone
   - Avoid
   - Warning
+  - Spawner
   layers:
   - Default
   - TransparentFX

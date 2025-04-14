@@ -9671,9 +9671,9 @@ MonoBehaviour:
   HasBuff: 1
   IsDefending: 0
   Taunt: 0
+  Immune: 0
   CharacterName: 
   Index: 0
-  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -9939,9 +9939,9 @@ MonoBehaviour:
   HasBuff: 1
   IsDefending: 0
   Taunt: 0
+  Immune: 0
   CharacterName: 
   Index: 0
-  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []
@@ -11057,8 +11057,8 @@ Camera:
   m_GameObject: {fileID: 1325841078}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.09019608, g: 0.121568635, b: 0.0627451, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -12531,9 +12531,9 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 0
   Taunt: 0
+  Immune: 0
   CharacterName: 
   Index: 0
-  Immune: 0
   Skills: []
   SkillEffects: []
   HitEffects: []

@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/01.Scenes/SalnomSalTitleMenu.unity
+    guid: cc1c4084c57c1a344ba3729de53d04f8
+  - enabled: 1
     path: Assets/01.Scenes/Village.unity
     guid: 10f8d054dfda2014ea1b0e27347fd003
-  - enabled: 1
-    path: Assets/01.Scenes/SalnomSalTitleMenu.unity
-    guid: 5d9a0566467379442b41834c309a8413
   - enabled: 1
     path: Assets/01.Scenes/StartMapScene.unity
     guid: 3fe73f8767cebdd4eb53a474eff1e1fd

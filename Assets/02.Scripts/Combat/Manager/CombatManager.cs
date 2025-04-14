@@ -401,7 +401,7 @@ public class CombatManager : MonoBehaviour
         UI_Battle.Instance.HideBattleUI();
         UI_Battle.Instance.HidePartyHealthIndicator();
         UI_Battle.Instance.HideEnemyHealthIndicator();
-        MiniGameScenesManager.Instance.ChangeScene(SceneIndex.Village);
+        MiniGameScenesManager.Instance.GoHome();
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;
     }
