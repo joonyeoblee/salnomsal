@@ -1074,6 +1074,7 @@ MonoBehaviour:
   MaxTime: 0.6
   IsGameOver: 1
   SuccessCount: 0
+  Icon: {fileID: 281516134}
 --- !u!114 &457283991
 MonoBehaviour:
   m_ObjectHideFlags: 0
