@@ -104,6 +104,24 @@ namespace Jun.Skill
             MonsterBase caster = GetComponent<MonsterBase>();
             List<Skill> availableSkills = GetAvailableSkills(caster);
 
+            // 사용 가능한 스킬이 없으면 기본 공격을 리턴
+            if (availableSkills.Count == 0)
+            {
+                Skill basicAttack = skills.FirstOrDefault(s => s.SkillData.SkillCost == 0);
+                if (basicAttack != null)
+                {
+                    Debug.Log($"[{name}] 마나 부족으로 기본 공격 선택: {basicAttack.SkillData.name}");
+                    return new SkillDecision
+                    {
+                        Skill = basicAttack,
+                        Index = skills.IndexOf(basicAttack)
+                    };
+                }
+
+                Debug.LogWarning($"[{name}] 마나 부족 + 기본 공격 없음");
+                return new SkillDecision { Skill = null, Index = -1 };
+            }
+
             Skill bestSkill = null;
             int bestPriority = int.MinValue;
             int bestIndex = -1;
