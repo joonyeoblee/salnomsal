@@ -152,8 +152,12 @@ namespace Jun.Monster
             if (Character.HasBuff) priority += 5;
             if (Character.IsDefending) priority -= 5;
             if (Character == _lastTarget) priority -= 10;
-          
-            
+            if (Character.Immune > 0)
+            {
+                priority -= 200;
+            }
+
+
             return new TargetCandidate { Character = Character, priority = priority };
         }
 

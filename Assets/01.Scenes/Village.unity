@@ -7541,6 +7541,8 @@ MonoBehaviour:
   BackGround: {fileID: 0}
   BackGroundSprites: []
   BossBackGround: {fileID: 0}
+  AudioClips: []
+  AudioSource: {fileID: 0}
 --- !u!1 &1192576475
 GameObject:
   m_ObjectHideFlags: 0
