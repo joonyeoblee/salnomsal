@@ -64,7 +64,7 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 3
+  _basicSpeed: 4
   _animator: {fileID: 1450153352839994815}
   IsMyTurn: 0
   AttackSkillSound: {fileID: 8300000, guid: 32af1326bbb2040f5a320ef2367737dd, type: 3}

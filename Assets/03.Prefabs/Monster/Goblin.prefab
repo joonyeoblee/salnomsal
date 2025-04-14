@@ -104,12 +104,12 @@ MonoBehaviour:
   conditionGroups:
   - conditions:
     - conditionType: 0
-      threshold: 0
-      bonusScore: 4
+      threshold: 80
+      bonusScore: 20
   - conditions:
-    - conditionType: 2
-      threshold: 0
-      bonusScore: 4
+    - conditionType: 0
+      threshold: 300
+      bonusScore: 10
 --- !u!114 &8392510487213373925
 MonoBehaviour:
   m_ObjectHideFlags: 0

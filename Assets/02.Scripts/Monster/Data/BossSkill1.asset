@@ -18,13 +18,13 @@ MonoBehaviour:
   SkillMultiplier: 1.4
   Duration: 0
   Priority: 20
-  DamageType: 0
+  DamageType: 1
   SkillType: 0
   SkillRange: 0
   SkillTarget: 0
-  IsMelee: 1
-  HasProjectile: 0
+  IsMelee: 0
+  HasProjectile: 1
   SkillPrefab: {fileID: 1737952119991151647, guid: 039cc9723a34c7b4cb1bf84822707e98, type: 3}
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 6394854142860535907, guid: dbddf1df36092804891e2e2d61270895, type: 3}
   SkillSound: {fileID: 8300000, guid: 000c8121abe544c9abad56c69c5a14e6, type: 3}
   CameraShake: 0
