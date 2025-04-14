@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: "\uAD11\uC5ED\uAE30"
   SkillDescription: "\uAD11\uC5ED\uAE30"
-  SkillCost: 5
+  SkillCost: 4
   SkillMultiplier: 0.8
   Duration: 0
   Priority: 10
