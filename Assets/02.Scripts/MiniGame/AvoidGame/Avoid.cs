@@ -23,6 +23,13 @@ namespace SeongIl
         public bool IsGameOver = false;
         public int SuccessCount = 0;
 
+        public SpriteRenderer Icon;
+
+        void Start()
+        {
+            int index = MiniGameScenesManager.Instance.player.GetComponent<PlayableCharacter>().Index;
+            Icon.sprite = GameManager.Instance.PortraitItems[index].portrait.Icon;
+        }
 
         // 피하기 시작하기
         private void Update()
