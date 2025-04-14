@@ -48,7 +48,7 @@ MonoBehaviour:
   SkillName: "\uBC88\uAC1C \uD3ED\uD48D"
   SkillDescription: "\uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825 50% \uAD11\uC5ED
     \uB370\uBBF8\uC9C0\uB97C \uC785\uD799\uB2C8\uB2E4."
-  SkillCost: 3
+  SkillCost: 5
   IsMelee: 0
   HasProjectile: 0
   SkillSound: {fileID: 8300000, guid: 378c80f6200d7434f9ad9c2d83e42816, type: 3}
