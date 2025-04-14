@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class UI_Selector : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -20,5 +20,15 @@ public class UI_Selector : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         _image.sprite = _Orginimage;
+    }
+
+    public void HideButton()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void ShowButton()
+    {
+        gameObject.SetActive(true);
     }
 }

@@ -6629,6 +6629,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c20da22cb1f80e47801602d90e70fb9, type: 3}
   - {fileID: 8300000, guid: 4af7257faad13204c80aafe4d374f69c, type: 3}
   AudioSource: {fileID: 582446278}
+  MapOpenButton: {fileID: 363625690}
 --- !u!1 &762520279
 GameObject:
   m_ObjectHideFlags: 0
@@ -9009,7 +9010,7 @@ MonoBehaviour:
   EnemyAttackPosition: {fileID: 1988561122}
   SelectedSkill: 0
   SpeedIncrementPerTurn: 1
-  OpenMapButton: {fileID: 1075383577}
+  OpenMapButton: {fileID: 363625690}
   SpawnPoint:
   - {fileID: 442782984}
   - {fileID: 784264067}

@@ -27,6 +27,8 @@ namespace Jun.Map
 
         public AudioClip[] AudioClips;
         public AudioSource AudioSource;
+
+        public GameObject MapOpenButton;
  
         void OnEnable()
         {
@@ -56,6 +58,7 @@ namespace Jun.Map
         {
             mapGenerator.ButtonEvent();
             mapGenerator.gameObject.SetActive(false);
+            OnMapNodeChanged += MapOpenButton.GetComponent<UI_Selector>().HideButton;
         }
 
         public void SetCurrentNode(MapNode node)       

@@ -95,7 +95,6 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
-        OpenMapButton.SetActive(false);
         TurnOrder.Clear();
         _isInputBlocked = false;
 
@@ -366,6 +365,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         Debug.Log("전투 종료, 승리");
+        OpenMapButton.SetActive(true);
         
         foreach (PlayableCharacter character in PlayableCharacter)
         {
@@ -373,7 +373,6 @@ public class CombatManager : MonoBehaviour
         }
 
         ResetManager();
-        OpenMapButton.SetActive(true);
         UI_Battle.Instance.HideBattleUI();
         UI_Battle.Instance.HideEnemyHealthIndicator();
 
