@@ -147,10 +147,13 @@ namespace Equipment
             }
         }
 
-        public void DeleteItem()
+        public virtual void DeleteItem()
         {
+            // Destroy(currentCharacterPortrait);
+            // base.DeleteItem();
             if (currentCharacterPortrait != null)
             {
+               
                 currentCharacterPortrait = null; // 참조도 제거
                 Debug.Log($"[Slot {SaveKey}] 아이템 제거됨.");
             }
