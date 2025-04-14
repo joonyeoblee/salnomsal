@@ -83,6 +83,7 @@ namespace Jun.Monster
             {
                 target.TakeDamage(_damage);
             }
+            
             ReturnToOrigin(() => EndTurn());
         }
 
@@ -90,8 +91,6 @@ namespace Jun.Monster
         {
             Debug.Log("Parrying");
             if (!IsMyTurn) return;
-            EndTurn();
-            DOTween.Kill("targetTween");
             TakeDamage(_damage);
             
             if(!IsAlive) return;
