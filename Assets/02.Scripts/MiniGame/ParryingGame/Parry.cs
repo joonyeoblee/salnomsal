@@ -218,6 +218,7 @@ namespace SeongIl
 
             Debug.Log("Fail");
             DOTween.KillAll();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             StartCoroutine(LoadScene());
         }
 
@@ -237,6 +238,7 @@ namespace SeongIl
                 AlreadySuccess = true;
                 Debug.Log("Success");
                 DOTween.KillAll();
+                MiniGameScenesManager.Instance.Success?.Invoke();
                 StartCoroutine(LoadScene());
             }
         }
@@ -253,8 +255,6 @@ namespace SeongIl
         private IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(0.2f);
-
-            MiniGameScenesManager.Instance.Success?.Invoke();
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
 
         }

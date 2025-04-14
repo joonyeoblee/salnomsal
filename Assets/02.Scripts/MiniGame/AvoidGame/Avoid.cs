@@ -47,6 +47,7 @@ namespace SeongIl
             GameStop();
             IsGameOver = true;
             DOTween.KillAll();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             StartCoroutine(LoadScene());
 
         }
@@ -57,6 +58,7 @@ namespace SeongIl
             Debug.Log("Success");
             IsGameOver = true;
             DOTween.KillAll();
+            MiniGameScenesManager.Instance.Success?.Invoke();
             StartCoroutine(LoadScene());
         }
 
@@ -68,6 +70,7 @@ namespace SeongIl
             
             DOTween.KillAll();
             Debug.Log("다 죽임 : 어보이드");
+            MiniGameScenesManager.Instance.Parring?.Invoke();
             StartCoroutine(LoadScene());
         }
 
@@ -81,7 +84,6 @@ namespace SeongIl
         private IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(0.2f);
-            MiniGameScenesManager.Instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }
