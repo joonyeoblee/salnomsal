@@ -206,7 +206,7 @@ namespace SeongIl
         }
 
         // 판정
-        private void Fail()
+        public void Fail()
         {
             if (AlreadyFail)
             {

@@ -267,11 +267,10 @@ namespace Jun.Monster
                     target.TakeDamage(_damage);
                     Vector3 position = target.Model.transform.position;
 
-                    // if (!isBasicAttack && decision?.Skill?.SkillData?.SkillPrefab != null)
-                    // {
-                    //     Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
-                    //     Debug.Log("범인!");
-                    // }
+                    if (!isBasicAttack && decision?.Skill?.SkillData?.SkillPrefab != null)
+                    {
+                        Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
+                    }
 
                     if (FloatingTextDisplay.Instance != null)
                     {
