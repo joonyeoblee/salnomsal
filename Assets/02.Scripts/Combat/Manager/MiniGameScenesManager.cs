@@ -22,6 +22,7 @@ namespace Jun
         public Camera BattleSceneCamera;
         public GameObject player;
         public SceneTransition Transition;
+        public Sprite MonsterModel;
 
         public Action Success;
         public Action Fail;

@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace SeongIl
 {
-
-
     public class MagicSequence : MonoBehaviour
     {
         public GameObject CircleVFX; 

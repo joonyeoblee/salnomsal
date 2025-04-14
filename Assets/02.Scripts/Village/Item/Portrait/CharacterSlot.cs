@@ -32,9 +32,13 @@ namespace Equipment
             currentCharacterPortrait = portraitItem.gameObject;
             currentCharacterPortrait.transform.SetParent(transform);
             currentCharacterPortrait.transform.localPosition = DraggedSlot.localPosition;
+
             portraitItem.MyParent = this;
-            Save();
+            portraitItem.IsInSlot = true;
+
+            Save(); // 저장 호출
         }
+
 
         public void ChangeSlot(PortraitItem newPortraitItem)
         {

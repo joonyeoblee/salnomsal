@@ -3,7 +3,7 @@ using Portrait;
 
 namespace Team
 {
-    public class TeamSlot : CharacterSlot
+    public class TeamSlot : CharacterSlot 
     {
 
         protected override void Start()
@@ -21,6 +21,11 @@ namespace Team
             GameManager.Instance.TeamSlots[transform.GetSiblingIndex()] = this;
             GameManager.Instance.Characters[transform.GetSiblingIndex()] = currentCharacterPortrait.GetComponent<PortraitItem>().portrait.Character;
             GameManager.Instance.PortraitItems[transform.GetSiblingIndex()] = currentCharacterPortrait.GetComponent<PortraitItem>();
+        }
+        public override void DeleteItem()
+        {
+            GameManager.Instance.PortraitItems[transform.GetSiblingIndex()] = null;
+            base.DeleteItem();
         }
 
         public override string SaveKey => $"TeamSlot_{transform.GetSiblingIndex()}";
