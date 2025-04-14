@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  MaxHealth: 240
+  MaxHealth: 200
   MaxMana: 10
   AttackPower: 40
   Speed: 4

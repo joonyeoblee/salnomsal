@@ -329,19 +329,15 @@ namespace Jun.Monster
 
         IEnumerator WaitForAnimation(string animName)
         {
-            yield return null;
+            // animName이 시작될 때까지 대기
+            while (!_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
+                yield return null;
 
-            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
-            while (!info.IsName(animName))
+            // animName이 진행 중일 때만 기다림
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName(animName) &&
+                   _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
             {
                 yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
-            }
-
-            while (info.normalizedTime < 1f)
-            {
-                yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
             }
         }
     }
