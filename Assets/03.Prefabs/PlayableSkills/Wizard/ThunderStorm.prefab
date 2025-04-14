@@ -52,4 +52,4 @@ MonoBehaviour:
   IsMelee: 0
   HasProjectile: 0
   SkillSound: {fileID: 8300000, guid: 378c80f6200d7434f9ad9c2d83e42816, type: 3}
-  Multiplier: 1.1
+  Multiplier: 0.8
