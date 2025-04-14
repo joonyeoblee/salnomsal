@@ -1548,7 +1548,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1906818774}
-  m_Father: {fileID: 1576804208}
+  m_Father: {fileID: 772202795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2067,7 +2067,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 523951153}
-  m_Father: {fileID: 1576804208}
+  m_Father: {fileID: 772202795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3797,7 +3797,7 @@ GameObject:
   - component: {fileID: 565769353}
   m_Layer: 5
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3882,7 +3882,7 @@ MonoBehaviour:
   - {fileID: 1248677391}
   - {fileID: 1387629730}
   - {fileID: 1606917484}
-  SpawnCanvas: {fileID: 1576804207}
+  SpawnCanvas: {fileID: 772202794}
 --- !u!1 &569736796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4840,6 +4840,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747565816}
   m_CullTransparentMesh: 1
+--- !u!1 &772202794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772202795}
+  m_Layer: 5
+  m_Name: SpawnPopUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &772202795
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772202794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 222733444}
+  - {fileID: 951819136}
+  - {fileID: 355948054}
+  m_Father: {fileID: 1576804208}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &802488327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,7 +5676,7 @@ RectTransform:
   m_LocalScale: {x: 1.43, y: 4.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1576804208}
+  m_Father: {fileID: 772202795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5962,7 +6000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PortraitPanel: {fileID: 1286249155}
-  SpawnPanel: {fileID: 1576804207}
+  SpawnPanel: {fileID: 772202794}
   ChestImage: {fileID: 2063926389}
   OpenSprite: {fileID: -495438174975639113, guid: 9ebe1d86e56204c459fb23788bf81f92, type: 3}
   ClosedSprite: {fileID: -1027970746234798697, guid: 3e78cdb5b0f5a8041af1037325849f49, type: 3}
@@ -9982,7 +10020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1576804208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9995,9 +10033,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 222733444}
-  - {fileID: 951819136}
-  - {fileID: 355948054}
+  - {fileID: 772202795}
   m_Father: {fileID: 987695835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16347924, y: 0.24655621}
@@ -13668,7 +13704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DraggedSlot: {fileID: 8031704542500181809}
-  currentCharacterPortrait: {fileID: 0}
+  currentCharacterPortrait: {fileID: 178829182023228201}
   canvas: {fileID: 987695834}
   _itemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
 --- !u!1 &1319775655064945997
@@ -14518,7 +14554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DraggedSlot: {fileID: 2968413419905412536}
-  currentCharacterPortrait: {fileID: 0}
+  currentCharacterPortrait: {fileID: 1319775655064945997}
   canvas: {fileID: 987695834}
   _itemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
 --- !u!114 &8025472287932667675
@@ -14606,7 +14642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DraggedSlot: {fileID: 7157313101751059568}
-  currentCharacterPortrait: {fileID: 0}
+  currentCharacterPortrait: {fileID: 2176893091716550327}
   canvas: {fileID: 987695834}
   _itemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
 --- !u!1 &9038367828619630333

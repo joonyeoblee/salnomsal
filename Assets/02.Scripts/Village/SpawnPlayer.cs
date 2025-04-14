@@ -13,6 +13,11 @@ public class SpawnPlayer : MonoBehaviour, IPointerClickHandler
     public SpawnSlot[] spawnSlot;
 
     public GameObject SpawnCanvas;
+
+    void Awake()
+    {
+        Spawn();
+    }
     public void Spawn()
     {
         for (int i = 0; i < spawnSlot.Length; i++)
