@@ -10,6 +10,9 @@ namespace TitleMenu
         public Tween Tween;
 
         public Image FadeImage;
+        public AudioSource AudioSource;
+        public AudioClip Button;
+
 
         public void Awake()
         {
@@ -43,6 +46,11 @@ namespace TitleMenu
         {
             Tween.Restart();
             Application.Quit();
+        }
+
+        public void ClickSound()
+        {
+            AudioSource.PlayOneShot(Button);
         }
     }
 }

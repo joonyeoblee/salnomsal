@@ -15,7 +15,8 @@ namespace Jun.Monster
         public float moveDuration = 0.5f;
         private List<PlayableCharacter> dyingTargets;
         public List<SkillConditionGroup> conditionGroups;
-
+        public Transform Muzzle;
+        
         public List<List<Func<Character, int>>> BuildConditionFunctions()
         {
             var result = new List<List<Func<Character, int>>>();
@@ -75,11 +76,14 @@ namespace Jun.Monster
 
         void OnSuccess()
         {
+            if (!IsMyTurn) return;
+            CleanupDyingTargets();
             EndTurn();
         }
 
         void OnFail()
         {
+            if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
             {
                 target.TakeDamage(_damage);
@@ -89,8 +93,24 @@ namespace Jun.Monster
 
         void OnParrying()
         {
+            if (!IsMyTurn) return;
             TakeDamage(_damage);
+            DOTween.Kill("targetTween");
             EndTurn();
+        }
+        
+        void CleanupDyingTargets()
+        {
+            if (dyingTargets == null) return;
+
+            foreach (var target in dyingTargets)
+            {
+                if (target != null)
+                {
+                    MiniGameScenesManager.Instance.Success -= target.GetImmune;
+                }
+            } 
+            dyingTargets.Clear();
         }
         protected override void Start()
         {
@@ -188,12 +208,39 @@ namespace Jun.Monster
             bool anyWillDie = dyingTargets.Count > 0;
 
             Debug.Log("▶ PerformSkillRoutine 실행");
-            StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
+            StartCoroutine(PerformSkillRoutine(animName, targets, dyingTargets.Count > 0, animName == "Attack"));
         }
 
-        private IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie, bool isBasicAttack)
         {
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
+            {
+                foreach (PlayableCharacter target in targets)
+                {
+                    Vector3 targetPosition = target.Model.transform.position;
+                    GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
+                    _gameObject.transform.position = Muzzle != null ? Muzzle.position : Model.transform.position;
+                    _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine).SetId("targetTween");
+                }
+            }
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
+            {
+                _audioSource.clip = decision.Skill.SkillData.SkillSound;
+                _audioSource.Play();
+            }
+           
             yield return StartCoroutine(WaitForAnimation(animName));
+
+            if (!isBasicAttack && decision.Skill.SkillData.IsMelee)
+            {
+                _audioSource.clip = decision.Skill.SkillData.SkillSound;
+                _audioSource.Play();
+            }
+            else
+            {
+                _audioSource.clip = AttackSkillSound;
+                _audioSource.Play();
+            }
 
             if (anyWillDie)
             {
@@ -209,8 +256,28 @@ namespace Jun.Monster
                 MiniGameScenesManager.Instance.Success += OnSuccess;
                 MiniGameScenesManager.Instance.Fail += OnFail;
                 MiniGameScenesManager.Instance.Parring += OnParrying;
-            } else
+            }
+            else
             {
+                foreach (PlayableCharacter target in targets)
+                {
+                    if (target == null || target.Model == null)
+                        continue;
+
+                    target.TakeDamage(_damage);
+                    Vector3 position = target.Model.transform.position;
+
+                    if (!isBasicAttack && decision?.Skill?.SkillData?.SkillPrefab != null)
+                    {
+                        Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
+                    }
+
+                    if (FloatingTextDisplay.Instance != null)
+                    {
+                        FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+                    }
+                }
+
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
@@ -226,8 +293,7 @@ namespace Jun.Monster
             // Skill 애니메이션이 재생 중일 때 타격 처리
             foreach (PlayableCharacter target in targets)
             {
-                target.TakeDamage(_damage);
-                Vector3 position = target.Model.transform.position;
+              Vector3 position = target.Model.transform.position;
                 Debug.Log("이팩트 생성");
                 Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
                 if (decision.Skill.SkillData.CameraShake)

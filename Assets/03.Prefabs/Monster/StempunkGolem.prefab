@@ -86,7 +86,7 @@ MonoBehaviour:
   _model: {fileID: 8535726500394494406}
   DamageType: 0
   Index: 0
-  MaxHealth: 500
+  MaxHealth: 300
   MaxMana: 10
   AttackPower: 35
   CriticalChance: 0.15
@@ -95,15 +95,24 @@ MonoBehaviour:
   HasBuff: 0
   IsDefending: 0
   _targetType: 1
-  _basicSpeed: 5
+  _basicSpeed: 6
   _animator: {fileID: 0}
   IsMyTurn: 0
   AttackSkillSound: {fileID: 8300000, guid: e81fb39f6ec3d4aa79f65f7ba36fc18d, type: 3}
   moveDuration: 0.5
   Muzzle: {fileID: 7489951492550986259}
   conditionGroups:
-  - conditions: []
-  - conditions: []
+  - conditions:
+    - conditionType: 0
+      threshold: 200
+      bonusScore: 20
+  - conditions:
+    - conditionType: 0
+      threshold: 30
+      bonusScore: 30
+    - conditionType: 1
+      threshold: 1
+      bonusScore: 20
 --- !u!114 &244337981957532165
 MonoBehaviour:
   m_ObjectHideFlags: 0
