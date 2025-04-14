@@ -6,8 +6,8 @@ using Debug = UnityEngine.Debug;
 
 public enum SceneIndex
 {
-    Village,
     TitleScene,
+    Village,
     StartMapScene,
     MiniGameMagic,
     MiniGameRanged,

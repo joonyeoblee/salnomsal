@@ -20,7 +20,10 @@ namespace Equipment
         public virtual string SaveKey => "CharacterSlot_" + transform.GetSiblingIndex();
         protected virtual void Start()
         {
-            Load();
+            if (currentCharacterPortrait == null)
+            {
+                Load();
+            }
         }
         public void SetItem(PortraitItem portraitItem)
         {

@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("⚠️ 중복 GameManager 감지됨. 파괴됨: " + gameObject.name);
             Destroy(gameObject);
         }
+        
+        
     }
 
     public void Expedition()
