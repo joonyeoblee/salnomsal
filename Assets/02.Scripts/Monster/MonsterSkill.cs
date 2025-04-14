@@ -11,7 +11,8 @@ namespace Jun.Skill
         LowHealth, // 체력이 낮을 때
         HasBuff, // 버프 있을 때
         IsDefending, // 방어 중일 때
-        HealthBelowX // 체력이 X 이하면
+        HealthBelowX, // 체력이 X 이하면
+        HasImmune
     }
 
 

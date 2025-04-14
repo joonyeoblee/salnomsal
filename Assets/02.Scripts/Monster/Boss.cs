@@ -48,6 +48,8 @@ namespace Jun.Monster
                     return target.IsDefending ? condition.bonusScore : 0;
                 case ConditionType.HealthBelowX:
                     return target.CurrentHealth < condition.threshold ? condition.bonusScore : 0;
+                case ConditionType.HasImmune:
+                    return target.Immune > 0 ? condition.bonusScore : 0;
                 default:
                     return 0;
                 }

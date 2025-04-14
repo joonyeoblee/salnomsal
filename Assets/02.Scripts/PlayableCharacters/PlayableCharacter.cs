@@ -19,7 +19,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
 	public int Index;
-	public int Immune;
+	
 	public List<Skill> Skills;
 	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
