@@ -223,6 +223,7 @@ MonoBehaviour:
   IsMyTurn: 0
   AttackSkillSound: {fileID: 8300000, guid: 9a5498026f725418780d290a08179db2, type: 3}
   moveDuration: 0.5
+  Muzzle: {fileID: 3040629207008808342}
   conditionGroups:
   - conditions:
     - conditionType: 0
@@ -239,7 +240,6 @@ MonoBehaviour:
       threshold: 500
       bonusScore: 40
   - conditions: []
-  Muzzle: {fileID: 3040629207008808342}
 --- !u!114 &5804043370497695457
 MonoBehaviour:
   m_ObjectHideFlags: 0
