@@ -145,6 +145,9 @@ public class CombatManager : MonoBehaviour
         if (CurrentActor == null)
         {
             Debug.Log("상대턴 입니다.");
+            UI_Battle.Instance.BattleUI[0].ResetButton();
+            UI_Battle.Instance.BattleUI[1].ResetButton();
+            UI_Battle.Instance.BattleUI[2].ResetButton();
             return;
         }
 
@@ -159,6 +162,7 @@ public class CombatManager : MonoBehaviour
         if (CurrentActor.Skills[(int)slot].SkillCost > CurrentActor.Cost)
         {
             Debug.Log("마나가 부족합니다");
+            UI_Battle.Instance.BattleUI[CurrentActor.Index].ResetButton();
             SelectedSkill = SkillSlot.None;
             return;
         }
