@@ -71,10 +71,17 @@ namespace Jun.Monster
         {
             Debug.Log("Success");
             if (!IsMyTurn) return;
-            CleanupDyingTargets();
-            ReturnToOrigin(() => EndTurn());
 
+            // ✅ 여기서 직접 실행
+            foreach (PlayableCharacter target in dyingTargets)
+            {
+                target.GetImmune();
+            }
+
+            CleanupDyingTargets(); // 이후에 Success -= target.GetImmune 가능
+            ReturnToOrigin(() => EndTurn());
         }
+
 
         // ReSharper disable Unity.PerformanceAnalysis
         void OnFail()
@@ -242,12 +249,7 @@ namespace Jun.Monster
                     dyingTargets.Add(target);
                 }
             }
-
-            foreach (PlayableCharacter dyingTarget in dyingTargets)
-            {
-                MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
-            }
-
+            
             Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
             if (animName != "Attack")

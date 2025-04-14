@@ -180,6 +180,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		// UI로 캐릭터 정보 전송
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 		UI_Battle.Instance.SwitchUI(Index);
+		if (Immune > 0)
+		{
+			Immune--;
+		}
 	}
 
 	public void EndTurn()
