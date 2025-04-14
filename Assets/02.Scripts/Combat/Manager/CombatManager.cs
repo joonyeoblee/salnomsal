@@ -95,7 +95,6 @@ public class CombatManager : MonoBehaviour
         // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
         //     .Select(obj => obj.GetComponent<PlayableCharacter>())
         //     .ToList(); // test
-        OpenMapButton.SetActive(false);
         TurnOrder.Clear();
         _isInputBlocked = false;
 
@@ -146,6 +145,9 @@ public class CombatManager : MonoBehaviour
         if (CurrentActor == null)
         {
             Debug.Log("상대턴 입니다.");
+            UI_Battle.Instance.BattleUI[0].ResetButton();
+            UI_Battle.Instance.BattleUI[1].ResetButton();
+            UI_Battle.Instance.BattleUI[2].ResetButton();
             return;
         }
 
@@ -153,12 +155,14 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("스킬 선택 취소");
             SelectedSkill = SkillSlot.None;
+            UI_Battle.Instance.BattleUI[CurrentActor.Index].ResetButton();
             return;
         }
 
         if (CurrentActor.Skills[(int)slot].SkillCost > CurrentActor.Cost)
         {
             Debug.Log("마나가 부족합니다");
+            UI_Battle.Instance.BattleUI[CurrentActor.Index].ResetButton();
             SelectedSkill = SkillSlot.None;
             return;
         }
@@ -365,6 +369,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         Debug.Log("전투 종료, 승리");
+        OpenMapButton.SetActive(true);
         
         foreach (PlayableCharacter character in PlayableCharacter)
         {
@@ -372,7 +377,6 @@ public class CombatManager : MonoBehaviour
         }
 
         ResetManager();
-        OpenMapButton.SetActive(true);
         UI_Battle.Instance.HideBattleUI();
         UI_Battle.Instance.HideEnemyHealthIndicator();
 

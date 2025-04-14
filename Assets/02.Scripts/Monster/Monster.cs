@@ -228,6 +228,7 @@ namespace Jun.Monster
             {
                 foreach (PlayableCharacter target in targets)
                 {
+                    Debug.Log("Skill that has projectile");
                     Vector3 targetPosition = target.Model.transform.position;
                     GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
                     _gameObject.transform.position = Muzzle != null ? Muzzle.position : Model.transform.position;
@@ -288,7 +289,6 @@ namespace Jun.Monster
                         FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
                     }
                 }
-
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
@@ -297,6 +297,7 @@ namespace Jun.Monster
         {
             yield return null;
 
+            Debug.Log(WaitForAnimation(animName));
             AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
             while (!info.IsName(animName))
             {
@@ -304,11 +305,13 @@ namespace Jun.Monster
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
 
+            Debug.Log("애니메이션 시작");
             while (info.normalizedTime < 1f)
             {
                 yield return null;
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
+            Debug.Log("애니메이션 끝");
         }
     }
 }
