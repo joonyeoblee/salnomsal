@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 310
   MaxMana: 10
-  AttackPower: 2040
+  AttackPower: 30
   Speed: 3
   Character: {fileID: 1205681160861735156, guid: 5c7cb657f59baeb4cb3175bbb73e66e3, type: 3}
   Icon: {fileID: -8180171696930044909, guid: 4d771601d20d5d3428f226ea2ccdfbbe, type: 3}
