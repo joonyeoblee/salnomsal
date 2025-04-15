@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: Thrust
   SkillDescription: "\uCC0C\uB974\uAE30"
-  SkillCost: 1
+  SkillCost: 2
   SkillMultiplier: 1.2
   Duration: 0
   Priority: 6
@@ -26,4 +26,5 @@ MonoBehaviour:
   HasProjectile: 0
   SkillPrefab: {fileID: 1224984621166208373, guid: 396989f31f92a2c4da3b0efea022ed40, type: 3}
   ProjectilePrefab: {fileID: 0}
+  SkillSound: {fileID: 8300000, guid: 2005e0457db844b409f3c29f71ed1ddc, type: 3}
   CameraShake: 0

@@ -7,6 +7,6 @@ public abstract class Skill : MonoBehaviour
     public int SkillCost;
     public bool IsMelee;
     public bool HasProjectile;
-  
+    public AudioClip SkillSound;
     public abstract void UseSkill(PlayableCharacter user, ITargetable target);
 }

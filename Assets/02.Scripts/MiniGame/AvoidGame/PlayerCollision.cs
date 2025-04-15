@@ -1,7 +1,5 @@
 
 using System;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace SeongIl
@@ -20,6 +18,7 @@ namespace SeongIl
                 return;
             }
             Destroy(other.gameObject);
+            Debug.Log(_hitCount);
             if (_hitCount > 4)
             {
                 GameObject[] warning = GameObject.FindGameObjectsWithTag("Warning");

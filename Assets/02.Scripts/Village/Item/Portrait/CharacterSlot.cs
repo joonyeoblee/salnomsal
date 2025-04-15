@@ -20,7 +20,10 @@ namespace Equipment
         public virtual string SaveKey => "CharacterSlot_" + transform.GetSiblingIndex();
         protected virtual void Start()
         {
-            Load();
+            if (currentCharacterPortrait == null)
+            {
+                Load();
+            }
         }
         public void SetItem(PortraitItem portraitItem)
         {
@@ -29,9 +32,13 @@ namespace Equipment
             currentCharacterPortrait = portraitItem.gameObject;
             currentCharacterPortrait.transform.SetParent(transform);
             currentCharacterPortrait.transform.localPosition = DraggedSlot.localPosition;
+
             portraitItem.MyParent = this;
-            Save();
+            portraitItem.IsInSlot = true;
+
+            Save(); // 저장 호출
         }
+
 
         public void ChangeSlot(PortraitItem newPortraitItem)
         {
@@ -108,7 +115,7 @@ namespace Equipment
         }
 
 
-        void Save()
+        protected virtual void Save()
         {
             if (currentCharacterPortrait != null)
             {
@@ -147,10 +154,13 @@ namespace Equipment
             }
         }
 
-        public void DeleteItem()
+        public virtual void DeleteItem()
         {
+            // Destroy(currentCharacterPortrait);
+            // base.DeleteItem();
             if (currentCharacterPortrait != null)
             {
+               
                 currentCharacterPortrait = null; // 참조도 제거
                 Debug.Log($"[Slot {SaveKey}] 아이템 제거됨.");
             }

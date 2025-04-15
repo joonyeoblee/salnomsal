@@ -6,8 +6,8 @@ using Debug = UnityEngine.Debug;
 
 public enum SceneIndex
 {
-    Village,
     TitleScene,
+    Village,
     StartMapScene,
     MiniGameMagic,
     MiniGameRanged,
@@ -22,11 +22,12 @@ namespace Jun
         public Camera BattleSceneCamera;
         public GameObject player;
         public SceneTransition Transition;
+        public Sprite MonsterModel;
 
         public Action Success;
         public Action Fail;
         public Action Parring;
-
+   
         void OnEnable()
         {
             Success += ChangeCamera;
@@ -59,7 +60,6 @@ namespace Jun
             }
             else
             {
-
                 BattleSceneCamera.cullingMask = -1;
             }
         }
@@ -95,11 +95,18 @@ namespace Jun
         public void ChangeToVillage()
         {
             SceneManager.LoadScene((int)SceneIndex.Village);
+         
         }
         public void ChangeScene(SceneIndex index)
         {
             SceneManager.LoadScene((int)index);
             Transition.IsTransition?.Invoke();
+        }
+
+        public void GoHome()
+        {
+            SceneManager.LoadScene((int)SceneIndex.Village);
+
         }
 
         public void StartMiniGame(DamageType damageType)

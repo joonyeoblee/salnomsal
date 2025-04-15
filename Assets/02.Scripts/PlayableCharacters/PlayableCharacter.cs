@@ -19,10 +19,12 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 {
 	public string CharacterName;
 	public int Index;
-	public int Immune;
+	
 	public List<Skill> Skills;
 	public List<GameObject> SkillEffects;
 	public List<GameObject> HitEffects;
+
+	private AudioSource _audioSource;
 	public TargetType _targetType;
 	public TargetType TargetType
 	{
@@ -74,6 +76,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		OriginPosition = transform.position;
 
 		_animator = GetComponentInChildren<Animator>();
+		_audioSource = GetComponent<AudioSource>();
 
 		ApplyItems();
 		cameraOriginPosition = new Vector3(0, 0, -10);
@@ -177,6 +180,10 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 		// UI로 캐릭터 정보 전송
 		UI_Battle.Instance.BattleUI[Index].Refresh(this);
 		UI_Battle.Instance.SwitchUI(Index);
+		if (Immune > 0)
+		{
+			Immune--;
+		}
 	}
 
 	public void EndTurn()
@@ -299,6 +306,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 				GameObject _projectile = Instantiate(Projectile);
 				_projectile.transform.position = _muzzle.transform.position;
 				_projectile.transform.DOMove(target.Model.transform.position, 0.5f);
+				// _audioSource.clip = Skills[(int)slot].SkillSound;
+				// _audioSource.Play();
 			}
 
 		}
@@ -321,6 +330,8 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			if (HitEffects.Count > 0)
 			{
 				Instantiate(HitEffects[(int)slot], mb.transform.position, mb.transform.rotation);
+				_audioSource.clip = Skills[(int)slot].SkillSound;
+				_audioSource.Play();
 			}
 
 			Skills[(int)slot].UseSkill(this, target);
@@ -358,17 +369,12 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 			_animator.SetTrigger("Hit");
 		}
 	}
-
 	public bool WouldDieFromAttack(Damage damage)
 	{
-		float _copyCurrentHealth = _health;
-		_copyCurrentHealth -= damage.Value;
-		if (_copyCurrentHealth <= 0)
-		{
-			return true;
-		}
-		return false;
+		if (Immune > 0) return false;
+		return (_health - damage.Value) <= 0;
 	}
+	
 
 	public void GetBuff(Buff buff)
 	{

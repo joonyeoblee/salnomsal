@@ -10,6 +10,7 @@ public class UI_Battle : MonoBehaviour
     public PartyHealthIndicator PartyHealthIndicator;
     public EnemyHealthIndicator EnemyHealthIndicator;
 
+    
     private void Awake()
     {
         if (Instance == null)

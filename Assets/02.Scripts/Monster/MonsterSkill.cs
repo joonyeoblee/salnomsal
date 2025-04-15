@@ -11,7 +11,8 @@ namespace Jun.Skill
         LowHealth, // 체력이 낮을 때
         HasBuff, // 버프 있을 때
         IsDefending, // 방어 중일 때
-        HealthBelowX // 체력이 X 이하면
+        HealthBelowX, // 체력이 X 이하면
+        HasImmune
     }
 
 
@@ -48,8 +49,6 @@ namespace Jun.Skill
     {
         public List<Skill> skills;
         public List<SkillDataSO> skillDataList;
-
-        // ✅ 조건 함수 여러 개 설정하는 구조로 변경
         public void SetConditionalPriorities(List<List<Func<Character, int>>> conditionalFuncGroups)
         {
             if (skills == null || skills.Count == 0)
@@ -105,6 +104,24 @@ namespace Jun.Skill
         {
             MonsterBase caster = GetComponent<MonsterBase>();
             List<Skill> availableSkills = GetAvailableSkills(caster);
+
+            // 사용 가능한 스킬이 없으면 기본 공격을 리턴
+            if (availableSkills.Count == 0)
+            {
+                Skill basicAttack = skills.FirstOrDefault(s => s.SkillData.SkillCost == 0);
+                if (basicAttack != null)
+                {
+                    Debug.Log($"[{name}] 마나 부족으로 기본 공격 선택: {basicAttack.SkillData.name}");
+                    return new SkillDecision
+                    {
+                        Skill = basicAttack,
+                        Index = skills.IndexOf(basicAttack)
+                    };
+                }
+
+                Debug.LogWarning($"[{name}] 마나 부족 + 기본 공격 없음");
+                return new SkillDecision { Skill = null, Index = -1 };
+            }
 
             Skill bestSkill = null;
             int bestPriority = int.MinValue;

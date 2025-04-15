@@ -21,10 +21,16 @@ namespace Jun.Monster
         protected PlayableCharacter _target;
         public bool IsMyTurn;
 
+        [Header("사운드")]
+        protected AudioSource _audioSource;
+        [SerializeField] protected AudioClip AttackSkillSound;
+        
         protected virtual void Start()
         {
             _animator = GetComponentInChildren<Animator>();
             _skillComponent = GetComponent<MonsterSkill>();
+            _audioSource = GetComponent<AudioSource>();
+            
             IsAlive = true;
 
         
@@ -146,8 +152,12 @@ namespace Jun.Monster
             if (Character.HasBuff) priority += 5;
             if (Character.IsDefending) priority -= 5;
             if (Character == _lastTarget) priority -= 10;
-          
-            
+            if (Character.Immune > 0)
+            {
+                priority -= 200;
+            }
+
+
             return new TargetCandidate { Character = Character, priority = priority };
         }
 
@@ -168,6 +178,13 @@ namespace Jun.Monster
         public override void EndTurn()
         {
             IsMyTurn = false;
+
+            if (Mana < MaxMana)
+            {
+                Mana++;
+            }
+
+            // Mana = Mana < MaxMana ? ++Mana : MaxMana;
             CombatManager.Instance.EndTurn(this);
             Debug.Log($"{name} EndTurn");
         }
@@ -176,9 +193,12 @@ namespace Jun.Monster
         {
             return ChooseTarget(_playableCharacters);
         }
-        public void OnDamage()
+        public void OnDestroy()
         {
-            
+            if (IsMyTurn)
+            {
+                EndTurn();
+            }
         }
       
     }

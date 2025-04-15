@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d20bf4450eeee4cbd115d18a8d04f9, type: 3}
   m_Name: Priest
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  MaxMana: 20
-  AttackPower: 15
-  Speed: 3
+  MaxHealth: 220
+  MaxMana: 10
+  AttackPower: 25
+  Speed: 4
   Character: {fileID: 6392775077024926136, guid: 0c98af4563d5340448d7251f770ac400, type: 3}
   Icon: {fileID: -4749681873034518491, guid: 04b9e5e8d7053974fab8f7800990ad3c, type: 3}

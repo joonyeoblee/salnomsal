@@ -48,6 +48,8 @@ namespace Jun.Monster
                         return target.IsDefending ? condition.bonusScore : 0;
                     case ConditionType.HealthBelowX:
                         return target.CurrentHealth < condition.threshold ? condition.bonusScore : 0;
+                    case ConditionType.HasImmune:
+                        return target.Immune > 0 ? condition.bonusScore : 0;
                     default:
                         return 0;
                 }
@@ -67,28 +69,56 @@ namespace Jun.Monster
         }
         void OnSuccess()
         {
+            Debug.Log("Success");
             if (!IsMyTurn) return;
+
+            // ✅ 여기서 직접 실행
+            foreach (PlayableCharacter target in dyingTargets)
+            {
+                target.GetImmune();
+            }
+
+            CleanupDyingTargets(); // 이후에 Success -= target.GetImmune 가능
             ReturnToOrigin(() => EndTurn());
-            
         }
+
 
         // ReSharper disable Unity.PerformanceAnalysis
         void OnFail() 
         {
+            Debug.Log("Fail");
             if (!IsMyTurn) return;
             foreach (PlayableCharacter target in targets)
             {
                 target.TakeDamage(_damage);
             }
+            
             ReturnToOrigin(() => EndTurn());
         }
 
         void OnParrying()
         {
+            Debug.Log("Parrying");
             if (!IsMyTurn) return;
-            EndTurn();
             TakeDamage(_damage);
+            
+            if(!IsAlive) return;
             ReturnToOrigin(() => EndTurn());
+        }   
+     
+        
+        void CleanupDyingTargets()
+        {
+            if (dyingTargets == null) return;
+
+            foreach (var target in dyingTargets)
+            {
+                if (target != null)
+                {
+                    MiniGameScenesManager.Instance.Success -= target.GetImmune;
+                }
+            }
+            dyingTargets.Clear();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -178,48 +208,52 @@ namespace Jun.Monster
                     continue;
                 }
 
-
-                // 죽을 피이면서 미니게임나온 이뮨없을 때
-                if (target.WouldDieFromAttack(_damage) && target.Immune <= 0)
+                if (target.Immune <= 0 && target.WouldDieFromAttack(_damage))
                 {
                     dyingTargets.Add(target);
                 }
-               
-            }
-
-            foreach (PlayableCharacter dyingTarget in dyingTargets)
-            {
-                MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
             }
             Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
-            bool anyWillDie = dyingTargets.Count > 0;
+            if (animName != "Attack")
+            {
+                _mana -= decision.Skill.SkillData.SkillCost;
+            }
 
-            Debug.Log("▶ PerformSkillRoutine 실행");
-            _mana -= decision.Skill.SkillData.SkillCost;
-            StartCoroutine(PerformSkillRoutine(animName, targets, anyWillDie));
+            StartCoroutine(PerformSkillRoutine(animName, targets, dyingTargets.Count > 0, animName == "Attack"));
         }
-        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie)
+
+        IEnumerator PerformSkillRoutine(string animName, List<PlayableCharacter> targets, bool anyWillDie, bool isBasicAttack)
         {
-            if (decision.Skill.SkillData.HasProjectile)
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
             {
                 foreach (PlayableCharacter target in targets)
                 {
+                    Debug.Log("Skill that has projectile");
                     Vector3 targetPosition = target.Model.transform.position;
                     GameObject _gameObject = Instantiate(decision.Skill.SkillData.ProjectilePrefab);
-                    if (Muzzle != null)
-                    {
-                        _gameObject.transform.position = Model.transform.position;
-                    }else
-                    {
-                        _gameObject.transform.position = Muzzle.position;
-                    }
+                    _gameObject.transform.position = Muzzle != null ? Muzzle.position : Model.transform.position;
                     _gameObject.transform.DOMove(targetPosition, moveDuration).SetEase(Ease.InOutSine);
-
                 }
             }
-            
+            if (!isBasicAttack && decision.Skill.SkillData.HasProjectile)
+            {
+                _audioSource.clip = decision.Skill.SkillData.SkillSound;
+                _audioSource.Play();
+            }
+           
             yield return StartCoroutine(WaitForAnimation(animName));
+
+            if (!isBasicAttack && decision.Skill.SkillData.IsMelee)
+            {
+                _audioSource.clip = decision.Skill.SkillData.SkillSound;
+                _audioSource.Play();
+            }
+            else
+            {
+                _audioSource.clip = AttackSkillSound;
+                _audioSource.Play();
+            }
 
             if (anyWillDie)
             {
@@ -230,27 +264,42 @@ namespace Jun.Monster
                 yield return new WaitForSeconds(0.3f);
 
                 MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
-
+                MiniGameScenesManager.Instance.MonsterModel = Model.GetComponent<SpriteRenderer>().sprite;
+                    
                 MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
                 MiniGameScenesManager.Instance.Success += OnSuccess;
                 MiniGameScenesManager.Instance.Fail += OnFail;
                 MiniGameScenesManager.Instance.Parring += OnParrying;
-            } else
+            }
+            else
             {
                 foreach (PlayableCharacter target in targets)
                 {
+                    if (target == null || target.Model == null)
+                        continue;
+
                     target.TakeDamage(_damage);
                     Vector3 position = target.Model.transform.position;
-                    Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
-                    FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+
+                    if (!isBasicAttack && decision?.Skill?.SkillData?.SkillPrefab != null)
+                    {
+                        Instantiate(decision.Skill.SkillData.SkillPrefab, position, Quaternion.identity);
+                    }
+
+                    if (FloatingTextDisplay.Instance != null)
+                    {
+                        FloatingTextDisplay.Instance.ShowFloatingText(position, Convert.ToInt32(_damage.Value).ToString(), FloatingTextType.Damage);
+                    }
                 }
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
+
         IEnumerator WaitForAnimation(string animName)
         {
             yield return null;
 
+            Debug.Log(WaitForAnimation(animName));
             AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
             while (!info.IsName(animName))
             {
@@ -258,11 +307,13 @@ namespace Jun.Monster
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
 
+            Debug.Log("애니메이션 시작");
             while (info.normalizedTime < 1f)
             {
                 yield return null;
                 info = _animator.GetCurrentAnimatorStateInfo(0);
             }
+            Debug.Log("애니메이션 끝");
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Equipment;
 using Unity.VisualScripting;
 using JetBrains.Annotations;
+using DG.Tweening;
 
 public class UI_InBattle : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class UI_InBattle : MonoBehaviour
     public Button DefaultAttack;
     public Button Skill1;
     public Button Skill2;
+
+
+    public void OnEnable()
+    {
+        ResetButton();
+    }
 
     public void Initialize(PlayableCharacter character)
     {
@@ -32,6 +39,7 @@ public class UI_InBattle : MonoBehaviour
         HealthBar.Initialize(character.MaxHealth);
         CostBar.Initialize(character.MaxCost);
         Refresh(character);
+        ResetButton();
     }
 
     public void Refresh(PlayableCharacter character)
@@ -56,5 +64,27 @@ public class UI_InBattle : MonoBehaviour
     public void OnClickSkill2()
     {
         CombatManager.Instance.SetSelectedSkill(SkillSlot.Skill2);
+    }
+
+    public void OnClickTween(Button button)
+    {
+        ResetButton();
+
+        Transform buttonTransform = button.transform;
+
+        buttonTransform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => {});
+        Debug.Log(button.name + " clicked");
+    }
+
+    public void ResetButton()
+    {
+        DefaultAttack.transform.DOKill();
+        Skill1.transform.DOKill();
+        Skill2.transform.DOKill();
+
+        DefaultAttack.transform.localScale = Vector3.one;
+        Skill1.transform.localScale = Vector3.one;
+        Skill2.transform.localScale = Vector3.one;
+        Debug.Log("ResetButton");
     }
 }

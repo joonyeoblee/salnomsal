@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: 
   SkillDescription: 
-  SkillCost: 2
-  SkillMultiplier: 1.2
+  SkillCost: 5
+  SkillMultiplier: 0.6
   Duration: 0
   Priority: 5
   DamageType: 2
@@ -26,3 +26,5 @@ MonoBehaviour:
   HasProjectile: 0
   SkillPrefab: {fileID: 1224984621166208373, guid: 396989f31f92a2c4da3b0efea022ed40, type: 3}
   ProjectilePrefab: {fileID: 0}
+  SkillSound: {fileID: 8300000, guid: b0b8d260545db4ded9edad3abb192ee1, type: 3}
+  CameraShake: 0

@@ -14,7 +14,8 @@ public abstract class Character : MonoBehaviour
 	public bool HasBuff;
 	public bool IsDefending;
 	public int Taunt;
-
+	public int Immune;
+	
 	protected float _health;
 	public float CurrentHealth => _health;
 	protected float _cost;

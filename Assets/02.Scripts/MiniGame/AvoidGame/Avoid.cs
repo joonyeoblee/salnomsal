@@ -23,6 +23,13 @@ namespace SeongIl
         public bool IsGameOver = false;
         public int SuccessCount = 0;
 
+        public SpriteRenderer Icon;
+
+        void Start()
+        {
+            int index = MiniGameScenesManager.Instance.player.GetComponent<PlayableCharacter>().Index;
+            Icon.sprite = GameManager.Instance.PortraitItems[index].portrait.Icon;
+        }
 
         // 피하기 시작하기
         private void Update()
@@ -47,6 +54,7 @@ namespace SeongIl
             GameStop();
             IsGameOver = true;
             DOTween.KillAll();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             StartCoroutine(LoadScene());
 
         }
@@ -57,6 +65,7 @@ namespace SeongIl
             Debug.Log("Success");
             IsGameOver = true;
             DOTween.KillAll();
+            MiniGameScenesManager.Instance.Success?.Invoke();
             StartCoroutine(LoadScene());
         }
 
@@ -68,6 +77,7 @@ namespace SeongIl
             
             DOTween.KillAll();
             Debug.Log("다 죽임 : 어보이드");
+            MiniGameScenesManager.Instance.Parring?.Invoke();
             StartCoroutine(LoadScene());
         }
 
@@ -81,7 +91,6 @@ namespace SeongIl
         private IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(0.2f);
-            MiniGameScenesManager.Instance.Parring?.Invoke();
             Scene sceneToUnload = SceneManager.GetSceneAt(1); // 로드된 씬 중 두 번째 (0은 기본 active 씬)
             SceneManager.UnloadSceneAsync(sceneToUnload);
         }

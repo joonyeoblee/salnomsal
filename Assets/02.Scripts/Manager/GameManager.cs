@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Characters = new List<GameObject>();
 // GameManager 내부
     public List<CharacterStat> CharacterStats = new List<CharacterStat>();
-
+    public List<PortraitItem> PortraitItems = new List<PortraitItem>();
     public bool BossKill { get; private set; }
 
     void Awake()
@@ -20,29 +20,40 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("🟢 GameManager 인스턴스 등록됨");
         }
         else if (Instance != this)
         {
+            Debug.LogWarning("⚠️ 중복 GameManager 감지됨. 파괴됨: " + gameObject.name);
             Destroy(gameObject);
         }
+        
+        
     }
+
     public void Expedition()
     {
-        Characters.Clear();
-        CharacterStats.Clear(); // ★ 스탯도 초기화
+        CharacterStats.Clear();
+        Teams.Clear();
 
-        foreach (TeamSlot slot in TeamSlots)
+        for (var i = 0; i < TeamSlots.Length; i++)
         {
+            TeamSlot slot = TeamSlots[i];
             Teams.Add(slot.SaveKey);
 
             if (slot.currentCharacterPortrait != null)
             {
-                PortraitItem _portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
-                GameObject character = _portraitItem.portrait.Character;
+                PortraitItem portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
+                if (PortraitItems.Count <= i)
+                {
+                    PortraitItems.Add(portraitItem);
+                }
+                else
+                {
+                    PortraitItems[i] = portraitItem;
+                }
 
-    
-                Characters.Add(character);
-                CharacterStats.Add(_portraitItem.SaveData.CharacterStat);
+                CharacterStats.Add(portraitItem.SaveData.CharacterStat);
             }
             else
             {
@@ -51,6 +62,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
 
 
     public void SetBossKill()

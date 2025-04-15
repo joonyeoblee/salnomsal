@@ -10,6 +10,9 @@ namespace SeongIl
 {
     public class Parry : MonoBehaviour
     {
+        public AudioSource ParryingSound;
+        public AudioClip ParrySound;
+
         // flash효과
         public Image Flash;
         public GameObject ParryParticles;
@@ -178,6 +181,7 @@ namespace SeongIl
         {
             if (other.CompareTag("Avoid") && IsParried)
             {
+                ParryingSound.PlayOneShot(ParrySound);
                 if (other.TryGetComponent(out SlashChecker parry))
                 {
                     parry.ParriedCheck(); // 성공 체크 확정
@@ -202,7 +206,7 @@ namespace SeongIl
         }
 
         // 판정
-        private void Fail()
+        public void Fail()
         {
             if (AlreadyFail)
             {
@@ -214,6 +218,7 @@ namespace SeongIl
 
             Debug.Log("Fail");
             DOTween.KillAll();
+            MiniGameScenesManager.Instance.Fail?.Invoke();
             StartCoroutine(LoadScene());
         }
 
@@ -233,6 +238,7 @@ namespace SeongIl
                 AlreadySuccess = true;
                 Debug.Log("Success");
                 DOTween.KillAll();
+                MiniGameScenesManager.Instance.Success?.Invoke();
                 StartCoroutine(LoadScene());
             }
         }
@@ -249,8 +255,6 @@ namespace SeongIl
         private IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(0.2f);
-
-            MiniGameScenesManager.Instance.Success?.Invoke();
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
 
         }

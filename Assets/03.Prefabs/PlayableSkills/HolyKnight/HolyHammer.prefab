@@ -47,8 +47,9 @@ MonoBehaviour:
   SkillData: {fileID: 11400000, guid: bb43d43743d13df40912708674367c79, type: 2}
   SkillName: "\uC2E0\uC131\uD55C \uB9DD\uCE58"
   SkillDescription: "\uC801 \uC804\uCCB4\uB97C \uAE30\uC808\uC2DC\uD0B5\uB2C8\uB2E4"
-  SkillCost: 3
+  SkillCost: 7
   IsMelee: 1
   HasProjectile: 0
+  SkillSound: {fileID: 8300000, guid: b7f8695cf65a4f24eb37544298821146, type: 3}
   Multiplier: 0.4
   StunTurn: 1
