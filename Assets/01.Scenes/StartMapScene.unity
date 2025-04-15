@@ -1238,7 +1238,7 @@ MonoBehaviour:
   mapRoot: {fileID: 1738114707}
   mapNodePrefab: {fileID: 1645230808179328471, guid: a616e59355e31b94a91d9fac549990f2, type: 3}
   linePrefab: {fileID: 4467709746510553989, guid: b8bd70f13066ed64c901df67c27e950c, type: 3}
-  mapHeight: 7
+  mapHeight: 2
   mapWidth: 3
   nodeSpacingX: 120
   nodeSpacingY: 180
@@ -1618,6 +1618,7 @@ MonoBehaviour:
   BattleSceneCamera: {fileID: 1325841079}
   player: {fileID: 1187562340}
   Transition: {fileID: 0}
+  MonsterModel: {fileID: 0}
 --- !u!4 &239334839
 Transform:
   m_ObjectHideFlags: 0
@@ -10182,7 +10183,7 @@ MonoBehaviour:
   - {fileID: 7040579665520616671, guid: 95756ca80ef40cb429c29c6522427d25, type: 3}
   - {fileID: 1504712145329594525, guid: 8ee4d7f9991af3f41b405aea92669c18, type: 3}
   EliteMonster: {fileID: 5088683969083430609, guid: 3e487aff18f35f347a6882703250921d, type: 3}
-  BossMonster: {fileID: 8714047611190015271, guid: cf97e2b7968c6d749b51ebf5ef03a3cf, type: 3}
+  BossMonster: {fileID: 8714047611190015271, guid: 1e2bf6119f3e4544f84f2d33b3a78c16, type: 3}
 --- !u!1 &1221638541
 GameObject:
   m_ObjectHideFlags: 0

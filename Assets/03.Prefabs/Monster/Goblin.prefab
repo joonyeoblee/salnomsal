@@ -96,7 +96,6 @@ MonoBehaviour:
   IsDefending: 1
   _targetType: 1
   _basicSpeed: 5
-  _animator: {fileID: 97022630043293041}
   IsMyTurn: 0
   AttackSkillSound: {fileID: 8300000, guid: 2005e0457db844b409f3c29f71ed1ddc, type: 3}
   moveDuration: 0.5

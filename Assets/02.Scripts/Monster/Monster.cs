@@ -153,36 +153,42 @@ namespace Jun.Monster
 
         protected override void Skill1()
         {
-            
             SkillDataSO skill1 = _skillComponent.skillDataList[0];
-
-            if (skill1.SkillType == SkillType.Attack && skill1.IsMelee)
-            {
-                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill1(); });
-            } else
-            {
-                base.Skill1();
-            }
-            float damageAmount = AttackPower * skill1.SkillMultiplier;
-            _damage = new Damage(skill1.DamageType, damageAmount, gameObject);
-            ExecuteAttack(skill1.SkillRange, "Skill1");
+            ExecuteSkillWithMove(skill1, base.Skill1, "Skill1");
         }
 
         protected override void Skill2()
         {
             SkillDataSO skill2 = _skillComponent.skillDataList[1];
+            ExecuteSkillWithMove(skill2, base.Skill2, "Skill2");
+        }
 
-            if (skill2.SkillType == SkillType.Attack && skill2.IsMelee)
+        protected override void Skill3()
+        {
+            SkillDataSO skill3 = _skillComponent.skillDataList[2]; // ⚠️ index가 1로 고정돼 있었는데 순서상 2로 수정
+            ExecuteSkillWithMove(skill3, base.Skill3, "Skill3");
+        }
+
+        protected override void Skill4()
+        {
+            SkillDataSO skill4 = _skillComponent.skillDataList[3]; // ⚠️ index 1 → 3으로 수정
+            ExecuteSkillWithMove(skill4, base.Skill4, "Skill4");
+        }
+        void ExecuteSkillWithMove(SkillDataSO skillData, Action baseSkillAction, string animName)
+        {
+            if (skillData.SkillType == SkillType.Attack && skillData.IsMelee)
             {
-                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill2(); });
+                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() => { baseSkillAction(); });
             } else
             {
-                base.Skill2();
+                baseSkillAction();
             }
-            
-            float damageAmount = AttackPower * skill2.SkillMultiplier;
-            _damage = new Damage(skill2.DamageType, damageAmount, gameObject);
-            ExecuteAttack(skill2.SkillRange, "Skill2");
+
+            float damageAmount = AttackPower * skillData.SkillMultiplier;
+            _damage = new Damage(skillData.DamageType, damageAmount, gameObject);
+            ExecuteAttack(skillData.SkillRange, animName);
         }
         void ExecuteAttack(SkillRange range, string animName)
         {
@@ -294,26 +300,6 @@ namespace Jun.Monster
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
-
-        IEnumerator WaitForAnimation(string animName)
-        {
-            yield return null;
-
-            Debug.Log(WaitForAnimation(animName));
-            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
-            while (!info.IsName(animName))
-            {
-                yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
-            }
-
-            Debug.Log("애니메이션 시작");
-            while (info.normalizedTime < 1f)
-            {
-                yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
-            }
-            Debug.Log("애니메이션 끝");
-        }
+        
     }
 }
