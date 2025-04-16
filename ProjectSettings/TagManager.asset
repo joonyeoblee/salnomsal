@@ -10,7 +10,6 @@ TagManager:
   - Avoid
   - Warning
   - Spawner
-  - Slash
   layers:
   - Default
   - TransparentFX

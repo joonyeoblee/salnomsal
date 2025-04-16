@@ -165,13 +165,13 @@ namespace Jun.Monster
 
         protected override void Skill3()
         {
-            SkillDataSO skill3 = _skillComponent.skillDataList[2];
+            SkillDataSO skill3 = _skillComponent.skillDataList[2]; // ⚠️ index가 1로 고정돼 있었는데 순서상 2로 수정
             ExecuteSkillWithMove(skill3, base.Skill3, "Skill3");
         }
 
         protected override void Skill4()
         {
-            SkillDataSO skill4 = _skillComponent.skillDataList[3];
+            SkillDataSO skill4 = _skillComponent.skillDataList[3]; // ⚠️ index 1 → 3으로 수정
             ExecuteSkillWithMove(skill4, base.Skill4, "Skill4");
         }
         void ExecuteSkillWithMove(SkillDataSO skillData, Action baseSkillAction, string animName)

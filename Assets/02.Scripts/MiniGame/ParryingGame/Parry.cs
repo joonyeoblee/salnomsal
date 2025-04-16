@@ -13,24 +13,38 @@ namespace SeongIl
         public AudioSource ParryingSound;
         public AudioClip ParrySound;
 
+        // flash효과
         public Image Flash;
         public GameObject ParryParticles;
 
         [Header("난이도 설정")]
+        // 패링 타이밍 시간
         [SerializeField]
-        float _parrySpeed;
+        private float _parrySpeed = 0;
+
         [SerializeField] private float _parryInstatiateTime = 0;
         [SerializeField] private int _count = 3;
+
         [SerializeField] private int _distance = 11;
 
+        // 미니게임 시작 여부
         [SerializeField] public bool GameStart = false;
+
+        // 패링 중임? 
         public bool IsParried = false;
+
+        // 실패함?
         public bool AlreadyFail = false;
 
+        // 미니게임 이펙트
         public GameObject SlashEffect;
+
+        // 애니메이션
         public Animator[] ParryAnimation;
+
         public Animator ParryingAnimation;
 
+        // 패링 판단 여부 위치
         private Vector2 _successPosition;
 
         public bool LastParry;
@@ -39,20 +53,23 @@ namespace SeongIl
 
         public int Life;
 
+        // 판정 갯수세기 성공 여부 확인 위함
         private int _parriedCount = 0;
-        int _lastParryCount;
+        int _lastParryCount = 0;
+
         bool _isChecked;
-        bool AlreadySuccess;
 
         private void Start()
         {
             _successPosition = transform.position;
             AlreadyFail = false;
             Flash.DOColor(new Color(0, 0, 0, 0), 2f).OnComplete(() => { GetComponent<ParrySequence>().GamePlay(); });
+
         }
 
         private void Update()
         {
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 FinalAttack();
@@ -76,15 +93,17 @@ namespace SeongIl
             StartCoroutine(ParryCount(_successPosition, _distance));
         }
 
+        // 슬래시 소환 위치 정하기 && 갯수 정하기 
         IEnumerator ParryCount(Vector2 centerPosition, float distance)
         {
             float currentTime = 0f;
 
             for (int i = 0; i < _count; i++)
             {
-                float spawnDelay = Random.Range(0.2f, 0.8f);
+                float spawnDelay = Random.Range(0.2f, 0.8f); // 최소 0.2f 보장
                 currentTime += spawnDelay;
 
+                // 위치 정하기
                 float angle = Random.Range(0f, Mathf.PI * 2);
                 Vector2 pos = new Vector2(centerPosition.x + distance * Mathf.Cos(angle),
                     centerPosition.y + distance * Mathf.Sin(angle));
@@ -92,9 +111,14 @@ namespace SeongIl
 
                 SlashChecker slashCheck = slash.AddComponent<SlashChecker>();
                 slashCheck.Parry = this;
-                slashCheck.IsLastParry = i == _count - 1;
+                if (i == _count - 1)
+                {
+                    slashCheck.IsLastParry = true;
+                }
+
                 slashCheck.StartTime = spawnDelay;
 
+                // 일정 시간 후에 슬래시 작동
                 GameStart = false;
                 yield return new WaitForSeconds(spawnDelay);
 
@@ -106,29 +130,36 @@ namespace SeongIl
         {
             Vector2 currentPosition = slash.transform.position;
             Vector2 oppositePosition = (currentPosition - _successPosition) * -1 + _successPosition;
-            float interval = slash.GetComponent<SlashChecker>().StartTime + 1;
+            float Interval = slash.GetComponent<SlashChecker>().StartTime + 1;
 
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(slash.transform.DOMove(oppositePosition, 0.1f).SetEase(Ease.OutCubic));
-            sequence.AppendInterval(interval);
+
+            // 뒤로 빠짐 (반짝 없음)
+            Tween backTween = slash.transform.DOMove(oppositePosition, 0.1f).SetEase(Ease.OutCubic);
+            sequence.Append(backTween);
+
+            // 대기 시간
+            sequence.AppendInterval(Interval);
+
+            // 반짝 & 이동 시작 (돌아오기)
             sequence.AppendCallback(() => { StartCoroutine(MoveWithParticle(slash, currentPosition)); });
         }
 
+
         IEnumerator MoveWithParticle(GameObject slash, Vector2 targetPosition)
         {
+            // 자식 파티클 가져오기
             ParticleSystem ps = slash.GetComponentInChildren<ParticleSystem>();
             if (ps != null)
             {
-                ps.Play();
-                yield return new WaitForSeconds(ps.main.duration);
+                ps.Play(); // 파티클 재생
+                yield return new WaitForSeconds(ps.main.duration); // 파티클 길이만큼 대기
             }
 
             Tween moveTween = slash.transform.DOMove(targetPosition, _parrySpeed)
                 .SetEase(Ease.OutCubic)
-                .OnComplete(() =>
-                {
-                    if (!slash.GetComponent<SlashChecker>()._isParried)
-                    {
+                .OnComplete(() => {
+                    if (!slash.GetComponent<SlashChecker>()._isParried) {
                         slash.GetComponent<SlashChecker>()?.MissedCheck();
                     }
                 });
@@ -145,21 +176,18 @@ namespace SeongIl
             });
         }
 
+
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("Avoid") && IsParried)
             {
                 ParryingSound.PlayOneShot(ParrySound);
-
                 if (other.TryGetComponent(out SlashChecker parry))
                 {
-                    parry.ParriedCheck();
-
+                    parry.ParriedCheck(); // 성공 체크 확정
                     if (parry.IsLastParry)
                     {
                         _isChecked = true;
-                        Success(); // ✅ 마지막 슬래시도 카운트에 포함
-                        Destroy(other.gameObject);
                     }
                     else
                     {
@@ -168,39 +196,47 @@ namespace SeongIl
                     }
                 }
 
-                foreach (Animator anim in ParryAnimation)
+
+                for (int i = 0; i < ParryAnimation.Length; i++)
                 {
-                    anim.SetTrigger("Parry");
+                    ParryAnimation[i].SetTrigger("Parry");
                 }
+
             }
         }
 
+        // 판정
         public void Fail()
         {
-            if (AlreadyFail) return;
+            if (AlreadyFail)
+            {
+                return;
+            }
 
             Destroy(GameObject.FindGameObjectWithTag("Avoid"));
             AlreadyFail = true;
 
-            Debug.Log("❌ Parry Fail");
+            Debug.Log("Fail");
             DOTween.KillAll();
             MiniGameScenesManager.Instance.Fail?.Invoke();
             StartCoroutine(LoadScene());
         }
 
+        bool AlreadySuccess;
+
         private void Success()
         {
             if (AlreadySuccess) return;
 
-            _parriedCount++;
-            Debug.Log($"🟢 Parry Success Count: {_parriedCount}/{_count}");
+            _parriedCount += 1;
+            Debug.Log("Parried");
 
             if (_parriedCount >= _count)
             {
                 Destroy(GameObject.FindGameObjectWithTag("Avoid"));
-                AlreadySuccess = true;
 
-                Debug.Log("✅ Parry MiniGame Success!");
+                AlreadySuccess = true;
+                Debug.Log("Success");
                 DOTween.KillAll();
                 MiniGameScenesManager.Instance.Success?.Invoke();
                 StartCoroutine(LoadScene());
@@ -213,28 +249,37 @@ namespace SeongIl
             ParryingAnimation.SetTrigger("Parry");
             yield return new WaitForSeconds(0.1f);
             IsParried = false;
+
         }
 
         private IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(0.2f);
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
-        }
 
+        }
         private void FinalAttack()
         {
-            if (!LastParry || AlreadySuccess)
+            if (!LastParry)
+            {
                 return;
-
-            _lastParryCount++;
-
-            Flash.DOColor(new Color(1f, 1f, 1f, _lastParryCount / 20f), 0.1f);
+            }
 
             if (_lastParryCount >= 20)
             {
-                Destroy(GameObject.FindGameObjectWithTag("Avoid"));
-                Success(); // 중복 방지 포함됨
+                Destroy(GameObject.FindGameObjectWithTag("Avoid")); // 슬래시 정리
+                Success();
             }
+
+            else
+            {
+                _lastParryCount += 1;
+                Flash.DOColor(new Color(1f, 1f, 1f, (float)_lastParryCount / 20f), 0.1f);
+
+            }
+
         }
+        
+        
     }
 }
