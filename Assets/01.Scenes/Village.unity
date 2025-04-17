@@ -3874,10 +3874,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portrait: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
   portraits:
-  - {fileID: 11400000, guid: aaad02810c3fc7b4ba97441b3d9ac575, type: 2}
-  - {fileID: 11400000, guid: 7d5b3cd31c5d1b946bb94b1f3be0c634, type: 2}
-  - {fileID: 11400000, guid: 967286c4b4f9bc7468a2b21a7cb0b467, type: 2}
-  - {fileID: 11400000, guid: f78b1e2d8fcaa864991d51dcee51ea79, type: 2}
+  - {fileID: 11400000, guid: 083b12eb1e718974380f7674780102ed, type: 2}
+  - {fileID: 11400000, guid: 06bbdde9820906642b5e05ee4a1a9019, type: 2}
+  - {fileID: 11400000, guid: 2b8a2e6402a314f4aa0fb47cb8366066, type: 2}
+  - {fileID: 11400000, guid: 512f4c178eb82d04aa78916825fae9d3, type: 2}
   spawnSlot:
   - {fileID: 569736801}
   - {fileID: 1248677391}
