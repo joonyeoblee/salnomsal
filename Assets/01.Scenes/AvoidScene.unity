@@ -1072,8 +1072,9 @@ MonoBehaviour:
   ArrowCount: 30
   MinTime: 0.5
   MaxTime: 0.6
-  IsGameOver: 1
   SuccessCount: 0
+  Lives: 3
+  IsGameOver: 1
   Icon: {fileID: 281516134}
 --- !u!114 &457283991
 MonoBehaviour:
@@ -1089,7 +1090,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 173023769}
   BackGround: {fileID: 1401747150}
-  Spawner: {fileID: 457283992}
   Effect:
   - {fileID: 1988810108}
   - {fileID: 1038756099}
@@ -2531,7 +2531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8943408150616195083, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
       propertyPath: lengthInSec
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8943408150616195083, guid: 36cd375b4dbef7e489ba857804d07071, type: 3}
       propertyPath: ringBufferMode
