@@ -18,16 +18,10 @@ namespace SeongIl
         {
             camera = Camera.main;
             Enemy.sprite = EnemySprite;
+            StartCoroutine(Sequence());
             
         }
-
-        private void Update()
-        {
-            if (GameStart)
-            {
-                StartCoroutine(Sequence());
-            }
-        }
+        
         public void GamePlay()
         {
             GameStart = true;
@@ -36,7 +30,6 @@ namespace SeongIl
 
         private IEnumerator Sequence()
         {
-            Refresh();
             Jump.SetActive(true);
             Enemy.enabled = false;
             GameStart = false;
@@ -45,17 +38,6 @@ namespace SeongIl
             Parry.StartGame();
         }
 
-        public void Refresh()
-        {
-            if (Enemy.enabled == false)
-            {
-                
-                ParryZone.enabled = false;
-                Jump.SetActive(false);
-                Enemy.enabled = true;
-            }
-        }
-        
         
     }
 }

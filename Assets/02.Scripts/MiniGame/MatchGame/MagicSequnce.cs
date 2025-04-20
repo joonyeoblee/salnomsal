@@ -11,7 +11,6 @@ namespace SeongIl
         public GameObject CircleVFX; 
         // 에너미 스프라이트 렌더러 받아오기
         public Sprite EnemyRenderer;
-        public Image Transition;
         public Camera Camera;
         public Image Book;
         public GameObject Enemy;
@@ -24,13 +23,10 @@ namespace SeongIl
             Camera = Camera.main;
             //때긴놈 spriterenderer 입히기
            // EnemyRenderer = new SpriteRenderer()
-           
            Enemy.GetComponent<SpriteRenderer>().sprite = EnemyRenderer;
-           Transition.DOColor(new Color(0, 0, 0, 0), 1f).OnComplete(() =>
-           {
-               GamePlay();
-           });
            
+           GamePlay();
+ 
         }
 
 
@@ -75,7 +71,6 @@ namespace SeongIl
         public void GamePlay()
         { 
             StartSequence();
-            
             MatchPattern magic = GetComponent<MatchPattern>();
             StartCoroutine(magic.GameStart());
         }
