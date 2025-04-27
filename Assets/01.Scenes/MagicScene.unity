@@ -2010,7 +2010,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CircleVFX: {fileID: 1643576351}
   EnemyRenderer: {fileID: 21300000, guid: 0b9510d2790829140953392aae2b6679, type: 3}
-  Transition: {fileID: 1735741568}
   Camera: {fileID: 0}
   Book: {fileID: 193980137}
   Enemy: {fileID: 150520432}
