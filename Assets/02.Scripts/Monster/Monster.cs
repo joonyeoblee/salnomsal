@@ -165,13 +165,13 @@ namespace Jun.Monster
 
         protected override void Skill3()
         {
-            SkillDataSO skill3 = _skillComponent.skillDataList[2]; // ⚠️ index가 1로 고정돼 있었는데 순서상 2로 수정
+            SkillDataSO skill3 = _skillComponent.skillDataList[2];
             ExecuteSkillWithMove(skill3, base.Skill3, "Skill3");
         }
 
         protected override void Skill4()
         {
-            SkillDataSO skill4 = _skillComponent.skillDataList[3]; // ⚠️ index 1 → 3으로 수정
+            SkillDataSO skill4 = _skillComponent.skillDataList[3];
             ExecuteSkillWithMove(skill4, base.Skill4, "Skill4");
         }
         void ExecuteSkillWithMove(SkillDataSO skillData, Action baseSkillAction, string animName)
@@ -192,25 +192,20 @@ namespace Jun.Monster
         }
         void ExecuteAttack(SkillRange range, string animName)
         {
-            Debug.Log("🟡 ExecuteAttack 진입");
-
             if (_target == null)
-                Debug.LogWarning("⚠ _target이 null입니다");
+                Debug.LogWarning("_target이 null입니다");
 
             if (_playableCharacters == null)
-                Debug.LogWarning("⚠ _playableCharacters가 null입니다");
+                Debug.LogWarning("_playableCharacters가 null입니다");
 
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
-
-            Debug.Log("🎯 타겟 개수: " + (targets != null ? targets.Count.ToString() : "targets is null"));
-
+            
             dyingTargets = new List<PlayableCharacter>();
 
             foreach (PlayableCharacter target in targets)
             {
                 if (target == null)
                 {
-                    Debug.LogError("❌ target is null!");
                     continue;
                 }
 
@@ -219,7 +214,6 @@ namespace Jun.Monster
                     dyingTargets.Add(target);
                 }
             }
-            Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
             if (animName != "Attack")
             {
