@@ -33,7 +33,7 @@ namespace Equipment
             currentCharacterPortrait.transform.SetParent(transform);
             currentCharacterPortrait.transform.localPosition = DraggedSlot.localPosition;
 
-            portraitItem.MyParent = this;
+            //portraitItem.MyParent = this;
             portraitItem.IsInSlot = true;
 
             Save(); // 저장 호출
@@ -50,22 +50,12 @@ namespace Equipment
 
             // 현재 슬롯의 이전 아이템 정보
             PortraitItem previousPortrait = previousItem.GetComponent<PortraitItem>();
-            CharacterSlot oldSlotOfNewPortrait = newPortraitItem.MyParent;
+           // CharacterSlot oldSlotOfNewPortrait = newPortraitItem.MyParent;
 
             // 이전 아이템을 newPortraitItem이 있던 슬롯으로 이동
-            if (oldSlotOfNewPortrait != null)
-            {
-                oldSlotOfNewPortrait.SetItem(previousPortrait);
-                previousPortrait.MyParent = oldSlotOfNewPortrait;
-                oldSlotOfNewPortrait.Save();
-            } else
-            {
-                // 이전 슬롯 정보가 없다면 월드로 이동하거나 제거할 수도 있음
-                previousItem.transform.SetParent(null);
-            }
-
+           //
             // 새 아이템을 현재 슬롯에 설정
-            newPortraitItem.MyParent = this;
+            //newPortraitItem.MyParent = this;
             SetItem(newPortraitItem);
             Save();
         }
@@ -147,7 +137,7 @@ namespace Equipment
 
                 // 해당하는 플레이어 소환해서 붙여야함
                 PortraitItem portraitItem = newItem.GetComponent<PortraitItem>();
-                portraitItem.MyParent = this;
+                //portraitItem.MyParent = this;
                 portraitItem.IsInSlot = true;
                 portraitItem.Init(_slotItemData.id);
                 currentCharacterPortrait = newItem;

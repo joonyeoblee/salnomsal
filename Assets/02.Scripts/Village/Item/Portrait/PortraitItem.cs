@@ -25,19 +25,14 @@ namespace Portrait
     }
 
     //초상화 크래스인데 이게 캐릭터 이기도 함 캐릭터별
-    public class PortraitItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class PortraitItem : DraggableItem
     {
         public string CharacterId;
         public PortraitSO portrait;
-        public CharacterSlot MyParent;
-        public CharacterSlot OldParent;
         readonly string SAVE_KEY = "Character_";
         string key => SAVE_KEY + CharacterId;
 
         int ClearCount = 0;
-        Canvas canvas;
-        CanvasGroup canvasGroup;
-        RectTransform rectTransform;
 
         Transform originalParent;
         Vector2 originalPosition;
@@ -48,23 +43,13 @@ namespace Portrait
         public int Speed;
 
         public PortraitItemData SaveData;
-
-        [SerializeField] Image _iconImage;
+        
         public bool IsInSlot { get; set; }
-
-        void Awake()
-        {
-            rectTransform = GetComponent<RectTransform>();
-            canvasGroup = GetComponent<CanvasGroup>();
-            canvas = GetComponentInParent<Canvas>();
-            _iconImage = GetComponent<Image>();
-        }
-
+        
         public void Init(string characterId)
         {
             CharacterId = characterId;
             LoadOrGenerateStat();
-           
         }
 
         void LoadOrGenerateStat()
@@ -72,8 +57,6 @@ namespace Portrait
             if (PlayerPrefs.HasKey(key))
             {
                 Load();
-
-
             } else
             {
                 AddRandom();
@@ -90,71 +73,8 @@ namespace Portrait
             AttackPower = portrait.AttackPower + Random.Range(0, 10);
             Speed = portrait.Speed + Random.Range(0, 2);
         }
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            if (IsInSlot)
-            {
-                OldParent = MyParent;
-                MyParent.DeleteItem(); // 기존 슬롯에서 제거
-            }
-
-            originalParent = transform.parent;
-            originalPosition = rectTransform.anchoredPosition;
-
-            transform.SetParent(canvas.transform);
-            canvasGroup.blocksRaycasts = false;
-        }
-
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            canvasGroup.blocksRaycasts = true;
-
-            // 드롭된 슬롯 판단
-            CharacterSlot targetSlot = eventData.pointerEnter?.GetComponentInParent<CharacterSlot>();
-
-            if (targetSlot != null)
-            {
-                // 슬롯이 유효하면 슬롯이 처리하도록 위임 (슬롯에서 SetItem 또는 ChangeSlot 실행됨)
-                return;
-            }
-
-            // 슬롯에 드롭하지 않았을 경우 원래대로 복귀
-            ReturnToOriginalParent();
-        }
-        void ReturnToOriginalParent()
-        {
-            MyParent = OldParent;
-
-            if (MyParent != null)
-            {
-                MyParent.SetItem(this); // 슬롯의 currentCharacterPortrait도 복구됨
-                transform.SetParent(MyParent.transform); // 부모 복구
-                transform.localPosition = MyParent.DraggedSlot.localPosition; // 위치 복구
-                IsInSlot = true;
-            } else
-            {
-                // 슬롯이 아닌 곳에서 드래그된 경우 처리
-                transform.SetParent(originalParent);
-                rectTransform.anchoredPosition = originalPosition;
-                IsInSlot = false;
-            }
-        }
-
         
-        public void StartManualDrag()
-        {
-            originalParent = transform;
-            originalPosition = GetComponent<RectTransform>().anchoredPosition;
-            canvasGroup.blocksRaycasts = false;
-            transform.SetAsLastSibling(); // 맨 앞으로
-        }
-
+        
         void Save()
         {
             SaveData = new PortraitItemData(
