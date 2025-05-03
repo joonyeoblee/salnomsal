@@ -102,24 +102,8 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
     public virtual void OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = true;
-        
-        // 드롭된 슬롯 판단
-        SlotR targetSlot = eventData.pointerEnter?.GetComponentInParent<SlotR>();
-
-        if (targetSlot != null)
-        {
-            // 기존 부모에서 나를 제거
-            MyParent.DeleteItem();
-            // 부모를 타켓으로 수정
-            MyParent = targetSlot;
-            targetSlot.SetItem(this);
-            return;
-        }
-        
-        // 슬롯에 드롭하지 않았을 경우 원래대로 복귀
-        ReturnToOriginalParent();
     }
-    void ReturnToOriginalParent()
+    public void ReturnToOriginalParent()
     {
         MyParent = OldParent;
 

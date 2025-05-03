@@ -42,21 +42,22 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     public virtual void SetItem(DraggableItem myDraggableItem)
     {
         _myDraggableItem = myDraggableItem;
-        Save();
+        Debug.Log(_myDraggableItem.Id);
+        // Save();
     }
     public virtual void DeleteItem()
     {
         _myDraggableItem = null;
-        Save();
+        // Save();
     }
 
-    private void Save()
+    public void Save()
     {
         // if (_myDraggableItem == null) return;
 
         CharacterSlotItemData slotItemData = new CharacterSlotItemData();
 
-        slotItemData.MyDraggableItemID = MyDraggableItemID;
+        slotItemData.MyDraggableItemID = _myDraggableItem.Id;
         slotItemData.SaveKey = SaveKey;
         string data = JsonUtility.ToJson(slotItemData);
 
@@ -75,7 +76,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
 
             GameObject newItem = Instantiate(ItemPrefab, transform);
             newItem.GetComponent<PortraitItem>().Load(loadSlotItemData.MyDraggableItemID);
-
+            Debug.Log(loadSlotItemData.MyDraggableItemID);
             _myDraggableItem = newItem.GetComponent<DraggableItem>();
             _myDraggableItem.MyParent = this;
 

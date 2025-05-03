@@ -1,5 +1,4 @@
 using UnityEngine;
-
 [CreateAssetMenu(fileName = "PortraitSO", menuName = "Scriptable Objects/PortraitSO")]
 public class PortraitSO : ScriptableObject
 {
@@ -9,5 +8,5 @@ public class PortraitSO : ScriptableObject
     public int Speed;
     public GameObject Character;
     public Sprite Icon;
-   
+    
 }

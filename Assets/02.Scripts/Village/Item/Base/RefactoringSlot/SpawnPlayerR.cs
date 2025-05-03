@@ -49,8 +49,6 @@ public class SpawnPlayerR : MonoBehaviour, IPointerClickHandler
             {
                 Debug.LogWarning("PortraitItem 컴포넌트를 찾을 수 없습니다.");
             }
-
-    
         }
     }
 

@@ -31,6 +31,13 @@ public class GameManager : MonoBehaviour
         
     }
 
+    // private void Start()
+    // {
+    //     PlayerPrefs.DeleteAll();
+    //     PlayerPrefs.Save(); // 안전하게 즉시 저장
+    //     Debug.Log("PlayerPrefs 전체 삭제 완료");
+    // }
+
     public void Expedition()
     {
         CharacterStats.Clear();

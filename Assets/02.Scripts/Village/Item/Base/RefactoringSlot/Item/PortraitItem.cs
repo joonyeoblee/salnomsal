@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Equipment.RefactoringSlot;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Portrait
@@ -28,22 +30,42 @@ namespace Portrait
 
             AddRandom();
             _iconImage.sprite = portrait != null ? portrait.Icon : null;
-            ItemData itemData = new ItemData(Id, null, ItemType.Portrait);
+            _itemData = new ItemData(Id, null, ItemType.Portrait);
             CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
-            SaveData = new PortraitItemData(itemData,portrait.name, _characterStat, ClearCount);
+            SaveData = new PortraitItemData(_itemData, portrait.name, _characterStat, ClearCount);
             Save();
         }
 
-       void AddRandom()
+        private void AddRandom()
         {
             MaxHealth = portrait.MaxHealth + Random.Range(0, 20);
             MaxMana = portrait.MaxMana + Random.Range(0, 2);
             AttackPower = portrait.AttackPower + Random.Range(0, 10);
             Speed = portrait.Speed + Random.Range(0, 2);
         }
+
+        public override void OnEndDrag(PointerEventData eventData)
+        {
+            base.OnEndDrag(eventData);
+            // // 드롭된 슬롯 판단 각자 부모에서 해야할 듯
+            CharacterSlotR targetSlot = eventData.pointerEnter?.GetComponentInParent<CharacterSlotR>();
+
+            if (targetSlot != null)
+            {
+                // 기존 부모에서 나를 제거
+                MyParent.DeleteItem();
+                // 부모를 타켓으로 수정
+                MyParent = targetSlot;
+                MyParent.SetItem(this);
+                return;
+            }
+
+            // 슬롯에 드롭하지 않았을 경우 원래대로 복귀
+            ReturnToOriginalParent();
+        }
         
         // 이미 생성을 했으니 바로 저장
-        void Save()
+        private void Save()
         {
             string json = JsonUtility.ToJson(SaveData);
             PlayerPrefs.SetString(Key, json);
@@ -69,7 +91,7 @@ namespace Portrait
                 }
 
                 _iconImage.sprite = portrait.Icon;
-
+                _itemData = SaveData.ItemData;
                 MaxHealth = SaveData.CharacterStat.MaxHealth + SaveData.ClearCount;
                 MaxMana = SaveData.CharacterStat.MaxMana + SaveData.ClearCount;
                 AttackPower = SaveData.CharacterStat.AttackPower + SaveData.ClearCount;
