@@ -67,11 +67,17 @@ namespace Portrait
         // 이미 생성을 했으니 바로 저장
         private void Save()
         {
+            // SaveData = new PortraitItemData(
+            //     _itemData,
+            //     portrait != null ? portrait.name : "",
+            //     new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed),
+            //     ClearCount
+            // );
+
             string json = JsonUtility.ToJson(SaveData);
             PlayerPrefs.SetString(Key, json);
             PlayerPrefs.Save();
         }
-
         public void Load(string Id)
         {
             this.Id = Id;
