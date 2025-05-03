@@ -1,8 +1,4 @@
-﻿using System;
-using Equipment;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Portrait
@@ -24,19 +20,15 @@ namespace Portrait
         public int Speed;
         
         public bool IsInSlot { get; set; }
-
-        void Start()
-        {
-            Load();
-        }
+        
         public void Create(string characterId) // TODO: 이름도 건네줘야함
         {
-            id = characterId;
+            Id = characterId;
             // name = name;
 
             AddRandom();
             _iconImage.sprite = portrait != null ? portrait.Icon : null;
-            ItemData itemData = new ItemData(id,null, ItemType.Portrait);
+            ItemData itemData = new ItemData(Id, null, ItemType.Portrait);
             CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
             SaveData = new PortraitItemData(itemData,portrait.name, _characterStat, ClearCount);
             Save();
@@ -58,8 +50,10 @@ namespace Portrait
             PlayerPrefs.Save();
         }
 
-        public void Load()
+        public void Load(string Id)
         {
+            this.Id = Id;
+            
             if (PlayerPrefs.HasKey(Key))
             {
                 string data = PlayerPrefs.GetString(Key);
@@ -79,7 +73,9 @@ namespace Portrait
                 MaxHealth = SaveData.CharacterStat.MaxHealth + SaveData.ClearCount;
                 MaxMana = SaveData.CharacterStat.MaxMana + SaveData.ClearCount;
                 AttackPower = SaveData.CharacterStat.AttackPower + SaveData.ClearCount;
-                Speed = SaveData.CharacterStat.Speed + SaveData.ClearCount; 
+                Speed = SaveData.CharacterStat.Speed + SaveData.ClearCount;
+
+                IsInSlot = true;
             }
         }
     }

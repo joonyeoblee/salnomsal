@@ -55,12 +55,22 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
     public bool IsInSlot;
 
     // 개인 정보
-    protected string id;
+    public string Id;
     [SerializeField] protected Image _iconImage;
     protected ItemData _itemData;
     public PortraitItemData SaveData;
-    public string Key => "Character_" + id;
-    
+    public string Key
+    {
+        get
+        {
+            return "Character_" + Id;
+        }
+        set
+        {
+            Id = value;
+        }
+    }
+
     protected virtual void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -95,10 +105,12 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
         
         // 드롭된 슬롯 판단
         SlotR targetSlot = eventData.pointerEnter?.GetComponentInParent<SlotR>();
-        Debug.Log(targetSlot);
 
         if (targetSlot != null)
         {
+            // 기존 부모에서 나를 제거
+            MyParent.DeleteItem();
+            // 부모를 타켓으로 수정
             MyParent = targetSlot;
             targetSlot.SetItem(this);
             return;

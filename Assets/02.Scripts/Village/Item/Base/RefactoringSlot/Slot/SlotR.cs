@@ -1,13 +1,38 @@
-﻿using UnityEngine;
+﻿using System;
+using Portrait;
+using UnityEngine;
 using UnityEngine.EventSystems;
 public abstract class SlotR : MonoBehaviour, IDropHandler
 {
+
+    [Serializable]
+    public class CharacterSlotItemData
+    {
+        public string SaveKey;
+        public string MyDraggableItemID;
+
+    }
     [SerializeField] protected DraggableItem _myDraggableItem;
     
     public RectTransform DraggedSlot;
+
+    public string MyDraggableItemID;
+    public string SlotItemID;
+
+    public GameObject ItemPrefab;
+    public string SaveKey
+    {
+        get
+        {
+            return "CharacterSlot_" + SlotItemID + transform.GetSiblingIndex();
+        }
+    }
+    protected virtual void Start()
+    {
+        Load();
+    }
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop");
 
         RectTransform droppedRect = eventData.pointerDrag.GetComponent<RectTransform>();
         droppedRect.SetParent(this.transform);
@@ -17,5 +42,43 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     public virtual void SetItem(DraggableItem myDraggableItem)
     {
         _myDraggableItem = myDraggableItem;
+        Save();
+    }
+    public virtual void DeleteItem()
+    {
+        _myDraggableItem = null;
+        Save();
+    }
+
+    private void Save()
+    {
+        // if (_myDraggableItem == null) return;
+
+        CharacterSlotItemData slotItemData = new CharacterSlotItemData();
+
+        slotItemData.MyDraggableItemID = MyDraggableItemID;
+        slotItemData.SaveKey = SaveKey;
+        string data = JsonUtility.ToJson(slotItemData);
+
+        // 내 키와 아이템 Id 묶어서 저장
+        PlayerPrefs.SetString(SaveKey, data);
+        PlayerPrefs.Save();
+        Debug.Log("Save" + SaveKey);
+    }
+
+    private void Load()
+    {
+        if (PlayerPrefs.HasKey(SaveKey))
+        {
+            string json = PlayerPrefs.GetString(SaveKey);
+            CharacterSlotItemData loadSlotItemData = JsonUtility.FromJson<CharacterSlotItemData>(json);
+
+            GameObject newItem = Instantiate(ItemPrefab, transform);
+            newItem.GetComponent<PortraitItem>().Load(loadSlotItemData.MyDraggableItemID);
+
+            _myDraggableItem = newItem.GetComponent<DraggableItem>();
+            _myDraggableItem.MyParent = this;
+
+        }
     }
 }

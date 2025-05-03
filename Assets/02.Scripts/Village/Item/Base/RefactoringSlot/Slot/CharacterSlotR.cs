@@ -13,8 +13,7 @@ namespace Equipment.RefactoringSlot
             _myDraggableItem.transform.localPosition = DraggedSlot.localPosition;
 
             portraitItem.IsInSlot = true;
-
-            Debug.Log("나야");
+            
         }
     }
 }
