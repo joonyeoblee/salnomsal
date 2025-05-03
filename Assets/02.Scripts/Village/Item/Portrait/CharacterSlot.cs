@@ -10,9 +10,8 @@ namespace Equipment
     {
         public string id;
     }
-    public class CharacterSlot : MonoBehaviour, IDropHandler
+    public class CharacterSlot : SlotR, IDropHandler
     {
-        public RectTransform DraggedSlot;
         [SerializeField] public GameObject currentCharacterPortrait;
         [SerializeField] Canvas canvas;
         [SerializeField] GameObject _itemPrefab;
@@ -111,15 +110,15 @@ namespace Equipment
             {
                 // DragItem에서 ID 꺼내기
                 PortraitItem item = currentCharacterPortrait.GetComponent<PortraitItem>();
-                if (item != null && item.CharacterId != null)
-                {
-                    CharacterSlotItemData slotItemData = new CharacterSlotItemData();
-                    slotItemData.id = item.CharacterId;
-                    string data = JsonUtility.ToJson(slotItemData);
-                    PlayerPrefs.SetString(SaveKey, data);
-                    PlayerPrefs.Save();
-                    Debug.Log($"[Slot {SaveKey}] 저장됨: {item.CharacterId}");
-                }
+                // if (item != null && item.CharacterId != null)
+                // {
+                //     CharacterSlotItemData slotItemData = new CharacterSlotItemData();
+                //     slotItemData.id = item.CharacterId;
+                //     string data = JsonUtility.ToJson(slotItemData);
+                //     PlayerPrefs.SetString(SaveKey, data);
+                //     PlayerPrefs.Save();
+                //     Debug.Log($"[Slot {SaveKey}] 저장됨: {item.CharacterId}");
+                // }
             }
         }
 
@@ -139,7 +138,7 @@ namespace Equipment
                 PortraitItem portraitItem = newItem.GetComponent<PortraitItem>();
                 //portraitItem.MyParent = this;
                 portraitItem.IsInSlot = true;
-                portraitItem.Init(_slotItemData.id);
+                // portraitItem.Init(_slotItemData.id);
                 currentCharacterPortrait = newItem;
             }
         }

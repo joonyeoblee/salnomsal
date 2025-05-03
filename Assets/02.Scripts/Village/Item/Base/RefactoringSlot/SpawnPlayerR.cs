@@ -36,13 +36,13 @@ public class SpawnPlayerR : MonoBehaviour, IPointerClickHandler
             // 컴포넌트 연결 및 초기화
             PortraitItem portraitItem = newItem.GetComponent<PortraitItem>();
 
-            // portraitItem.MyParent = spawnSlot[i];
-            // portraitItem.IsInSlot = true;
+            portraitItem.MyParent = SpawnSlot[i];
+            portraitItem.IsInSlot = true;
 
             if (portraitItem != null)
             {
                 portraitItem.portrait = selectedPortrait;
-                portraitItem.Init(uniqueID);
+                portraitItem.Create(uniqueID);
                 SpawnSlot[i].SetItem(portraitItem);
 
                 Debug.Log($"새 플레이어 소환됨 | ID: {uniqueID} | Portrait: {selectedPortrait.name}");

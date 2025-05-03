@@ -890,7 +890,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1524531293}
-  _location: 1
   _currentCharacterPortrait: {fileID: 0}
 --- !u!1 &55127717
 GameObject:
@@ -1497,6 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 658612400}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -1778,6 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1131424712}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -2890,6 +2891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 523643462}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -3873,6 +3875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1337402499}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -4126,6 +4129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4382db2a42d24aea8b46406cdc7c6c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 626452253}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -4665,6 +4669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1891265147}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -5327,6 +5332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1903027037}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -7068,6 +7074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1798908416}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -8298,6 +8305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 981652847}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -8503,6 +8511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4382db2a42d24aea8b46406cdc7c6c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 838494034}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -8597,6 +8606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 536865297}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -8728,6 +8738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 985534716}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -9154,7 +9165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 850035203}
-  _location: 0
 --- !u!1 &1322695831
 GameObject:
   m_ObjectHideFlags: 0
@@ -9643,6 +9653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4382db2a42d24aea8b46406cdc7c6c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1333770980}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -11436,6 +11447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4382db2a42d24aea8b46406cdc7c6c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 55127718}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -11530,6 +11542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 2095655770}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -11624,6 +11637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 1618635477}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -12495,6 +12509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 2046703547}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -12797,6 +12812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 410585566}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}
@@ -15566,11 +15582,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135447075193514273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5de136b470300243a5d98b399ca001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 8194994523009652944}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 0}
@@ -15750,11 +15767,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4414276410534243628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5de136b470300243a5d98b399ca001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 5741182299439548057}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 0}
@@ -15896,11 +15914,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5634484820036101571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5de136b470300243a5d98b399ca001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 3000337222423287336}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 0}
@@ -15945,6 +15964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba828307b84240f5835ae0520b050376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myDraggableItem: {fileID: 0}
   DraggedSlot: {fileID: 342487139708982045}
   currentCharacterPortrait: {fileID: 0}
   canvas: {fileID: 987695834}

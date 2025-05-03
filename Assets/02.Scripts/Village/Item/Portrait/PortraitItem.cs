@@ -7,31 +7,12 @@ using Random = UnityEngine.Random;
 
 namespace Portrait
 {
-    [Serializable]
-    public class PortraitItemData
-    {
-        public string CharacterId;
-        public string PortraitName;
-        public CharacterStat CharacterStat;
-        public int ClearCount;
 
-        public PortraitItemData(string characterId, string portraitName, CharacterStat characterStat, int clearCount)
-        {
-            CharacterId = characterId;
-            PortraitName = portraitName;
-            CharacterStat = characterStat;
-            ClearCount = clearCount;
-        }
-    }
 
     //초상화 크래스인데 이게 캐릭터 이기도 함 캐릭터별
     public class PortraitItem : DraggableItem
     {
-        public string CharacterId;
         public PortraitSO portrait;
-        readonly string SAVE_KEY = "Character_";
-        string key => SAVE_KEY + CharacterId;
-
         int ClearCount = 0;
 
         Transform originalParent;
@@ -41,32 +22,27 @@ namespace Portrait
         public float MaxMana;
         public float AttackPower;
         public int Speed;
-
-        public PortraitItemData SaveData;
         
         public bool IsInSlot { get; set; }
-        
-        public void Init(string characterId)
+
+        void Start()
         {
-            CharacterId = characterId;
-            LoadOrGenerateStat();
+            Load();
+        }
+        public void Create(string characterId) // TODO: 이름도 건네줘야함
+        {
+            id = characterId;
+            // name = name;
+
+            AddRandom();
+            _iconImage.sprite = portrait != null ? portrait.Icon : null;
+            ItemData itemData = new ItemData(id,null, ItemType.Portrait);
+            CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
+            SaveData = new PortraitItemData(itemData,portrait.name, _characterStat, ClearCount);
+            Save();
         }
 
-        void LoadOrGenerateStat()
-        {
-            if (PlayerPrefs.HasKey(key))
-            {
-                Load();
-            } else
-            {
-                AddRandom();
-                _iconImage.sprite = portrait != null ? portrait.Icon : null;
-                CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
-                SaveData = new PortraitItemData(CharacterId, portrait.name, _characterStat, ClearCount);
-                Save();
-            }
-        }
-        void AddRandom()
+       void AddRandom()
         {
             MaxHealth = portrait.MaxHealth + Random.Range(0, 20);
             MaxMana = portrait.MaxMana + Random.Range(0, 2);
@@ -74,26 +50,19 @@ namespace Portrait
             Speed = portrait.Speed + Random.Range(0, 2);
         }
         
-        
+        // 이미 생성을 했으니 바로 저장
         void Save()
         {
-            SaveData = new PortraitItemData(
-                CharacterId,
-                portrait != null ? portrait.name : "",
-                new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed),
-                ClearCount
-            );
-
-            var json = JsonUtility.ToJson(SaveData);
-            PlayerPrefs.SetString(key, json);
+            string json = JsonUtility.ToJson(SaveData);
+            PlayerPrefs.SetString(Key, json);
             PlayerPrefs.Save();
         }
 
-        void Load()
+        public void Load()
         {
-            if (PlayerPrefs.HasKey(key))
+            if (PlayerPrefs.HasKey(Key))
             {
-                string data = PlayerPrefs.GetString(key);
+                string data = PlayerPrefs.GetString(Key);
                 SaveData = JsonUtility.FromJson<PortraitItemData>(data);
 
                 // 템플릿 불러오기
@@ -101,7 +70,7 @@ namespace Portrait
 
                 if (portrait == null)
                 {
-                    Debug.LogWarning($"[PortraitItem] PortraitSO 로드 실패: {SaveData.PortraitName}");
+                    Debug.LogWarning($"[PortraitItem] PortraitSO 로드 실패: {SaveData.ItemData.Name}");
                     return;
                 }
 
