@@ -23,7 +23,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerClickHandler
     {
         for (int i = 0; i < spawnSlot.Length; i++)
         {
-            spawnSlot[i].DeleteItem();
+            // spawnSlot[i].DeleteItem();
             // 고유 ID 생성
             string uniqueID = Guid.NewGuid().ToString();
 

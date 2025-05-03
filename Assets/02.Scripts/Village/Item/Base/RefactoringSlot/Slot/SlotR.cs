@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-
 public abstract class SlotR : MonoBehaviour, IDropHandler
 {
-    [SerializeField] DraggableItem _myDraggableItem;
+    [SerializeField] protected DraggableItem _myDraggableItem;
     
     public RectTransform DraggedSlot;
     public void OnDrop(PointerEventData eventData)
@@ -14,8 +13,8 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
         droppedRect.SetParent(this.transform);
         droppedRect.anchoredPosition = Vector2.zero;
     }
-    
-    public void SetItem(DraggableItem myDraggableItem)
+
+    public virtual void SetItem(DraggableItem myDraggableItem)
     {
         _myDraggableItem = myDraggableItem;
     }

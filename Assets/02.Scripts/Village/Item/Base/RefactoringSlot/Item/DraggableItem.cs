@@ -3,7 +3,6 @@ using Portrait;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 [Serializable]
 public class ItemData : MonoBehaviour
 {
@@ -97,13 +96,14 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
         // 드롭된 슬롯 판단
         SlotR targetSlot = eventData.pointerEnter?.GetComponentInParent<SlotR>();
         Debug.Log(targetSlot);
-        //
-        // if (targetSlot != null)
-        // {
-        //     // 슬롯이 유효하면 슬롯이 처리하도록 위임 (슬롯에서 SetItem 또는 ChangeSlot 실행됨)
-        //     return;
-        // }
-        //
+
+        if (targetSlot != null)
+        {
+            MyParent = targetSlot;
+            targetSlot.SetItem(this);
+            return;
+        }
+        
         // 슬롯에 드롭하지 않았을 경우 원래대로 복귀
         ReturnToOriginalParent();
     }

@@ -39,27 +39,27 @@ public class GameManager : MonoBehaviour
         for (var i = 0; i < TeamSlots.Length; i++)
         {
             TeamSlot slot = TeamSlots[i];
-            Teams.Add(slot.SaveKey);
-
-            if (slot.currentCharacterPortrait != null)
-            {
-                PortraitItem portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
-                if (PortraitItems.Count <= i)
-                {
-                    PortraitItems.Add(portraitItem);
-                }
-                else
-                {
-                    PortraitItems[i] = portraitItem;
-                }
-
-                CharacterStats.Add(portraitItem.SaveData.CharacterStat);
-            }
-            else
-            {
-                Characters.Add(null);
-                CharacterStats.Add(null);
-            }
+            // Teams.Add(slot.SaveKey);
+            //
+            // if (slot.currentCharacterPortrait != null)
+            // {
+            //     PortraitItem portraitItem = slot.currentCharacterPortrait.GetComponent<PortraitItem>();
+            //     if (PortraitItems.Count <= i)
+            //     {
+            //         PortraitItems.Add(portraitItem);
+            //     }
+            //     else
+            //     {
+            //         PortraitItems[i] = portraitItem;
+            //     }
+            //
+            //     CharacterStats.Add(portraitItem.SaveData.CharacterStat);
+            // }
+            // else
+            // {
+            //     Characters.Add(null);
+            //     CharacterStats.Add(null);
+            // }
         }
     }
 
