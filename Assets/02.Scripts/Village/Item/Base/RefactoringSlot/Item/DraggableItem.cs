@@ -81,10 +81,13 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
 
     public virtual void OnPointerDown(PointerEventData eventData)
     { 
+        // 기존 부모에서 나를 제거
+        MyParent.DeleteItem();
+        
         _originalParent = transform.parent;
         OldParent = MyParent;
         _originalPosition = _rectTransform.anchoredPosition;
-
+        
         Debug.Log("마우스 눌림");
         transform.SetParent(_canvas.transform);
     }

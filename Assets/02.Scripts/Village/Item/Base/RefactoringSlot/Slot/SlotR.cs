@@ -33,7 +33,6 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-
         RectTransform droppedRect = eventData.pointerDrag.GetComponent<RectTransform>();
         droppedRect.SetParent(this.transform);
         droppedRect.anchoredPosition = Vector2.zero;
@@ -47,8 +46,19 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     }
     public virtual void DeleteItem()
     {
-        _myDraggableItem = null;
-        // Save();
+        if (_myDraggableItem != null)
+        {
+               
+            _myDraggableItem = null; // 참조도 제거
+            Debug.Log($"[Slot {SaveKey}] 아이템 제거됨.");
+        }
+
+        if (PlayerPrefs.HasKey(SaveKey))
+        {
+            PlayerPrefs.DeleteKey(SaveKey); // 저장된 데이터도 제거
+            PlayerPrefs.Save();
+            Debug.Log($"[Slot {SaveKey}] 저장 데이터 삭제됨.");
+        }
     }
 
     public void Save()
@@ -75,6 +85,8 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
             CharacterSlotItemData loadSlotItemData = JsonUtility.FromJson<CharacterSlotItemData>(json);
 
             GameObject newItem = Instantiate(ItemPrefab, transform);
+            // newItem.transform.SetParent(transform);
+            
             newItem.GetComponent<PortraitItem>().Load(loadSlotItemData.MyDraggableItemID);
             Debug.Log(loadSlotItemData.MyDraggableItemID);
             _myDraggableItem = newItem.GetComponent<DraggableItem>();

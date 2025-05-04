@@ -1,4 +1,5 @@
-﻿using Equipment.RefactoringSlot;
+﻿using System;
+using Equipment.RefactoringSlot;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
@@ -52,8 +53,6 @@ namespace Portrait
 
             if (targetSlot != null)
             {
-                // 기존 부모에서 나를 제거
-                MyParent.DeleteItem();
                 // 부모를 타켓으로 수정
                 MyParent = targetSlot;
                 MyParent.SetItem(this);

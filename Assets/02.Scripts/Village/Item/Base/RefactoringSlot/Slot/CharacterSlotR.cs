@@ -6,7 +6,6 @@ namespace Equipment.RefactoringSlot
     {
         public override void SetItem(DraggableItem portraitItem)
         {
-            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             if (portraitItem == null) return;
 
             _myDraggableItem = portraitItem;
