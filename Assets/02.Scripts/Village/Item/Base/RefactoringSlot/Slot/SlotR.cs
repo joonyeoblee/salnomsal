@@ -1,10 +1,7 @@
 ﻿using System;
 using Portrait;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
-
 public abstract class SlotR : MonoBehaviour, IDropHandler
 {
 
@@ -34,17 +31,69 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     {
         Load();
     }
-    
-    public void OnDrop(PointerEventData eventData)
+    public void ChangeSlot(PortraitItem newPortraitItem)
     {
-        RectTransform droppedRect = eventData.pointerDrag.GetComponent<RectTransform>();
-        droppedRect.SetParent(this.transform);
-        droppedRect.anchoredPosition = Vector2.zero;
+        // 현재 슬롯에 있는 아이템
+        GameObject previousItem = MyDraggableItem.gameObject;
+
+        // 현재 슬롯의 이전 아이템 정보
+        DraggableItem previousPortrait = MyDraggableItem;
+        SlotR oldSlotOfNewPortrait = newPortraitItem.MyParent;
+
+        oldSlotOfNewPortrait.SetItem(previousPortrait);
+        previousPortrait.MyParent = oldSlotOfNewPortrait;
+        oldSlotOfNewPortrait.Save();
+
+        // 새 아이템을 현재 슬롯에 설정
+        newPortraitItem.MyParent = this;
+        SetItem(newPortraitItem);
+        Save();
     }
+
+    public virtual void OnDrop(PointerEventData eventData)
+    {
+        DraggableItem droppedItem = eventData.pointerDrag?.GetComponent<DraggableItem>();
+        if (droppedItem == null) return;
+
+        SlotR oldSlot = droppedItem.MyParent;
+
+        if (MyDraggableItem != null)
+        {
+            DraggableItem tempItem = MyDraggableItem;
+
+            // 현재 아이템을 이전 슬롯으로 이동
+            if (oldSlot != null && oldSlot != this)
+            {
+                oldSlot.SetItem(tempItem);
+                tempItem.transform.SetParent(oldSlot.transform);
+                tempItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+                tempItem.MyParent = oldSlot; // ✅ 중요!
+            }
+            else
+            {
+                tempItem.transform.SetParent(null);
+                tempItem.MyParent = null;
+            }
+        }
+
+        // 새 아이템 이 슬롯에 설정
+        SetItem(droppedItem);
+        droppedItem.transform.SetParent(transform);
+        droppedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+        droppedItem.MyParent = this; // ✅ 여기도 확실하게!
+
+        Save();
+        oldSlot?.Save();
+    }
+
+
 
     public virtual void SetItem(DraggableItem myDraggableItem)
     {
         MyDraggableItem = myDraggableItem;
+        MyDraggableItem.MyParent = this;
         Debug.Log(MyDraggableItem.Id);
         // Save();
     }

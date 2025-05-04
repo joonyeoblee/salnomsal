@@ -1,5 +1,4 @@
-﻿using System;
-using Equipment.RefactoringSlot;
+﻿using Equipment.RefactoringSlot;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
@@ -46,20 +45,28 @@ namespace Portrait
         public override void OnEndDrag(PointerEventData eventData)
         {
             base.OnEndDrag(eventData);
-            // // 드롭된 슬롯 판단 각자 부모에서 해야할 듯
-            CharacterSlotR targetSlot = eventData.pointerEnter?.GetComponentInParent<CharacterSlotR>();
 
-            if (targetSlot != null)
+            GameObject targetObject = eventData.pointerEnter;
+
+            if (targetObject == null)
             {
-                // 부모를 타켓으로 수정
-                MyParent = targetSlot;
-                MyParent.SetItem(this);
+                ReturnToOriginalParent();
                 return;
             }
 
-            // 슬롯에 드롭하지 않았을 경우 원래대로 복귀
+            // 슬롯 검색을 더 폭넓게
+            CharacterSlotR targetSlot = targetObject.GetComponentInParent<CharacterSlotR>();
+            if (targetSlot != null)
+            {
+                // 슬롯에 이미 아이템이 있으면 스왑 로직은 OnDrop이 처리
+                MyParent = targetSlot;
+                return; // 여기서 SetItem() 하면 중복되므로 생략
+            }
+
+            // 슬롯에 드롭되지 않았을 경우 원래대로 복귀
             ReturnToOriginalParent();
         }
+
         
         // 이미 생성을 했으니 바로 저장
         private void Save()
