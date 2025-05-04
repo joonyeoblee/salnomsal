@@ -1,7 +1,10 @@
 ﻿using System;
 using Portrait;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
+
 public abstract class SlotR : MonoBehaviour, IDropHandler
 {
 
@@ -12,7 +15,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
         public string MyDraggableItemID;
 
     }
-    [SerializeField] protected DraggableItem _myDraggableItem;
+    public DraggableItem MyDraggableItem;
     
     public RectTransform DraggedSlot;
 
@@ -31,6 +34,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     {
         Load();
     }
+    
     public void OnDrop(PointerEventData eventData)
     {
         RectTransform droppedRect = eventData.pointerDrag.GetComponent<RectTransform>();
@@ -40,22 +44,26 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
 
     public virtual void SetItem(DraggableItem myDraggableItem)
     {
-        _myDraggableItem = myDraggableItem;
-        Debug.Log(_myDraggableItem.Id);
+        MyDraggableItem = myDraggableItem;
+        Debug.Log(MyDraggableItem.Id);
         // Save();
     }
-    public virtual void DeleteItem()
+    public virtual void DeleteItem(bool destroyObject = false)
     {
-        if (_myDraggableItem != null)
+        if (MyDraggableItem != null)
         {
-               
-            _myDraggableItem = null; // 참조도 제거
+            if (destroyObject)
+            {
+                Destroy(MyDraggableItem.gameObject); // 드래그 중이 아닐 때만 삭제
+            }
+        
+            MyDraggableItem = null;
             Debug.Log($"[Slot {SaveKey}] 아이템 제거됨.");
         }
 
         if (PlayerPrefs.HasKey(SaveKey))
         {
-            PlayerPrefs.DeleteKey(SaveKey); // 저장된 데이터도 제거
+            PlayerPrefs.DeleteKey(SaveKey);
             PlayerPrefs.Save();
             Debug.Log($"[Slot {SaveKey}] 저장 데이터 삭제됨.");
         }
@@ -67,7 +75,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
 
         CharacterSlotItemData slotItemData = new CharacterSlotItemData();
 
-        slotItemData.MyDraggableItemID = _myDraggableItem.Id;
+        slotItemData.MyDraggableItemID = MyDraggableItem.Id;
         slotItemData.SaveKey = SaveKey;
         string data = JsonUtility.ToJson(slotItemData);
 
@@ -85,12 +93,11 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
             CharacterSlotItemData loadSlotItemData = JsonUtility.FromJson<CharacterSlotItemData>(json);
 
             GameObject newItem = Instantiate(ItemPrefab, transform);
-            // newItem.transform.SetParent(transform);
-            
+
             newItem.GetComponent<PortraitItem>().Load(loadSlotItemData.MyDraggableItemID);
             Debug.Log(loadSlotItemData.MyDraggableItemID);
-            _myDraggableItem = newItem.GetComponent<DraggableItem>();
-            _myDraggableItem.MyParent = this;
+            MyDraggableItem = newItem.GetComponent<DraggableItem>();
+            MyDraggableItem.MyParent = this;
 
         }
     }

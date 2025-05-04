@@ -13,20 +13,20 @@ public class SpawnPlayerR : MonoBehaviour, IPointerClickHandler
     public CharacterSlotR[] CharacterSlot;
 
     public GameObject SpawnCanvas;
-
-    void Awake()
-    {
-        Spawn();
-    }
+    
     public void Spawn()
     {
-        for (var i = 0; i < CharacterSlot.Length; i++)
+        for (int i = 0; i < CharacterSlot.Length; i++)
         {
+            // 기존 아이템이 있으면 삭제
+            CharacterSlot[i].DeleteItem(true); // destroyObject를 true로 전달
+            
             // 고유 ID 생성
             string uniqueID = Guid.NewGuid().ToString();
 
             // 초상화 프리팹 생성 및 위치 설정
-            GameObject newItem = Instantiate(Portrait, transform);
+            GameObject newItem = Instantiate(Portrait, CharacterSlot[i].transform);
+            newItem.name = "Spawn생성";
             newItem.transform.localPosition = CharacterSlot[i].transform.localPosition;
 
             // Portrait 데이터 랜덤 선택

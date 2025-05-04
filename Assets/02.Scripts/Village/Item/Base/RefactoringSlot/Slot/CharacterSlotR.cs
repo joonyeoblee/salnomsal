@@ -8,10 +8,10 @@ namespace Equipment.RefactoringSlot
         {
             if (portraitItem == null) return;
 
-            _myDraggableItem = portraitItem;
+            MyDraggableItem = portraitItem;
             MyDraggableItemID = portraitItem.Id;
-            _myDraggableItem.transform.SetParent(transform);
-            _myDraggableItem.transform.localPosition = DraggedSlot.localPosition;
+            MyDraggableItem.transform.SetParent(transform);
+            MyDraggableItem.transform.localPosition = DraggedSlot.localPosition;
 
             portraitItem.IsInSlot = true;
             base.SetItem(portraitItem);
