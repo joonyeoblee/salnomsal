@@ -51,13 +51,6 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
         //
         // // 새 아이템 이 슬롯에 설정
         SetItem(droppedItem);
-        // droppedItem.transform.SetParent(transform);
-        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        droppedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        //
-        // droppedItem.MyParent = this;
-        // Save();
-        // oldSlot?.DeleteItem();
     }
 
     public virtual void SetItem(DraggableItem myDraggableItem)
@@ -65,7 +58,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
         MyDraggableItem = myDraggableItem;
         MyDraggableItem.MyParent = this;
         Debug.Log(MyDraggableItem.Id + "SetItem" + gameObject.name);
-        // Save();
+        // Save(); // 상속받은애가 하는 중
     }
     public virtual void DeleteItem(bool destroyObject = false)
     {

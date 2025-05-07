@@ -47,7 +47,8 @@ namespace Portrait
             base.OnEndDrag(eventData);
 
             GameObject targetObject = eventData.pointerEnter;
-            CharacterSlotR targetSlot = targetObject.GetComponentInParent<CharacterSlotR>();
+            CharacterSlotR targetSlot;
+            TryGetComponent(out targetSlot);
             if (targetSlot != null)
             {
                 return;
