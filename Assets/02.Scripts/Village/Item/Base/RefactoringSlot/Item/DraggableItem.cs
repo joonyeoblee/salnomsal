@@ -108,8 +108,6 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
     }
     public void ReturnToOriginalParent()
     {
-        MyParent = OldParent;
-
         if (MyParent != null)
         {
             MyParent.SetItem(this); // 슬롯의 currentCharacterPortrait도 복구됨
@@ -118,6 +116,7 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
             IsInSlot = true;
         } else
         {
+            
             // 슬롯이 아닌 곳에서 드래그된 경우 처리
             transform.SetParent(_originalParent);
             _rectTransform.anchoredPosition = _originalPosition;

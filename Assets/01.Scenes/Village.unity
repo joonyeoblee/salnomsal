@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 9870420}
   - component: {fileID: 9870419}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4678,7 +4678,7 @@ GameObject:
   - component: {fileID: 888285902}
   - component: {fileID: 888285901}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7390,7 +7390,7 @@ GameObject:
   - component: {fileID: 1273002289}
   - component: {fileID: 1273002288}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7860,7 +7860,7 @@ GameObject:
   - component: {fileID: 1358843577}
   - component: {fileID: 1358843576}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8536,7 +8536,7 @@ GameObject:
   - component: {fileID: 1444945375}
   - component: {fileID: 1444945374}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9907,7 +9907,7 @@ GameObject:
   - component: {fileID: 1621179222}
   - component: {fileID: 1621179221}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10929,7 +10929,7 @@ GameObject:
   - component: {fileID: 1718833316}
   - component: {fileID: 1718833315}
   m_Layer: 5
-  m_Name: Grid Slot Image
+  m_Name: Grid Slot Image 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

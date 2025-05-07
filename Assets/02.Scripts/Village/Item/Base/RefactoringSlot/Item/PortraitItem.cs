@@ -47,20 +47,10 @@ namespace Portrait
             base.OnEndDrag(eventData);
 
             GameObject targetObject = eventData.pointerEnter;
-
-            if (targetObject == null)
-            {
-                ReturnToOriginalParent();
-                return;
-            }
-
-            // 슬롯 검색을 더 폭넓게
             CharacterSlotR targetSlot = targetObject.GetComponentInParent<CharacterSlotR>();
             if (targetSlot != null)
             {
-                // 슬롯에 이미 아이템이 있으면 스왑 로직은 OnDrop이 처리
-                MyParent = targetSlot;
-                return; // 여기서 SetItem() 하면 중복되므로 생략
+                return;
             }
 
             // 슬롯에 드롭되지 않았을 경우 원래대로 복귀
