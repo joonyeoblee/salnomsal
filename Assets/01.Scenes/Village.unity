@@ -795,6 +795,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Spawn
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!1 &63600263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1116,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Spawn
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!1 &111905508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1174,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &111905511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1372,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Team
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 1
 --- !u!114 &214050956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,6 +1693,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &292249668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,6 +1949,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &335059216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2787,6 +2793,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &493722320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4015,6 +4022,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &763502401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5168,6 +5176,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1035622356}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Expedition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &901715086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5409,8 +5429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fe920517303b6498c3f7436777c43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PortraitPanel: {fileID: 0}
-  SpawnPanel: {fileID: 0}
+  PortraitPanel: {fileID: 684120061}
+  SpawnPanel: {fileID: 1266008295}
   ChestImage: {fileID: 2063926389}
   OpenSprite: {fileID: -495438174975639113, guid: 9ebe1d86e56204c459fb23788bf81f92, type: 3}
   ClosedSprite: {fileID: -1027970746234798697, guid: 3e78cdb5b0f5a8041af1037325849f49, type: 3}
@@ -5657,6 +5677,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1002141992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5860,7 +5881,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Teams: []
   Characters:
   - {fileID: 0}
   - {fileID: 0}
@@ -7305,6 +7325,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1265510239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7717,6 +7738,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!1 &1308570798
 GameObject:
   m_ObjectHideFlags: 0
@@ -9142,6 +9164,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Team
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 1
 --- !u!114 &1522245214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10005,6 +10028,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Spawn
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!1 &1589806208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10195,6 +10219,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1610916648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10869,6 +10894,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1687161410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11537,6 +11563,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1749502210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12178,6 +12205,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1845365154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12273,6 +12301,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &1859416418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12978,6 +13007,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Spawn
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!1 &2039361955
 GameObject:
   m_ObjectHideFlags: 0
@@ -13035,6 +13065,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &2039361958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13130,6 +13161,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Inventory
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 0
 --- !u!114 &2054248738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14176,6 +14208,7 @@ MonoBehaviour:
   MyDraggableItemID: 
   SlotItemID: Team
   ItemPrefab: {fileID: 7521637814714909708, guid: adf7226c9210c2f45875f9120ab361d3, type: 3}
+  TeamSlot: 1
 --- !u!114 &9194268800855938965
 MonoBehaviour:
   m_ObjectHideFlags: 0

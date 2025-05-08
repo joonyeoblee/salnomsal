@@ -109,7 +109,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
             newItem.GetComponent<PortraitItem>().Load(loadSlotItemData.MyDraggableItemID);
             Debug.Log(loadSlotItemData.MyDraggableItemID);
             MyDraggableItem = newItem.GetComponent<DraggableItem>();
-            MyDraggableItem.MyParent = this;
+            SetItem(MyDraggableItem);
 
         }
     }

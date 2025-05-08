@@ -342,8 +342,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
         _isAlive = false;
 
-        PlayerPrefs.DeleteKey(GameManager.Instance.Teams[Index]);
-        PlayerPrefs.Save();
+        GameManager.Instance.TeamSlots[Index].DeleteItem(true);
 	}
 
 	public void TakeDamage(Damage damage)

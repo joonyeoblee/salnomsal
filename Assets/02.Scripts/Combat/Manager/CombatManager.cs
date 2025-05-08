@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Jun;
 using MoreMountains.Feedbacks;
 using Portrait;
 using UnityEngine;
+using Enumerable = System.Linq.Enumerable;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -69,9 +69,9 @@ public class CombatManager : MonoBehaviour
     }
     public void SpawnPlayer()
     {
-        List<GameObject> players = GameManager.Instance.Characters;
-        List<CharacterStat> characterStats = GameManager.Instance.CharacterStats;
-        for (int i = 0; i < players.Count; i++)
+        GameObject[] players = GameManager.Instance.Characters;
+        CharacterStat[] characterStats = GameManager.Instance.CharacterStats;
+        for (int i = 0; i < players.Length; i++)
         {
             GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
             PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
@@ -130,7 +130,7 @@ public class CombatManager : MonoBehaviour
 
     public void SetOrder()
     {
-        TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
+        TurnOrder = Enumerable.ToList(Enumerable.OrderByDescending(TurnOrder, actor => actor.CurrentSpeed));
     }
 
     public void SetSelectedSkill(SkillSlot slot)
