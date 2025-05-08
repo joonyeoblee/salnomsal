@@ -12,6 +12,10 @@ namespace Equipment.RefactoringSlot
             if (TeamSlot)
             {
                 GameManager.Instance.TeamSlots[transform.GetSiblingIndex()] = this;
+                if (!GameManager.Instance.IsAlive[transform.GetSiblingIndex()])
+                {
+                    DeleteItem(true);
+                }
             }
             base.Start();
         }
@@ -33,6 +37,16 @@ namespace Equipment.RefactoringSlot
                 PortraitItem myPortraitItem = MyDraggableItem.GetComponent<PortraitItem>();
                 GameManager.Instance.Characters[transform.GetSiblingIndex()] = myPortraitItem.portrait.Character;
                 GameManager.Instance.CharacterStats[transform.GetSiblingIndex()] = myPortraitItem.SaveData.CharacterStat;
+            }
+        }
+
+        public override void DeleteItem(bool destroyObject = false)
+        {
+            base.DeleteItem(destroyObject);
+            if (TeamSlot)
+            {
+                GameManager.Instance.Characters[transform.GetSiblingIndex()] = null;
+                GameManager.Instance.CharacterStats[transform.GetSiblingIndex()] = null;
             }
         }
     }

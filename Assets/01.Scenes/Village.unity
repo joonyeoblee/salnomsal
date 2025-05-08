@@ -5885,11 +5885,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  CharacterStats: []
+  CharacterStats:
+  - MaxHealth: 0
+    MaxMana: 0
+    AttackPower: 0
+    Speed: 0
+  - MaxHealth: 0
+    MaxMana: 0
+    AttackPower: 0
+    Speed: 0
+  - MaxHealth: 0
+    MaxMana: 0
+    AttackPower: 0
+    Speed: 0
   PortraitItems:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  IsAlive: 000000
 --- !u!1 &1043596985
 GameObject:
   m_ObjectHideFlags: 0

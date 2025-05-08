@@ -342,7 +342,7 @@ public class PlayableCharacter : Character, ITurnActor, ITargetable
 	{
         _isAlive = false;
 
-        GameManager.Instance.TeamSlots[Index].DeleteItem(true);
+        GameManager.Instance.IsAlive[Index] = _isAlive;
 	}
 
 	public void TakeDamage(Damage damage)
