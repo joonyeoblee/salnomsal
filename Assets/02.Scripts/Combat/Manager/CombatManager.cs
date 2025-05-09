@@ -73,13 +73,21 @@ public class CombatManager : MonoBehaviour
         CharacterStat[] characterStats = GameManager.Instance.CharacterStats;
         for (int i = 0; i < players.Length; i++)
         {
-            GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
-            PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
-            player.ApplyStat(characterStats[i].MaxHealth, characterStats[i].MaxMana, characterStats[i].AttackPower, characterStats[i].Speed);
-            
-            player.Index = i;
-            PlayableCharacter.Add(player);
-            UI_Battle.Instance.PartyHealthIndicator.Initialize(player);
+            if (players[i] == null)
+            {
+                UI_Battle.Instance.PartyHealthIndicator.Initialize(null, i);
+            }
+            else
+            {
+                GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
+                Debug.Log(ch);
+                PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
+                player.ApplyStat(characterStats[i].MaxHealth, characterStats[i].MaxMana, characterStats[i].AttackPower, characterStats[i].Speed);
+
+                player.Index = i;
+                PlayableCharacter.Add(player);
+                UI_Battle.Instance.PartyHealthIndicator.Initialize(player, i);
+            }
         }
     }
 

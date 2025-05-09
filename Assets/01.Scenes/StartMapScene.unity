@@ -13276,6 +13276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delayed_ImageMicroBar
       objectReference: {fileID: 0}
+    - target: {fileID: 491670725252598765, guid: 7d7d298e2c3021e448b3d2d2278eb2a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1885571637023894311, guid: 7d7d298e2c3021e448b3d2d2278eb2a0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15180,9 +15184,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1310679536813750700}
   - {fileID: 185537499}
   - {fileID: 1075383578}
-  - {fileID: 1310679536813750700}
   - {fileID: 98687728668081188}
   - {fileID: 98687728057287211}
   m_Father: {fileID: 0}
