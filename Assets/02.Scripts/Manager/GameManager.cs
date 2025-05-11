@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Equipment.RefactoringSlot;
+﻿using Equipment.RefactoringSlot;
 using Portrait;
 using UnityEngine;
 public class GameManager : MonoBehaviour
@@ -10,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] Characters = new GameObject[3];
 // GameManager 내부
     public CharacterStat[] CharacterStats = new CharacterStat[3];
-    public List<PortraitItem> PortraitItems = new List<PortraitItem>();
+    // public List<PortraitItem> PortraitItems = new List<PortraitItem>();
 
     public bool[] IsAlive = new bool[3];
     

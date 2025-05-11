@@ -79,8 +79,11 @@ public class CombatManager : MonoBehaviour
                 player.Index = i;
                 PlayableCharacter.Add(player);
                 UI_Battle.Instance.PartyHealthIndicator.Initialize(player, i);
+                UI_ChestInventory.Instance.Initialize(player, i);
+                
             }
         }
+        UI_ChestInventory.Instance.gameObject.SetActive(false);
     }
 
     public void SpawnEnemy(EnemyCharacter enemyCharacter)
