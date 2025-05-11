@@ -52,6 +52,7 @@ public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHan
     protected Vector2 _originalPosition;
     public SlotR MyParent;
     public SlotR OldParent;
+    
     public bool IsInSlot;
 
     // 개인 정보

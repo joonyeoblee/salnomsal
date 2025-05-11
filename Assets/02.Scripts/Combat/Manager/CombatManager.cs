@@ -58,14 +58,6 @@ public class CombatManager : MonoBehaviour
         SpawnPlayer();
         UI_Battle.Instance.HideBattleUI();
         UI_Battle.Instance.HideEnemyHealthIndicator();
-
-        // MapManager.Instance.OnMapNodeChanged += InitializeCombat;
-        Debug.Log("Battle Scene Start");
-    }
-
-    void OnDisable()
-    {
-        // MapManager.Instance.OnMapNodeChanged -= InitializeCombat;
     }
     public void SpawnPlayer()
     {
@@ -99,10 +91,6 @@ public class CombatManager : MonoBehaviour
 
     public void InitializeCombat()
     {
-        // 전투가 시작되면 호출될 함수
-        // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
-        //     .Select(obj => obj.GetComponent<PlayableCharacter>())
-        //     .ToList(); // test
         TurnOrder.Clear();
         _isInputBlocked = false;
 
@@ -413,19 +401,4 @@ public class CombatManager : MonoBehaviour
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;
     }
-
-    /*
-    public void RemoveDeadCharacter()
-    {
-        for (int i = 0; i < PlayableCharacter.Count; i++)
-        {
-            if (PlayableCharacter[i].IsAlive == false)
-            {
-                Destroy(PlayableCharacter[i].gameObject);
-                PlayableCharacter.RemoveAt(i);
-                --i;
-            }
-        }
-    }
-    */
 }

@@ -72,7 +72,6 @@ namespace Jun.Monster
             Debug.Log("Success");
             if (!IsMyTurn) return;
 
-            // ✅ 여기서 직접 실행
             foreach (PlayableCharacter target in dyingTargets)
             {
                 target.GetImmune();

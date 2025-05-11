@@ -19,7 +19,7 @@ namespace Portrait
         public float AttackPower;
         public int Speed;
         
-        public bool IsInSlot { get; set; }
+        // public bool IsInSlot { get; set; }
         
         public void Create(string characterId) // TODO: 이름도 건네줘야함
         {
