@@ -80,7 +80,7 @@ public class CombatManager : MonoBehaviour
                 PlayableCharacter.Add(player);
                 UI_Battle.Instance.PartyHealthIndicator.Initialize(player, i);
                 UI_ChestInventory.Instance.Initialize(player, i);
-                
+                UI_ChestInventory.Instance.InitCharacterStats(characterStats[i], i);
             }
         }
         UI_ChestInventory.Instance.gameObject.SetActive(false);

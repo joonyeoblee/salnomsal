@@ -1,3 +1,4 @@
+using Portrait;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +38,15 @@ public class UI_ChestInventory : MonoBehaviour
         Portraits[character.Index].GetComponent<Image>().sprite = character.GetComponent<PlayableIcons>().Portrait;
     }
 
+    public void InitCharacterStats(CharacterStat character, int index)
+    {
+        if (character == null)
+        {
+            Portraits[index].gameObject.SetActive(false);
+            return;
+        }
+        Statas[index].text = $"최대 체력 : {(int)character.MaxHealth}\n최대 마나 : {character.MaxMana}\n공격력 : {(int)character.AttackPower}\n속도 : {character.Speed}\n";
 
+    }
     
 }
