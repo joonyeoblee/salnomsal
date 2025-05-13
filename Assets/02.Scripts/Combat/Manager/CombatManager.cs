@@ -68,6 +68,8 @@ public class CombatManager : MonoBehaviour
             if (players[i] == null)
             {
                 UI_Battle.Instance.PartyHealthIndicator.Initialize(null, i);
+                UI_ChestInventory.Instance.Initialize(null, i);
+                UI_ChestInventory.Instance.InitCharacterStats(null, i);
             }
             else
             {

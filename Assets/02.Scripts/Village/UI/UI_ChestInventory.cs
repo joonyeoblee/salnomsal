@@ -30,6 +30,7 @@ public class UI_ChestInventory : MonoBehaviour
 
     public void Initialize(PlayableCharacter character, int index)
     {
+        Debug.Log("UI_ChestInventory::Initialize" + index + "::" + character);
         if (character == null)
         {
             Portraits[index].gameObject.SetActive(false);
@@ -42,7 +43,7 @@ public class UI_ChestInventory : MonoBehaviour
     {
         if (character == null)
         {
-            Portraits[index].gameObject.SetActive(false);
+            Statas[index].SetText("");
             return;
         }
         Statas[index].text = $"최대 체력 : {(int)character.MaxHealth}\n최대 마나 : {character.MaxMana}\n공격력 : {(int)character.AttackPower}\n속도 : {character.Speed}\n";
