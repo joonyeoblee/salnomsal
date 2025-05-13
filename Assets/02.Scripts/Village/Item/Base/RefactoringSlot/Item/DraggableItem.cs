@@ -1,4 +1,5 @@
 ﻿using System;
+using Equipment;
 using Portrait;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -32,13 +33,17 @@ public class PortraitItemData
     public string PortraitName;
     public CharacterStat CharacterStat;
     public int ClearCount;
-
-    public PortraitItemData(ItemData itemData, string portraitName, CharacterStat characterStat, int clearCount)
+    public EquipmentSaveData Weapon;
+    public EquipmentSaveData Armor;
+    public PortraitItemData(ItemData itemData, string portraitName, CharacterStat characterStat,
+        int clearCount, EquipmentSaveData weapon, EquipmentSaveData armor)
     {
         ItemData = itemData;
         PortraitName = portraitName;
         CharacterStat = characterStat;
         ClearCount = clearCount;
+        Weapon = weapon;
+        Armor = armor;
     }
 }
 public abstract class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler

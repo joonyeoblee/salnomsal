@@ -30,7 +30,8 @@ namespace Portrait
             _iconImage.sprite = portrait != null ? portrait.Icon : null;
             _itemData = new ItemData(Id, null, ItemType.Portrait);
             CharacterStat _characterStat = new CharacterStat(MaxHealth, MaxMana, AttackPower, Speed);
-            SaveData = new PortraitItemData(_itemData, portrait.name, _characterStat, ClearCount);
+            //TODO: 무기랑 아머 놔야함
+            SaveData = new PortraitItemData(_itemData, portrait.name, _characterStat, ClearCount, null, null);
             Save();
         }
 
