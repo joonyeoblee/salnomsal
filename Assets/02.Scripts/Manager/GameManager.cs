@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public CharacterSlotR[] TeamSlots = new CharacterSlotR[3];
     public GameObject[] Characters = new GameObject[3];
 // GameManager 내부
+    public PortraitItem[] PortraitItems = new PortraitItem[3];
     public CharacterStat[] CharacterStats = new CharacterStat[3];
     // public List<PortraitItem> PortraitItems = new List<PortraitItem>();
 

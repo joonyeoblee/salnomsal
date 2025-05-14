@@ -6,9 +6,11 @@ namespace Equipment.RefactoringSlot
     public class CharacterSlotR : SlotR
     {
         public bool TeamSlot;
-
+        
         private void Start()
         {
+            SaveKey = "CharacterSlot_" + SlotItemID + transform.GetSiblingIndex();
+
             if (TeamSlot)
             {
                 GameManager.Instance.TeamSlots[transform.GetSiblingIndex()] = this;
@@ -35,6 +37,7 @@ namespace Equipment.RefactoringSlot
             {
                 Debug.Log(transform.GetSiblingIndex());
                 PortraitItem myPortraitItem = MyDraggableItem.GetComponent<PortraitItem>();
+                GameManager.Instance.PortraitItems[transform.GetSiblingIndex()] = myPortraitItem;
                 GameManager.Instance.Characters[transform.GetSiblingIndex()] = myPortraitItem.portrait.Character;
                 GameManager.Instance.CharacterStats[transform.GetSiblingIndex()] = myPortraitItem.SaveData.CharacterStat;
             }

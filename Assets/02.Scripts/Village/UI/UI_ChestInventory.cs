@@ -1,3 +1,4 @@
+using Equipment.RefactoringSlot;
 using Portrait;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class UI_ChestInventory : MonoBehaviour
     public Image[] Portraits;
     public TMP_Text[] Statas;
 
+    public EquimentSlotR[] Weapon;
+    public EquimentSlotR[] Armor;
+    
     public static UI_ChestInventory Instance;
     private GameObject[] _PortraitItems
     {

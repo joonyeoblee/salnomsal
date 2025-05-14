@@ -1,4 +1,5 @@
 ﻿using System;
+using Equipment;
 using Portrait;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,13 +21,9 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
     public string SlotItemID;
 
     public GameObject ItemPrefab;
-    public string SaveKey
-    {
-        get
-        {
-            return "CharacterSlot_" + SlotItemID + transform.GetSiblingIndex();
-        }
-    }
+    public string SaveKey;
+        
+    
     public virtual void OnDrop(PointerEventData eventData)
     {
         DraggableItem droppedItem = eventData.pointerDrag?.GetComponent<DraggableItem>();
@@ -86,7 +83,14 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
 
             GameObject newItem = Instantiate(ItemPrefab, transform);
 
-            newItem.GetComponent<PortraitItem>().Load(loadSlotItemData.MyDraggableItemID);
+            if (newItem.TryGetComponent(out PortraitItem item))
+            {
+                item.Load(loadSlotItemData.MyDraggableItemID);
+            }
+            else if (newItem.TryGetComponent(out EquipmentGenerator equipmentGenerator))
+            {
+                equipmentGenerator.Init("3");
+            }
             Debug.Log(loadSlotItemData.MyDraggableItemID);
             MyDraggableItem = newItem.GetComponent<DraggableItem>();
             SetItem(MyDraggableItem);

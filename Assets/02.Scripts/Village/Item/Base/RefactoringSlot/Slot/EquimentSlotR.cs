@@ -4,7 +4,9 @@
     {
         public void LoadEquiment(string id)
         {
+            if (id == null) return;
             MyDraggableItemID = id;
+            SaveKey = "Item_" + id;
             Load();
         }
     }
