@@ -4876,7 +4876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1998.1078, y: -92.91687}
+  m_AnchoredPosition: {x: 1998.1077, y: -92.91687}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &528256637
@@ -11253,6 +11253,7 @@ GameObject:
   - component: {fileID: 1246968493}
   - component: {fileID: 1246968492}
   - component: {fileID: 1246968494}
+  - component: {fileID: 1246968495}
   m_Layer: 5
   m_Name: ItemSlot Weapon
   m_TagString: Untagged
@@ -11326,7 +11327,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246968489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6d5edec99b494087eeced29dacf4ff, type: 3}
   m_Name: 
@@ -11335,6 +11336,23 @@ MonoBehaviour:
   currentEquipment: {fileID: 0}
   canvas: {fileID: 1887852938}
   _itemPrefab: {fileID: 4507952745493704315, guid: 51e5c22c427d5384188ff0907921ee07, type: 3}
+--- !u!114 &1246968495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246968489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5043a6bf73f24b62add8bd3e9b46e99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyDraggableItem: {fileID: 0}
+  DraggedSlot: {fileID: 0}
+  MyDraggableItemID: 
+  SlotItemID: 
+  ItemPrefab: {fileID: 0}
 --- !u!1 &1252682099
 GameObject:
   m_ObjectHideFlags: 0
@@ -11623,6 +11641,7 @@ GameObject:
   - component: {fileID: 1305135661}
   - component: {fileID: 1305135660}
   - component: {fileID: 1305135662}
+  - component: {fileID: 1305135663}
   m_Layer: 5
   m_Name: ItemSlot Armor
   m_TagString: Untagged
@@ -11696,7 +11715,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305135657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6d5edec99b494087eeced29dacf4ff, type: 3}
   m_Name: 
@@ -11705,6 +11724,23 @@ MonoBehaviour:
   currentEquipment: {fileID: 0}
   canvas: {fileID: 1887852938}
   _itemPrefab: {fileID: 4507952745493704315, guid: 51e5c22c427d5384188ff0907921ee07, type: 3}
+--- !u!114 &1305135663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305135657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5043a6bf73f24b62add8bd3e9b46e99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyDraggableItem: {fileID: 0}
+  DraggedSlot: {fileID: 0}
+  MyDraggableItemID: 
+  SlotItemID: 
+  ItemPrefab: {fileID: 0}
 --- !u!1 &1316992301
 GameObject:
   m_ObjectHideFlags: 0
@@ -13520,6 +13556,7 @@ GameObject:
   - component: {fileID: 1570714432}
   - component: {fileID: 1570714431}
   - component: {fileID: 1570714430}
+  - component: {fileID: 1570714433}
   m_Layer: 5
   m_Name: ItemSlot Weapon
   m_TagString: Untagged
@@ -13555,7 +13592,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570714428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6d5edec99b494087eeced29dacf4ff, type: 3}
   m_Name: 
@@ -13602,6 +13639,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570714428}
   m_CullTransparentMesh: 1
+--- !u!114 &1570714433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570714428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5043a6bf73f24b62add8bd3e9b46e99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyDraggableItem: {fileID: 0}
+  DraggedSlot: {fileID: 0}
+  MyDraggableItemID: 
+  SlotItemID: 
+  ItemPrefab: {fileID: 0}
 --- !u!1 &1575872582
 GameObject:
   m_ObjectHideFlags: 0
@@ -17769,6 +17823,7 @@ GameObject:
   - component: {fileID: 2146222989}
   - component: {fileID: 2146222988}
   - component: {fileID: 2146222987}
+  - component: {fileID: 2146222990}
   m_Layer: 5
   m_Name: ItemSlot Armor
   m_TagString: Untagged
@@ -17804,7 +17859,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146222985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6d5edec99b494087eeced29dacf4ff, type: 3}
   m_Name: 
@@ -17851,6 +17906,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146222985}
   m_CullTransparentMesh: 1
+--- !u!114 &2146222990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146222985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5043a6bf73f24b62add8bd3e9b46e99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyDraggableItem: {fileID: 0}
+  DraggedSlot: {fileID: 0}
+  MyDraggableItemID: 
+  SlotItemID: 
+  ItemPrefab: {fileID: 0}
 --- !u!1 &5222848665987198
 GameObject:
   m_ObjectHideFlags: 0

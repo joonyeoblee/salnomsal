@@ -7,7 +7,7 @@ namespace Equipment.RefactoringSlot
     {
         public bool TeamSlot;
 
-        protected override void Start()
+        private void Start()
         {
             if (TeamSlot)
             {
@@ -17,7 +17,7 @@ namespace Equipment.RefactoringSlot
                     DeleteItem(true);
                 }
             }
-            base.Start();
+            Load();
         }
         public override void SetItem(DraggableItem portraitItem)
         {
@@ -49,5 +49,23 @@ namespace Equipment.RefactoringSlot
                 GameManager.Instance.CharacterStats[transform.GetSiblingIndex()] = null;
             }
         }
+
+        public void Save()
+        {
+            // if (_myDraggableItem == null) return;
+
+            CharacterSlotItemData slotItemData = new CharacterSlotItemData();
+
+            slotItemData.MyDraggableItemID = MyDraggableItem.Id;
+            slotItemData.SaveKey = SaveKey;
+            string data = JsonUtility.ToJson(slotItemData);
+
+            // 내 키와 아이템 Id 묶어서 저장
+            PlayerPrefs.SetString(SaveKey, data);
+            PlayerPrefs.Save();
+            Debug.Log("Save" + SaveKey);
+        }
+
+      
     }
 }

@@ -27,10 +27,6 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
             return "CharacterSlot_" + SlotItemID + transform.GetSiblingIndex();
         }
     }
-    protected virtual void Start()
-    {
-        Load();
-    }
     public virtual void OnDrop(PointerEventData eventData)
     {
         DraggableItem droppedItem = eventData.pointerDrag?.GetComponent<DraggableItem>();
@@ -81,23 +77,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
         }
     }
 
-    public void Save()
-    {
-        // if (_myDraggableItem == null) return;
-
-        CharacterSlotItemData slotItemData = new CharacterSlotItemData();
-
-        slotItemData.MyDraggableItemID = MyDraggableItem.Id;
-        slotItemData.SaveKey = SaveKey;
-        string data = JsonUtility.ToJson(slotItemData);
-
-        // 내 키와 아이템 Id 묶어서 저장
-        PlayerPrefs.SetString(SaveKey, data);
-        PlayerPrefs.Save();
-        Debug.Log("Save" + SaveKey);
-    }
-
-    private void Load()
+    protected void Load()
     {
         if (PlayerPrefs.HasKey(SaveKey))
         {
