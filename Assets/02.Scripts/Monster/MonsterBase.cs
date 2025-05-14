@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Jun.Skill;
@@ -13,13 +14,20 @@ namespace Jun.Monster
     
     public class MonsterBase : EnemyCharacter
     {
-        protected SkillDecision decision;
-        public Animator _animator;
-        protected MonsterSkill _skillComponent;
         protected List<PlayableCharacter> _playableCharacters => CombatManager.Instance.PlayableCharacter;
+        public bool IsMyTurn;
+
+        [Header("애니메이션")]
+        Animator _animator;
+
+        [Header("스킬")]
+        protected SkillDecision decision;
+        protected MonsterSkill _skillComponent;
+
+        [Header("타깃선정")]
         PlayableCharacter _lastTarget;
         protected PlayableCharacter _target;
-        public bool IsMyTurn;
+     
 
         [Header("사운드")]
         protected AudioSource _audioSource;
@@ -178,6 +186,13 @@ namespace Jun.Monster
         public override void EndTurn()
         {
             IsMyTurn = false;
+
+            if (Mana < MaxMana)
+            {
+                Mana++;
+            }
+
+            // Mana = Mana < MaxMana ? ++Mana : MaxMana;
             CombatManager.Instance.EndTurn(this);
             Debug.Log($"{name} EndTurn");
         }
@@ -193,7 +208,19 @@ namespace Jun.Monster
                 EndTurn();
             }
         }
-      
+        protected IEnumerator WaitForAnimation(string animName)
+        {
+            // animName이 시작될 때까지 대기
+            while (!_animator.GetCurrentAnimatorStateInfo(0).IsName(animName))
+                yield return null;
+
+            // animName이 진행 중일 때만 기다림
+            while (_animator.GetCurrentAnimatorStateInfo(0).IsName(animName) &&
+                   _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            {
+                yield return null;
+            }
+        }
     }
 
 }

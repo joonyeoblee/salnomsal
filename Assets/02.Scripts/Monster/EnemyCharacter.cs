@@ -24,7 +24,11 @@ public abstract class EnemyCharacter : MonoBehaviour, ITurnActor, ITargetable
     protected float _health;
 	public float CurrentHealth => _health;
 	protected float _mana;
-	public float Mana => _mana;
+	public float Mana
+	{
+		get => _mana;
+		set => _mana = value;
+	}
 
 	private bool _isAlive;
     public bool IsAlive

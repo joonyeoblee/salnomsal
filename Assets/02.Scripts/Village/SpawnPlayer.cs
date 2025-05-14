@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
+// 안쓸거야
 public class SpawnPlayer : MonoBehaviour, IPointerClickHandler
 {
     public GameObject portrait; // Portrait 프리팹
@@ -13,10 +14,16 @@ public class SpawnPlayer : MonoBehaviour, IPointerClickHandler
     public SpawnSlot[] spawnSlot;
 
     public GameObject SpawnCanvas;
+
+    void Awake()
+    {
+        Spawn();
+    }
     public void Spawn()
     {
         for (int i = 0; i < spawnSlot.Length; i++)
         {
+            // spawnSlot[i].DeleteItem();
             // 고유 ID 생성
             string uniqueID = Guid.NewGuid().ToString();
 
@@ -36,7 +43,7 @@ public class SpawnPlayer : MonoBehaviour, IPointerClickHandler
             if (portraitItem != null)
             {
                 portraitItem.portrait = selectedPortrait;
-                portraitItem.Init(uniqueID);
+                portraitItem.Create(uniqueID);
                 spawnSlot[i].SetItem(portraitItem);
 
                 Debug.Log($"새 플레이어 소환됨 | ID: {uniqueID} | Portrait: {selectedPortrait.name}");

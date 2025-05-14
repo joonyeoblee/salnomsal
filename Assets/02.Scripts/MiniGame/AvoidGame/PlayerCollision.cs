@@ -1,7 +1,5 @@
 
 using System;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace SeongIl
@@ -21,7 +19,8 @@ namespace SeongIl
             }
             Destroy(other.gameObject);
             Debug.Log(_hitCount);
-            if (_hitCount > 4)
+            
+            if (_hitCount > Avoid.Lives)
             {
                 GameObject[] warning = GameObject.FindGameObjectsWithTag("Warning");
                 GameObject[] bullets = GameObject.FindGameObjectsWithTag("Avoid");
@@ -31,8 +30,8 @@ namespace SeongIl
                     Destroy(warning[i]);
                 }
                 Debug.Log("콜리전 충돌 넘 많아 실패");
+
                 Avoid.Fail();
-                
             }
             else
             {

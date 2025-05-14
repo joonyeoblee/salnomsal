@@ -69,7 +69,6 @@ namespace SeongIl
                 
                 
                 StartCoroutine(ShootingShot());
-                
                 yield return new WaitForSeconds(SpawnTime);
                 
                 

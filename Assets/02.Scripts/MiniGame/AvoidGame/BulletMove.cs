@@ -23,12 +23,5 @@ namespace SeongIl
             transform.Translate(_direction * Speed * Time.deltaTime);
         }
         
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("DestroyZone"))
-            {
-                Destroy(gameObject);
-            }
-        }
     }
 }

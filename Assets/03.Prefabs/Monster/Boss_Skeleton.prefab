@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6544915890793017977}
-  - component: {fileID: 1136518714058444333}
+  - component: {fileID: 376379155335977224}
   - component: {fileID: 5804043370497695457}
   - component: {fileID: 4833578260173776624}
   - component: {fileID: 6169687366258898304}
@@ -194,7 +194,7 @@ Transform:
   - {fileID: 3040629207008808342}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136518714058444333
+--- !u!114 &376379155335977224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8714047611190015271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f1cc100e361944f8be012fc67fb78f, type: 3}
+  m_Script: {fileID: 11500000, guid: aba5d43bdd644feaba1f8f14229b8536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _model: {fileID: 825195105867037386}
@@ -219,7 +219,6 @@ MonoBehaviour:
   IsDefending: 0
   _targetType: 1
   _basicSpeed: 7
-  _animator: {fileID: 0}
   IsMyTurn: 0
   AttackSkillSound: {fileID: 8300000, guid: 9a5498026f725418780d290a08179db2, type: 3}
   moveDuration: 0.5

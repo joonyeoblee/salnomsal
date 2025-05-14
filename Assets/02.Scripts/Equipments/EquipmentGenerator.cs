@@ -46,8 +46,6 @@ namespace Equipment
             
             if (EquipmentInstance != null)
             {
-                Debug.Log($"[생성된 장비] {_equipmentSo.ItemName})");
-
                 foreach (StatModifier stat in EquipmentInstance.BaseStats)
                 {
                     float decimalPart = stat.Value - Mathf.Floor(stat.Value);

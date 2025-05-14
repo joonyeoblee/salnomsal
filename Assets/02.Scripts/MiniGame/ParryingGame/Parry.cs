@@ -22,7 +22,7 @@ namespace SeongIl
         [SerializeField]
         private float _parrySpeed = 0;
 
-        [SerializeField] private float _parryInstatiateTime = 0;
+        // [SerializeField] private float _parryInstatiateTime = 0;
         [SerializeField] private int _count = 3;
 
         [SerializeField] private int _distance = 11;

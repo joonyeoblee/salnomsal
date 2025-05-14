@@ -71,10 +71,16 @@ namespace Jun.Monster
         {
             Debug.Log("Success");
             if (!IsMyTurn) return;
-            CleanupDyingTargets();
+
+            foreach (PlayableCharacter target in dyingTargets)
+            {
+                target.GetImmune();
+            }
+
+            CleanupDyingTargets(); // 이후에 Success -= target.GetImmune 가능
             ReturnToOrigin(() => EndTurn());
-            
         }
+
 
         // ReSharper disable Unity.PerformanceAnalysis
         void OnFail() 
@@ -146,58 +152,59 @@ namespace Jun.Monster
 
         protected override void Skill1()
         {
-            
             SkillDataSO skill1 = _skillComponent.skillDataList[0];
-
-            if (skill1.SkillType == SkillType.Attack && skill1.IsMelee)
-            {
-                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill1(); });
-            } else
-            {
-                base.Skill1();
-            }
-            float damageAmount = AttackPower * skill1.SkillMultiplier;
-            _damage = new Damage(skill1.DamageType, damageAmount, gameObject);
-            ExecuteAttack(skill1.SkillRange, "Skill1");
+            ExecuteSkillWithMove(skill1, base.Skill1, "Skill1");
         }
 
         protected override void Skill2()
         {
             SkillDataSO skill2 = _skillComponent.skillDataList[1];
+            ExecuteSkillWithMove(skill2, base.Skill2, "Skill2");
+        }
 
-            if (skill2.SkillType == SkillType.Attack && skill2.IsMelee)
+        protected override void Skill3()
+        {
+            SkillDataSO skill3 = _skillComponent.skillDataList[2];
+            ExecuteSkillWithMove(skill3, base.Skill3, "Skill3");
+        }
+
+        protected override void Skill4()
+        {
+            SkillDataSO skill4 = _skillComponent.skillDataList[3];
+            ExecuteSkillWithMove(skill4, base.Skill4, "Skill4");
+        }
+        void ExecuteSkillWithMove(SkillDataSO skillData, Action baseSkillAction, string animName)
+        {
+            if (skillData.SkillType == SkillType.Attack && skillData.IsMelee)
             {
-                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { base.Skill2(); });
+                transform.DOMove(CombatManager.Instance.EnemyAttackPosition.position, moveDuration)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() => { baseSkillAction(); });
             } else
             {
-                base.Skill2();
+                baseSkillAction();
             }
-            
-            float damageAmount = AttackPower * skill2.SkillMultiplier;
-            _damage = new Damage(skill2.DamageType, damageAmount, gameObject);
-            ExecuteAttack(skill2.SkillRange, "Skill2");
+
+            float damageAmount = AttackPower * skillData.SkillMultiplier;
+            _damage = new Damage(skillData.DamageType, damageAmount, gameObject);
+            ExecuteAttack(skillData.SkillRange, animName);
         }
         void ExecuteAttack(SkillRange range, string animName)
         {
-            Debug.Log("🟡 ExecuteAttack 진입");
-
             if (_target == null)
-                Debug.LogWarning("⚠ _target이 null입니다");
+                Debug.LogWarning("_target이 null입니다");
 
             if (_playableCharacters == null)
-                Debug.LogWarning("⚠ _playableCharacters가 null입니다");
+                Debug.LogWarning("_playableCharacters가 null입니다");
 
             targets = range == SkillRange.Single ? new List<PlayableCharacter> { _target } : new List<PlayableCharacter>(_playableCharacters);
-
-            Debug.Log("🎯 타겟 개수: " + (targets != null ? targets.Count.ToString() : "targets is null"));
-
+            
             dyingTargets = new List<PlayableCharacter>();
 
             foreach (PlayableCharacter target in targets)
             {
                 if (target == null)
                 {
-                    Debug.LogError("❌ target is null!");
                     continue;
                 }
 
@@ -206,13 +213,6 @@ namespace Jun.Monster
                     dyingTargets.Add(target);
                 }
             }
-
-            foreach (PlayableCharacter dyingTarget in dyingTargets)
-            {
-                MiniGameScenesManager.Instance.Success += dyingTarget.GetImmune;
-            }
-
-            Debug.Log("☠ 죽을 타겟 수: " + dyingTargets.Count);
 
             if (animName != "Attack")
             {
@@ -263,7 +263,8 @@ namespace Jun.Monster
                 yield return new WaitForSeconds(0.3f);
 
                 MiniGameScenesManager.Instance.player = targets.Find(t => t.WouldDieFromAttack(_damage)).gameObject;
-
+                MiniGameScenesManager.Instance.MonsterModel = Model.GetComponent<SpriteRenderer>().sprite;
+                    
                 MiniGameScenesManager.Instance.StartMiniGame(_damage.Type);
                 MiniGameScenesManager.Instance.Success += OnSuccess;
                 MiniGameScenesManager.Instance.Fail += OnFail;
@@ -292,26 +293,6 @@ namespace Jun.Monster
                 transform.DOMove(OriginPosition, moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { EndTurn(); });
             }
         }
-
-        IEnumerator WaitForAnimation(string animName)
-        {
-            yield return null;
-
-            Debug.Log(WaitForAnimation(animName));
-            AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
-            while (!info.IsName(animName))
-            {
-                yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
-            }
-
-            Debug.Log("애니메이션 시작");
-            while (info.normalizedTime < 1f)
-            {
-                yield return null;
-                info = _animator.GetCurrentAnimatorStateInfo(0);
-            }
-            Debug.Log("애니메이션 끝");
-        }
+        
     }
 }
