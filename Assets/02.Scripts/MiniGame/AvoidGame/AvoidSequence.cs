@@ -10,14 +10,11 @@ namespace SeongIl
         
         public Image Enemy;
         public Image BackGround;
-        public AvoidSpawner Spawner;
         public GameObject[] Effect;
-        // public GameObject Player;
-        
+
         private void Start()
         {
             StartSequence();
-            
         }
         // 연출 시작 -> 게임 시작
         private void StartSequence()
@@ -30,10 +27,9 @@ namespace SeongIl
             sequence.Append(Enemy.rectTransform.DOAnchorPos(new Vector2(1400, 0), 1f).SetEase(Ease.OutCubic));
             sequence.Join(BackGround.DOColor(new Color(0f, 0f, 0f, 0f),0.7f).SetEase(Ease.OutCubic));
             sequence.Join(BackGround.rectTransform.DOScale(new Vector3(0,1f,1f),1f).SetEase(Ease.OutCubic));
-
             sequence.OnComplete(() =>
             {
-                GameStart();
+                this.GetComponent<Avoid>().GameStart();
             });
         }
 
@@ -51,12 +47,5 @@ namespace SeongIl
             
         }
 
-        // 게임 시작, avoid 게임 스타트, 스포너 스폰 시작
-        private void GameStart()
-        {
-            Avoid avoid = this.GetComponent<Avoid>();
-            avoid.IsGameOver = false;  
-            Spawner.SpawnStart(avoid.ArrowCount, avoid);
-        }
     }
 }

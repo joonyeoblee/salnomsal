@@ -106,7 +106,6 @@ namespace Jun
         public void GoHome()
         {
             SceneManager.LoadScene((int)SceneIndex.Village);
-
         }
 
         public void StartMiniGame(DamageType damageType)

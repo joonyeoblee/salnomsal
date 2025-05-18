@@ -39,8 +39,7 @@ namespace Jun.Skill
     public class Skill
     {
         public SkillDataSO SkillData;
-
-        // ✅ 조건 함수 리스트로 변경
+        
         public List<Func<Character, int>> conditionalBonusPriorities = new List<Func<Character, int>>();
     }
 
