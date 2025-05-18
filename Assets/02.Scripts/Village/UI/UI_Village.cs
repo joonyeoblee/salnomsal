@@ -11,10 +11,6 @@ namespace Son
         [Header("캐릭터")]
         public GameObject PortraitPanel;
         public GameObject SpawnPanel;
-        [Header("상자")]
-        public Image ChestImage;
-        public Sprite OpenSprite;
-        public Sprite ClosedSprite;
 
         [Header("스테이지")]
         public GameObject StageSelectButton;
@@ -32,19 +28,12 @@ namespace Son
                 .SetAutoKill(false)
                 .Pause();
         }
+        
 
-        public void OpenChest()
+        public void OpenPortraitPanel()
         {
             Tween.Restart();
-            ChestImage.sprite = OpenSprite;
-            ExitStageSelectPanelButton.SetActive(true);
-        }
-
-        public void CloseChest()
-        {
-            Tween.Restart();
-            ChestImage.sprite = ClosedSprite;
-            StageSelectButton.SetActive(true);
+            PortraitPanel.SetActive(true);
         }
 
         public void ClosePortrait()
@@ -62,7 +51,7 @@ namespace Son
 
         void CloseAll()
         {
-            CloseChest();
+            // CloseChest();
             ClosePortrait();
             CloseSpawn();
 
