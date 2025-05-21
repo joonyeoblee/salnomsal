@@ -46,14 +46,6 @@ namespace Portrait
         public override void OnEndDrag(PointerEventData eventData)
         {
             base.OnEndDrag(eventData);
-
-            GameObject targetObject = eventData.pointerEnter;
-            TryGetComponent(out CharacterSlotR targetSlot);
-            if (targetSlot != null)
-            {
-                return;
-            }
-
             // 슬롯에 드롭되지 않았을 경우 원래대로 복귀
             ReturnToOriginalParent();
         }
