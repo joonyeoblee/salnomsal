@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SalnomSalIcon_0: 5156000153166334617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

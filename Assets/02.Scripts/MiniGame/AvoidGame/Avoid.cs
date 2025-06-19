@@ -8,27 +8,27 @@ namespace SeongIl
 {
     public class Avoid : MonoBehaviour
     {
+        private AvoidSpawner Spawner;
         //  parrying 사운드
         public AudioSource ParrySound;
 
         // 화살 다 피함? 카운트 세기
         public int ArrowCount;
-
         // 스폰 속도
         public float MinTime;
-
         public float MaxTime;
-
+        public int SuccessCount;
+        // 목숨
+        public int Lives = 3;
         // 게임 시작
-        public bool IsGameOver = false;
-        public int SuccessCount = 0;
-
+        public bool IsGameOver = true;
         public SpriteRenderer Icon;
 
         void Start()
         {
-            int index = MiniGameScenesManager.Instance.player.GetComponent<PlayableCharacter>().Index;
-            Icon.sprite = GameManager.Instance.PortraitItems[index].portrait.Icon;
+            // int index = MiniGameScenesManager.Instance.player.GetComponent<PlayableCharacter>().Index;
+            // Icon.sprite = GameManager.Instance.PortraitItems[index].portrait.Icon;
+            Spawner = GetComponent<AvoidSpawner>();
         }
 
         // 피하기 시작하기
@@ -52,7 +52,7 @@ namespace SeongIl
         {
             Debug.Log("Fail");
             GameStop();
-            IsGameOver = true;
+            
             DOTween.KillAll();
             MiniGameScenesManager.Instance.Fail?.Invoke();
             StartCoroutine(LoadScene());
@@ -63,7 +63,8 @@ namespace SeongIl
         public void Success()
         {
             Debug.Log("Success");
-            IsGameOver = true;
+            GameStop();
+            
             DOTween.KillAll();
             MiniGameScenesManager.Instance.Success?.Invoke();
             StartCoroutine(LoadScene());
@@ -73,10 +74,8 @@ namespace SeongIl
         public void ParryingSuccess()
         {
             ParrySound.PlayOneShot(ParrySound.clip);
-            IsGameOver = true;
             
             DOTween.KillAll();
-            Debug.Log("다 죽임 : 어보이드");
             MiniGameScenesManager.Instance.Parring?.Invoke();
             StartCoroutine(LoadScene());
         }
@@ -84,10 +83,16 @@ namespace SeongIl
         // 게임 종료하기
         public void GameStop()
         {
-            AvoidSpawner spawner = GetComponent<AvoidSpawner>();
-            spawner?.StopAllCoroutines();
+            IsGameOver = true;
+            Spawner?.StopAllCoroutines();
         }
-
+        //게임 시작
+        public void GameStart()
+        {
+            Spawner.SpawnStart(ArrowCount,this);
+            IsGameOver = false;
+        }
+        
         private IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(0.2f);

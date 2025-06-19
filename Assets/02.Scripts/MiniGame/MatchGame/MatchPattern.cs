@@ -24,32 +24,15 @@ namespace SeongIl
         public GameObject[] MagicVFX;
         
         public Image[] MagicCircle;
-        
-        
-        
         [Header("시간 설정")]
         public float TimeLimit = 0;
         public float BonusDecline;
         public float IncreaseTime;
         public float DeclineTime;
-        
         [Header("게임 시작")]
         public bool _isGameActive = true;
-        
         private Queue<string> _keyQueue = new Queue<string>();
-
         public int KeyCount = 5;
-
-        private void Start()
-        {
-            /*// 난이도 조절하기
-            TimeLimit =  // 차오르는 속도
-            BonusDecline = // 전부 다 쳤을 때 fillAmount 감소
-            IncreaseTime = // 틀렸을 때 차오르는 양
-            DeclineTime = // 성공했을 때 줄어드는 양
-            */
-            
-        }
 
         private void Update()
         {
@@ -105,7 +88,6 @@ namespace SeongIl
 
                     }
                 }
-                
                 else
                 {
                     FailCircle();
@@ -192,7 +174,7 @@ namespace SeongIl
             sequence.Append(Book.rectTransform.DORotate(new Vector3(0 , 0 , 0), duration));
         }
 
-        // 실패시 호출
+        // 실패시 연출
         private void FailCircle()
         {
             MagicCircle[2].DOKill();

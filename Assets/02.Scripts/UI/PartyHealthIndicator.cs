@@ -1,14 +1,19 @@
-﻿using UnityEngine;
-using Microlight.MicroBar;
+﻿using Microlight.MicroBar;
+using UnityEngine;
 using UnityEngine.UI;
-
 public class PartyHealthIndicator : MonoBehaviour
 {
     public GameObject[] Portrait;
     public MicroBar[] HealthBars;
 
-    public void Initialize(PlayableCharacter character)
+    public void Initialize(PlayableCharacter character, int index)
     {
+        if (character == null)
+        {
+            Portrait[index].SetActive(false);
+            HealthBars[index].gameObject.SetActive(false);
+            return;
+        }
         Portrait[character.Index].GetComponent<Image>().sprite = character.GetComponent<PlayableIcons>().Portrait;
         HealthBars[character.Index].Initialize(character.MaxHealth);
     }

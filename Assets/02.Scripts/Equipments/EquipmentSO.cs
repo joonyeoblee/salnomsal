@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Equipment
 {
@@ -16,7 +15,7 @@ namespace Equipment
         public string ItemName;
         public Sprite Icon;
         public Sprite BorderSprite;
-        public EquipmentType Type; // ✅ 외부 enum 사용
+        public EquipmentType Type; 
 
         [Header("기본 능력치 범위")] public List<StatRange> BaseStatRanges;
 

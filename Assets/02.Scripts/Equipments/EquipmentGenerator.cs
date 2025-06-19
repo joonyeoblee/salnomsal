@@ -1,8 +1,42 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Equipment
 {
+    public enum PassiveType
+    {
+        Attack,
+        MaxHealth,
+        HealOnHit,
+        ManaRegen,
+        Thorns,
+        Barrier,
+        DodgeBoost
+    }
+    [Serializable]
+    public class EquipmentSaveData
+    {
+        public string Id;
+        public Rarity Rarity;
+        public List<StatModifier> BaseStats;
+        public List<AppliedPassiveEffect> AppliedPassives;
+
+        public EquipmentSaveData(string itemId, EquipmentInstance instance)
+        {
+            Id = itemId;
+            Rarity = instance.Rarity;
+            BaseStats = instance.BaseStats;
+            AppliedPassives = instance.AppliedPassives;
+        }
+
+        public EquipmentInstance ToInstance(EquipmentSO so)
+        {
+            return new EquipmentInstance(so, Rarity, BaseStats, AppliedPassives);
+        }
+    }
+
     public class EquipmentGenerator : MonoBehaviour
     {
         public string ItemId;
@@ -13,12 +47,7 @@ namespace Equipment
         [SerializeField] private Image _iconImage;
         [SerializeField] private Image _borderImage;
         public EquipmentInstance EquipmentInstance { get; private set; }
-
-        // void Start()
-        // {
-        //     // 만약 아이템 생성하려면 이렇게 해야함
-        //     Init(ItemId);
-        // }
+        
         public void Init(string id)
         {
             ItemId = id;
@@ -46,8 +75,6 @@ namespace Equipment
             
             if (EquipmentInstance != null)
             {
-                Debug.Log($"[생성된 장비] {_equipmentSo.ItemName})");
-
                 foreach (StatModifier stat in EquipmentInstance.BaseStats)
                 {
                     float decimalPart = stat.Value - Mathf.Floor(stat.Value);

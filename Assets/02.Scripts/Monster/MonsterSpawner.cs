@@ -53,17 +53,12 @@ namespace Jun.Spawner
 
             GameObject spawnedMonster = Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
             Monster.Monster monster = spawnedMonster.GetComponent<Monster.Monster>();
-            if (monster == null)
-            {
-                spawnedMonster.GetComponent<Monster.Boss>();
-            }
-            else
-            {
-                monster.MaxHealth += Random.Range(0, 10);
-                monster.AttackPower += Random.Range(0, 10);
-                monster.BasicSpeed += Random.Range(-1, 2);
-                spawnedMonster.name = spawnPrefab.name + spawnPoint.name;
-            }
+
+            monster.MaxHealth += Random.Range(0, 10);
+            monster.AttackPower += Random.Range(0, 10);
+            monster.BasicSpeed += Random.Range(-1, 2);
+            spawnedMonster.name = spawnPrefab.name + spawnPoint.name;
+            
 
             CombatManager.Instance.SpawnEnemy(spawnedMonster.GetComponent<EnemyCharacter>());
         }

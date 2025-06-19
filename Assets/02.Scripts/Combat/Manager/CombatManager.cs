@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Jun;
 using MoreMountains.Feedbacks;
 using Portrait;
 using UnityEngine;
+using Enumerable = System.Linq.Enumerable;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -58,29 +58,39 @@ public class CombatManager : MonoBehaviour
         SpawnPlayer();
         UI_Battle.Instance.HideBattleUI();
         UI_Battle.Instance.HideEnemyHealthIndicator();
-
-        // MapManager.Instance.OnMapNodeChanged += InitializeCombat;
-        Debug.Log("Battle Scene Start");
-    }
-
-    void OnDisable()
-    {
-        // MapManager.Instance.OnMapNodeChanged -= InitializeCombat;
     }
     public void SpawnPlayer()
     {
-        List<GameObject> players = GameManager.Instance.Characters;
-        List<CharacterStat> characterStats = GameManager.Instance.CharacterStats;
-        for (int i = 0; i < players.Count; i++)
+        GameObject[] players = GameManager.Instance.Characters;
+        CharacterStat[] characterStats = GameManager.Instance.CharacterStats;
+        for (int i = 0; i < players.Length; i++)
         {
-            GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
-            PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
-            player.ApplyStat(characterStats[i].MaxHealth, characterStats[i].MaxMana, characterStats[i].AttackPower, characterStats[i].Speed);
-            
-            player.Index = i;
-            PlayableCharacter.Add(player);
-            UI_Battle.Instance.PartyHealthIndicator.Initialize(player);
+            if (players[i] == null)
+            {
+                UI_Battle.Instance.PartyHealthIndicator.Initialize(null, i);
+                UI_ChestInventory.Instance.Initialize(null, i);
+                UI_ChestInventory.Instance.InitCharacterStats(null, i);
+            }
+            else
+            {
+                GameObject ch = Instantiate(players[i], new Vector3(SpawnPoint[i].position.x, SpawnPoint[i].position.y, 0), Quaternion.identity);
+                Debug.Log(ch);
+                PlayableCharacter player = ch.GetComponent<PlayableCharacter>();
+                player.ApplyStat(characterStats[i].MaxHealth, characterStats[i].MaxMana, characterStats[i].AttackPower, characterStats[i].Speed);
+
+                player.Index = i;
+                PlayableCharacter.Add(player);
+                UI_Battle.Instance.PartyHealthIndicator.Initialize(player, i);
+                UI_ChestInventory.Instance.Initialize(player, i);
+                UI_ChestInventory.Instance.InitCharacterStats(characterStats[i], i);
+                // 장비
+                // UI_ChestInventory.Instance.Armor[i].LoadEquiment(GameManager.Instance.PortraitItems[i].SaveData.Weapon.Id);
+                UI_ChestInventory.Instance.Armor[i].LoadEquiment("3");
+                UI_ChestInventory.Instance.Armor[i].LoadEquiment(GameManager.Instance.PortraitItems[i].SaveData.Armor.Id);
+                
+            }
         }
+        UI_ChestInventory.Instance.gameObject.SetActive(false);
     }
 
     public void SpawnEnemy(EnemyCharacter enemyCharacter)
@@ -91,10 +101,6 @@ public class CombatManager : MonoBehaviour
 
     public void InitializeCombat()
     {
-        // 전투가 시작되면 호출될 함수
-        // PlayableCharacter = GameObject.FindGameObjectsWithTag("PlayableCharacter")
-        //     .Select(obj => obj.GetComponent<PlayableCharacter>())
-        //     .ToList(); // test
         TurnOrder.Clear();
         _isInputBlocked = false;
 
@@ -130,7 +136,7 @@ public class CombatManager : MonoBehaviour
 
     public void SetOrder()
     {
-        TurnOrder = TurnOrder.OrderByDescending(actor => actor.CurrentSpeed).ToList();
+        TurnOrder = Enumerable.ToList(Enumerable.OrderByDescending(TurnOrder, actor => actor.CurrentSpeed));
     }
 
     public void SetSelectedSkill(SkillSlot slot)
@@ -405,19 +411,4 @@ public class CombatManager : MonoBehaviour
         // 컴뱃 매니저를 초기화 하고 씬매니저로 씬 전환
         return true;
     }
-
-    /*
-    public void RemoveDeadCharacter()
-    {
-        for (int i = 0; i < PlayableCharacter.Count; i++)
-        {
-            if (PlayableCharacter[i].IsAlive == false)
-            {
-                Destroy(PlayableCharacter[i].gameObject);
-                PlayableCharacter.RemoveAt(i);
-                --i;
-            }
-        }
-    }
-    */
 }
