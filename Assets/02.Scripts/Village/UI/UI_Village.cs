@@ -6,7 +6,7 @@ namespace Son
 {
     public class UI_Village : MonoBehaviour
     {
-        public Tween Tween;
+        private Tween Tween;
 
         [Header("캐릭터")]
         public GameObject PortraitPanel;
