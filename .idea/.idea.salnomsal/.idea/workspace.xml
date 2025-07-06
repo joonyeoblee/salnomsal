@@ -7,7 +7,21 @@
     <list default="true" id="108eb677-ddd5-45a0-8e4d-b2ea8000b53a" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scenes/Village.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scenes/Village.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Utils/UI_Selector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Utils/UI_Selector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/CharacterSlotR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/CharacterSlotR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/SpawnPlayerR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/SpawnPlayerR.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/UI/UI_Village.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/UI/UI_Village.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Feel/FeelDemos/FeelTemplatesDemo.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Feel/FeelDemosURP/FeelDemosURP.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Feel/NiceVibrations/OlderVersions/v1.7/NiceVibrations-v-1-7.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Feel/NiceVibrations/OlderVersions/v2.0.1/NiceVibrations-v-2-0-1.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Feel/NiceVibrations/OlderVersions/v3.9/NiceVibrations-v-3-9-0.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_HDRP_2018.3.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_LWRP_2018.3.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_URP_2019.3.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProCamera2D/Runtime/Timeline/Timeline.unitypackage.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,26 +31,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/02.Scripts/Village/UI/UI_Village.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2xGNudp1fWRIwsoYQpiEWf8GL3F" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.44f1/Unity.app/Contents/MacOS/Unity" />
@@ -90,6 +107,9 @@
       <option name="presentableId" value="Default" />
       <updated>1747560675157</updated>
       <workItem from="1747560678376" duration="892000" />
+      <workItem from="1751711229503" duration="660000" />
+      <workItem from="1751712435795" duration="5870000" />
+      <workItem from="1751789234710" duration="4483000" />
     </task>
     <servers />
   </component>

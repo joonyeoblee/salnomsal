@@ -51,7 +51,6 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
         MyDraggableItem = myDraggableItem;
         MyDraggableItem.MyParent = this;
         Debug.Log(MyDraggableItem.Id + "SetItem" + gameObject.name);
-        // Save(); // 상속받은애가 하는 중
     }
     public virtual void DeleteItem(bool destroyObject = false)
     {
@@ -63,7 +62,7 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
             }
         
             MyDraggableItem = null;
-            Debug.Log($"[Slot {SaveKey}] 아이템 제거됨.");
+            // Debug.Log($"[Slot {SaveKey}] 아이템 제거됨.");
         }
 
         if (PlayerPrefs.HasKey(SaveKey))
@@ -76,8 +75,12 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
 
     protected void Load()
     {
+        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!");
+
         if (PlayerPrefs.HasKey(SaveKey))
         {
+            Debug.Log("??????????????????????????????");
+
             string json = PlayerPrefs.GetString(SaveKey);
             CharacterSlotItemData loadSlotItemData = JsonUtility.FromJson<CharacterSlotItemData>(json);
 

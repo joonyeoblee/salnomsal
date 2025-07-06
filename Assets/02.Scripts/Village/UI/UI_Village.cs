@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +29,10 @@ namespace Son
                 .SetAutoKill(false)
                 .Pause();
         }
-        
+        private void Start()
+        {
+            CloseAll();
+        }
 
         public void OpenPortraitPanel()
         {
@@ -49,7 +53,7 @@ namespace Son
             SpawnPanel.SetActive(false);
         }
 
-        void CloseAll()
+        public void CloseAll()
         {
             // CloseChest();
             ClosePortrait();

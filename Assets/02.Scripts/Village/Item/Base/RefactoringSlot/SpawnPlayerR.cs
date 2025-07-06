@@ -54,6 +54,13 @@ public class SpawnPlayerR : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("포탈 클릭됨");
+        if (!PlayerPrefs.HasKey("Init"))
+        {
+            Spawn();
+            PlayerPrefs.SetInt("Init", 1);
+            PlayerPrefs.Save();
+        }
         SpawnCanvas.SetActive(true);
     }
 }

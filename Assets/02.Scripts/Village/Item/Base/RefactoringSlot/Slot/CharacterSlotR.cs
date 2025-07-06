@@ -1,4 +1,5 @@
-﻿using Portrait;
+﻿using System;
+using Portrait;
 using UnityEngine;
 
 namespace Equipment.RefactoringSlot
@@ -6,11 +7,12 @@ namespace Equipment.RefactoringSlot
     public class CharacterSlotR : SlotR
     {
         public bool TeamSlot;
-        
-        private void Start()
+        private void Awake()
         {
             SaveKey = "CharacterSlot_" + SlotItemID + transform.GetSiblingIndex();
-
+        }
+        private void Start()
+        {
             if (TeamSlot)
             {
                 GameManager.Instance.TeamSlots[transform.GetSiblingIndex()] = this;
@@ -23,7 +25,12 @@ namespace Equipment.RefactoringSlot
         }
         public override void SetItem(DraggableItem portraitItem)
         {
-            if (portraitItem == null) return;
+            if (portraitItem == null)
+            {
+                Debug.LogWarning("SetItem: portraitItem is null");
+                return;
+            }
+
             MyDraggableItem = portraitItem;
             MyDraggableItemID = portraitItem.Id;
             MyDraggableItem.transform.SetParent(transform);
@@ -31,6 +38,7 @@ namespace Equipment.RefactoringSlot
 
             portraitItem.IsInSlot = true;
             base.SetItem(portraitItem);
+            Debug.Log("Calling Save()");
             Save();
 
             if (TeamSlot)
@@ -55,19 +63,25 @@ namespace Equipment.RefactoringSlot
 
         public void Save()
         {
-            // if (_myDraggableItem == null) return;
+            if (MyDraggableItem == null)
+            {
+                Debug.LogWarning("Save skipped: MyDraggableItem is null");
+                return;
+            }
 
+            Debug.Log("Saving slot with key: " + SaveKey + ", id: " + MyDraggableItem.Id);
+    
             CharacterSlotItemData slotItemData = new CharacterSlotItemData();
-
             slotItemData.MyDraggableItemID = MyDraggableItem.Id;
             slotItemData.SaveKey = SaveKey;
-            string data = JsonUtility.ToJson(slotItemData);
 
-            // 내 키와 아이템 Id 묶어서 저장
+            string data = JsonUtility.ToJson(slotItemData);
             PlayerPrefs.SetString(SaveKey, data);
             PlayerPrefs.Save();
-            Debug.Log("Save" + SaveKey);
+
+            Debug.Log("Saved JSON: " + data);
         }
+
 
       
     }
