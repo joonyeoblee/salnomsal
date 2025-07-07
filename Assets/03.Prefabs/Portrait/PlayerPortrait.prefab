@@ -101,11 +101,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24375f5f7de4652a57a8f016601c021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterId: 
-  portrait: {fileID: 0}
   MyParent: {fileID: 0}
+  OldParent: {fileID: 0}
+  IsInSlot: 0
+  Id: 
+  _iconImage: {fileID: 5526483912469303959}
+  SaveData:
+    ItemData: {fileID: 0}
+    PortraitName: 
+    CharacterStat:
+      MaxHealth: 0
+      MaxMana: 0
+      AttackPower: 0
+      Speed: 0
+    ClearCount: 0
+    Weapon:
+      Id: 
+      Rarity: 0
+      BaseStats: []
+      AppliedPassives: []
+    Armor:
+      Id: 
+      Rarity: 0
+      BaseStats: []
+      AppliedPassives: []
+  portrait: {fileID: 0}
   MaxHealth: 0
   MaxMana: 0
   AttackPower: 0
   Speed: 0
-  _iconImage: {fileID: 5526483912469303959}
