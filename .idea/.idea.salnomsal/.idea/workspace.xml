@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108eb677-ddd5-45a0-8e4d-b2ea8000b53a" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/2.Repository/InventoryRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/2.Repository/InventoryRepository.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Utils/JsonHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Utils/JsonHelper.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scenes/Village.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scenes/Village.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Utils/UI_Selector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Utils/UI_Selector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/CharacterSlotR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/CharacterSlotR.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/SpawnPlayerR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/SpawnPlayerR.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/UI/UI_Village.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/UI/UI_Village.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Feel/FeelDemos/FeelTemplatesDemo.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Feel/FeelDemosURP/FeelDemosURP.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Feel/NiceVibrations/OlderVersions/v1.7/NiceVibrations-v-1-7.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Feel/NiceVibrations/OlderVersions/v2.0.1/NiceVibrations-v-2-0-1.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Feel/NiceVibrations/OlderVersions/v3.9/NiceVibrations-v-3-9-0.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_HDRP_2018.3.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_LWRP_2018.3.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/CartoonLowPolyCityLite_URP_2019.3.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProCamera2D/Runtime/Timeline/Timeline.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scenes/StartMapScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scenes/StartMapScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Inventory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Inventory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Monster_Sound/Monster_Audio.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +50,7 @@
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.44f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.44f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -64,7 +58,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.44f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.44f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -110,6 +104,7 @@
       <workItem from="1751711229503" duration="660000" />
       <workItem from="1751712435795" duration="5870000" />
       <workItem from="1751789234710" duration="4483000" />
+      <workItem from="1752246724100" duration="1242000" />
     </task>
     <servers />
   </component>
