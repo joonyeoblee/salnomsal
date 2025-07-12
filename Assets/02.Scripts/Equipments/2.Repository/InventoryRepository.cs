@@ -1,24 +1,32 @@
-using System;
-using Equipment;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class InventoryRepository
+namespace Equipment
 {
-    private const string SAVE_KEY = "Equipments";
-
-    public void Save(EquipmentSaveData[] equipmentSaveDatas)
+    public class InventoryRepository
     {
-        string json = JsonHelper.ToJson(equipmentSaveDatas);
-        PlayerPrefs.SetString(SAVE_KEY, json);
-        PlayerPrefs.Save();
-    }
+        private const string Key = "Equipments";
 
-    public EquipmentSaveData[] Load()
-    {
-        if (!PlayerPrefs.HasKey(SAVE_KEY))
-            return Array.Empty<EquipmentSaveData>();
+        public void Save(EquipmentSaveData[] saveDatas)
+        {
+            string json = JsonUtility.ToJson(new EquipmentSaveWrapper { Items = saveDatas });
+            PlayerPrefs.SetString(Key, json);
+            PlayerPrefs.Save();
+        }
 
-        string json = PlayerPrefs.GetString(SAVE_KEY);
-        return JsonHelper.FromJson<EquipmentSaveData>(json);
+        public EquipmentSaveData[] Load()
+        {
+            if (!PlayerPrefs.HasKey(Key)) return new EquipmentSaveData[0];
+
+            string json = PlayerPrefs.GetString(Key);
+            var wrapper = JsonUtility.FromJson<EquipmentSaveWrapper>(json);
+            return wrapper?.Items ?? new EquipmentSaveData[0];
+        }
+
+        [System.Serializable]
+        private class EquipmentSaveWrapper
+        {
+            public EquipmentSaveData[] Items;
+        }
     }
 }

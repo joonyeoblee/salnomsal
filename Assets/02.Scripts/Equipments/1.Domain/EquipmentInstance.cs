@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Equipment;
-
+public enum EquipmentType
+{
+    Weapon,
+    Armor
+}
 public class EquipmentInstance
 {
-    public string Name;
     public EquipmentType Type;
     public string IconAddress;
     public string BorderAddress;
@@ -13,7 +16,6 @@ public class EquipmentInstance
     public List<AppliedPassiveEffect> AppliedPassives;
 
     public EquipmentInstance(
-        string name,
         EquipmentType type,
         string iconAddress,
         string borderAddress,
@@ -21,7 +23,6 @@ public class EquipmentInstance
         List<StatModifier> baseStats,
         List<AppliedPassiveEffect> appliedPassives)
     {
-        Name = name;
         Type = type;
         IconAddress = iconAddress;
         BorderAddress = borderAddress;
@@ -34,7 +35,6 @@ public class EquipmentInstance
     {
         return new EquipmentSaveData
         {
-            Name = Name,
             Type = Type,
             IconAddress = IconAddress,
             BorderAddress = BorderAddress,
@@ -47,7 +47,6 @@ public class EquipmentInstance
     public static EquipmentInstance FromSaveData(EquipmentSaveData data)
     {
         return new EquipmentInstance(
-            data.Name,
             data.Type,
             data.IconAddress,
             data.BorderAddress,

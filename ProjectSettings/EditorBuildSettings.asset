@@ -24,5 +24,6 @@ EditorBuildSettings:
     path: Assets/01.Scenes/ParryingScene.unity
     guid: 1a7ea5c210f52414789859d99748bccf
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: d645c018bb4f94520a138e1933aa57be, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

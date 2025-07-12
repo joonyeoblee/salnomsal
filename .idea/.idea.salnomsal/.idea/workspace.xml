@@ -5,22 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108eb677-ddd5-45a0-8e4d-b2ea8000b53a" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_EquipmentItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scenes/StartMapScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scenes/StartMapScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Combat/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Combat/Manager/CombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/2.Repository/InventoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/2.Repository/InventoryRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/3.Manager/EquipmentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/3.Manager/EquipmentManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_InventoryItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_InventoryItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_EquipmentItem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_InventorySlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_InventorySlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentDragItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentDragItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/UI_ItemTooltip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/UI_ItemTooltip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/DragItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/DragItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Item/PortraitItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Item/PortraitItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/Slot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/1.Domain/EquipmentInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentInstance.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/1.Domain/EquipmentInstance.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/PassiveEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/PassiveEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/StatRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/StatRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.Prefabs/Equipment/ItemSlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.Prefabs/Equipment/ItemSlot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Images/EquipmentItem/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Images/EquipmentItem/1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +59,7 @@
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.44f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.44f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -63,7 +67,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.44f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.44f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -113,6 +117,8 @@
       <workItem from="1752274567134" duration="84000" />
       <workItem from="1752274856931" duration="2325000" />
       <workItem from="1752278631691" duration="920000" />
+      <workItem from="1752288431352" duration="3331000" />
+      <workItem from="1752306306163" duration="2460000" />
     </task>
     <servers />
   </component>

@@ -1,62 +1,83 @@
 using System;
-using Equipment;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentManager : MonoBehaviour
+namespace Equipment
 {
-    public static EquipmentManager Instance { get; private set; }
-
-    public EquipmentInstance[] EquipmentInstances { get; private set; }
-
-    [SerializeField] private EquipmentSO[] equipmentSOs;
-
-    private InventoryRepository _repository;
-
-    public event Action OnDataChanged;
-
-    private void Awake()
+    public class EquipmentManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this)
+        public static EquipmentManager Instance { get; private set; }
+
+        public EquipmentInstance[] EquipmentInstances { get; private set; }
+
+        private InventoryRepository _repository;
+
+        public event Action OnDataChanged;
+
+        private const int InventorySize = 20; // 고정 크기
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            EquipmentInstances = new EquipmentInstance[InventorySize];
         }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+        private void Start()
+        {
+            _repository = new InventoryRepository();
+            Load();
+        }
 
-    private void Start()
-    {
-        _repository = new InventoryRepository();
-        Load();
-    }
+        public void AddItem(EquipmentInstance item)
+        {
+            for (int i = 0; i < EquipmentInstances.Length; i++)
+            {
+                if (EquipmentInstances[i] == null)
+                {
+                    EquipmentInstances[i] = item;
+                    Save();
+                    OnDataChanged?.Invoke();
+                    return;
+                }
+            }
 
-    public void Load()
-    {
-        EquipmentSaveData[] saveDatas = _repository.Load();
+            Debug.LogWarning("인벤토리가 가득 찼습니다.");
+        }
 
-        // EquipmentInstances = new EquipmentInstance[saveDatas.Length];
-        // for (int i = 0; i < saveDatas.Length; i++)
-        // {
-        //     EquipmentSO so = FindEquipmentSO(saveDatas[i].Id);
-        //     if (so != null)
-        //         EquipmentInstances[i] = saveDatas[i].ToInstance(so);
-        //     else
-        //         Debug.LogWarning($"SO not found for ID: {saveDatas[i].Id}");
-        // }
+        public void Load()
+        {
+            EquipmentSaveData[] saveDatas = _repository.Load();
+            EquipmentInstances = new EquipmentInstance[InventorySize];
 
-        OnDataChanged?.Invoke();
-    }
+            for (int i = 0; i < saveDatas.Length && i < InventorySize; i++)
+            {
+                EquipmentInstances[i] = EquipmentInstance.FromSaveData(saveDatas[i]);
+            }
 
-    private EquipmentSO FindEquipmentSO(string id)
-    {
-        // foreach (EquipmentSO so in equipmentSOs)
-        // {
-        //     if (so.Id == id)
-        //         return so;
-        // }
+            OnDataChanged?.Invoke();
+        }
 
-        return null;
+        public void Save()
+        {
+            List<EquipmentSaveData> saveList = new();
+            foreach (var item in EquipmentInstances)
+            {
+                if (item != null)
+                    saveList.Add(item.ToSaveData());
+            }
+
+            _repository.Save(saveList.ToArray());
+        }
+
+        public void DropItem()
+        {
+            
+        }
     }
 }

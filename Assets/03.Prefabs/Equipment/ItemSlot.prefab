@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 1293033470238339275}
   - component: {fileID: 5708323022982664483}
   - component: {fileID: 4595487228802807058}
-  - component: {fileID: 7915530015174214093}
   - component: {fileID: 5167510946193315858}
   m_Layer: 5
   m_Name: ItemSlot
@@ -229,24 +228,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7915530015174214093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5252429816316153545}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5043a6bf73f24b62add8bd3e9b46e99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MyDraggableItem: {fileID: 0}
-  DraggedSlot: {fileID: 1034010659135711007}
-  MyDraggableItemID: 
-  SlotItemID: 
-  ItemPrefab: {fileID: 4507952745493704315, guid: 51e5c22c427d5384188ff0907921ee07, type: 3}
-  SaveKey: 
 --- !u!114 &5167510946193315858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,8 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440f67cf6d6414c48bb9374618d816ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iconImage: {fileID: 0}
-  _borderImage: {fileID: 0}
+  _item: {fileID: 9196798764052054788}
 --- !u!1 &7640424509421917315
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,8 +342,7 @@ GameObject:
   - component: {fileID: 7524231634747224927}
   - component: {fileID: 8501148498882810129}
   - component: {fileID: 8763905399506560608}
-  - component: {fileID: 3658531721077076391}
-  - component: {fileID: 8537437259812760893}
+  - component: {fileID: 9196798764052054788}
   m_Layer: 5
   m_Name: ArmorPrefab
   m_TagString: Untagged
@@ -412,14 +391,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -855298285791758126, guid: ee4ef8283f3d09b40ab2ef004aec7c26, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -441,7 +420,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3658531721077076391
+--- !u!114 &9196798764052054788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,23 +429,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8261553640401536088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3bae25ed5f245f0b246f7be55b51a87, type: 3}
+  m_Script: {fileID: 11500000, guid: afd94bdefc8cd17428ff143007d36d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyParent: {fileID: 0}
---- !u!114 &8537437259812760893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8261553640401536088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebffa404d0ed694abdab6af27cf7ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemId: 1
-  _equipmentSo: {fileID: 11400000, guid: 314ee1067e83917449087235a79835fe, type: 2}
-  _iconImage: {fileID: 8501148498882810129}
-  _borderImage: {fileID: 128321617382265262}
+  _icon: {fileID: 0}
+  _border: {fileID: 0}
