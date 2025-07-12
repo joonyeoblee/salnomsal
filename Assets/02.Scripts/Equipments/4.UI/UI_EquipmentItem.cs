@@ -14,7 +14,7 @@ public class UI_EquipmentItem : MonoBehaviour
     public void Initialize(EquipmentInstance instance)
     {
         _instance = instance;
-
+        Debug.Log(_instance.IconAddress);
         LoadSprite(_instance.IconAddress, _icon);
         LoadSprite(_instance.BorderAddress, _border);
 
@@ -32,9 +32,20 @@ public class UI_EquipmentItem : MonoBehaviour
         Addressables.LoadAssetAsync<Sprite>(address).Completed += handle =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)
-                targetImage.sprite = handle.Result;
+            {
+                if (handle.Result == null)
+                    Debug.LogError("Handle succeeded but sprite is null");
+                else
+                {
+                    targetImage.sprite = handle.Result;
+                    _icon.color = Color.white;
+                    _border.color = Color.white;
+                }
+            }
             else
-                Debug.LogError($"스프라이트 로드 실패: {address}");
+            {
+                Debug.LogError($"Load failed: {address}, status: {handle.Status}");
+            }
         };
     }
 }

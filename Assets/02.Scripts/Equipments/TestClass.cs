@@ -21,8 +21,8 @@ namespace Equipment
         public void OnDeath()
         {
             EquipmentType type = Random.value < 0.5f ? EquipmentType.Weapon : EquipmentType.Armor;
-            string iconAddress = type == EquipmentType.Weapon ? "Weapon/Icon" : "Armor/Icon";
-            string borderAddress = type == EquipmentType.Weapon ? "Weapon/Border" : "Armor/Border";
+            string iconAddress = type == EquipmentType.Weapon ? "Weapon" : "Armor";
+            string borderAddress = "Border[border_2]";
 
             List<StatRange> statRanges = new()
             {
