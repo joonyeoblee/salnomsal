@@ -36,15 +36,15 @@ public class EquipmentManager : MonoBehaviour
     {
         EquipmentSaveData[] saveDatas = _repository.Load();
 
-        EquipmentInstances = new EquipmentInstance[saveDatas.Length];
-        for (int i = 0; i < saveDatas.Length; i++)
-        {
-            EquipmentSO so = FindEquipmentSO(saveDatas[i].Id);
-            if (so != null)
-                EquipmentInstances[i] = saveDatas[i].ToInstance(so);
-            else
-                Debug.LogWarning($"SO not found for ID: {saveDatas[i].Id}");
-        }
+        // EquipmentInstances = new EquipmentInstance[saveDatas.Length];
+        // for (int i = 0; i < saveDatas.Length; i++)
+        // {
+        //     EquipmentSO so = FindEquipmentSO(saveDatas[i].Id);
+        //     if (so != null)
+        //         EquipmentInstances[i] = saveDatas[i].ToInstance(so);
+        //     else
+        //         Debug.LogWarning($"SO not found for ID: {saveDatas[i].Id}");
+        // }
 
         OnDataChanged?.Invoke();
     }

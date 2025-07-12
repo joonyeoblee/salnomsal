@@ -90,10 +90,10 @@ public abstract class SlotR : MonoBehaviour, IDropHandler
             {
                 item.Load(loadSlotItemData.MyDraggableItemID);
             }
-            else if (newItem.TryGetComponent(out EquipmentGenerator equipmentGenerator))
-            {
-                equipmentGenerator.Init("3");
-            }
+            // else if (newItem.TryGetComponent(out EquipmentGenerator equipmentGenerator))
+            // {
+            //     equipmentGenerator.Init("3");
+            // }
             Debug.Log(loadSlotItemData.MyDraggableItemID);
             MyDraggableItem = newItem.GetComponent<DraggableItem>();
             SetItem(MyDraggableItem);

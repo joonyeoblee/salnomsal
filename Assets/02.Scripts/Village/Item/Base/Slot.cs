@@ -79,16 +79,16 @@ namespace Equipment
             if (currentEquipment != null)
             {
                 // DragItem에서 ID 꺼내기
-                EquipmentGenerator item = currentEquipment.GetComponent<EquipmentGenerator>();
-                if (item != null && item.ItemId != null)
-                {
-                    SlotItemData slotItemData = new SlotItemData();
-                    slotItemData.id = item.ItemId;
-                    string data = JsonUtility.ToJson(slotItemData);
-                    PlayerPrefs.SetString(SaveKey, data);
-                    PlayerPrefs.Save();
-                    Debug.Log($"[Slot {SaveKey}] 저장됨: {data}");
-                }
+                // EquipmentGenerator item = currentEquipment.GetComponent<EquipmentGenerator>();
+                // if (item != null && item.ItemId != null)
+                // {
+                //     SlotItemData slotItemData = new SlotItemData();
+                //     slotItemData.id = item.ItemId;
+                //     string data = JsonUtility.ToJson(slotItemData);
+                //     PlayerPrefs.SetString(SaveKey, data);
+                //     PlayerPrefs.Save();
+                //     Debug.Log($"[Slot {SaveKey}] 저장됨: {data}");
+                // }
             }
         }
 
@@ -105,14 +105,14 @@ namespace Equipment
                 newItem.transform.localPosition = _draggedSlot.localPosition;
 
                 // ID 설정
-                EquipmentGenerator ItemSetId = newItem.GetComponent<EquipmentGenerator>();
-                DragItem dragItem = ItemSetId.GetComponent<DragItem>();
-                if (dragItem != null)
-                {
-                    ItemSetId.Init(_slotItemData.id);
-                    dragItem.MyParent = this;
-                    dragItem.IsInSlot = true;
-                }
+                // EquipmentGenerator ItemSetId = newItem.GetComponent<EquipmentGenerator>();
+                // DragItem dragItem = ItemSetId.GetComponent<DragItem>();
+                // if (dragItem != null)
+                // {
+                //     ItemSetId.Init(_slotItemData.id);
+                //     dragItem.MyParent = this;
+                //     dragItem.IsInSlot = true;
+                // }
 
                 currentEquipment = newItem;
             }

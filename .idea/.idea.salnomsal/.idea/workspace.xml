@@ -5,17 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108eb677-ddd5-45a0-8e4d-b2ea8000b53a" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/2.Repository/InventoryRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/2.Repository/InventoryRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Utils/JsonHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/02.Scripts/Utils/JsonHelper.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.salnomsal/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scenes/StartMapScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scenes/StartMapScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Inventory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Inventory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Monster_Sound/Monster_Audio.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Combat/Manager/CombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Combat/Manager/CombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/3.Manager/EquipmentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/3.Manager/EquipmentManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_InventorySlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/4.UI/UI_InventorySlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentDragItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentDragItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/EquipmentInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/UI_ItemTooltip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Equipments/UI_ItemTooltip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/DragItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/DragItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Item/PortraitItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Item/PortraitItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/RefactoringSlot/Slot/SlotR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Village/Item/Base/Slot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +45,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Equipment&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -105,6 +110,9 @@
       <workItem from="1751712435795" duration="5870000" />
       <workItem from="1751789234710" duration="4483000" />
       <workItem from="1752246724100" duration="1242000" />
+      <workItem from="1752274567134" duration="84000" />
+      <workItem from="1752274856931" duration="2325000" />
+      <workItem from="1752278631691" duration="920000" />
     </task>
     <servers />
   </component>

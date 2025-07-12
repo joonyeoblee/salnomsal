@@ -85,8 +85,8 @@ public class CombatManager : MonoBehaviour
                 UI_ChestInventory.Instance.InitCharacterStats(characterStats[i], i);
                 // 장비
                 // UI_ChestInventory.Instance.Armor[i].LoadEquiment(GameManager.Instance.PortraitItems[i].SaveData.Weapon.Id);
-                UI_ChestInventory.Instance.Armor[i].LoadEquiment("3");
-                UI_ChestInventory.Instance.Armor[i].LoadEquiment(GameManager.Instance.PortraitItems[i].SaveData.Armor.Id);
+                // UI_ChestInventory.Instance.Armor[i].LoadEquiment("3");
+                // UI_ChestInventory.Instance.Armor[i].LoadEquiment(GameManager.Instance.PortraitItems[i].SaveData.Armor.Id);
                 
             }
         }

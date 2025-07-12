@@ -9,9 +9,7 @@ namespace Equipment
 
         public void Initialize(EquipmentInstance equipmentInstance)
         {
-            EquipmentInstance = equipmentInstance;
-            GetComponent<UnityEngine.UI.Image>().sprite = equipmentInstance.Template.Icon;
-            Debug.Log($"[Initialize] 장비: {equipmentInstance.Template.ItemName} 초기화 완료");
+          
         }
         
         public void OnPointerEnter(PointerEventData eventData)

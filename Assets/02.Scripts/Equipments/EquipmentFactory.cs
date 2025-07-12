@@ -59,7 +59,8 @@ namespace Equipment
                 appliedPassives.Add(new AppliedPassiveEffect(passive.PassiveType, value));
             }
 
-            return new EquipmentInstance(template, rarity, baseStats, appliedPassives);
+            // return new EquipmentInstance(template, rarity, baseStats, appliedPassives);
+            return null;
         }
 
         

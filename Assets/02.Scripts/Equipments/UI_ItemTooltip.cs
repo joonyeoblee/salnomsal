@@ -49,7 +49,7 @@ namespace Equipment
             if (equipment == null) return;
 
             gameObject.SetActive(true);
-            _nameText.text = equipment.Template.ItemName;
+            // _nameText.text = equipment.Template.ItemName;
 
             string text = "";
             foreach (var stat in equipment.BaseStats)

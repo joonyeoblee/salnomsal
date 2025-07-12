@@ -17,8 +17,7 @@ public class UI_InventorySlot : MonoBehaviour
             return;
         }
 
-        _iconImage.sprite = equipmentInstance.Template.Icon;
-        _borderImage.sprite = equipmentInstance.Template.BorderSprite;
+     
 
         SetBorderColor(equipmentInstance.Rarity);
     }
