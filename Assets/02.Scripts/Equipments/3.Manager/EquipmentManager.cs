@@ -8,7 +8,7 @@ namespace Equipment
     {
         public static EquipmentManager Instance { get; private set; }
 
-        public EquipmentInstance[] EquipmentInstances { get; private set; }
+        public EquipmentInstance[] EquipmentInstances { get; set; }
 
         private InventoryRepository _repository;
 
@@ -57,7 +57,10 @@ namespace Equipment
 
             for (int i = 0; i < saveDatas.Length && i < InventorySize; i++)
             {
-                EquipmentInstances[i] = EquipmentInstance.FromSaveData(saveDatas[i]);
+                if (saveDatas[i] != null)
+                    EquipmentInstances[i] = EquipmentInstance.FromSaveData(saveDatas[i]);
+                else
+                    EquipmentInstances[i] = null;
             }
 
             OnDataChanged?.Invoke();
@@ -65,14 +68,17 @@ namespace Equipment
 
         public void Save()
         {
-            List<EquipmentSaveData> saveList = new();
-            foreach (var item in EquipmentInstances)
+            EquipmentSaveData[] saveArray = new EquipmentSaveData[InventorySize];
+
+            for (int i = 0; i < EquipmentInstances.Length; i++)
             {
-                if (item != null)
-                    saveList.Add(item.ToSaveData());
+                if (EquipmentInstances[i] != null)
+                    saveArray[i] = EquipmentInstances[i].ToSaveData();
+                else
+                    saveArray[i] = null;
             }
 
-            _repository.Save(saveList.ToArray());
+            _repository.Save(saveArray); // null 포함된 배열 저장
         }
 
         public void DropItem()

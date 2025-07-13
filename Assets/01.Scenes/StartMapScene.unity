@@ -3788,6 +3788,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3976825887055476596, guid: b58c109054a1d794da48f33ce273a163, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5252429816316153545, guid: b58c109054a1d794da48f33ce273a163, type: 3}
       propertyPath: m_Name
       value: ItemSlot (9)
