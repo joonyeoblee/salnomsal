@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Equipment
 {
-    public class UI_EquipmentItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UI_EquipmentItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,  IPointerClickHandler
     {
         [SerializeField] private Image _icon;
         [SerializeField] private Image _border;
@@ -24,7 +24,7 @@ namespace Equipment
         public void Initialize(EquipmentInstance instance, UI_InventorySlot slot)
         {
             _inventorySlot = slot;
-
+            _canvasGroup.blocksRaycasts = false;
             if (instance == null)
             {
                 DeleteItem();
@@ -107,6 +107,7 @@ namespace Equipment
                 {
                     if (targetSlot == _inventorySlot)
                     {
+                        transform.SetParent(_inventorySlot.transform);
                         transform.position = _originPosition;
                         return;
                     }
@@ -157,6 +158,14 @@ namespace Equipment
             transform.position = _originPosition;
             
             UI_Inventory.Instance.RebuildInstancesAndSave();
+        }
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                Debug.Log("이미지를 우클릭했습니다!");
+                // 원하는 동작 실행
+            }
         }
     }
 }

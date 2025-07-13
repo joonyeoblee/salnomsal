@@ -32,6 +32,10 @@ namespace Equipment
         {
             _repository = new InventoryRepository();
             Load();
+            foreach (var equipmentInstance in EquipmentInstances)
+            {
+                Debug.Log(equipmentInstance);
+            }
         }
 
         public void AddItem(EquipmentInstance item)

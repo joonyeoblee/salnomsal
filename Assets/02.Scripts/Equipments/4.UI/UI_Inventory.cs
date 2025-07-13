@@ -27,7 +27,7 @@ public class UI_Inventory : MonoBehaviour
             if (i < instances.Length)
                 slots[i].Refresh(instances[i]);
             else
-                slots[i].Refresh(null); // 빈 슬롯
+                slots[i].Refresh(null);
         }
     }
     

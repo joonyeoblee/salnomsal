@@ -26,10 +26,6 @@ public class UI_ChestInventory : MonoBehaviour
         {
             Instance = this;
         }
-        // else if (Instance != this)
-        // {
-        //     Destroy(gameObject);
-        // }
     }
 
     public void Initialize(PlayableCharacter character, int index)
