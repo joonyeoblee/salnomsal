@@ -27,8 +27,7 @@ Unity 2D 턴 기반 RPG 게임 프로젝트입니다.
 - **Additive Scene Loading**: 전투 중 상태 저장 없이 미니게임으로 씬 전환 구현
 - **DOTween**: 부드러운 애니메이션 효과
 - **ProCamera2D**: 고급 카메라 시스템
-- **Nice Vibrations**: 햅틱 피드백
-- **포스트 프로세싱**: 시각적 효과 향상
+ - **효용 기반 AI**: 타겟 선정과 스킬 선택 모두 효용값 + 계산으로 최적 행동 결정
 
 ## 프로젝트 구조
 
@@ -86,10 +85,8 @@ Assets/
 ## 사용된 외부 에셋
 
 - **ProCamera2D**: 고급 2D 카메라 시스템
-- **Nice Vibrations (Lofelt)**: 햅틱 피드백
 - **DOTween**: 트위닝 애니메이션
 - **Feel (More Mountains)**: 게임 피드백 시스템
-- **다양한 UI 및 그래픽 에셋**
 
 ## 그래픽 및 아트워크
 
