@@ -2,14 +2,21 @@
 
 Unity 2D 턴 기반 RPG 게임 프로젝트입니다.
 
+## 🎥 게임 플레이 영상
+
+[![게임 플레이 영상](https://img.youtube.com/vi/FJbo1RMgxhc/0.jpg)](https://www.youtube.com/watch?v=FJbo1RMgxhc)
+
 ## 프로젝트 개요
 
-**살놈살**은 Unity Universal Render Pipeline (URP)을 사용한 2D 턴 기반 RPG 게임입니다. 플레이어는 캐릭터들로 구성된 팀을 이끌고 맵을 탐험하며 몬스터와 전투를 펼치는 게임입니다.
+**살놈살**은 다키스트 던전 스타일의 턴제 RPG 게임입니다. Unity Universal Render Pipeline (URP)을 사용한 2D 게임으로, 플레이어는 캐릭터들로 구성된 팀을 이끌고 맵을 탐험하며 몬스터와 전투를 펼칩니다. 
+
+게임의 독특한 특징은 **캐릭터 사망 직전 미니게임을 통해 부활할 수 있는 시스템**입니다. 이를 통해 전략적인 턴제 전투에 긴장감 넘치는 액션 요소를 더했습니다.
 
 ## 주요 특징
 
 ### 🎮 게임 시스템
 - **턴 기반 전투**: 전략적인 턴제 전투 시스템
+- **부활 미니게임**: 캐릭터 사망 직전 미니게임을 통한 부활 시스템
 - **미니게임 시스템**: 다양한 미니게임 (회피, 패링, 매칭 게임)
 - **맵 생성 시스템**: 절차적 맵 생성
 - **장비 시스템**: 캐릭터 장비 및 스탯 관리
@@ -17,6 +24,7 @@ Unity 2D 턴 기반 RPG 게임 프로젝트입니다.
 
 ### 🏗️ 기술적 특징
 - **Unity 2D URP**: Universal Render Pipeline 사용
+- **Additive Scene Loading**: 전투 중 상태 저장 없이 미니게임으로 씬 전환 구현
 - **DOTween**: 부드러운 애니메이션 효과
 - **ProCamera2D**: 고급 카메라 시스템
 - **Nice Vibrations**: 햅틱 피드백
@@ -85,10 +93,10 @@ Assets/
 
 ## 개발 환경
 
-- **Unity**: 2022.3+ (URP 템플릿)
+- **Unity**: 6000.0.44f1 (URP 템플릿)
 - **언어**: C#
 - **렌더 파이프라인**: Universal Render Pipeline (URP)
-- **플랫폼**: PC/Android 지원
+- **플랫폼**: PC 지원
 
 ## 게임 플레이
 
