@@ -24,10 +24,8 @@ public class EquipmentManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
 
-    private void Start()
-    {
+        // Initialize in Awake to ensure data is ready before other Start() calls
         _repository = new InventoryRepository();
         Load();
     }
@@ -35,6 +33,15 @@ public class EquipmentManager : MonoBehaviour
     public void Load()
     {
         EquipmentSaveData[] saveDatas = _repository.Load();
+
+        // Initialize to empty array if no data
+        if (saveDatas == null || saveDatas.Length == 0)
+        {
+            EquipmentInstances = new EquipmentInstance[0];
+            Debug.Log("No equipment data found, initialized with empty array");
+            OnDataChanged?.Invoke();
+            return;
+        }
 
         EquipmentInstances = new EquipmentInstance[saveDatas.Length];
         for (int i = 0; i < saveDatas.Length; i++)
@@ -51,11 +58,18 @@ public class EquipmentManager : MonoBehaviour
 
     private EquipmentSO FindEquipmentSO(string id)
     {
-        // foreach (EquipmentSO so in equipmentSOs)
-        // {
-        //     if (so.Id == id)
-        //         return so;
-        // }
+        if (equipmentSOs == null || equipmentSOs.Length == 0)
+        {
+            Debug.LogWarning("equipmentSOs array is empty or null!");
+            return null;
+        }
+
+        foreach (EquipmentSO so in equipmentSOs)
+        {
+            // Use ItemName as the unique identifier
+            if (so != null && so.ItemName == id)
+                return so;
+        }
 
         return null;
     }

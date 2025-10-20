@@ -3,7 +3,6 @@ using Jun;
 using MoreMountains.Feedbacks;
 using Portrait;
 using UnityEngine;
-using Enumerable = System.Linq.Enumerable;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
@@ -136,7 +135,9 @@ public class CombatManager : MonoBehaviour
 
     public void SetOrder()
     {
-        TurnOrder = Enumerable.ToList(Enumerable.OrderByDescending(TurnOrder, actor => actor.CurrentSpeed));
+        // In-place sorting: O(n log n) with no memory allocation
+        // Sort in descending order by CurrentSpeed (highest speed goes first)
+        TurnOrder.Sort((a, b) => b.CurrentSpeed.CompareTo(a.CurrentSpeed));
     }
 
     public void SetSelectedSkill(SkillSlot slot)
@@ -320,25 +321,28 @@ public class CombatManager : MonoBehaviour
     {
         unit.CurrentSpeed = unit.BasicSpeed;
 
-        for (int i = 0; i < TurnOrder.Count; ++i)
+        // Reverse iteration: safe removal without index adjustment
+        // O(n) time complexity with efficient removal
+        for (int i = TurnOrder.Count - 1; i >= 0; --i)
         {
             if (TurnOrder[i] == null || TurnOrder[i].IsAlive == false)
             {
                 TurnOrder.RemoveAt(i);
-                --i;
-                continue;
             }
-            TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
+            else
+            {
+                TurnOrder[i].CurrentSpeed += SpeedIncrementPerTurn;
+            }
         }
 
-        for (int i = 0; i < PlayableCharacter.Count; ++i)
+        // Reverse iteration for safe removal
+        for (int i = PlayableCharacter.Count - 1; i >= 0; --i)
         {
             if (PlayableCharacter[i].IsAlive == false)
             {
                 PlayableCharacter dead = PlayableCharacter[i];
                 PlayableCharacter.Remove(dead);
                 Destroy(dead.gameObject);
-                --i;
             }
         }
 
