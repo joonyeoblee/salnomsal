@@ -22,6 +22,7 @@ This is a Unity 2D turn-based RPG game called "salnomsal" built with Universal R
   - Post Processing (3.5.0)
   - More Mountains Feedbacks (Feel system)
   - 2D Animation (10.2.1)
+  - Addressables (asset management and dynamic loading)
 
 ## Architecture
 
@@ -71,6 +72,34 @@ The game uses singleton managers that persist via `DontDestroyOnLoad`:
 **EnemyCharacter** (`Assets/02.Scripts/Monster/EnemyCharacter.cs`):
 - Abstract methods: `Attack()`, `Skill1()`, `Skill2()`, `Skill3()`, `Skill4()`
 - Concrete implementations define enemy behavior patterns
+
+### Asset Management & Addressables
+
+**Problem**: Initially, the character system used ScriptableObjects (SO) to store character data including portrait images. However, this approach caused reference issues when trying to load portrait images at runtime, particularly when:
+- Images needed to be accessed across different scenes
+- ScriptableObject references broke during scene transitions
+- Direct SO references created tight coupling between data and assets
+
+**Solution**: Migrated to Unity Addressables system for dynamic asset loading
+
+**Implementation**:
+- Portrait images registered as Addressable assets with unique keys
+- Runtime loading via `Addressables.LoadAssetAsync<Sprite>(key)`
+- Decoupled asset references from ScriptableObject data
+- Improved memory management with async loading/unloading
+
+**Benefits**:
+- **Flexible Asset Management**: Assets loaded on-demand rather than bundled with scenes
+- **Reduced Memory Footprint**: Load portraits only when needed, release when done
+- **Build Optimization**: Addressables can be built into separate asset bundles
+- **Scalability**: Easy to add new character portraits without rebuilding ScriptableObjects
+- **Cross-Scene Reliability**: Asset references maintained across scene transitions
+
+**Portfolio Note**: This demonstrates understanding of Unity's asset management systems and problem-solving approach when ScriptableObject limitations were encountered. The migration to Addressables showcases knowledge of:
+- Async/await patterns for asset loading
+- Memory optimization techniques
+- Unity's modern asset pipeline
+- Architectural decision-making based on technical constraints
 
 ### Equipment & Inventory System
 Uses a **Domain-Driven Design** approach with layered structure:
@@ -208,7 +237,9 @@ Title → Village (party setup) → Map (node selection) → Battle/MiniGame →
 1. Create prefab in `Assets/03.Prefabs/Characters/`
 2. Assign to `GameManager.Characters[index]` in Village scene
 3. Configure `PlayableCharacter` component with skills, animations
-4. Create `PortraitItem` for character selection UI
+4. Create portrait sprite and mark as Addressable asset with unique key
+5. Reference portrait via Addressable key (not direct ScriptableObject reference)
+6. Create `PortraitItem` for character selection UI with async portrait loading
 
 **Adding New Equipment**:
 1. Create `EquipmentSO` in `Assets/04.ScriptableObjects/Equipment/`
@@ -235,6 +266,8 @@ Title → Village (party setup) → Map (node selection) → Battle/MiniGame →
 - **Equipment Loading**: Equipment IDs hardcoded in `CombatManager.SpawnPlayer()` (line 88-89) - should be data-driven
 - **Animation Coupling**: Skill execution tightly coupled to animation state machine completion
 - **Singleton Lifecycle**: All managers use `DontDestroyOnLoad` - be careful with scene reloads
+- **Addressables Asset Loading**: Portrait images and other character assets use Addressables - always use async loading patterns and handle load failures gracefully
+- **Asset Reference Migration**: Legacy ScriptableObject direct references were replaced with Addressable keys - avoid mixing both approaches
 
 ## Third-Party Assets
 
